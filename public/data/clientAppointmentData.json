@@ -1,0 +1,83 @@
+[
+    {
+      "id": 1264,
+      "patientName": "John Doe",
+      "appointmentDateTime": "22/11/2024; 10:00 AM - 11:00 AM",
+      "email": "emilyjane@gmail.com",
+      "consultationType": "In person",
+      "duration": "1 hour"
+    },
+    {
+      "id": 1264,
+      "patientName": "John Doe",
+      "appointmentDateTime": "22/11/2024; 01:00 PM - 03:00 PM",
+      "email": "emilyjane@gmail.com",
+      "consultationType": "In person",
+      "duration": "2 hours"
+    },
+    {
+      "id": 1264,
+      "patientName": "John Doe",
+      "appointmentDateTime": "22/11/2024; 01:00 PM - 03:30 PM",
+      "email": "emilyjane@gmail.com",
+      "consultationType": "In person",
+      "duration": "2.5 hours"
+    },
+    {
+      "id": 1264,
+      "patientName": "John Doe",
+      "appointmentDateTime": "22/11/2024; 01:00 PM - 03:00 PM",
+      "email": "emilyjane@gmail.com",
+      "consultationType": "In person",
+      "duration": "2 hours"
+    },
+    {
+      "id": 1264,
+      "patientName": "John Doe",
+      "appointmentDateTime": "22/11/2024; 01:00 PM - 03:00 PM",
+      "email": "emilyjane@gmail.com",
+      "consultationType": "In person",
+      "duration": "2 hours"
+    },
+    {
+      "id": 1264,
+      "patientName": "John Doe",
+      "appointmentDateTime": "22/11/2024; 01:00 PM - 03:00 PM",
+      "email": "emilyjane@gmail.com",
+      "consultationType": "In person",
+      "duration": "2 hours"
+    },
+    {
+      "id": 1264,
+      "patientName": "John Doe",
+      "appointmentDateTime": "22/11/2024; 01:00 PM - 03:00 PM",
+      "email": "emilyjane@gmail.com",
+      "consultationType": "In person",
+      "duration": "2 hours"
+    },
+    {
+      "id": 1264,
+      "patientName": "John Doe",
+      "appointmentDateTime": "22/11/2024; 01:00 PM - 03:00 PM",
+      "email": "emilyjane@gmail.com",
+      "consultationType": "In person",
+      "duration": "2 hours"
+    },
+    {
+      "id": 1264,
+      "patientName": "John Doe",
+      "appointmentDateTime": "22/11/2024; 01:00 PM - 03:00 PM",
+      "email": "emilyjane@gmail.com",
+      "consultationType": "In person",
+      "duration": "2 hours"
+    },
+    {
+      "id": 1264,
+      "patientName": "John Doe",
+      "appointmentDateTime": "22/11/2024; 01:00 PM - 03:00 PM",
+      "email": "emilyjane@gmail.com",
+      "consultationType": "In person",
+      "duration": "2 hours"
+    }
+  ]
+  

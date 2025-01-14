@@ -1,0 +1,27 @@
+{
+  "patientName": "Yash M. Patil",
+  "age": 21,
+  "sex": "Male",
+  "pid": 544,
+  "collectionAddress": "125, Shivam Bungalow, Road, Ahmadabad",
+  "doctorName": "Dr. Hiren Shah",
+  "registeredOn": "02:31 PM 02 Dec, 21",
+  "collectedOn": "03:11 PM 02 Dec, 21",
+  "sampleType": "Blood",
+  "tests": [
+    {
+      "name": "HEMOGLOBIN",
+      "title": "Hemoglobin (Hb)",
+      "result": 12.5,
+      "refValue": "Low 13.0 - 17.0",
+      "unit": "g/dL"
+    },
+    {
+      "name": "RBC COUNT",
+      "title": "Total RBC count",
+      "result": 12.5,
+      "refValue": "Low 13.0 - 17.0",
+      "unit": "g/dL"
+    }
+  ]
+}
