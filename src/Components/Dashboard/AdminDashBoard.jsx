@@ -10,6 +10,9 @@ import axios from "axios";
 import UsersTable from "../Tables/UsersTable";
 import ViewUserModal from "../UI/ViewUserModal";
 import DeleteUserModal from "../UI/DeleteUserModal";
+import { PieChart } from "recharts";
+import PieCharts from "../MainDashBoardPage/PieChart";
+import OrderChart from "../MainDashBoardPage/OrderChart";
 
 const AdminDashboard = () => {
   const [data, setData] = useState([]);
@@ -180,10 +183,16 @@ const AdminDashboard = () => {
           </div>
 
           {/* Charts */}
+          <div className="grid grid-cols-2 gap-10">
+
+       
           <React.Fragment>
-
+            <PieCharts />
           </React.Fragment>
-
+          <React.Fragment>
+            <OrderChart />
+          </React.Fragment>
+   </div>
           <div className="flex flex-col lg:flex-row gap-5 mt-8">
             <div
               className="w-full lg:w-1/2 p-3 bg-[#FFFFFF] rounded-lg"
