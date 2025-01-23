@@ -1,14 +1,21 @@
 import { Button } from "antd";
 import JoditEditor from "jodit-react";
-import { useRef, useState } from "react";
+import { useRef } from "react";
+import React, { useState } from "react";
+import ReactQuill from "react-quill";
+import "react-quill/dist/quill.snow.css";
 
 const PrivacyPolicy = () => {
+    const [value, setValue] = useState("");
   const editor = useRef(null);
   const [content, setContent] = useState("");
 
   const handleOnSave = () => {
     console.log(content);
   };
+
+  console.log(value);
+  
 
   return (
     <div
@@ -26,6 +33,7 @@ const PrivacyPolicy = () => {
             config={{ height: 500, theme: "light", readonly: false }}
             onBlur={(newContent) => setContent(newContent)}
           />
+          <ReactQuill theme="snow" value={value} onChange={setValue} />
         </div>
         <Button
           onClick={handleOnSave}

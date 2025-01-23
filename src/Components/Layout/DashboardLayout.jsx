@@ -1,7 +1,7 @@
 import Topbar from "../Shared/Topbar";
 
 // import logo from "/images/logo.png";
-import dashboardLogo from "../../../public/images/dashboard-logo/dashboard.svg";
+// import dashboardLogo from "../../../public/images/dashboard-logo/dashboard.svg";
 import chat from "../../../public/images/dashboard-logo/chat.svg";
 import appointment from "../../../public/images/dashboard-logo/appointment.svg";
 import users from "../../../public/images/dashboard-logo/users.svg";
@@ -12,13 +12,25 @@ import subscription from "../../../public/images/dashboard-logo/subscription.svg
 import faq from "../../../public/images/dashboard-logo/faq.svg";
 import setting from "../../../public/images/dashboard-logo/setting.svg";
 import profile from "../../../public/images/dashboard-logo/profile.svg";
-import logout from "../../../public/images/dashboard-logo/logout.svg";
+// import logout from "../../../public/images/dashboard-logo/logout.svg";
 import healthrecordinterface from "../../../public/images/dashboard-logo/healthrecordsinterface.svg";
 import wellnesstrack from "../../../public/images/dashboard-logo/wellnesstracking.svg";
 import calendarappointments from "../../../public/images/dashboard-logo/calendar&appointments.svg";
 import cliniveapay from "../../../public/images/dashboard-logo/cliniveapay.svg";
 import mvrcommunication from "../../../public/images/dashboard-logo/mvrcommunication.svg";
 
+// import logo from "/images/logo.png";
+
+import dashboardLogo from "../../../public/images/dashboard-logos/dashboard.svg";
+import dealer from "../../../public/images/dashboard-logos/dealer.svg";
+import logout from "../../../public/images/dashboard-logos/logout.svg";
+import privacy from "../../../public/images/dashboard-logos/privacy.svg";
+import service from "../../../public/images/dashboard-logos/service.svg";
+import task from "../../../public/images/dashboard-logos/task.svg";
+import terms from "../../../public/images/dashboard-logos/terms.svg";
+import totalCar from "../../../public/images/dashboard-logos/total-car.svg";
+import totalEarning from "../../../public/images/dashboard-logos/total-earning.svg";
+import userManagement from "../../../public/images/dashboard-logos/user-management.svg";
 
 import { Link, NavLink, Outlet, useLocation } from "react-router-dom";
 import { Layout, Menu } from "antd";
@@ -54,6 +66,187 @@ const DashboardLayout = () => {
     };
   }, []);
 
+  // const adminMenuItems = [
+  //   {
+  //     key: "dashboard",
+  //     icon: (
+  //       <img
+  //         src={dashboardLogo}
+  //         alt="dashboard"
+  //         width={20}
+  //         style={{
+  //           filter: location.pathname.includes("dashboard")
+  //             ? "brightness(0) invert(1)"
+  //             : undefined,
+  //         }}
+  //       />
+  //     ),
+  //     label: <NavLink to="dashboard">Dashboard</NavLink>,
+  //   },
+  //   {
+  //     key: "users",
+  //     icon: (
+  //       <img
+  //         src={users}
+  //         alt="dashboard"
+  //         width={20}
+  //         style={{
+  //           filter: location.pathname.includes("users")
+  //             ? "brightness(0) invert(1)"
+  //             : undefined,
+  //         }}
+  //       />
+  //     ),
+  //     label: <NavLink to="users">User</NavLink>,
+  //   },
+  //   {
+  //     key: "assign-mvr",
+  //     icon: (
+  //       <img
+  //         src={assignMVR}
+  //         alt="AssignMVR"
+  //         width={20}
+  //         style={{
+  //           filter: location.pathname.includes("assign-mvr")
+  //             ? "brightness(0) invert(1)"
+  //             : undefined,
+  //         }}
+  //       />
+  //     ),
+  //     label: <NavLink to="assign-mvr">Assign MVR</NavLink>,
+  //   },
+  //   {
+  //     key: "mvr",
+  //     icon: <img src={mvr} alt="mvr" width={20} />,
+  //     label: <span className="text-base-color">MVR</span>,
+  //     children: [
+  //       {
+  //         key: "add-mvr",
+  //         icon: <span>&#8226;</span>,
+  //         label: <NavLink to="add-mvr">Add MVR</NavLink>,
+  //       },
+  //       {
+  //         key: "all-mvr",
+  //         icon: <span>&#8226;</span>,
+  //         label: <NavLink to="all-mvr">MVR List</NavLink>,
+  //       },
+  //     ],
+  //   },
+  //   {
+  //     key: "earning",
+  //     icon: (
+  //       <img
+  //         src={earning}
+  //         alt="warning"
+  //         width={16}
+  //         height={16}
+  //         style={{
+  //           filter: location.pathname.includes("earning")
+  //             ? "brightness(0) invert(1)"
+  //             : undefined,
+  //         }}
+  //       />
+  //     ),
+  //     label: <NavLink to="earning">Earning</NavLink>,
+  //   },
+  //   {
+  //     key: "subscription",
+  //     icon: (
+  //       <img
+  //         src={subscription}
+  //         alt="subscription"
+  //         width={16}
+  //         height={16}
+  //         style={{
+  //           filter: location.pathname.includes("subscription")
+  //             ? "brightness(0) invert(1)"
+  //             : undefined,
+  //         }}
+  //       />
+  //     ),
+  //     label: <NavLink to="subscription">Subscription</NavLink>,
+  //   },
+  //   {
+  //     key: "faq",
+  //     icon: (
+  //       <img
+  //         src={faq}
+  //         alt="FAQ"
+  //         width={20}
+  //         style={{
+  //           filter: location.pathname.includes("faq")
+  //             ? "brightness(0) invert(1)"
+  //             : undefined,
+  //         }}
+  //       />
+  //     ),
+  //     label: <NavLink to="faq">FAQ</NavLink>,
+  //   },
+
+  //   {
+  //     key: "profile",
+  //     icon: (
+  //       <img
+  //         src={profile}
+  //         alt="dashboard"
+  //         width={16}
+  //         height={16}
+  //         style={{
+  //           filter: location.pathname.includes("profile")
+  //             ? "brightness(0) invert(1)"
+  //             : undefined,
+  //         }}
+  //       />
+  //     ),
+  //     label: <NavLink to="profile">Profile</NavLink>,
+  //   },
+  //   {
+  //     key: "settings",
+  //     label: <span className="text-base-color"> Settings</span>,
+  //     icon: <img src={setting} alt="dashboard" width={16} height={16} />,
+  //     children: [
+  //       {
+  //         key: "change-password",
+  //         icon: <span>&#8226;</span>,
+  //         label: (
+  //           <NavLink to="settings/change-password">Change Password</NavLink>
+  //         ),
+  //       },
+  //       {
+  //         key: "about-us",
+  //         icon: <span>&#8226;</span>,
+  //         label: <NavLink to="about-us">About Us</NavLink>,
+  //       },
+  //       {
+  //         key: "terms-of-service",
+  //         icon: <span>&#8226;</span>,
+  //         label: <NavLink to="terms-of-service">Terms & Condition</NavLink>,
+  //       },
+  //       {
+  //         key: "privacy-policy",
+  //         icon: <span>&#8226;</span>,
+  //         label: <NavLink to="privacy-policy">Privacy Policy</NavLink>,
+  //       },
+  //     ],
+  //   },
+  //   {
+  //     key: "logout",
+  //     icon: (
+  //       <img
+  //         src={logout}
+  //         alt="dashboard"
+  //         width={16}
+  //         height={16}
+  //         style={{ color: "#222222", fontSize: "16px" }}
+  //       />
+  //     ),
+  //     label: (
+  //       <div onClick={() => localStorage.removeItem("clinivea_user")}>
+  //         <NavLink to="/signin">Logout</NavLink>
+  //       </div>
+  //     ),
+  //   },
+  // ];
   const adminMenuItems = [
     {
       key: "dashboard",
@@ -72,11 +265,11 @@ const DashboardLayout = () => {
       label: <NavLink to="dashboard">Dashboard</NavLink>,
     },
     {
-      key: "users",
+      key: "total-Car-Sell",
       icon: (
         <img
-          src={users}
-          alt="dashboard"
+          src={totalCar}
+          alt="total-Car-Sell"
           width={20}
           style={{
             filter: location.pathname.includes("users")
@@ -85,14 +278,15 @@ const DashboardLayout = () => {
           }}
         />
       ),
-      label: <NavLink to="users">User</NavLink>,
+      label: <NavLink to="users">Total Car Sell</NavLink>,
     },
+
     {
-      key: "assign-mvr",
+      key: "total-earning",
       icon: (
         <img
-          src={assignMVR}
-          alt="AssignMVR"
+          src={totalEarning}
+          alt="total-earning"
           width={20}
           style={{
             filter: location.pathname.includes("assign-mvr")
@@ -101,8 +295,173 @@ const DashboardLayout = () => {
           }}
         />
       ),
-      label: <NavLink to="assign-mvr">Assign MVR</NavLink>,
+      label: <NavLink to="assign-mvr">Total Earning </NavLink>,
     },
+
+    {
+      key: "service-price",
+      icon: (
+        <img
+          src={service}
+          alt="service-price"
+          width={20}
+          style={{
+            filter: location.pathname.includes("assign-mvr")
+              ? "brightness(0) invert(1)"
+              : undefined,
+          }}
+        />
+      ),
+      label: <NavLink to="assign-mvr">Service Price</NavLink>,
+    },
+
+    {
+      key: "user-management",
+      icon: (
+        <img
+          src={userManagement}
+          alt="user-management"
+          width={20}
+          style={{
+            filter: location.pathname.includes("assign-mvr")
+              ? "brightness(0) invert(1)"
+              : undefined,
+          }}
+        />
+      ),
+      label: <NavLink to="assign-mvr">User Management</NavLink>,
+    },
+    {
+      key: "dealer-management",
+      icon: (
+        <img
+          src={dealer}
+          alt="dealer-management"
+          width={20}
+          style={{
+            filter: location.pathname.includes("assign-mvr")
+              ? "brightness(0) invert(1)"
+              : undefined,
+          }}
+        />
+      ),
+      label: <NavLink to="assign-mvr">Dealer Management</NavLink>,
+    },
+    {
+      key: "task-management",
+      icon: (
+        <img
+          src={task}
+          alt="task-management"
+          width={20}
+          style={{
+            filter: location.pathname.includes("assign-mvr")
+              ? "brightness(0) invert(1)"
+              : undefined,
+          }}
+        />
+      ),
+      label: <NavLink to="assign-mvr">Task Management</NavLink>,
+    },
+
+    {
+      key: "settings",
+      label: <span className="text-base-color"> Settings</span>,
+      icon: <img src={setting} alt="dashboard" width={16} height={16} />,
+      children: [
+        {
+          key: "change-password",
+          icon: <span>&#8226;</span>,
+          label: (
+            <NavLink to="settings/change-password">Change Password</NavLink>
+          ),
+        },
+        {
+          key: "about-us",
+          icon: <span>&#8226;</span>,
+          label: <NavLink to="about-us">About Us</NavLink>,
+        },
+        // {
+        //   key: "terms-of-service",
+        //   icon: <span>&#8226;</span>,
+        //   label: <NavLink to="terms-of-service">Terms & Condition</NavLink>,
+        // },
+        // {
+        //   key: "privacy-policy",
+        //   icon: <span>&#8226;</span>,
+        //   label: <NavLink to="privacy-policy">Privacy Policy</NavLink>,
+        // },
+      ],
+    },
+
+    {
+      key: "terms-of-service",
+      icon: (
+        <img
+          src={terms}
+          alt="terms-of-service"
+          width={20}
+          style={{
+            filter: location.pathname.includes("terms-of-service")
+              ? "brightness(0) invert(1)"
+              : undefined,
+          }}
+        />
+      ),
+      label: <NavLink to="terms-of-service">Terms & Conditions</NavLink>,
+    },
+    {
+      key: "privacy-policy",
+      icon: (
+        <img
+          src={privacy}
+          alt="privacy-policy"
+          width={20}
+          style={{
+            filter: location.pathname.includes("privacy-policy")
+              ? "brightness(0) invert(1)"
+              : undefined,
+          }}
+        />
+      ),
+      label: <NavLink to="privacy-policy">Privacy Policy</NavLink>,
+    },
+
+    {
+      key: "logout",
+      icon: (
+        <img
+          src={logout}
+          alt="dashboard"
+          width={16}
+          height={16}
+          style={{ color: "#222222", fontSize: "16px" }}
+        />
+      ),
+      label: (
+        <div onClick={() => localStorage.removeItem("clinivea_user")}>
+          <NavLink to="/signin">Logout</NavLink>
+        </div>
+      ),
+    },
+    {
+      key: "profile",
+      icon: (
+        <img
+          src={profile}
+          alt="dashboard"
+          width={16}
+          height={16}
+          style={{
+            filter: location.pathname.includes("profile")
+              ? "brightness(0) invert(1)"
+              : undefined,
+          }}
+        />
+      ),
+      label: <NavLink to="profile">Profile</NavLink>,
+    },
+
     {
       key: "mvr",
       icon: <img src={mvr} alt="mvr" width={20} />,
@@ -120,6 +479,7 @@ const DashboardLayout = () => {
         },
       ],
     },
+
     {
       key: "earning",
       icon: (
@@ -153,86 +513,6 @@ const DashboardLayout = () => {
         />
       ),
       label: <NavLink to="subscription">Subscription</NavLink>,
-    },
-    {
-      key: "faq",
-      icon: (
-        <img
-          src={faq}
-          alt="FAQ"
-          width={20}
-          style={{
-            filter: location.pathname.includes("faq")
-              ? "brightness(0) invert(1)"
-              : undefined,
-          }}
-        />
-      ),
-      label: <NavLink to="faq">FAQ</NavLink>,
-    },
-
-    {
-      key: "profile",
-      icon: (
-        <img
-          src={profile}
-          alt="dashboard"
-          width={16}
-          height={16}
-          style={{
-            filter: location.pathname.includes("profile")
-              ? "brightness(0) invert(1)"
-              : undefined,
-          }}
-        />
-      ),
-      label: <NavLink to="profile">Profile</NavLink>,
-    },
-    {
-      key: "settings",
-      label: <span className="text-base-color"> Settings</span>,
-      icon: <img src={setting} alt="dashboard" width={16} height={16} />,
-      children: [
-        {
-          key: "change-password",
-          icon: <span>&#8226;</span>,
-          label: (
-            <NavLink to="settings/change-password">Change Password</NavLink>
-          ),
-        },
-        {
-          key: "about-us",
-          icon: <span>&#8226;</span>,
-          label: <NavLink to="about-us">About Us</NavLink>,
-        },
-        {
-          key: "terms-of-service",
-          icon: <span>&#8226;</span>,
-          label: <NavLink to="terms-of-service">Terms & Condition</NavLink>,
-        },
-        {
-          key: "privacy-policy",
-          icon: <span>&#8226;</span>,
-          label: <NavLink to="privacy-policy">Privacy Policy</NavLink>,
-        },
-      ],
-    },
-    {
-      key: "logout",
-      icon: (
-        <img
-          src={logout}
-          alt="dashboard"
-          width={16}
-          height={16}
-          style={{ color: "#222222", fontSize: "16px" }}
-        />
-      ),
-      label: (
-        <div onClick={() => localStorage.removeItem("clinivea_user")}>
-          <NavLink to="/signin">Logout</NavLink>
-        </div>
-      ),
     },
   ];
 
@@ -369,7 +649,6 @@ const DashboardLayout = () => {
       label: <NavLink to="healthrecord">Health Records Interface</NavLink>,
     },
 
-
     {
       key: "cliniveapay",
       icon: (
@@ -418,7 +697,9 @@ const DashboardLayout = () => {
           }}
         />
       ),
-      label: <NavLink to="calendarappointments">Calendar & Appointments</NavLink>,
+      label: (
+        <NavLink to="calendarappointments">Calendar & Appointments</NavLink>
+      ),
     },
 
     {
@@ -435,18 +716,12 @@ const DashboardLayout = () => {
           }}
         />
       ),
-      label: <NavLink to="wellnesstrack">Actionable Insights and Wellness Tracking</NavLink>,
+      label: (
+        <NavLink to="wellnesstrack">
+          Actionable Insights and Wellness Tracking
+        </NavLink>
+      ),
     },
-
-
-
-
-
-
-
-
-
-
 
     {
       key: "profile",
@@ -465,7 +740,6 @@ const DashboardLayout = () => {
       ),
       label: <NavLink to="profile">Profile</NavLink>,
     },
-
 
     {
       key: "settings",
@@ -501,7 +775,12 @@ const DashboardLayout = () => {
   ];
 
   // Select the appropriate menu items based on user role
-  const menuItems = userRole?.role === "admin" ? adminMenuItems : userRole?.role === "mvr" ? mvrMenuItems:userMenuItems;
+  const menuItems =
+    userRole?.role === "admin"
+      ? adminMenuItems
+      : userRole?.role === "mvr"
+      ? mvrMenuItems
+      : userMenuItems;
 
   return (
     <div className="h-screen bg-white ">

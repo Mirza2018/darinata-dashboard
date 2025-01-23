@@ -11,10 +11,17 @@ import profile from "./profileImage.png";
 import userImage from "./userImage.png";
 import PDFImage from "./pdfImage.png";
 import user from "./user.png";
-import recentChatImg from "./chatImg.jpg"
-import xray from "./xray.svg"
-import qr from "./qr.svg"
+import recentChatImg from "./chatImg.jpg";
+import xray from "./xray.svg";
+import qr from "./qr.svg";
 
+//Icons for dashboard page
+import car from "./icons/car.svg";
+import dealer from "./icons/dealer.svg";
+import revenue from "./icons/revenue.svg";
+import sell from "./icons/sell.svg";
+import totalUser from "./icons/user.svg";
+import upArrow from "./icons/upArrow.svg";
 
 // Icons
 import girl from "./icons/girl.png";
@@ -29,7 +36,7 @@ export const AllImages = {
   user,
   recentChatImg,
   xray,
-  qr
+  qr,
 };
 
 export const AuthImages = {
@@ -42,4 +49,10 @@ export const AllIcons = {
   incomeAmount,
   person,
   girl,
+  car,
+  dealer,
+  revenue,
+  sell,
+  totalUser,
+  upArrow,
 };
