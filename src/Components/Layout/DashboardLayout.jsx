@@ -272,13 +272,13 @@ const DashboardLayout = () => {
           alt="total-Car-Sell"
           width={20}
           style={{
-            filter: location.pathname.includes("users")
+            filter: location.pathname.includes("total-Car-Sell")
               ? "brightness(0) invert(1)"
               : undefined,
           }}
         />
       ),
-      label: <NavLink to="users">Total Car Sell</NavLink>,
+      label: <NavLink to="total-Car-Sell">Total Car Sell</NavLink>,
     },
 
     {
@@ -339,13 +339,13 @@ const DashboardLayout = () => {
           alt="dealer-management"
           width={20}
           style={{
-            filter: location.pathname.includes("assign-mvr")
+            filter: location.pathname.includes("dealer-management")
               ? "brightness(0) invert(1)"
               : undefined,
           }}
         />
       ),
-      label: <NavLink to="assign-mvr">Dealer Management</NavLink>,
+      label: <NavLink to="dealer-management">Dealer Management</NavLink>,
     },
     {
       key: "task-management",

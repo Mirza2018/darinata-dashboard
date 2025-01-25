@@ -18,7 +18,7 @@ const PieCharts = () => {
   return (
     <div className=" bg-secondary-color  mt-10">
       <h1 className="text-2xl font-bold whitespace-nowrap pt-5 ms-8">Pie chart</h1>
-      <div className="flex  bg-secondary-color rounded-md mt-1">
+      <div className="flex  bg-secondary-color rounded-md ">
         <div className="w-full h-80 ">
           <ResponsiveContainer width="100%" height="100%">
             <PieChart>

@@ -1,4 +1,5 @@
 /* eslint-disable no-unused-vars */
+import { ConfigProvider, Select } from "antd";
 import React from "react";
 import {
   AreaChart,
@@ -19,7 +20,7 @@ const data = [
   { name: "Saturday", Order: 575 },
 ];
 
-const OrderChart = () => {
+const TotalRevenue = () => {
   // Formatter function to add 'K' suffix to Y-axis values
   const yAxisTickFormatter = (value) => `${value}`;
 
@@ -28,12 +29,35 @@ const OrderChart = () => {
 
   return (
     <div className=" bg-secondary-color mt-10 rounded-lg ">
-      <h1 className="text-2xl font-bold whitespace-nowrap pt-5 ms-8">
-        Sell Chart
-      </h1>
-      <p className="text-[#B9BBBD] whitespace-nowrap pt-5 ms-8">
-        Lorem ipsum dolor sit amet, consectetur adip
-      </p>
+      <div className="flex justify-between text-base-color mt-4">
+        <h1 className="text-2xl font-bold whitespace-nowrap pt-5 ms-8">
+          Total Revenue
+        </h1>
+        <div>
+          <ConfigProvider
+            theme={{
+              components: {
+                Select: {
+                  fontSize: 16,
+                  colorBorder: "#222222",
+                },
+              },
+            }}
+          >
+            <Select
+              defaultValue="2024"
+              style={{ width: 80 }}
+              options={[
+                { value: "2024", label: "2024" },
+                { value: "2023", label: "2023" },
+                { value: "2022", label: "2022" },
+                { value: "2021", label: "2021" },
+              ]}
+            />
+          </ConfigProvider>
+        </div>
+      </div>
+
       <div className="w-full h-80">
         <ResponsiveContainer>
           <AreaChart
@@ -51,11 +75,11 @@ const OrderChart = () => {
               tickMargin={6}
               axisLine={false}
             />
-            <YAxis tick={false} axisLine={false} />
+            <YAxis tick={[]} axisLine={false} />
             <defs>
               <linearGradient id="colorOrder" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="25.38%" stopColor="#B8E5F8" stopOpacity={1} />
-                <stop offset="100%" stopColor="#eaf7fd" stopOpacity={1} />
+                <stop offset="25.38%" stopColor="#F3F9FB" stopOpacity={1} />
+                <stop offset="100%" stopColor="#F3F9FB" stopOpacity={1} />
               </linearGradient>
             </defs>
             <Tooltip
@@ -75,4 +99,4 @@ const OrderChart = () => {
   );
 };
 
-export default OrderChart;
+export default TotalRevenue;

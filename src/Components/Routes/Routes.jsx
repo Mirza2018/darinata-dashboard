@@ -42,6 +42,8 @@ import MedicalHistory from "../Dashboard/UserHealthRecord/MedicalHistory";
 import UserHealthRecoardPage from "../../Pages/UserHealthRecoardPage";
 import ActionableWellnessTracking from "../../Pages/ActionableWellnessTracking";
 import CliniveaPayPage from "../../Pages/CliniveaPayPage";
+import CarSellTable from "../TotalCarSellPage/CarSellTable";
+import DelarManagementMainPage from "../DelarManagementPage/DelarManagementMainPage";
 
 
 function AuthRedirect() {
@@ -84,12 +86,12 @@ const router = createBrowserRouter([
         element: <AdminDashboard />,
       },
       {
-        path: "users",
-        element: <AllUsers />,
+        path: "total-Car-Sell",
+        element: <CarSellTable />,
       },
       {
-        path: "assign-mvr",
-        element: <AssignMVR />,
+        path: "dealer-management",
+        element: <DelarManagementMainPage/>,
       },
       {
         path: "assign-mvr/:id",
@@ -232,7 +234,7 @@ const router = createBrowserRouter([
       },
       {
         path: "healthrecord",
-        element: <UserHealthRecoardPage/>,
+        element: <UserHealthRecoardPage />,
       },
       {
         path: "cliniveapay",

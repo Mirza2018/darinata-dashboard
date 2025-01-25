@@ -13,6 +13,8 @@ import DeleteUserModal from "../UI/DeleteUserModal";
 import { PieChart } from "recharts";
 import PieCharts from "../MainDashBoardPage/PieChart";
 import OrderChart from "../MainDashBoardPage/OrderChart";
+import TotalRevenue from "../MainDashBoardPage/Totalrevenue";
+import CustomerMap from "../MainDashBoardPage/CustomerMap";
 
 const AdminDashboard = () => {
   const [data, setData] = useState([]);
@@ -183,16 +185,24 @@ const AdminDashboard = () => {
           </div>
 
           {/* Charts */}
-          <div className="grid grid-cols-2 gap-10">
+          <div className="grid grid-cols-1 xl:grid-cols-2 gap-10">
+            <React.Fragment>
+              <PieCharts />
+            </React.Fragment>
+            <React.Fragment>
+              <OrderChart />
+            </React.Fragment>
+          </div>
+          <div className="grid grid-cols-1 xl:grid-cols-2 gap-10">
+            <React.Fragment>
+              <TotalRevenue />
+            </React.Fragment>
+            <React.Fragment>
+              <CustomerMap />
+            </React.Fragment>
+          </div>
 
-       
-          <React.Fragment>
-            <PieCharts />
-          </React.Fragment>
-          <React.Fragment>
-            <OrderChart />
-          </React.Fragment>
-   </div>
+{/*           
           <div className="flex flex-col lg:flex-row gap-5 mt-8">
             <div
               className="w-full lg:w-1/2 p-3 bg-[#FFFFFF] rounded-lg"
@@ -264,9 +274,9 @@ const AdminDashboard = () => {
                 <Bar_Chart />
               </div>
             </div>
-          </div>
+          </div> */}
 
-          <div className="flex flex-col lg:flex-row gap-4 mt-5">
+          {/* <div className="flex flex-col lg:flex-row gap-4 mt-5">
             <div
               className="bg-[#FFFFFF] rounded flex-1 p-3"
               style={{ boxShadow: "0px 0px 5px 2px #00000040" }}
@@ -290,20 +300,20 @@ const AdminDashboard = () => {
                 showDeleteModal={showDeleteModal}
               />
             </div>
-          </div>
+          </div> */}
         </div>
-        <ViewUserModal
+        {/* <ViewUserModal
           isViewModalVisible={isViewModalVisible}
           handleCancel={handleCancel}
           currentRecord={currentRecord}
           handleBlock={handleBlock}
-        />
-        <DeleteUserModal
+        /> */}
+        {/* <DeleteUserModal
           isDeleteModalVisible={isDeleteModalVisible}
           handleDelete={handleDelete}
           handleCancel={handleCancel}
           currentRecord={currentRecord}
-        />
+        /> */}
       </>
     </div>
   );

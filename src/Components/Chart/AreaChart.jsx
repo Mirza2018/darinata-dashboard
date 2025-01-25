@@ -23,7 +23,7 @@ const data = [
   { name: "Nov", uv: 300 },
   { name: "Dec", uv: 600 },
 ];
-  
+
 const Area_Chart = () => {
   // Formatter function to add 'K' suffix to Y-axis values
   const yAxisTickFormatter = (value) => `${value}`;
@@ -33,6 +33,7 @@ const Area_Chart = () => {
 
   return (
     <div className="w-full h-80">
+      <h1>Sell Chart</h1>
       <ResponsiveContainer>
         <AreaChart
           data={data}
@@ -49,7 +50,7 @@ const Area_Chart = () => {
             tick={{ ...tickStyle }}
             tickMargin={16}
             axisLine={{
-              stroke: "#F5382C", // Y-axis line color
+              stroke: "#2D9CDB", // Y-axis line color
               strokeWidth: 2,
               strokeDasharray: "7 7",
             }}
@@ -57,7 +58,7 @@ const Area_Chart = () => {
           <defs>
             <linearGradient id="colorUv" x1="0" y1="0" x2="0" y2="1">
               <stop offset="25.38%" stopColor="#FAA39EAA" stopOpacity={1} />
-              <stop offset="100%" stopColor="#F5382CEE" stopOpacity={1} />
+              <stop offset="100%" stopColor="#2D9CDB" stopOpacity={1} />
             </linearGradient>
           </defs>
           <Tooltip

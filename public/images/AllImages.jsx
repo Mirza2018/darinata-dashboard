@@ -5,6 +5,7 @@ import ForgotPassword from "./authImages/ForgotPassword.png";
 import otp from "./authImages/otp.png";
 import updatePass from "./authImages/updatePass.png";
 
+
 // Main Images
 
 import profile from "./profileImage.png";
@@ -14,6 +15,7 @@ import user from "./user.png";
 import recentChatImg from "./chatImg.jpg";
 import xray from "./xray.svg";
 import qr from "./qr.svg";
+import carimg from "./car.png";
 
 //Icons for dashboard page
 import car from "./icons/car.svg";
@@ -37,6 +39,7 @@ export const AllImages = {
   recentChatImg,
   xray,
   qr,
+  carimg
 };
 
 export const AuthImages = {
