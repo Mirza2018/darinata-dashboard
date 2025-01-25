@@ -44,6 +44,11 @@ import ActionableWellnessTracking from "../../Pages/ActionableWellnessTracking";
 import CliniveaPayPage from "../../Pages/CliniveaPayPage";
 import CarSellTable from "../TotalCarSellPage/CarSellTable";
 import DelarManagementMainPage from "../DelarManagementPage/DelarManagementMainPage";
+import EarningTable from "../TotalEarningPage/EarningTable";
+import TotalEarning from "../TotalEarningPage/TotalEarning";
+import UserManagement from "../UserManagement/UserManagement";
+import ServicePrice from "../ServicePricePage/ServicePrice";
+import TaskManagement from "../TaskManagementPage/TaskManagement";
 
 
 function AuthRedirect() {
@@ -91,23 +96,23 @@ const router = createBrowserRouter([
       },
       {
         path: "dealer-management",
-        element: <DelarManagementMainPage/>,
+        element: <DelarManagementMainPage />,
       },
       {
-        path: "assign-mvr/:id",
-        element: <SingleAssignMVR />,
+        path: "total-earning",
+        element: <TotalEarning />,
       },
       {
-        path: "add-mvr",
-        element: <AddMVR />,
+        path: "service-price",
+        element: <ServicePrice />,
       },
       {
-        path: "all-mvr",
-        element: <AllMVR />,
+        path: "task-management",
+        element: <TaskManagement />,
       },
       {
-        path: "earning",
-        element: <Earning />,
+        path: "user-management",
+        element: <UserManagement />,
       },
       {
         path: "subscription",

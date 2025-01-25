@@ -1,0 +1,122 @@
+[
+  {
+    "taskId": "#1235",
+    "dealerName": "Dealer A",
+    "subject": "Submit verification documents",
+    "deadline": "2024-12-30",
+    "status": "Pending",
+    "accountStatus": "Deactivated"
+  },
+  {
+    "taskId": "#1236",
+    "dealerName": "Dealer B",
+    "subject": "Resolve payment dispute",
+    "deadline": "2024-12-30",
+    "status": "Pending",
+    "accountStatus": "Activated"
+  },
+  {
+    "taskId": "#1237",
+    "dealerName": "Dealer C",
+    "subject": "Update account details",
+    "deadline": "2024-12-30",
+    "status": "Completed",
+    "accountStatus": "Deactivated"
+  },
+  {
+    "taskId": "#1238",
+    "dealerName": "Dealer D",
+    "subject": "Review contract terms",
+    "deadline": "2024-12-30",
+    "status": "Pending",
+    "accountStatus": "Activated"
+  },
+  {
+    "taskId": "#1239",
+    "dealerName": "Dealer E",
+    "subject": "Submit quarterly report",
+    "deadline": "2024-12-30",
+    "status": "Pending",
+    "accountStatus": "Deactivated"
+  },
+  {
+    "taskId": "#1240",
+    "dealerName": "Dealer F",
+    "subject": "Verify product details",
+    "deadline": "2024-12-30",
+    "status": "Completed",
+    "accountStatus": "Activated"
+  },
+  {
+    "taskId": "#1241",
+    "dealerName": "Dealer G",
+    "subject": "Address customer complaints",
+    "deadline": "2024-12-30",
+    "status": "Pending",
+    "accountStatus": "Deactivated"
+  },
+  {
+    "taskId": "#1242",
+    "dealerName": "Dealer H",
+    "subject": "Complete training session",
+    "deadline": "2024-12-30",
+    "status": "Pending",
+    "accountStatus": "Activated"
+  },
+  {
+    "taskId": "#1243",
+    "dealerName": "Dealer I",
+    "subject": "Resolve technical issues",
+    "deadline": "2024-12-30",
+    "status": "Completed",
+    "accountStatus": "Deactivated"
+  },
+  {
+    "taskId": "#1244",
+    "dealerName": "Dealer J",
+    "subject": "Confirm delivery schedule",
+    "deadline": "2024-12-30",
+    "status": "Pending",
+    "accountStatus": "Activated"
+  },
+  {
+    "taskId": "#1245",
+    "dealerName": "Dealer K",
+    "subject": "Verify payment details",
+    "deadline": "2024-12-30",
+    "status": "Pending",
+    "accountStatus": "Deactivated"
+  },
+  {
+    "taskId": "#1246",
+    "dealerName": "Dealer L",
+    "subject": "Provide product samples",
+    "deadline": "2024-12-30",
+    "status": "Completed",
+    "accountStatus": "Activated"
+  },
+  {
+    "taskId": "#1247",
+    "dealerName": "Dealer M",
+    "subject": "Submit sales report",
+    "deadline": "2024-12-30",
+    "status": "Pending",
+    "accountStatus": "Deactivated"
+  },
+  {
+    "taskId": "#1248",
+    "dealerName": "Dealer N",
+    "subject": "Approve vendor agreement",
+    "deadline": "2024-12-30",
+    "status": "Pending",
+    "accountStatus": "Activated"
+  },
+  {
+    "taskId": "#1249",
+    "dealerName": "Dealer O",
+    "subject": "Review operational procedures",
+    "deadline": "2024-12-30",
+    "status": "Completed",
+    "accountStatus": "Deactivated"
+  }
+]

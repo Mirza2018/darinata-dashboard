@@ -1,14 +1,12 @@
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useState } from "react";
 
 import { SearchOutlined } from "@ant-design/icons";
 import { Input } from "antd";
 import axios from "axios";
-import DealerTable from "./DealerTable";
-import ViewDealerTable from "./ViewDealerTable";
+import TaskManagementTable from "./TaskManageMentTable";
+import ViewTaskManagementTable from "./ViewTaskManagementTable";
 
-
-
-export default function DelarManagementMainPage() {
+export default function TaskManagement() {
   //* Store Search Value
   const [searchText, setSearchText] = useState("");
 
@@ -28,7 +26,7 @@ export default function DelarManagementMainPage() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get("/data/dealerData.json");
+        const response = await axios.get("/data/taskData.json");
 
         setData(response?.data);
       } catch (error) {
@@ -101,7 +99,7 @@ export default function DelarManagementMainPage() {
           </div>
         </div>
         <div className="px-2 lg:px-6">
-          <DealerTable
+          <TaskManagementTable
             data={data}
             loading={loading}
             showViewModal={showViewModal}
@@ -110,7 +108,7 @@ export default function DelarManagementMainPage() {
           />
         </div>
 
-        <ViewDealerTable
+        <ViewTaskManagementTable
           isViewModalVisible={isViewModalVisible}
           handleCancel={handleCancel}
           currentRecord={currentRecord}
