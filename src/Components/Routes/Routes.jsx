@@ -49,6 +49,7 @@ import TotalEarning from "../TotalEarningPage/TotalEarning";
 import UserManagement from "../UserManagement/UserManagement";
 import ServicePrice from "../ServicePricePage/ServicePrice";
 import TaskManagement from "../TaskManagementPage/TaskManagement";
+import SingleUserManagement from "../UserManagement/SingleUserManagement";
 
 
 function AuthRedirect() {
@@ -113,6 +114,10 @@ const router = createBrowserRouter([
       {
         path: "user-management",
         element: <UserManagement />,
+      },
+      {
+        path: "user-management/:id",
+        element: <SingleUserManagement />,
       },
       {
         path: "subscription",

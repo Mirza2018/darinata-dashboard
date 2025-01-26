@@ -1,10 +1,10 @@
 /* eslint-disable react/prop-types */
-import { Button, Space, Table, Tooltip } from "antd";
+import { Button, Space, Switch, Table, Tooltip } from "antd";
 import { GoEye } from "react-icons/go";
 import { RiDeleteBin6Line } from "react-icons/ri";
 import { Link } from "react-router-dom";
 
-const UserTable = ({
+const UserCarTable = ({
   data,
   loading,
   showViewModal,
@@ -12,34 +12,39 @@ const UserTable = ({
   pageSize = 0,
 }) => {
   const columns = [
+    // {
+    //   title: "User Name",
+    //   dataIndex: "userName",
+    //   key: "userName",
+    //   responsive: ["md"],
+    // },
     {
-      title: "User Name",
-      dataIndex: "userName",
-      key: "userName",
-      responsive: ["md"],
+      title: "Car Name",
+      dataIndex: "carName",
+      key: "carName",
     },
     {
-      title: "CRV Number",
-      dataIndex: "cvrNumber",
-      key: "cvrNumber",
+      title: "Car Model",
+      dataIndex: "carModel",
+      key: "carModel",
     },
     {
-      title: "Email",
-      dataIndex: "email",
-      key: "email",
+      title: "Car Price",
+      dataIndex: "carPrice",
+      key: "carPrice",
     },
     {
-      title: "Phone",
-      dataIndex: "phone",
-      key: "phone",
+      title: "Status",
+      dataIndex: "status",
+      key: "status",
     },
     {
-      title: "Location",
-      dataIndex: "location",
-      key: "location",
+      title: "Color",
+      dataIndex: "color",
+      key: "color",
     },
     {
-      title: "Details",
+      title: "Block",
       key: "action",
       render: (_, record) => (
         <>
@@ -55,11 +60,13 @@ const UserTable = ({
                 onClick={() => showViewModal(record)}
               >
                 {/* <GoEye style={{ fontSize: "24px" }} /> */}
-                <Link to={`${record._id}`}>
+                {/* <Link to={`${record._id}`}>
                   <p className="text-xs font-semibold border-2 border-[#00721E] px-2 py-1 rounded">
                     See Details
                   </p>
-                </Link>
+                </Link> */}
+                <Switch default checked={record.isBlock} />
+                {console.log(record)}
               </Button>
             </Tooltip>
             {/* <Tooltip placement="left" title="Delete this User">
@@ -95,4 +102,4 @@ const UserTable = ({
   );
 };
 
-export default UserTable;
+export default UserCarTable;
