@@ -2,11 +2,11 @@ export const mainTheme = {
   components: {
     Menu: {
       iconSize: 24,
-      itemActiveBg: "#F5382C",
-      itemActiveColor: "#F5382C",
+      itemActiveBg: "#FF991C",
+      itemActiveColor: "#FF991C",
       itemHoverColor: "#222222",
       itemColor: "#222222",
-      itemSelectedBg: "#F5382C",
+      itemSelectedBg: "#FF991C",
       itemSelectedColor: "white",
     },
     Form: {
@@ -48,11 +48,11 @@ export const mainTheme = {
       colorText: "#222222",
     },
     Table: {
-      headerBg: "#F5382C",
-      colorBgContainer: "#FFFFFF",
+      headerBg: "#F3F9FB",
+      colorBgContainer: "#F3F9FB",
       colorText: "#232323",
       borderColor: "#DFE1E3",
-      headerColor: "#FFFFFF",
+      headerColor: "#00000",
       fontSize: 18,
       footerColor: "#F5382C",
       // marginXXS: 4,

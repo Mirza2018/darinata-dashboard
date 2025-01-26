@@ -1,122 +1,422 @@
 [
   {
+    "_id": "5f8f8b3b9f1f3b1b3c1b1b1a",
     "serialNumber": 1,
     "dealerName": "Andrés Felipe",
     "cvrNumber": "00087442",
     "email": "example@email.com",
     "phone": "+123456789",
-    "location": "Demo Location"
+    "location": "Demo Location",
+    "dealerCars": [
+      {
+        "_id": "5f8f8b3b9f1f3b1b3c1b1b1a",
+        "carName": "Audi A4",
+        "carModel": "2020",
+        "carPrice": "50000",
+        "color": "Black",
+        "status": "Sold"
+      },
+      {
+        "_id": "5f8f8b3b9f1f3b1b3c1b1b1b",
+        "carName": "BMW X5",
+        "carModel": "2020",
+        "carPrice": "60000",
+        "color": "Black",
+        "status": "Sold"
+      },
+      {
+        "_id": "5f8f8b3b9f1f3b1b3c1b1b1a",
+        "carName": "Mercedes Benz C-Class",
+        "carModel": "2020",
+        "carPrice": "60000",
+        "color": "Black",
+        "status": "pending"
+      }
+    ]
   },
   {
+    "_id": "5f8f8b3b9f1f3b1b3c1b1b1b",
     "serialNumber": 2,
-    "dealerName": "Maria Garcia",
+    "dealerName": "Carlos Esteban",
     "cvrNumber": "00087443",
-    "email": "maria@example.com",
-    "phone": "+123456790",
-    "location": "Demo Location"
+    "email": "example2@email.com",
+    "phone": "+123456788",
+    "location": "Demo Location 2",
+    "dealerCars": [
+      {
+        "_id": "5f8f8b3b9f1f3b1b3c1b1b1a",
+        "carName": "Audi A4",
+        "carModel": "2020",
+        "carPrice": "50000",
+        "color": "Black",
+        "status": "Sold"
+      },
+      {
+        "_id": "5f8f8b3b9f1f3b1b3c1b1b1b",
+        "carName": "BMW X5",
+        "carModel": "2020",
+        "carPrice": "60000",
+        "color": "Blue",
+        "status": "Sold"
+      },
+      {
+        "_id": "5f8f8b3b9f1f3b1b3c1b1b1c",
+        "carName": "Mercedes Benz C-Class",
+        "carModel": "2020",
+        "carPrice": "60000",
+        "color": "White",
+        "status": "pending"
+      }
+    ]
   },
   {
+    "_id": "5f8f8b3b9f1f3b1b3c1b1b1c",
     "serialNumber": 3,
-    "dealerName": "John Smith",
+    "dealerName": "Maria Lopez",
     "cvrNumber": "00087444",
-    "email": "john@example.com",
-    "phone": "+123456791",
-    "location": "Demo Location"
+    "email": "example3@email.com",
+    "phone": "+123456787",
+    "location": "Demo Location 3",
+    "dealerCars": [
+      {
+        "_id": "5f8f8b3b9f1f3b1b3c1b1b1a",
+        "carName": "Audi A4",
+        "carModel": "2020",
+        "carPrice": "50000",
+        "color": "Red",
+        "status": "Sold"
+      },
+      {
+        "_id": "5f8f8b3b9f1f3b1b3c1b1b1b",
+        "carName": "BMW X5",
+        "carModel": "2020",
+        "carPrice": "60000",
+        "color": "White",
+        "status": "Sold"
+      },
+      {
+        "_id": "5f8f8b3b9f1f3b1b3c1b1b1c",
+        "carName": "Mercedes Benz C-Class",
+        "carModel": "2020",
+        "carPrice": "60000",
+        "color": "Black",
+        "status": "pending"
+      }
+    ]
   },
   {
+    "_id": "5f8f8b3b9f1f3b1b3c1b1b1d",
     "serialNumber": 4,
-    "dealerName": "Li Wei",
+    "dealerName": "Juan Martinez",
     "cvrNumber": "00087445",
-    "email": "liwei@example.com",
-    "phone": "+123456792",
-    "location": "Demo Location"
+    "email": "example4@email.com",
+    "phone": "+123456786",
+    "location": "Demo Location 4",
+    "dealerCars": [
+      {
+        "_id": "5f8f8b3b9f1f3b1b3c1b1b1a",
+        "carName": "Audi A4",
+        "carModel": "2020",
+        "carPrice": "50000",
+        "color": "Black",
+        "status": "Sold"
+      },
+      {
+        "_id": "5f8f8b3b9f1f3b1b3c1b1b1b",
+        "carName": "BMW X5",
+        "carModel": "2020",
+        "carPrice": "60000",
+        "color": "Silver",
+        "status": "Sold"
+      },
+      {
+        "_id": "5f8f8b3b9f1f3b1b3c1b1b1c",
+        "carName": "Mercedes Benz C-Class",
+        "carModel": "2020",
+        "carPrice": "60000",
+        "color": "Blue",
+        "status": "pending"
+      }
+    ]
   },
   {
+    "_id": "5f8f8b3b9f1f3b1b3c1b1b1e",
     "serialNumber": 5,
-    "dealerName": "Sara Alvi",
+    "dealerName": "Luis Gonzales",
     "cvrNumber": "00087446",
-    "email": "sara@example.com",
-    "phone": "+123456793",
-    "location": "Demo Location"
+    "email": "example5@email.com",
+    "phone": "+123456785",
+    "location": "Demo Location 5",
+    "dealerCars": [
+      {
+        "_id": "5f8f8b3b9f1f3b1b3c1b1b1a",
+        "carName": "Audi A4",
+        "carModel": "2020",
+        "carPrice": "50000",
+        "color": "Green",
+        "status": "Sold"
+      },
+      {
+        "_id": "5f8f8b3b9f1f3b1b3c1b1b1b",
+        "carName": "BMW X5",
+        "carModel": "2020",
+        "carPrice": "60000",
+        "color": "Black",
+        "status": "Sold"
+      },
+      {
+        "_id": "5f8f8b3b9f1f3b1b3c1b1b1c",
+        "carName": "Mercedes Benz C-Class",
+        "carModel": "2020",
+        "carPrice": "60000",
+        "color": "Black",
+        "status": "pending"
+      }
+    ]
   },
   {
+    "_id": "5f8f8b3b9f1f3b1b3c1b1b1f",
     "serialNumber": 6,
-    "dealerName": "James Johnson",
+    "dealerName": "Ana Ramirez",
     "cvrNumber": "00087447",
-    "email": "james@example.com",
-    "phone": "+123456794",
-    "location": "Demo Location"
+    "email": "example6@email.com",
+    "phone": "+123456784",
+    "location": "Demo Location 6",
+    "dealerCars": [
+      {
+        "_id": "5f8f8b3b9f1f3b1b3c1b1b1a",
+        "carName": "Audi A4",
+        "carModel": "2020",
+        "carPrice": "50000",
+        "color": "Yellow",
+        "status": "Sold"
+      },
+      {
+        "_id": "5f8f8b3b9f1f3b1b3c1b1b1b",
+        "carName": "BMW X5",
+        "carModel": "2020",
+        "carPrice": "60000",
+        "color": "Red",
+        "status": "Sold"
+      },
+      {
+        "_id": "5f8f8b3b9f1f3b1b3c1b1b1c",
+        "carName": "Mercedes Benz C-Class",
+        "carModel": "2020",
+        "carPrice": "60000",
+        "color": "White",
+        "status": "pending"
+      }
+    ]
   },
   {
+    "_id": "5f8f8b3b9f1f3b1b3c1b1b1g",
     "serialNumber": 7,
-    "dealerName": "Olivia Lee",
+    "dealerName": "Jorge Salazar",
     "cvrNumber": "00087448",
-    "email": "olivia@example.com",
-    "phone": "+123456795",
-    "location": "Demo Location"
+    "email": "example7@email.com",
+    "phone": "+123456783",
+    "location": "Demo Location 7",
+    "dealerCars": [
+      {
+        "_id": "5f8f8b3b9f1f3b1b3c1b1b1a",
+        "carName": "Audi A4",
+        "carModel": "2020",
+        "carPrice": "50000",
+        "color": "Blue",
+        "status": "Sold"
+      },
+      {
+        "_id": "5f8f8b3b9f1f3b1b3c1b1b1b",
+        "carName": "BMW X5",
+        "carModel": "2020",
+        "carPrice": "60000",
+        "color": "Yellow",
+        "status": "Sold"
+      },
+      {
+        "_id": "5f8f8b3b9f1f3b1b3c1b1b1c",
+        "carName": "Mercedes Benz C-Class",
+        "carModel": "2020",
+        "carPrice": "60000",
+        "color": "Red",
+        "status": "pending"
+      }
+    ]
   },
   {
+    "_id": "5f8f8b3b9f1f3b1b3c1b1b1h",
     "serialNumber": 8,
-    "dealerName": "Robert Brown",
+    "dealerName": "Claudia Navarro",
     "cvrNumber": "00087449",
-    "email": "robert@example.com",
-    "phone": "+123456796",
-    "location": "Demo Location"
+    "email": "example8@email.com",
+    "phone": "+123456782",
+    "location": "Demo Location 8",
+    "dealerCars": [
+      {
+        "_id": "5f8f8b3b9f1f3b1b3c1b1b1a",
+        "carName": "Audi A4",
+        "carModel": "2020",
+        "carPrice": "50000",
+        "color": "Black",
+        "status": "Sold"
+      },
+      {
+        "_id": "5f8f8b3b9f1f3b1b3c1b1b1b",
+        "carName": "BMW X5",
+        "carModel": "2020",
+        "carPrice": "60000",
+        "color": "Blue",
+        "status": "Sold"
+      },
+      {
+        "_id": "5f8f8b3b9f1f3b1b3c1b1b1c",
+        "carName": "Mercedes Benz C-Class",
+        "carModel": "2020",
+        "carPrice": "60000",
+        "color": "Yellow",
+        "status": "pending"
+      }
+    ]
   },
   {
+    "_id": "5f8f8b3b9f1f3b1b3c1b1b1i",
     "serialNumber": 9,
-    "dealerName": "Lucas Tremblay",
+    "dealerName": "Ricardo Pérez",
     "cvrNumber": "00087450",
-    "email": "lucas@example.com",
-    "phone": "+123456797",
-    "location": "Demo Location"
+    "email": "example9@email.com",
+    "phone": "+123456781",
+    "location": "Demo Location 9",
+    "dealerCars": [
+      {
+        "_id": "5f8f8b3b9f1f3b1b3c1b1b1a",
+        "carName": "Audi A4",
+        "carModel": "2020",
+        "carPrice": "50000",
+        "color": "Red",
+        "status": "Sold"
+      },
+      {
+        "_id": "5f8f8b3b9f1f3b1b3c1b1b1b",
+        "carName": "BMW X5",
+        "carModel": "2020",
+        "carPrice": "60000",
+        "color": "Green",
+        "status": "Sold"
+      },
+      {
+        "_id": "5f8f8b3b9f1f3b1b3c1b1b1c",
+        "carName": "Mercedes Benz C-Class",
+        "carModel": "2020",
+        "carPrice": "60000",
+        "color": "Black",
+        "status": "pending"
+      }
+    ]
   },
   {
+    "_id": "5f8f8b3b9f1f3b1b3c1b1b1j",
     "serialNumber": 10,
-    "dealerName": "Sophia Martin",
+    "dealerName": "Sofia Morales",
     "cvrNumber": "00087451",
-    "email": "sophia@example.com",
-    "phone": "+123456798",
-    "location": "Demo Location"
+    "email": "example10@email.com",
+    "phone": "+123456780",
+    "location": "Demo Location 10",
+    "dealerCars": [
+      {
+        "_id": "5f8f8b3b9f1f3b1b3c1b1b1a",
+        "carName": "Audi A4",
+        "carModel": "2020",
+        "carPrice": "50000",
+        "color": "Yellow",
+        "status": "Sold"
+      },
+      {
+        "_id": "5f8f8b3b9f1f3b1b3c1b1b1b",
+        "carName": "BMW X5",
+        "carModel": "2020",
+        "carPrice": "60000",
+        "color": "Black",
+        "status": "Sold"
+      },
+      {
+        "_id": "5f8f8b3b9f1f3b1b3c1b1b1c",
+        "carName": "Mercedes Benz C-Class",
+        "carModel": "2020",
+        "carPrice": "60000",
+        "color": "White",
+        "status": "pending"
+      }
+    ]
   },
   {
+    "_id": "5f8f8b3b9f1f3b1b3c1b1b1k",
     "serialNumber": 11,
-    "dealerName": "Mason Davis",
+    "dealerName": "Elena Vasquez",
     "cvrNumber": "00087452",
-    "email": "mason@example.com",
-    "phone": "+123456799",
-    "location": "Demo Location"
+    "email": "example11@email.com",
+    "phone": "+123456779",
+    "location": "Demo Location 11",
+    "dealerCars": [
+      {
+        "_id": "5f8f8b3b9f1f3b1b3c1b1b1a",
+        "carName": "Audi A4",
+        "carModel": "2020",
+        "carPrice": "50000",
+        "color": "Blue",
+        "status": "Sold"
+      },
+      {
+        "_id": "5f8f8b3b9f1f3b1b3c1b1b1b",
+        "carName": "BMW X5",
+        "carModel": "2020",
+        "carPrice": "60000",
+        "color": "Silver",
+        "status": "Sold"
+      },
+      {
+        "_id": "5f8f8b3b9f1f3b1b3c1b1b1c",
+        "carName": "Mercedes Benz C-Class",
+        "carModel": "2020",
+        "carPrice": "60000",
+        "color": "Red",
+        "status": "pending"
+      }
+    ]
   },
   {
+    "_id": "5f8f8b3b9f1f3b1b3c1b1b1l",
     "serialNumber": 12,
-    "dealerName": "Isabella Wilson",
+    "dealerName": "Fernando Ruiz",
     "cvrNumber": "00087453",
-    "email": "isabella@example.com",
-    "phone": "+123456800",
-    "location": "Demo Location"
-  },
-  {
-    "serialNumber": 13,
-    "dealerName": "William Miller",
-    "cvrNumber": "00087454",
-    "email": "william@example.com",
-    "phone": "+123456801",
-    "location": "Demo Location"
-  },
-  {
-    "serialNumber": 14,
-    "dealerName": "Emma Moore",
-    "cvrNumber": "00087455",
-    "email": "emma@example.com",
-    "phone": "+123456802",
-    "location": "Demo Location"
-  },
-  {
-    "serialNumber": 15,
-    "dealerName": "Noah Taylor",
-    "cvrNumber": "00087456",
-    "email": "noah@example.com",
-    "phone": "+123456803",
-    "location": "Demo Location"
+    "email": "example12@email.com",
+    "phone": "+123456778",
+    "location": "Demo Location 12",
+    "dealerCars": [
+      {
+        "_id": "5f8f8b3b9f1f3b1b3c1b1b1a",
+        "carName": "Audi A4",
+        "carModel": "2020",
+        "carPrice": "50000",
+        "color": "Green",
+        "status": "Sold"
+      },
+      {
+        "_id": "5f8f8b3b9f1f3b1b3c1b1b1b",
+        "carName": "BMW X5",
+        "carModel": "2020",
+        "carPrice": "60000",
+        "color": "Yellow",
+        "status": "Sold"
+      },
+      {
+        "_id": "5f8f8b3b9f1f3b1b3c1b1b1c",
+        "carName": "Mercedes Benz C-Class",
+        "carModel": "2020",
+        "carPrice": "60000",
+        "color": "Black",
+        "status": "pending"
+      }
+    ]
   }
 ]

@@ -4,6 +4,8 @@ import logo from "./logo.png";
 import ForgotPassword from "./authImages/ForgotPassword.png";
 import otp from "./authImages/otp.png";
 import updatePass from "./authImages/updatePass.png";
+import person1 from "./person1.png";
+import person2 from "./person2.png";
 
 
 // Main Images
@@ -39,7 +41,9 @@ export const AllImages = {
   recentChatImg,
   xray,
   qr,
-  carimg
+  carimg,
+  person1,
+  person2
 };
 
 export const AuthImages = {

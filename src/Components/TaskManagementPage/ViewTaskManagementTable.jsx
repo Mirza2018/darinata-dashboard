@@ -1,7 +1,9 @@
-/* eslint-disable react/prop-types */
-import { Divider, Modal } from "antd";
-import { AllImages } from "../../../public/images/AllImages";
+import { Card, Button, Typography, Modal } from "antd";
+import { FilePdfOutlined } from "@ant-design/icons";
 import React from "react";
+import Title from "antd/es/skeleton/Title";
+
+const { Text } = Typography; // Correct import for Text
 
 const ViewTaskManagementTable = ({
   isViewModalVisible,
@@ -10,6 +12,14 @@ const ViewTaskManagementTable = ({
   handleBlock,
 }) => {
   console.log("currentRecord", currentRecord);
+  const taskData = {
+    title: "Task Title",
+    dealerName: "Harry",
+    description: "Unanswered Questions",
+    dueDate: "2024-12-31",
+    category: "Administrative Issues",
+  };
+
   return (
     <Modal
       title={
@@ -22,84 +32,74 @@ const ViewTaskManagementTable = ({
       footer={null}
       centered
       style={{ textAlign: "center" }}
-      className="lg:min-w-[800px] !bg-[#FFF9FD]"
+      className="lg:min-w-[800px] h-fit !bg-[#FFF9FD]"
     >
-      <div className="p-10 grid grid-cols-3 gap-4 bg-[#FFF9FD]">
-        {/* Avatar */}
-        <div className="">
-          <img
-            src={AllImages.carimg}
-            alt={currentRecord?.userName}
-            className=" aspect-square object-cover"
-          />{" "}
-        </div>
-        <div className="col-span-2">
-          <div className="flex flex-col gap-2 bg-secondary-color p-5 rounded-lg border border-[#ADD8E6]">
-            <h1 className="text-sm font-bold flex">Total Car Sell</h1>
-            <div className="flex justify-between">
-              <h2 className="text-sm font-bold">Car Owner Name</h2>
-              <p className="text-sm font-semibold">
-                {currentRecord?.ownerName}
-              </p>
+      <div className=" bg-gray-50 p-4">
+        <div className="max-w-3xl  space-y-4 text-start">
+          {/* Task Details Card */}
+
+          <Card className="border rounded-lg shadow-sm">
+            <h1 className="font-bold text-xl">Task Title</h1>
+            <Title level={4} className="mb-4">
+              {taskData.title}
+            </Title>
+
+            <div className="space-y-2">
+              <div>
+                <Text className="text-gray-600">Dealer Name: </Text>
+                <Text strong>{taskData.dealerName}</Text>
+              </div>
+
+              <div>
+                <Text className="text-gray-600">Description: </Text>
+                <Text strong>{taskData.description}</Text>
+              </div>
+
+              <div>
+                <Text className="text-gray-600">Due Date: </Text>
+                <Text strong>{taskData.dueDate}</Text>
+              </div>
+
+              <div>
+                <Text className="text-gray-600">Category: </Text>
+                <Text strong>{taskData.category}</Text>
+              </div>
             </div>
-            <div className="flex justify-between">
-              <h2 className="text-sm font-bold">Dealer Name</h2>
-              <p className="text-sm font-semibold">
-                {currentRecord?.dealerName}
-              </p>
+
+            <Button icon={<FilePdfOutlined />} className="mt-4">
+              See PDF
+            </Button>
+          </Card>
+
+          {/* Info Box */}
+          <div className="bg-[#B4E4E9] p-4 rounded-lg flex justify-between items-center">
+            <div>
+              <Text strong className="block text-lg">
+                Unanswered Questions
+              </Text>
+              <Text className="text-gray-600">Respond to customer inquiry</Text>
             </div>
-            <div className="flex justify-between">
-              <h2 className="text-sm font-bold">Brand Name</h2>
-              <p className="text-sm font-semibold">
-                {currentRecord?.brandName}
-              </p>
-            </div>
-            <div className="flex justify-between">
-              <h2 className="text-sm font-bold">Car Model</h2>
-              <p className="text-sm font-semibold">{currentRecord?.carModel}</p>
-            </div>
-            <div className="flex justify-between">
-              <h2 className="text-sm font-bold">Location</h2>
-              <p className="text-sm font-semibold">{currentRecord?.location}</p>
-            </div>
-            <div className="flex justify-between">
-              <h2 className="text-sm font-bold">Color</h2>
-              <p className="text-sm font-semibold">{currentRecord?.color}</p>
-            </div>
-            <div className="flex justify-between">
-              <h2 className="text-sm font-bold">Price</h2>
-              <p className="text-sm font-semibold">{currentRecord?.price}</p>
-            </div>
+            <Button
+              type="primary"
+              className="bg-[#F5A623] hover:bg-[#E69512] border-none"
+            >
+              Recreate
+            </Button>
           </div>
 
-          {/* <div className="flex flex-col gap-2 bg-secondary-color p-5 rounded-lg border border-[#ADD8E6] mt-6">
-            <h1 className="text-sm font-bold flex">Total Car Sell</h1>
-            <div className="flex justify-between">
-              <h2 className="text-xs font-medium">Car Price</h2>
-              <p className="text-xs font-medium">{currentRecord?.price}</p>
-            </div>
-            <div className="flex justify-between">
-              <h2 className="text-xs font-medium">Application service fee</h2>
-              <p className="text-xs font-medium">1000</p>
-            </div>
-            <Divider style={{ borderColor: "#004AAD" }}></Divider>
-
-            <div className="flex justify-between">
-              <h2 className="text-sm font-bold">Total</h2>
-              <p className="text-sm font-bold">6000</p>
-            </div>
-            <div className="flex justify-between">
-              <h2 className="text-sm font-bold">Payment By</h2>
-              <p className="text-sm font-bold">Card</p>
-            </div>
-          </div> */}
-
-          <button
-            onClick={handleCancel}
-            className="bg-[#FF991C] text-white py-3 text-xl font-semibold rounded-lg mt-8 w-full"
-          >
-            Done
-          </button>
+          {/* Action Buttons */}
+          <div className="flex justify-end gap-4 mt-6">
+            <Button size="large" className="min-w-[100px] bg-white">
+              No
+            </Button>
+            <Button
+              type="primary"
+              size="large"
+              className="min-w-[100px] bg-[#FF4D4F] hover:bg-[#FF7875]"
+            >
+              yes
+            </Button>
+          </div>
         </div>
       </div>
     </Modal>

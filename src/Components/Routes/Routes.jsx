@@ -50,6 +50,8 @@ import UserManagement from "../UserManagement/UserManagement";
 import ServicePrice from "../ServicePricePage/ServicePrice";
 import TaskManagement from "../TaskManagementPage/TaskManagement";
 import SingleUserManagement from "../UserManagement/SingleUserManagement";
+import SingleDealer from "../DelarManagementPage/SingleDealerPage/SingleDealer";
+import ContractData from "../DelarManagementPage/SingleDealerPage/ContractData";
 
 
 function AuthRedirect() {
@@ -98,6 +100,14 @@ const router = createBrowserRouter([
       {
         path: "dealer-management",
         element: <DelarManagementMainPage />,
+      },
+      {
+        path: "dealer-management/:id",
+        element: <SingleDealer />,
+      },
+      {
+        path: "dealer-management/:id/contract/:id",
+        element: <ContractData />,
       },
       {
         path: "total-earning",

@@ -5,6 +5,7 @@ import { Input } from "antd";
 import axios from "axios";
 import TaskManagementTable from "./TaskManageMentTable";
 import ViewTaskManagementTable from "./ViewTaskManagementTable";
+import ViewTaskCompleteTable from "./ViewTaskCompleteTable";
 
 export default function TaskManagement() {
   //* Store Search Value
@@ -16,12 +17,14 @@ export default function TaskManagement() {
 
   //* It's Use to Show Modal
   const [isViewModalVisible, setIsViewModalVisible] = useState(false);
+  const [isViewModalVisible2, setIsViewModalVisible2] = useState(false);
 
   //* It's Use to Show Delete Modal
   const [isDeleteModalVisible, setIsDeleteModalVisible] = useState(false);
 
   //* It's Use to Set Seclected User to delete and view
   const [currentRecord, setCurrentRecord] = useState(null);
+  const [currentRecord2, setCurrentRecord2] = useState(null);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -54,6 +57,10 @@ export default function TaskManagement() {
     setCurrentRecord(record);
     setIsViewModalVisible(true);
   };
+  const showViewModal2 = (record) => {
+    setCurrentRecord2(record);
+    setIsViewModalVisible2(true);
+  };
 
   const showDeleteModal = (record) => {
     setCurrentRecord(record);
@@ -69,6 +76,10 @@ export default function TaskManagement() {
   const handleCancel = () => {
     setIsViewModalVisible(false);
     setIsDeleteModalVisible(false);
+  };
+  const handleCancel2 = () => {
+    setIsViewModalVisible2(false);
+    // setIsDeleteModalVisible2(false);
   };
 
   const handleBlock = (data) => {
@@ -103,6 +114,7 @@ export default function TaskManagement() {
             data={data}
             loading={loading}
             showViewModal={showViewModal}
+            showViewModal2={showViewModal2}
             showDeleteModal={showDeleteModal}
             pageSize={12}
           />
@@ -112,6 +124,13 @@ export default function TaskManagement() {
           isViewModalVisible={isViewModalVisible}
           handleCancel={handleCancel}
           currentRecord={currentRecord}
+          handleBlock={handleBlock}
+        />
+
+        <ViewTaskCompleteTable
+          isViewModalVisible2={isViewModalVisible2}
+          handleCancel2={handleCancel2}
+          currentRecord2={currentRecord2}
           handleBlock={handleBlock}
         />
         {/* <DeleteCarModal

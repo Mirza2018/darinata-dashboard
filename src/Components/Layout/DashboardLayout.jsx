@@ -462,58 +462,58 @@ const DashboardLayout = () => {
       label: <NavLink to="profile">Profile</NavLink>,
     },
 
-    {
-      key: "mvr",
-      icon: <img src={mvr} alt="mvr" width={20} />,
-      label: <span className="text-base-color">MVR</span>,
-      children: [
-        {
-          key: "add-mvr",
-          icon: <span>&#8226;</span>,
-          label: <NavLink to="add-mvr">Add MVR</NavLink>,
-        },
-        {
-          key: "all-mvr",
-          icon: <span>&#8226;</span>,
-          label: <NavLink to="all-mvr">MVR List</NavLink>,
-        },
-      ],
-    },
+    // {
+    //   key: "mvr",
+    //   icon: <img src={mvr} alt="mvr" width={20} />,
+    //   label: <span className="text-base-color">MVR</span>,
+    //   children: [
+    //     {
+    //       key: "add-mvr",
+    //       icon: <span>&#8226;</span>,
+    //       label: <NavLink to="add-mvr">Add MVR</NavLink>,
+    //     },
+    //     {
+    //       key: "all-mvr",
+    //       icon: <span>&#8226;</span>,
+    //       label: <NavLink to="all-mvr">MVR List</NavLink>,
+    //     },
+    //   ],
+    // },
 
-    {
-      key: "earning",
-      icon: (
-        <img
-          src={earning}
-          alt="warning"
-          width={16}
-          height={16}
-          style={{
-            filter: location.pathname.includes("earning")
-              ? "brightness(0) invert(1)"
-              : undefined,
-          }}
-        />
-      ),
-      label: <NavLink to="earning">Earning</NavLink>,
-    },
-    {
-      key: "subscription",
-      icon: (
-        <img
-          src={subscription}
-          alt="subscription"
-          width={16}
-          height={16}
-          style={{
-            filter: location.pathname.includes("subscription")
-              ? "brightness(0) invert(1)"
-              : undefined,
-          }}
-        />
-      ),
-      label: <NavLink to="subscription">Subscription</NavLink>,
-    },
+    // {
+    //   key: "earning",
+    //   icon: (
+    //     <img
+    //       src={earning}
+    //       alt="warning"
+    //       width={16}
+    //       height={16}
+    //       style={{
+    //         filter: location.pathname.includes("earning")
+    //           ? "brightness(0) invert(1)"
+    //           : undefined,
+    //       }}
+    //     />
+    //   ),
+    //   label: <NavLink to="earning">Earning</NavLink>,
+    // },
+    // {
+    //   key: "subscription",
+    //   icon: (
+    //     <img
+    //       src={subscription}
+    //       alt="subscription"
+    //       width={16}
+    //       height={16}
+    //       style={{
+    //         filter: location.pathname.includes("subscription")
+    //           ? "brightness(0) invert(1)"
+    //           : undefined,
+    //       }}
+    //     />
+    //   ),
+    //   label: <NavLink to="subscription">Subscription</NavLink>,
+    // },
   ];
 
   const mvrMenuItems = [

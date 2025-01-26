@@ -2,6 +2,7 @@
 import { Button, Space, Table, Tooltip } from "antd";
 import { GoEye } from "react-icons/go";
 import { RiDeleteBin6Line } from "react-icons/ri";
+import { Link } from "react-router-dom";
 
 const DealerTable = ({
   data,
@@ -60,7 +61,12 @@ const DealerTable = ({
                 }}
                 onClick={() => showViewModal(record)}
               >
-                <GoEye style={{ fontSize: "24px" }} />
+                {/* {console.log("111",record._id)} */}
+                <Link to={`${record._id}`}>
+                  <p className="text-xs font-semibold border-2 border-[#00721E] px-2 py-1 rounded">
+                    See Details
+                  </p>
+                </Link>
               </Button>
             </Tooltip>
             {/* <Tooltip placement="left" title="Delete this User">

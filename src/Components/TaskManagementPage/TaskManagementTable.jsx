@@ -7,6 +7,7 @@ const TaskManagementTable = ({
   data,
   loading,
   showViewModal,
+  showViewModal2,
   showDeleteModal,
   pageSize = 0,
 }) => {
@@ -50,30 +51,32 @@ const TaskManagementTable = ({
           <Space size="middle">
             <Tooltip placement="right" title="View Details">
               <Button
+                onClick={() => showViewModal(record)}
                 className="!p-0"
                 style={{
                   background: "#FFFFFF",
                   border: "none",
                   color: "#222222",
                 }}
-                onClick={() => showViewModal(record)}
               >
-                <GoEye style={{ fontSize: "24px" }} />
+                <p className="text-xs font-semibold border-2 border-[#ADD8E6] bg-[#F3F9FB] px-2 py-1 rounded">
+                  See Details
+                </p>
+              </Button>
+              <Button
+                onClick={() => showViewModal2(record)}
+                className="!p-0"
+                style={{
+                  background: "#FFFFFF",
+                  border: "none",
+                  color: "#222222",
+                }}
+              >
+                <p className="text-xs font-semibold border-2 border-[#ADD8E6] bg-[#F3F9FB] px-2 py-1 rounded">
+                  Mark Complete
+                </p>
               </Button>
             </Tooltip>
-            {/* <Tooltip placement="left" title="Delete this User">
-              <Button
-                className="!p-0"
-                style={{
-                  background: "#FFFFFF",
-                  border: "none",
-                  color: "#222222",
-                }}
-                onClick={() => showDeleteModal(record)}
-              >
-                <RiDeleteBin6Line style={{ fontSize: "24px" }} />
-              </Button>
-            </Tooltip> */}
           </Space>
         </>
       ),
