@@ -59,7 +59,7 @@ const Appointment = () => {
                   placeholder="Search User..."
                   value={searchText}
                   onChange={(e) => onSearch(e.target.value)}
-                  className="text-base font-semibold !border-input-color py-2"
+                  className="text-base font-semibold  py-2"
                   prefix={
                     <SearchOutlined className="text-[#222222] font-bold text-lg mr-2" />
                   }

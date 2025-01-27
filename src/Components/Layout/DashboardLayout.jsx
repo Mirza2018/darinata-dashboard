@@ -364,34 +364,51 @@ const DashboardLayout = () => {
       label: <NavLink to="task-management">Task Management</NavLink>,
     },
 
+    // {
+    //   key: "settings",
+    //   label: <span className="text-base-color"> Settings</span>,
+    //   icon: <img src={setting} alt="dashboard" width={16} height={16} />,
+    //   children: [
+    //     {
+    //       key: "change-password",
+    //       icon: <span>&#8226;</span>,
+    //       label: (
+    //         <NavLink to="settings/change-password">Change Password</NavLink>
+    //       ),
+    //     },
+    //     {
+    //       key: "about-us",
+    //       icon: <span>&#8226;</span>,
+    //       label: <NavLink to="about-us">About Us</NavLink>,
+    //     },
+    //     {
+    //       key: "terms-of-service",
+    //       icon: <span>&#8226;</span>,
+    //       label: <NavLink to="terms-of-service">Terms & Condition</NavLink>,
+    //     },
+    //     {
+    //       key: "privacy-policy",
+    //       icon: <span>&#8226;</span>,
+    //       label: <NavLink to="privacy-policy">Privacy Policy</NavLink>,
+    //     },
+    //   ],
+    // },
+
     {
-      key: "settings",
-      label: <span className="text-base-color"> Settings</span>,
-      icon: <img src={setting} alt="dashboard" width={16} height={16} />,
-      children: [
-        {
-          key: "change-password",
-          icon: <span>&#8226;</span>,
-          label: (
-            <NavLink to="settings/change-password">Change Password</NavLink>
-          ),
-        },
-        {
-          key: "about-us",
-          icon: <span>&#8226;</span>,
-          label: <NavLink to="about-us">About Us</NavLink>,
-        },
-        // {
-        //   key: "terms-of-service",
-        //   icon: <span>&#8226;</span>,
-        //   label: <NavLink to="terms-of-service">Terms & Condition</NavLink>,
-        // },
-        // {
-        //   key: "privacy-policy",
-        //   icon: <span>&#8226;</span>,
-        //   label: <NavLink to="privacy-policy">Privacy Policy</NavLink>,
-        // },
-      ],
+      key: "change-password",
+      icon: (
+        <img
+          src={setting}
+          alt="change-password"
+          width={20}
+          style={{
+            filter: location.pathname.includes("change-password")
+              ? "brightness(0) invert(1)"
+              : undefined,
+          }}
+        />
+      ),
+      label: <NavLink to="settings/change-password">settings</NavLink>,
     },
 
     {
@@ -444,23 +461,23 @@ const DashboardLayout = () => {
         </div>
       ),
     },
-    {
-      key: "profile",
-      icon: (
-        <img
-          src={profile}
-          alt="dashboard"
-          width={16}
-          height={16}
-          style={{
-            filter: location.pathname.includes("profile")
-              ? "brightness(0) invert(1)"
-              : undefined,
-          }}
-        />
-      ),
-      label: <NavLink to="profile">Profile</NavLink>,
-    },
+    // {
+    //   key: "profile",
+    //   icon: (
+    //     <img
+    //       src={profile}
+    //       alt="dashboard"
+    //       width={16}
+    //       height={16}
+    //       style={{
+    //         filter: location.pathname.includes("profile")
+    //           ? "brightness(0) invert(1)"
+    //           : undefined,
+    //       }}
+    //     />
+    //   ),
+    //   label: <NavLink to="profile">Profile</NavLink>,
+    // },
 
     // {
     //   key: "mvr",
@@ -582,6 +599,7 @@ const DashboardLayout = () => {
       ),
       label: <NavLink to="profile">Profile</NavLink>,
     },
+
     {
       key: "settings",
       label: <span className="text-base-color"> Settings</span>,
@@ -786,6 +804,8 @@ const DashboardLayout = () => {
     <div className="h-screen bg-white ">
       <Layout className="!relative !bg-white">
         <Sider
+          breakpoint="lg"
+          collapsedWidth="0"
           width={240}
           trigger={null}
           collapsible

@@ -63,7 +63,7 @@ const Topbar = ({ collapsed, setCollapsed }) => {
       ))}
       <Link
         to={`/${user?.role}/notifications`}
-        className="w-2/3 mx-auto bg-secondary-color !text-primary-color rounded h-8 py-1 cursor-pointer"
+        className="w-2/3 mx-auto bg-[#FF9500] !text-primary-color rounded h-8 py-1 cursor-pointer"
       >
         See More
       </Link>

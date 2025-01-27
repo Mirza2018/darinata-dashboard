@@ -39,7 +39,7 @@ const SettingsUpdatePassword = () => {
           >
             <Input.Password
               placeholder="Enter your password"
-              className="py-2 px-3 text-xl bg-site-color border !border-input-color text-base-color hover:bg-transparent hover:border-secoundary-color focus:bg-transparent focus:border-secoundary-color"
+              className="py-2 px-3 text-xl bg-site-color border  text-base-color hover:bg-transparent hover:border-secoundary-color focus:bg-transparent focus:border-secoundary-color"
             />
           </Form.Item>
           <Typography.Title level={4} style={{ color: "#222222" }}>

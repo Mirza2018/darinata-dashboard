@@ -35,7 +35,7 @@ const SettingsChangePassword = () => {
             >
               <Input.Password
                 placeholder="Enter your password"
-                className="py-2 px-3 text-xl bg-site-color border !border-input-color text-base-color hover:bg-transparent hover:border-secoundary-color focus:bg-transparent focus:border-secoundary-color"
+                className="py-2 px-3 text-xl bg-site-color border  text-base-color hover:bg-transparent hover:border-secoundary-color focus:bg-transparent focus:border-secoundary-color"
               />
             </Form.Item>
             <Typography.Title level={4} style={{ color: "#222222" }}>
@@ -50,7 +50,7 @@ const SettingsChangePassword = () => {
             >
               <Input.Password
                 placeholder="Enter your password"
-                className="py-2 px-3 text-xl bg-site-color border !border-input-color text-base-color hover:bg-transparent hover:border-secoundary-color focus:bg-transparent focus:border-secoundary-color"
+                className="py-2 px-3 text-xl bg-site-color border  text-base-color hover:bg-transparent hover:border-secoundary-color focus:bg-transparent focus:border-secoundary-color"
               />
             </Form.Item>
             <Typography.Title level={4} style={{ color: "#222222" }}>
@@ -77,23 +77,23 @@ const SettingsChangePassword = () => {
             >
               <Input.Password
                 placeholder="Enter your password"
-                className="py-2 px-3 text-xl bg-site-color border !border-input-color text-base-color hover:bg-transparent hover:border-secoundary-color focus:bg-transparent focus:border-secoundary-color"
+                className="py-2 px-3 text-xl bg-site-color border  text-base-color hover:bg-transparent hover:border-secoundary-color focus:bg-transparent focus:border-secoundary-color"
               />
             </Form.Item>
             <div className="mt-10">
               <Link
                 to={`/${user?.role}/settings/forgot-password`}
-                className="!text-secondary-color text-lg !underline"
+                className=" text-lg !underline"
               >
                 Forgot Password?
               </Link>
             </div>
             <Form.Item>
               <Button
-                className="w-full py-6 border !border-secondary-color hover:border-secondary-color text-xl !text-primary-color bg-secondary-color hover:!bg-secondary-color font-semibold rounded-2xl mt-8"
+                className="w-full py-6 border  text-xl !text-white bg-[#FF991C] hover:!bg-[#FF991C] font-semibold rounded-2xl mt-8"
                 htmlType="submit"
               >
-                Change password
+                Confirm
               </Button>
             </Form.Item>
           </Form>

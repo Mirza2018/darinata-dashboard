@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import UserCarTable from "./UserCarTable";
 import ViewUserCarBlockModal from "./ViewUserCarBlockModal";
+import { AllIcons } from "../../../public/images/AllImages";
 
 const SingleUserManagement = () => {
   const [data, setData] = useState([]);
@@ -45,6 +46,71 @@ const SingleUserManagement = () => {
   return (
     <div>
       <div className="px-2 lg:px-6">
+        {/* Card Items */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-5 my-10">
+          <div>
+            <div className="flex bg-secondary-color gap-5 flex-wrap rounded-lg  py-2 px-1 lg:p-5 items-center justify-center flex-1">
+              <div
+                className="flex 
+                         gap-2 xl:gap-4 items-center"
+              >
+                <div className="p-3 rounded-full bg-[#00B07426]  w-fit">
+                  <img src={AllIcons.sell} className="h-10 w-10" alt="" />
+                </div>
+                <div className="text-start">
+                  <p className="text-4xl font-bold mb-1">5</p>
+                  <p className="text-base font-normal ">Total Car Sell</p>
+                  <div className="text-xs font-normal text-[#A3A3A3] flex justify-center items-center gap-1">
+                    <img src={AllIcons.upArrow} className="h-10 w-4" alt="" />
+                    4% (30 days)
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div>
+            <div className="flex bg-secondary-color gap-5 flex-wrap rounded-lg  py-2 px-1 lg:p-5 items-center justify-center flex-1">
+              <div
+                className="flex 
+                         gap-2 xl:gap-4 items-center"
+              >
+                <div className="p-3 rounded-full bg-[#00B07426]  w-fit">
+                  <img src={AllIcons.car} className="h-10 w-10" alt="" />
+                </div>
+                <div className="text-start">
+                  <p className="text-4xl font-bold mb-1">1</p>
+                  <p className="text-base font-normal ">Unsold Total Car</p>
+                  <div className="text-xs font-normal text-[#A3A3A3] flex justify-center items-center gap-1">
+                    <img src={AllIcons.upArrow} className="h-10 w-4" alt="" />
+                    2% (25 days)
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div>
+            <div className="flex bg-secondary-color gap-5 flex-wrap rounded-lg  py-2 px-1 lg:p-5 items-center justify-center flex-1">
+              <div
+                className="flex 
+                         gap-2 xl:gap-4 items-center"
+              >
+                <div className="p-3 rounded-full bg-[#00B07426]  w-fit">
+                  <img src={AllIcons.revenue} className="h-10 w-10" alt="" />
+                </div>
+                <div className="text-start">
+                  <p className="text-4xl font-bold mb-1">$128</p>
+                  <p className="text-base font-normal ">Total Revenue</p>
+                  <div className="text-xs font-normal text-[#A3A3A3] flex justify-center items-center gap-1">
+                    <img src={AllIcons.upArrow} className="h-10 w-4" alt="" />
+                    4% (30 days)
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
         <UserCarTable
           data={data}
           loading={loading}
@@ -57,7 +123,7 @@ const SingleUserManagement = () => {
           isViewModalVisible={isViewModalVisible}
           handleCancel={handleCancel}
           currentRecord={currentRecord}
-        //   handleBlock={handleBlock}
+          //   handleBlock={handleBlock}
         />
       </div>
     </div>

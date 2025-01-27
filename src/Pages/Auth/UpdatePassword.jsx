@@ -1,7 +1,7 @@
 import { Button, Form, Input, Typography } from "antd";
 
 import { useNavigate } from "react-router-dom";
-import { AuthImages } from "../../../public/images/AllImages";
+import { AllImages, AuthImages } from "../../../public/images/AllImages";
 
 const ChangePassword = () => {
   const navigate = useNavigate();
@@ -11,21 +11,31 @@ const ChangePassword = () => {
   };
 
   return (
-    <div className="container w-[90%] mx-auto flex flex-col lg:flex-row justify-center gap-20 items-center min-h-screen bg-primary-color py-20">
-      <div className="">
+    <div className="w-full flex flex-col lg:flex-row justify-around items-center min-h-screen bg-[#E6F3F7]  ">
+      <div className=" hidden lg:block w-full md:w-[80%] lg:w-[30%]">
         <img
-          src={AuthImages.updatePass}
+          src={AllImages.newPassPage}
           alt="logo"
-          className="h-[520px] w-[520px]"
+          className="w-full object-cover rounded-xl aspect-square"
         />
       </div>
-      <div className="h-[80vh] w-[2px] bg-[#F5382C] hidden lg:block"></div>
-      <div className="w-full md:w-[80%] lg:w-[50%]">
+      {/* <div className="h-[80vh] w-[2px] bg-[#F5382C] hidden lg:block"></div> */}
+      <div className="w-full md:w-[80%] lg:w-[30%] px-10 bg-[#F3F9FB] shadow-lg rounded-xl">
         {/* -------- update Password Page Header ------------ */}
-        <div className="mb-8">
-          <h1 className="text-3xl sm:text-4xl font-medium mb-4">
-            Set new password
-          </h1>
+        <div className="flex flex-col justify-center items-center text-center">
+          <div className="text-center mt-5 mb-8">
+            <div className="my-4">
+              <img
+                src={AllImages.newPassLogo}
+                alt="logo"
+                className="h-[60px] w-[245px] mx-auto"
+              />
+            </div>
+            <h1 className="text-4xl font-semibold mb-4">Set new password</h1>
+            <p className="text-base font-normal  mb-2 text-[#1E1E1E] ">
+              Your new password must be different to previously used passwords.
+            </p>
+          </div>
         </div>
         {/* -------- Form Start ------------ */}
         <Form
@@ -48,7 +58,7 @@ const ChangePassword = () => {
           >
             <Input.Password
               placeholder="Enter new password"
-              className="py-2 px-3 text-xl bg-site-color border !border-input-color text-base-color hover:bg-transparent hover:border-secoundary-color focus:bg-transparent focus:border-secoundary-color"
+              className="py-2 px-3 text-xl bg-site-color border text-base-color hover:bg-transparent hover:border-secoundary-color focus:bg-transparent focus:border-secoundary-color !border-[#1E1E1E] !bg-white"
             />
           </Form.Item>
           <Typography.Title level={4} style={{ color: "#222222" }}>
@@ -78,14 +88,14 @@ const ChangePassword = () => {
           >
             <Input.Password
               placeholder="Enter your password"
-              className="py-2 px-3 text-xl bg-site-color border !border-input-color text-base-color hover:bg-transparent hover:border-secoundary-color focus:bg-transparent focus:border-secoundary-color"
+              className="py-2 px-3 text-xl bg-site-color border !border-[#1E1E1E] !bg-white text-base-color hover:bg-transparent hover:border-secoundary-color focus:bg-transparent focus:border-secoundary-color"
             />
           </Form.Item>
 
           <Form.Item>
             <Button
               type="primary"
-              className="w-full py-6 border border-secondary-color hover:border-secondary-color text-xl text-primary-color bg-secondary-color hover:!bg-secondary-color font-semibold rounded-2xl mt-8"
+              className="w-full py-6 border border-[#FF991C] hover:border-input-colortext-xl text-white bg-[#FF991C] hover:!bg-[#FF991C] font-semibold rounded-2xl mt-8"
               htmlType="submit"
             >
               Change password

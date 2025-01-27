@@ -23,10 +23,10 @@ const Profile = () => {
             <p className="text-5xl font-semibold">{profileData.fullname}</p>
           </div>
           <Link to="edit-profile" className="hover:text-primary-color">
-            <div className="mt-10 bg-secondary-color px-5 py-3 rounded-lg">
+            <div className="mt-10 bg-[#FF991C] px-5 py-3 rounded-lg">
               <div className="flex gap-1">
-                <EditOutlined style={{ color: "#FAFAFA" }} />
-                <p className="text-primary-color">Edit Profile</p>
+                <EditOutlined style={{ color: "#fff" }} />
+                <p className="text-white">Edit Profile</p>
               </div>
             </div>
           </Link>

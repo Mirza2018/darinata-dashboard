@@ -1,7 +1,7 @@
 import { Button, Form, Input } from "antd";
 
 import { useNavigate } from "react-router-dom";
-import { AuthImages } from "../../../public/images/AllImages";
+import { AllImages, AuthImages } from "../../../public/images/AllImages";
 
 const ForgotPassword = () => {
   const navigate = useNavigate();
@@ -11,29 +11,38 @@ const ForgotPassword = () => {
     navigate("/verify-otp");
   };
   return (
-    <div className="text-base-color">
+    <div className="text-base-color bg-[#E6F3F7]">
       <div className="max-w-[1350px] w-[90%] mx-auto flex flex-col lg:flex-row justify-center gap-10 items-center min-h-screen bg-site-color py-10">
-        <div className="w-full md:w-[80%] lg:w-[50%] flex justify-center items-center">
+        <div className="w-full md:w-[80%] lg:w-[50%] r hidden lg:block">
           <img
-            src={AuthImages.ForgotPassword}
+            src={AllImages.giveEmail}
             alt="forgot_Password_Img"
             width={0}
             height={0}
             sizes="100vw"
-            className="h-[320px] w-[320px] md:h-[380px] md:w-[380px] lg:h-[520px] lg:w-[520px]"
+            className="w-full object-cover rounded-xl aspect-square" 
           />
         </div>
-        <div className="h-[80vh] w-[2px] bg-[#F5382C] hidden lg:block"></div>
-        <div className="w-full md:w-[80%] lg:w-[50%]">
-          <div className="">
-            <div className="mb-8">
-              <h1 className="text-2xl md:text-3xl lg:text-4xl font-medium mb-4">
-                Forget password
-              </h1>
-              <p className="md:text-lg lg:text-xl mb-2 ">
-                Enter your email address to get a verification code for
-                resetting your password.
-              </p>
+        {/* <div className="h-[80vh] w-[2px] bg-[#F5382C] hidden lg:block"></div> */}
+
+        <div className="w-full md:w-[80%] lg:w-[50%] px-10 bg-[#F3F9FB] shadow-lg rounded-xl">
+          <div className=" text-center">
+            <div className="flex flex-col justify-center items-center">
+              <div className="text-center mt-5 mb-8">
+                <div className="my-4">
+                  <img
+                    src={AllImages.forgotLogo}
+                    alt="logo"
+                    className="h-[60px] w-[245px] mx-auto"
+                  />
+                </div>
+                <h1 className="text-4xl font-semibold mb-4">
+                  Forgot password?
+                </h1>
+                <p className="text-base font-normal  mb-2 text-[#1E1E1E] ">
+                  No worries, we’ll send you reset instructions.
+                </p>
+              </div>
             </div>
 
             <Form
@@ -54,14 +63,14 @@ const ForgotPassword = () => {
                 <Input
                   placeholder="Enter your email"
                   type="email"
-                  className="py-2 px-3 text-xl bg-site-color border !border-input-color text-base-color hover:bg-transparent hover:border-secoundary-color focus:bg-transparent focus:border-secoundary-color"
+                  className="py-2 px-3 text-xl bg-site-color border !border-[#1E1E1E] !bg-white text-base-color hover:bg-transparent hover:border-secoundary-color focus:bg-transparent focus:border-secoundary-color"
                 />
               </Form.Item>
 
               <Form.Item>
                 <Button
                   type="primary"
-                  className="w-full py-6 border border-secondary-color hover:border-secondary-color text-xl text-primary-color bg-secondary-color hover:!bg-secondary-color font-semibold rounded-2xl mt-8"
+                  className="w-full py-6 border border-[#FF991C] hover:border-input-colortext-xl text-white bg-[#FF991C] hover:!bg-[#FF991C] font-semibold rounded-2xl mt-8"
                   htmlType="submit"
                 >
                   Get OTP

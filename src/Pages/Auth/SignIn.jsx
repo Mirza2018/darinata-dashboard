@@ -13,24 +13,29 @@ const SignIn = () => {
     navigate("/dashboard"); // Correct use of navigate function
   };
   return (
-    <div className="text-base-color">
+    <div className="text-base-color bg-[#E6F3F7]">
       <div className="max-w-[1350px] w-[90%] mx-auto grid grid-cols-1 lg:grid-cols-2 items-center justify-items-center gap-10 min-h-screen py-10">
-        <div className="">
+        <div className="hidden lg:block">
           <img
-            src={AllImages.logo}
+            src={AllImages.signinPageImage}
             alt="logo"
-            className="h-[60px] w-[245px] mx-auto"
+            className=" mx-auto"
           />
         </div>
-        <div className="w-full md:w-[80%] lg:w-full mx-auto">
+        <div className="w-full md:w-[80%] lg:w-[80%] mx-auto px-10 bg-[#F3F9FB] shadow-lg rounded-xl">
           {/* -------- Sign In Page Header ------------ */}
           <div className="flex flex-col justify-center items-center">
             <div className="text-center mt-5 mb-8">
-              <h1 className="text-3xl sm:text-4xl font-medium mb-4">
-                Login to Account!
-              </h1>
-              <p className="text-lg sm:text-xl mb-2 ">
-                Please enter your email and password to continue.
+              <div className="my-4">
+                <img
+                  src={AllImages.logo}
+                  alt="logo"
+                  className="h-[60px] w-[245px] mx-auto"
+                />
+              </div>
+              <h1 className="text-4xl font-semibold mb-4">Log in</h1>
+              <p className="text-base font-normal  mb-2 text-[#1E1E1E] ">
+                Welcome back! Please enter your details.
               </p>
             </div>
           </div>
@@ -56,7 +61,7 @@ const SignIn = () => {
             >
               <Input
                 placeholder="Enter your email"
-                className="py-2 px-3 text-xl bg-site-color border !border-input-color text-base-color hover:bg-transparent hover:border-secoundary-color focus:bg-transparent focus:border-secoundary-color"
+                className="py-2 px-3 text-xl bg-site-color border !border-[#1E1E1E] text-base-color hover:bg-transparent hover:border-secoundary-color focus:bg-transparent focus:border-secoundary-color !bg-white"
               />
             </Form.Item>
             <Typography.Title level={4} style={{ color: "#222222" }}>
@@ -74,7 +79,7 @@ const SignIn = () => {
             >
               <Input.Password
                 placeholder="Enter your password"
-                className="py-2 px-3 text-xl bg-site-color border !border-input-color text-base-color hover:bg-transparent hover:border-secoundary-color focus:bg-transparent focus:border-secoundary-color"
+                className="py-2 px-3 text-xl bg-site-color border !border-[#1E1E1E] text-base-color hover:bg-transparent hover:border-secoundary-color focus:bg-transparent focus:border-secoundary-color !bg-white"
               />
             </Form.Item>
             <Typography.Title level={4} style={{ color: "#222222" }}>
@@ -90,7 +95,7 @@ const SignIn = () => {
                 suffixIcon={
                   <DownOutlined className="text-[#222222] text-xl  mt-1" />
                 }
-                className="h-12 text-xl bg-site-color  text-base-color hover:bg-transparent hover:border-secoundary-color focus:bg-transparent focus:border-secoundary-color"
+                className="h-12 text-xl bg-site-color  text-base-color   "
               >
                 <Select.Option value="admin">Admin</Select.Option>
                 <Select.Option value="mvr">MVR </Select.Option>
@@ -101,7 +106,7 @@ const SignIn = () => {
               <Checkbox className="">Remember me</Checkbox>
               <Link
                 to="/forgot-password"
-                className="!text-[#F5382C] !underline"
+                className="!text-[#1E1E1E] !underline"
               >
                 Forgot Password?
               </Link>
@@ -110,7 +115,7 @@ const SignIn = () => {
             <Form.Item>
               <Button
                 type="primary"
-                className="w-full py-6 border border-secondary-color hover:border-secondary-color text-xl text-primary-color bg-secondary-color hover:!bg-secondary-color font-semibold rounded-2xl mt-8"
+                className="w-full py-6 border border-[#FF991C] hover:border-input-colortext-xl text-white bg-[#FF991C] hover:!bg-[#FF991C] font-semibold rounded-2xl mt-8 "
                 htmlType="submit"
               >
                 Sign In

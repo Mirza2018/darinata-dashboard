@@ -1,35 +1,78 @@
 import { Button } from "antd";
 import JoditEditor from "jodit-react";
 import { useRef, useState } from "react";
+import ReactQuill from "react-quill";
 
 const TermsOfService = () => {
+    const [value, setValue] = useState("");
   const editor = useRef(null);
   const [content, setContent] = useState("");
 
   const handleOnSave = () => {
-    console.log("Saved PP");
+    console.log(content);
   };
 
+  console.log(value);
   return (
     <div
       className="min-h-screen bg-primary-color py-1 px-8 "
       style={{ boxShadow: "0px 0px 5px 2px #00000040" }}
     >
       <div className="p-2 rounded">
-        <h1 className="text-4xl font-bold py-4  text-secondary-color">
+        <h1 className="text-4xl font-bold py-4  !text-black ">
           Terms Of Service
         </h1>
         <div className="">
-          <JoditEditor
+          {/* <JoditEditor
             ref={editor}
             value={content}
             config={{ height: 500, theme: "light", readonly: false }}
             onBlur={(newContent) => setContent(newContent)}
+          /> */}
+          <ReactQuill
+            theme="snow"
+            value={value}
+            onChange={setValue}
+            className="h-96"
+            modules={{
+              toolbar: [
+                [{ header: [1, 2, 3, 4, 5, 6, false] }],
+                [{ font: [] }],
+                [{ list: "ordered" }, { list: "bullet" }],
+                [{ align: [] }],
+                ["bold", "italic", "underline", "strike"],
+                [{ color: [] }, { background: [] }],
+                ["link"],
+                [{ script: "sub" }, { script: "super" }],
+                [{ indent: "-1" }, { indent: "+1" }],
+                ["blockquote", "code-block"],
+                ["clean"], // "Clean" button to remove formatting
+              ],
+            }}
+            formats={[
+              "header",
+              "font",
+              "list",
+              "align",
+              "bold",
+              "italic",
+              "underline",
+              "strike",
+              "color",
+              "background",
+              "link",
+              "image",
+              "script",
+              "indent",
+              "blockquote",
+              "code-block",
+              "clean",
+            ]}
           />
         </div>
         <Button
           onClick={handleOnSave}
-          className="w-full py-6 border !border-secondary-color hover:border-secondary-color text-xl !text-primary-color bg-secondary-color hover:!bg-secondary-color font-semibold rounded-2xl mt-8"
+          className="w-full py-6 border  text-xl  font-semibold rounded-2xl  bg-[#ff991c] !hover:bg-[#ff991c] text-white mt-20"
         >
           Save
         </Button>

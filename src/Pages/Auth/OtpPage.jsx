@@ -2,7 +2,7 @@ import { Button, Form } from "antd";
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import OTPInput from "react-otp-input";
-import { AuthImages } from "../../../public/images/AllImages";
+import { AllImages, AuthImages } from "../../../public/images/AllImages";
 
 const OtpPage = () => {
   const [otp, setOtp] = useState("");
@@ -15,26 +15,32 @@ const OtpPage = () => {
   };
 
   return (
-    <div className="text-base-color">
+    <div className="text-base-color bg-[#E6F3F7]">
       <div className="max-w-[1350px] w-[90%] mx-auto flex flex-col lg:flex-row justify-center gap-10 items-center min-h-screen bg-site-color py-10">
-        <div className="w-full md:w-[80%] lg:w-[50%] flex justify-center items-center">
+        <div className="w-full md:w-[80%] lg:w-[50%] hidden lg:block">
           <img
-            src={AuthImages.otp}
+            src={AllImages.otpPage}
             alt="forgot_Password_Img"
-            className="h-[280px] w-[320px] md:h-[340px] md:w-[380px] lg:h-[480px] lg:w-[520px]"
+            className="w-full object-cover rounded-xl aspect-square"
           />
         </div>
-        <div className="h-[80vh] w-[2px] bg-[#F5382C] hidden lg:block"></div>
-        <div className="w-full md:w-[80%] lg:w-[50%] ">
-          <div className="">
-            <div className="mb-8">
-              <h1 className="text-2xl md:text-3xl lg:text-4xl font-medium mb-4">
-                Verify OTP
-              </h1>
-              <p className="md:text-lg lg:text-xl mb-2 ">
-                Please check your email. We have sent a code to contact
-                @gmail.com
-              </p>
+        {/* <div className="h-[80vh] w-[2px] bg-[#F5382C] hidden lg:block"></div> */}
+        <div className="w-full md:w-[80%] lg:w-[50%]   px-10 bg-[#F3F9FB] shadow-lg rounded-xl">
+          <div className=" text-center">
+            <div className="flex flex-col justify-center items-center">
+             
+                <div className="my-4">
+                  <img
+                    src={AllImages.otpLogo}
+                    alt="logo"
+                    className="w-full object-cover rounded-xl aspect-square"
+                  />
+                </div>
+                <h1 className="text-4xl font-semibold mb-4">Enter your code</h1>
+                <p className="text-base font-normal  mb-2 text-[#1E1E1E] ">
+                  We sent a code your email address.
+                </p>
+             
             </div>
 
             <Form layout="vertical" className="bg-transparent w-full">
@@ -42,7 +48,7 @@ const OtpPage = () => {
                 <div className="flex justify-center items-center">
                   <OTPInput
                     inputStyle="!w-[55px] h-[45px] !sm:w-[76px] sm:h-[64px] text-[20px] sm:text-[30px] bg-transparent border border-input-color
-                      hover:border-input-color focus:bg-transparent focus:border-input-color rounded-lg mr-[10px] sm:mr-[20px] text-secondary-color"
+                      hover:border-input-color focus:bg-transparent focus:border-input-color rounded-lg mr-[10px] sm:mr-[20px] text-secondary-color !text-black !border-[#1E1E1E] !bg-white"
                     value={otp}
                     onChange={setOtp}
                     numInputs={4}
@@ -63,7 +69,7 @@ const OtpPage = () => {
               <Form.Item>
                 <Button
                   type="primary"
-                  className="w-full py-6 border border-secondary-color hover:border-secondary-color text-xl text-primary-color bg-secondary-color hover:!bg-secondary-color font-semibold rounded-2xl mt-8"
+                  className="w-full py-6 border border-[#FF991C] hover:border-input-colortext-xl text-white bg-[#FF991C] hover:!bg-[#FF991C] font-semibold rounded-2xl mt-8"
                   onClick={handleOTPSubmit}
                 >
                   Get OTP

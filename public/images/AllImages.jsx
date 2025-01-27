@@ -1,4 +1,4 @@
-import logo from "./logo.png";
+import logo from "./logo.svg";
 
 // Auth Images
 import ForgotPassword from "./authImages/ForgotPassword.png";
@@ -6,6 +6,15 @@ import otp from "./authImages/otp.png";
 import updatePass from "./authImages/updatePass.png";
 import person1 from "./person1.png";
 import person2 from "./person2.png";
+
+
+import giveEmail from "./giveEmail.png";
+import newPassPage from "./newPassPage.png";
+import otpPage from "./otpPage.png";
+import signinPageImage from "./signinPageImage.png";
+import forgotLogo from "./forgotLogo.svg";
+import newPassLogo from "./newPassLogo.svg";
+import otpLogo from "./otpLogo.svg";
 
 
 // Main Images
@@ -43,7 +52,14 @@ export const AllImages = {
   qr,
   carimg,
   person1,
-  person2
+  person2,
+  giveEmail,
+  newPassPage,
+  otpPage,
+  signinPageImage,
+  forgotLogo,
+  newPassLogo,
+  otpLogo,
 };
 
 export const AuthImages = {
@@ -62,4 +78,5 @@ export const AllIcons = {
   sell,
   totalUser,
   upArrow,
+
 };

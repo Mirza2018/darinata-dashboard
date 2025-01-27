@@ -30,7 +30,7 @@ const notifications = [
 const Notifications = () => {
   return (
     <div className=" bg-slate-50  ">
-      <div className="flex items-center bg-secondary-color gap-1 py-3 px-5 mb-3">
+      <div className="flex items-center bg-[#FF991C] gap-1 py-3 px-5 mb-3">
         <Link to="/dashboard">
           <MdArrowBackIos className="text-xl sm:text-2xl lg:text-3xl text-primary-color" />
         </Link>
@@ -43,7 +43,7 @@ const Notifications = () => {
             className="flex items-center space-x-3 p-2 border-b border-gray-300 last:border-none"
           >
             {/* Icon */}
-            <div className="bg-input-color p-2 rounded-full">
+            <div className="bg-[#ADD8E6] p-2 rounded-full">
               <FiBell className="text-secondary-color w-6 h-6" />
             </div>
 
