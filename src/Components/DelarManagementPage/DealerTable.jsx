@@ -51,37 +51,13 @@ const DealerTable = ({
       render: (_, record) => (
         <>
           <Space size="middle">
-            <Tooltip placement="right" title="View Details">
-              <Button
-                className="!p-0"
-                style={{
-                  background: "#FFFFFF",
-                  border: "none",
-                  color: "#222222",
-                }}
-                onClick={() => showViewModal(record)}
-              >
-                {/* {console.log("111",record._id)} */}
-                <Link to={`${record._id}`}>
-                  <p className="text-xs font-semibold border-2 border-[#00721E] px-2 py-1 rounded">
-                    See Details
-                  </p>
-                </Link>
-              </Button>
+            <Tooltip placement="left" title="View Details">
+              <Link onClick={() => showViewModal(record)} to={`${record._id}`}>
+                <p className="text-xs font-semibold border hover:text-secondary-color border-[#00721E] px-2 py-1 rounded">
+                  See Details
+                </p>
+              </Link>
             </Tooltip>
-            {/* <Tooltip placement="left" title="Delete this User">
-              <Button
-                className="!p-0"
-                style={{
-                  background: "#FFFFFF",
-                  border: "none",
-                  color: "#222222",
-                }}
-                onClick={() => showDeleteModal(record)}
-              >
-                <RiDeleteBin6Line style={{ fontSize: "24px" }} />
-              </Button>
-            </Tooltip> */}
           </Space>
         </>
       ),

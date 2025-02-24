@@ -115,12 +115,7 @@ export default function CarSellTable() {
           currentRecord={currentRecord}
           handleBlock={handleBlock}
         />
-        {/* <DeleteCarModal
-          isDeleteModalVisible={isDeleteModalVisible}
-          handleDelete={handleDelete}
-          handleCancel={handleCancel}
-          currentRecord={currentRecord}
-        /> */}
+
       </div>
     </div>
   );

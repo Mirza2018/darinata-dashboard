@@ -34,7 +34,7 @@ const ViewEarningTable = ({
           />{" "}
         </div>
         <div className="col-span-2">
-          <div className="flex flex-col gap-2 bg-secondary-color p-5 rounded-lg border border-[#ADD8E6]">
+          <div className="flex flex-col gap-2 bg-base-color p-5 rounded-lg border border-[#ADD8E6]">
             <h1 className="text-sm font-bold flex">Total Car Sell</h1>
             <div className="flex justify-between">
               <h2 className="text-sm font-bold">Car Owner Name</h2>

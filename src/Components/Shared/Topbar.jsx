@@ -63,7 +63,7 @@ const Topbar = ({ collapsed, setCollapsed }) => {
       ))}
       <Link
         to={`/${user?.role}/notifications`}
-        className="w-2/3 mx-auto bg-[#FF9500] !text-primary-color rounded h-8 py-1 cursor-pointer"
+        className="w-2/3 mx-auto bg-highlight-color text-white rounded h-8 py-1 cursor-pointer hover:text-white"
       >
         See More
       </Link>
@@ -71,13 +71,28 @@ const Topbar = ({ collapsed, setCollapsed }) => {
   );
   return (
     <div className="pt-4 mx-[-50px] flex justify-between items-center bg-[#ffffff] ">
-      <div className="flex items-center gap-2 text-base-color ml-4">
+      <div className="flex items-center gap-2 text-text-color ml-4">
         <BarsOutlined
           onClick={() => setCollapsed(!collapsed)}
           className="text-3xl"
         />
       </div>
       <div className="flex items-center justify-center mr-5">
+        <Link
+          to="profile"
+          className="flex items-center justify-center gap-5 bg-transparent text-base-color border-0 rounded-lg h-8 px-2 py-1  mr-5"
+        >
+          <p className="text-text-color text-base font-semibold">
+            {" "}
+            <span className="text-text-light-color font-normal">Hello, </span>David Wilson
+          </p>
+          <img
+            src={AllImages.user}
+            alt="profile_pic"
+            style={{ width: "45px", height: "45px", marginRight: "10px" }}
+            className="rounded-full"
+          />
+        </Link>
         <Dropdown
           overlay={notificationMenu}
           trigger={["hover"]}
@@ -87,21 +102,9 @@ const Topbar = ({ collapsed, setCollapsed }) => {
           <BellFilled
             shape="circle"
             size="small"
-            className="bg-[#F7F5F5] py-4 px-2 rounded shadow h-6 text-base font-bold text-[#FF9500]"
+            className=" py-4 px-2 rounded-full border border-secondary-color  h-6 text-base font-bold !text-highlight-color"
           />
         </Dropdown>
-        <Link
-          to="profile"
-          className="flex items-center justify-center gap-2 bg-transparent text-base-color border-0 rounded-lg h-8 px-2 py-1  mr-5"
-        >
-          <img
-            src={AllImages.user}
-            alt="profile_pic"
-            style={{ width: "30px", height: "30px", marginRight: "10px" }}
-            className="rounded"
-          />
-          <p className="text-base-color text-lg">David Wilson</p>
-        </Link>
       </div>
     </div>
   );

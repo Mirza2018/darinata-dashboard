@@ -65,31 +65,13 @@ const CarTable = ({
         <>
           <Space size="middle">
             <Tooltip placement="right" title="View Details">
-              <Button
-                className="!p-0"
-                style={{
-                  background: "#FFFFFF",
-                  border: "none",
-                  color: "#222222",
-                }}
+              <GoEye
+                className="cursor-pointer"
                 onClick={() => showViewModal(record)}
-              >
-                <GoEye style={{ fontSize: "24px" }} />
-              </Button>
+                style={{ fontSize: "24px" }}
+              />
             </Tooltip>
-            {/* <Tooltip placement="left" title="Delete this User">
-              <Button
-                className="!p-0"
-                style={{
-                  background: "#FFFFFF",
-                  border: "none",
-                  color: "#222222",
-                }}
-                onClick={() => showDeleteModal(record)}
-              >
-                <RiDeleteBin6Line style={{ fontSize: "24px" }} />
-              </Button>
-            </Tooltip> */}
+    
           </Space>
         </>
       ),

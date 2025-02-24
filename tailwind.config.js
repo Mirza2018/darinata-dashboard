@@ -4,11 +4,13 @@ export default {
   theme: {
     extend: {
       colors: {
-        "primary-color": "#FAFAFA",
-        "secondary-color": "#F3F9FB",
-        "base-color": "#222222",
-        "highlight-color": "#2F87FC",
-        "input-color": "#F3F9FB",
+        "primary-color": "#FDFDFD ",
+        "secondary-color": "#9BC1CD",
+        "base-color": "#E6F3F7",
+        "highlight-color": "#FF991C",
+        "highlight-light-color": "#FFF5ED",
+        "text-color": "#000000",
+        "text-light-color": "#667085",
       },
     },
   },

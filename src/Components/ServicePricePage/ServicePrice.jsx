@@ -39,12 +39,6 @@ export default function ServicePrice() {
     fetchData();
   }, []);
 
-  //   const filteredData = useMemo(() => {
-  //     if (!searchText) return data;
-  //     return data.filter((item) =>
-  //       item.userName.toLowerCase().includes(searchText.toLowerCase())
-  //     );
-  //   }, [data, searchText]);
 
   const onSearch = (value) => {
     setSearchText(value);
@@ -83,9 +77,7 @@ export default function ServicePrice() {
         style={{ boxShadow: "0px 0px 5px 2px #00000040" }}
       >
         <div className="flex justify-between p-6">
-          {/* <div className="flex items-center gap-3">
-            <h1 className="text-3xl font-bold text-base-color">Users</h1>
-          </div> */}
+
           <div className="flex gap-4 items-center">
             <Input
               placeholder="Search User..."
@@ -114,12 +106,6 @@ export default function ServicePrice() {
           currentRecord={currentRecord}
           handleBlock={handleBlock}
         />
-        {/* <DeleteCarModal
-          isDeleteModalVisible={isDeleteModalVisible}
-          handleDelete={handleDelete}
-          handleCancel={handleCancel}
-          currentRecord={currentRecord}
-        /> */}
       </div>
     </div>
   );

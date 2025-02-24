@@ -26,7 +26,6 @@ import dealer from "../../../public/images/dashboard-logos/dealer.svg";
 import logout from "../../../public/images/dashboard-logos/logout.svg";
 import privacy from "../../../public/images/dashboard-logos/privacy.svg";
 import service from "../../../public/images/dashboard-logos/service.svg";
-import task from "../../../public/images/dashboard-logos/task.svg";
 import terms from "../../../public/images/dashboard-logos/terms.svg";
 import totalCar from "../../../public/images/dashboard-logos/total-car.svg";
 import totalEarning from "../../../public/images/dashboard-logos/total-earning.svg";
@@ -351,7 +350,7 @@ const DashboardLayout = () => {
       key: "task-management",
       icon: (
         <img
-          src={task}
+          src={AllImages.task}
           alt="task-management"
           width={20}
           style={{

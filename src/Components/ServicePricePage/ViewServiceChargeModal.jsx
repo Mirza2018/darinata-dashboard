@@ -24,9 +24,9 @@ const ViewEarningTable = ({
       footer={null}
       centered
       style={{ textAlign: "center" }}
-      className="lg:min-w-[700px] !bg-[#FFF9FD]"
+      className="lg:min-w-[700px] "
     >
-      <div className="p-10 grid gap-4 bg-[#FFF9FD]">
+      <div className="p-10 grid gap-4">
         <h1 className="text-[32px] font-medium ">
           How much Service Charge do you want?
         </h1>
@@ -36,9 +36,9 @@ const ViewEarningTable = ({
           onFinish={onFinish}
         >
           <Input
-                      placeholder="Enter Service Charge"
-                      type="number"
-            className="py-2 px-3 text-xl bg-site-color border !border-input-color text-base-color hover:bg-transparent hover:border-secoundary-color focus:bg-transparent focus:border-secoundary-color"
+            placeholder="Enter Service Charge"
+            type="number"
+            className="py-2 px-3 text-xl bg-site-color border !border-input-color  hover:bg-transparent hover:border-secoundary-color focus:bg-transparent focus:border-secoundary-color"
           />
           <div className="flex justify-end">
             <button

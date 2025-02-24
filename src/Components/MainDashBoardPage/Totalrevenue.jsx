@@ -28,8 +28,8 @@ const TotalRevenue = () => {
   const tickStyle = { fill: "#222222" };
 
   return (
-    <div className=" bg-secondary-color mt-10 rounded-lg ">
-      <div className="flex justify-between text-base-color mt-4">
+    <div className=" bg-base-color border border-secondary-color mt-10 rounded-md px-5 ">
+      <div className="flex justify-between  mt-4">
         <h1 className="text-2xl font-bold whitespace-nowrap pt-5 ms-8">
           Total Revenue
         </h1>

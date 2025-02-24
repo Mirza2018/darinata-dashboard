@@ -31,8 +31,8 @@ const CustomerMap = () => {
   const tickStyle = { fill: "#222222" };
 
   return (
-    <div className="bg-secondary-color mt-10 rounded-lg">
-      <div className="flex justify-between text-base-color mt-4">
+    <div className="bg-base-color border border-secondary-color px-5 mt-10 rounded-md">
+      <div className="flex justify-between  mt-4">
         <h1 className="text-2xl font-bold whitespace-nowrap pt-5 ms-8">
           Customer Map
         </h1>
@@ -84,7 +84,7 @@ const CustomerMap = () => {
             <Bar
               dataKey="uv"
               fill="#FF991C" // Bar color
-              barSize={20} // Width of each bar
+              barSize={14} // Width of each bar
             />
           </BarChart>
         </ResponsiveContainer>

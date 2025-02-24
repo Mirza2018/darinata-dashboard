@@ -16,125 +16,136 @@ const revenue = [
 
 const PieCharts = () => {
   return (
-    <div className=" bg-secondary-color  mt-10">
-      <h1 className="text-2xl font-bold whitespace-nowrap pt-5 ms-8">Pie chart</h1>
-      <div className="flex  bg-secondary-color rounded-md ">
-        <div className="w-full h-80 ">
-          <ResponsiveContainer width="100%" height="100%">
-            <PieChart>
-              <Pie
-                data={car}
-                dataKey="value"
-                cx="50%"
-                cy="50%"
-                innerRadius={60}
-                outerRadius={90}
-              >
-                {car.map((entry, index) => (
-                  <Cell key={`cell-${index}`} fill={entry.color} />
-                ))}
-                {car.map((entry, index) => (
-                  <Text
-                    key={`text-${index}`}
-                    fill="#3d405b"
-                    textAnchor="middle"
-                    dominantBaseline="central"
-                    fontSize="16"
-                  >
-                    {`${entry.name}: ${entry.value}`}
-                  </Text>
-                ))}
-              </Pie>
-              <text
-                x="50%"
-                y="50%"
-                textAnchor="middle"
-                dominantBaseline="central"
-                fill="#3d405b"
-                fontSize="30"
-              >
-                86%
-              </text>
-            </PieChart>
-          </ResponsiveContainer>
+    <div className="   mt-10 bg-base-color rounded-md border border-secondary-color">
+      <h1 className="text-2xl font-bold whitespace-nowrap pt-5 ms-8">
+        Pie chart
+      </h1>
+      <div className=" flex ">
+        <div className="flex flex-col items-center justify-center flex-1">
+          <div className="w-full h-48">
+            <ResponsiveContainer width="100%" height="100%">
+              <PieChart>
+                <Pie
+                  data={car}
+                  dataKey="value"
+                  cx="50%"
+                  cy="50%"
+                  innerRadius={60}
+                  outerRadius={90}
+                >
+                  {car.map((entry, index) => (
+                    <Cell key={`cell-${index}`} fill={entry.color} />
+                  ))}
+                  {car.map((entry, index) => (
+                    <Text
+                      key={`text-${index}`}
+                      fill="#3d405b"
+                      textAnchor="middle"
+                      dominantBaseline="central"
+                      fontSize="16"
+                    >
+                      {`${entry.name}: ${entry.value}`}
+                    </Text>
+                  ))}
+                </Pie>
+                <text
+                  x="50%"
+                  y="50%"
+                  textAnchor="middle"
+                  dominantBaseline="central"
+                  fill="#3d405b"
+                  fontSize="30"
+                >
+                  86%
+                </text>
+              </PieChart>
+            </ResponsiveContainer>
+          </div>
+          <h1 className="text-lg font-semibold">Total Car Sell</h1>
         </div>
-        <div className="w-full h-80 ">
-          <ResponsiveContainer width="100%" height="100%">
-            <PieChart>
-              <Pie
-                data={user}
-                dataKey="value"
-                cx="50%"
-                cy="50%"
-                innerRadius={60}
-                outerRadius={90}
-              >
-                {user.map((entry, index) => (
-                  <Cell key={`cell-${index}`} fill={entry.color} />
-                ))}
-                {user.map((entry, index) => (
-                  <Text
-                    key={`text-${index}`}
-                    fill="#3d405b"
-                    textAnchor="middle"
-                    dominantBaseline="central"
-                    fontSize="16"
-                  >
-                    {`${entry.name}: ${entry.value}`}
-                  </Text>
-                ))}
-              </Pie>
-              <text
-                x="50%"
-                y="50%"
-                textAnchor="middle"
-                dominantBaseline="central"
-                fill="#3d405b"
-                fontSize="30"
-              >
-                55%
-              </text>
-            </PieChart>
-          </ResponsiveContainer>
+        <div className="flex flex-col items-center justify-center flex-1">
+          <div className="w-full h-48">
+            <ResponsiveContainer width="100%" height="100%">
+              <PieChart>
+                <Pie
+                  data={user}
+                  dataKey="value"
+                  cx="50%"
+                  cy="50%"
+                  innerRadius={60}
+                  outerRadius={90}
+                >
+                  {user.map((entry, index) => (
+                    <Cell key={`cell-${index}`} fill={entry.color} />
+                  ))}
+                  {user.map((entry, index) => (
+                    <Text
+                      key={`text-${index}`}
+                      fill="#3d405b"
+                      textAnchor="middle"
+                      dominantBaseline="central"
+                      fontSize="16"
+                    >
+                      {`${entry.name}: ${entry.value}`}
+                    </Text>
+                  ))}
+                </Pie>
+                <text
+                  x="50%"
+                  y="50%"
+                  textAnchor="middle"
+                  dominantBaseline="central"
+                  fill="#3d405b"
+                  fontSize="30"
+                >
+                  55%
+                </text>
+              </PieChart>
+            </ResponsiveContainer>
+          </div>
+          <h1 className="text-lg font-semibold">User Growth</h1>
         </div>
-        <div className="w-full h-80 ">
-          <ResponsiveContainer width="100%" height="100%">
-            <PieChart>
-              <Pie
-                data={revenue}
-                dataKey="value"
-                cx="50%"
-                cy="50%"
-                innerRadius={60}
-                outerRadius={90}
-              >
-                {revenue.map((entry, index) => (
-                  <Cell key={`cell-${index}`} fill={entry.color} />
-                ))}
-                {revenue.map((entry, index) => (
-                  <Text
-                    key={`text-${index}`}
-                    fill="#3d405b"
-                    textAnchor="middle"
-                    dominantBaseline="central"
-                    fontSize="16"
-                  >
-                    {`${entry.name}: ${entry.value}`}
-                  </Text>
-                ))}
-              </Pie>
-              <text
-                x="50%"
-                y="50%"
-                textAnchor="middle"
-                dominantBaseline="central"
-                fill="#3d405b"
-                fontSize="30"
-              >
-                67%
-              </text>
-            </PieChart>
-          </ResponsiveContainer>
+        <div className="flex flex-col items-center justify-center flex-1">
+          <div className="w-full h-48">
+            <ResponsiveContainer width="100%" height="100%">
+              <PieChart>
+                <Pie
+                  data={revenue}
+                  dataKey="value"
+                  cx="50%"
+                  cy="50%"
+                  innerRadius={60}
+                  outerRadius={90}
+                >
+                  {revenue.map((entry, index) => (
+                    <Cell key={`cell-${index}`} fill={entry.color} />
+                  ))}
+                  {revenue.map((entry, index) => (
+                    <Text
+                      key={`text-${index}`}
+                      fill="#3d405b"
+                      textAnchor="middle"
+                      dominantBaseline="central"
+                      fontSize="16"
+                    >
+                      {`${entry.name}: ${entry.value}`}
+                    </Text>
+                  ))}
+                </Pie>
+                <text
+                  x="50%"
+                  y="50%"
+                  textAnchor="middle"
+                  dominantBaseline="central"
+                  fill="#3d405b"
+                  fontSize="30"
+                >
+                  67%
+                </text>
+              </PieChart>
+            </ResponsiveContainer>
+          </div>
+          <h1 className="text-lg font-semibold">Total Revenue</h1>
         </div>
       </div>
     </div>

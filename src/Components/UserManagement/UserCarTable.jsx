@@ -50,38 +50,14 @@ const UserCarTable = ({
         <>
           <Space size="middle">
             <Tooltip placement="right" title="View Details">
-              <Button
+              <p
                 className="!p-0"
-                style={{
-                  background: "#FFFFFF",
-                  border: "none",
-                  color: "#222222",
-                }}
                 onClick={() => showViewModal(record)}
               >
-                {/* <GoEye style={{ fontSize: "24px" }} /> */}
-                {/* <Link to={`${record._id}`}>
-                  <p className="text-xs font-semibold border-2 border-[#00721E] px-2 py-1 rounded">
-                    See Details
-                  </p>
-                </Link> */}
                 <Switch default checked={record.isBlock} />
                 {console.log(record)}
-              </Button>
+              </p>
             </Tooltip>
-            {/* <Tooltip placement="left" title="Delete this User">
-              <Button
-                className="!p-0"
-                style={{
-                  background: "#FFFFFF",
-                  border: "none",
-                  color: "#222222",
-                }}
-                onClick={() => showDeleteModal(record)}
-              >
-                <RiDeleteBin6Line style={{ fontSize: "24px" }} />
-              </Button>
-            </Tooltip> */}
           </Space>
         </>
       ),

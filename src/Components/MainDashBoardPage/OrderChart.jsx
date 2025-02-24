@@ -27,13 +27,11 @@ const OrderChart = () => {
   const tickStyle = { fill: "#222222" };
 
   return (
-    <div className=" bg-secondary-color mt-10 rounded-lg ">
+    <div className=" bg-base-color rounded-md border border-secondary-color mt-10 ">
       <h1 className="text-2xl font-bold whitespace-nowrap pt-5 ms-8">
         Sell Chart
       </h1>
-      <p className="text-[#B9BBBD] whitespace-nowrap pt-5 ms-8">
-        Lorem ipsum dolor sit amet, consectetur adip
-      </p>
+    
       <div className="w-full h-80">
         <ResponsiveContainer>
           <AreaChart

@@ -79,7 +79,7 @@ const AdminDashboard = () => {
           {/* Card Items */}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-5">
             <div>
-              <div className="flex bg-secondary-color gap-5 flex-wrap rounded-lg  py-2 px-1 lg:p-5 items-center justify-center flex-1">
+              <div className="flex bg-base-color border border-secondary-color gap-5 flex-wrap rounded-lg  py-2 px-1 lg:p-5 items-center justify-center flex-1">
                 <div
                   className="flex 
                  gap-2 xl:gap-4 items-center"
@@ -99,7 +99,7 @@ const AdminDashboard = () => {
               </div>
             </div>
             <div>
-              <div className="flex bg-secondary-color gap-5 flex-wrap rounded-lg  py-2 px-1 lg:p-5 items-center justify-center flex-1">
+              <div className="flex bg-base-color border border-secondary-color gap-5 flex-wrap rounded-lg  py-2 px-1 lg:p-5 items-center justify-center flex-1">
                 <div
                   className="flex 
                  gap-2 xl:gap-4 items-center"
@@ -119,7 +119,7 @@ const AdminDashboard = () => {
               </div>
             </div>
             <div>
-              <div className="flex bg-secondary-color gap-5 flex-wrap rounded-lg  py-2 px-1 lg:p-5 items-center justify-center flex-1">
+              <div className="flex bg-base-color border border-secondary-color gap-5 flex-wrap rounded-lg  py-2 px-1 lg:p-5 items-center justify-center flex-1">
                 <div
                   className="flex 
                  gap-2 xl:gap-4 items-center"
@@ -139,7 +139,7 @@ const AdminDashboard = () => {
               </div>
             </div>
             <div>
-              <div className="flex bg-secondary-color gap-5 flex-wrap rounded-lg  py-2 px-1 lg:p-5 items-center justify-center flex-1">
+              <div className="flex bg-base-color border border-secondary-color gap-5 flex-wrap rounded-lg  py-2 px-1 lg:p-5 items-center justify-center flex-1">
                 <div
                   className="flex 
                  gap-2 xl:gap-4 items-center"
@@ -163,7 +163,7 @@ const AdminDashboard = () => {
               </div>
             </div>
             <div>
-              <div className="flex bg-secondary-color gap-5 flex-wrap rounded-lg  py-2 px-1 lg:p-5 items-center justify-center flex-1">
+              <div className="flex bg-base-color border border-secondary-color gap-5 flex-wrap rounded-lg  py-2 px-1 lg:p-5 items-center justify-center flex-1">
                 <div
                   className="flex 
                  gap-2 xl:gap-4 items-center"
@@ -193,16 +193,16 @@ const AdminDashboard = () => {
               <OrderChart />
             </React.Fragment>
           </div>
-          <div className="grid grid-cols-1 xl:grid-cols-2 gap-10">
-            <React.Fragment>
+          <div className="grid grid-cols-1 xl:grid-cols-3 gap-10">
+            <div className="xl:col-span-2">
               <TotalRevenue />
-            </React.Fragment>
+            </div>
             <React.Fragment>
               <CustomerMap />
             </React.Fragment>
           </div>
 
-{/*           
+          {/*           
           <div className="flex flex-col lg:flex-row gap-5 mt-8">
             <div
               className="w-full lg:w-1/2 p-3 bg-[#FFFFFF] rounded-lg"

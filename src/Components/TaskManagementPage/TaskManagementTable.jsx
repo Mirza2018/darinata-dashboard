@@ -50,32 +50,20 @@ const TaskManagementTable = ({
         <>
           <Space size="middle">
             <Tooltip placement="right" title="View Details">
-              <Button
+              <p
                 onClick={() => showViewModal(record)}
-                className="!p-0"
-                style={{
-                  background: "#FFFFFF",
-                  border: "none",
-                  color: "#222222",
-                }}
+                className="text-xs font-semibold border border-[#ADD8E6] bg-[#F3F9FB] px-2 py-1 rounded cursor-pointer"
               >
-                <p className="text-xs font-semibold border-2 border-[#ADD8E6] bg-[#F3F9FB] px-2 py-1 rounded">
-                  See Details
-                </p>
-              </Button>
-              <Button
+                See Details
+              </p>
+            </Tooltip>
+            <Tooltip placement="right" title="View Details">
+              <p
                 onClick={() => showViewModal2(record)}
-                className="!p-0"
-                style={{
-                  background: "#FFFFFF",
-                  border: "none",
-                  color: "#222222",
-                }}
+                className="text-xs font-semibold border border-[#ADD8E6]  px-2 py-1 rounded cursor-pointer"
               >
-                <p className="text-xs font-semibold border-2 border-[#ADD8E6] bg-[#F3F9FB] px-2 py-1 rounded">
-                  Mark Complete
-                </p>
-              </Button>
+                Mark Complete
+              </p>
             </Tooltip>
           </Space>
         </>

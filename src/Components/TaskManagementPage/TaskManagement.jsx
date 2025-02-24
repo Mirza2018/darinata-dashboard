@@ -1,15 +1,28 @@
 import { useEffect, useState } from "react";
 
 import { SearchOutlined } from "@ant-design/icons";
-import { Input } from "antd";
+import { DatePicker, Form, Input, Modal } from "antd";
 import axios from "axios";
 import TaskManagementTable from "./TaskManageMentTable";
 import ViewTaskManagementTable from "./ViewTaskManagementTable";
 import ViewTaskCompleteTable from "./ViewTaskCompleteTable";
+import { AllIcons, AllImages } from "../../../public/images/AllImages";
 
 export default function TaskManagement() {
+  const [form] = Form.useForm();
+  const { TextArea } = Input;
   //* Store Search Value
   const [searchText, setSearchText] = useState("");
+  const [isModalOpenTaskAdd, setIsModalOpenTaskAdd] = useState(false);
+  const showModalTaskAdd = () => {
+    setIsModalOpenTaskAdd(true);
+  };
+  const handleOkTaskAdd = () => {
+    setIsModalOpenTaskAdd(false);
+  };
+  const handleCancelTaskAdd = () => {
+    setIsModalOpenTaskAdd(false);
+  };
 
   //* Use to set user
   const [data, setData] = useState([]);
@@ -86,6 +99,9 @@ export default function TaskManagement() {
     console.log("Blocked User:", { id: data?.id, userName: data?.userName });
     setIsViewModalVisible(false);
   };
+  const onFinish = (values) => {
+    console.log(values);
+  };
 
   return (
     <div className="min-h-[90vh]">
@@ -97,17 +113,61 @@ export default function TaskManagement() {
           {/* <div className="flex items-center gap-3">
             <h1 className="text-3xl font-bold text-base-color">Users</h1>
           </div> */}
-          <div className="flex gap-4 items-center">
+          <div className="flex justify-between gap-4 items-center  w-full">
             <Input
               placeholder="Search User..."
               value={searchText}
               onChange={(e) => onSearch(e.target.value)}
-              className="text-base font-semibold !border-input-color py-2"
+              className="text-base font-semibold !border-input-color py-2 w-fit"
               prefix={
                 <SearchOutlined className="text-[#222222] font-bold text-lg mr-2" />
               }
             />
+            <button
+              onClick={showModalTaskAdd}
+              className="flex whitespace-nowrap gap-2 text-xl font-bold bg-highlight-color rounded-md py-3 px-10 text-white"
+            >
+              {" "}
+              <img src={AllImages.task} className="!invert" /> Create Task
+            </button>
           </div>
+          <Modal
+            title={
+              <p className="text-center text-2xl font-medium text-[#00721E]">
+                Task Generator
+              </p>
+            }
+            open={isModalOpenTaskAdd}
+            onOk={handleOkTaskAdd}
+            onCancel={handleCancelTaskAdd}
+            footer={null}
+          >
+            <Form
+              name="basic"
+              form={form}
+              onFinish={onFinish}
+              layout="vertical"
+            >
+              <Form.Item label="Task title" name="taskTitle">
+                <Input placeholder="Enter task title" />
+              </Form.Item>
+              <Form.Item label="Task Description" name="taskDescription">
+                <TextArea placeholder="Enter task description" rows={4} />
+              </Form.Item>
+              <Form.Item label="Assign To" name="assign">
+                <Input placeholder="Enter assignee name" />
+              </Form.Item>
+              <Form.Item label="Deadline" name="deadline">
+                <DatePicker className=" w-full border border-secondary-color bg-base-color" />
+              </Form.Item>
+
+              <Form.Item label={null} className="text-center">
+                <button className="text-xl font-medium text-white bg-highlight-color px-28 py-3 rounded-md " type="primary" htmlType="submit">
+                  Done
+                </button>
+              </Form.Item>
+            </Form>
+          </Modal>
         </div>
         <div className="px-2 lg:px-6">
           <TaskManagementTable
@@ -133,12 +193,6 @@ export default function TaskManagement() {
           currentRecord2={currentRecord2}
           handleBlock={handleBlock}
         />
-        {/* <DeleteCarModal
-          isDeleteModalVisible={isDeleteModalVisible}
-          handleDelete={handleDelete}
-          handleCancel={handleCancel}
-          currentRecord={currentRecord}
-        /> */}
       </div>
     </div>
   );

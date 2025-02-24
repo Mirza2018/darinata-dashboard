@@ -54,32 +54,13 @@ const ServicePriceTable = ({
         <>
           <Space size="middle">
             <Tooltip placement="right" title="View Details">
-              <Button
-                className="!p-0"
-                style={{
-                  background: "#FFFFFF",
-                  border: "none",
-                  color: "#00721E",
-                }}
+              <p
+                className="text-[#00721E] cursor-pointer"
                 onClick={() => showViewModal(record)}
               >
                 Customize
-                {/* <GoEye style={{ fontSize: "24px" }} /> */}
-              </Button>
+              </p>
             </Tooltip>
-            {/* <Tooltip placement="left" title="Delete this User">
-              <Button
-                className="!p-0"
-                style={{
-                  background: "#FFFFFF",
-                  border: "none",
-                  color: "#222222",
-                }}
-                onClick={() => showDeleteModal(record)}
-              >
-                <RiDeleteBin6Line style={{ fontSize: "24px" }} />
-              </Button>
-            </Tooltip> */}
           </Space>
         </>
       ),

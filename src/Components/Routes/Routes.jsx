@@ -53,7 +53,6 @@ import SingleUserManagement from "../UserManagement/SingleUserManagement";
 import SingleDealer from "../DelarManagementPage/SingleDealerPage/SingleDealer";
 import ContractData from "../DelarManagementPage/SingleDealerPage/ContractData";
 
-
 function AuthRedirect() {
   const navigate = useNavigate();
 
@@ -98,6 +97,22 @@ const router = createBrowserRouter([
         element: <CarSellTable />,
       },
       {
+        path: "total-earning",
+        element: <TotalEarning />,
+      },
+      {
+        path: "service-price",
+        element: <ServicePrice />,
+      },
+      {
+        path: "user-management",
+        element: <UserManagement />,
+      },
+      {
+        path: "user-management/:id",
+        element: <SingleUserManagement />,
+      },
+      {
         path: "dealer-management",
         element: <DelarManagementMainPage />,
       },
@@ -109,26 +124,12 @@ const router = createBrowserRouter([
         path: "dealer-management/:id/contract/:id",
         element: <ContractData />,
       },
-      {
-        path: "total-earning",
-        element: <TotalEarning />,
-      },
-      {
-        path: "service-price",
-        element: <ServicePrice />,
-      },
+
       {
         path: "task-management",
         element: <TaskManagement />,
       },
-      {
-        path: "user-management",
-        element: <UserManagement />,
-      },
-      {
-        path: "user-management/:id",
-        element: <SingleUserManagement />,
-      },
+
       {
         path: "subscription",
         element: <Subscription />,

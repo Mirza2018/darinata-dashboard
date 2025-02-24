@@ -16,6 +16,7 @@ import forgotLogo from "./forgotLogo.svg";
 import newPassLogo from "./newPassLogo.svg";
 import otpLogo from "./otpLogo.svg";
 
+import task from "./dashboard-logos/task.svg";
 
 // Main Images
 
@@ -60,6 +61,7 @@ export const AllImages = {
   forgotLogo,
   newPassLogo,
   otpLogo,
+  task
 };
 
 export const AuthImages = {

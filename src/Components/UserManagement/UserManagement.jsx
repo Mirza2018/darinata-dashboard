@@ -1,13 +1,42 @@
 import { useEffect, useState } from "react";
 
-import { SearchOutlined } from "@ant-design/icons";
-import { Input } from "antd";
+import { EditOutlined, SearchOutlined } from "@ant-design/icons";
+import { DatePicker, Form, Input, Modal, Upload, Button } from "antd";
 import axios from "axios";
 import UserTable from "./UserTable";
+import { FaCloudUploadAlt } from "react-icons/fa";
 
 export default function UserManagement() {
+  const [form] = Form.useForm();
+  const { TextArea } = Input;
   //* Store Search Value
   const [searchText, setSearchText] = useState("");
+  const [isModalOpenTaskAdd, setIsModalOpenTaskAdd] = useState(false);
+
+  const [imageUrl, setImageUrl] = useState("");
+  const handleImageUpload = (info) => {
+    if (info.file.status === "removed") {
+      setImageUrl(profileImage); // Reset to null or fallback image
+    } else {
+      const file = info.file.originFileObj || info.file; // Handle the file object safely
+      if (file) {
+        setImageUrl(URL.createObjectURL(file)); // Set the preview URL of the selected image
+      } else {
+        console.error("No file selected or file object missing");
+      }
+    }
+  };
+
+  const showModalTaskAdd = () => {
+    setIsModalOpenTaskAdd(true);
+  };
+  const handleOkTaskAdd = () => {
+    setIsModalOpenTaskAdd(false);
+  };
+  const handleCancelTaskAdd = () => {
+    setIsModalOpenTaskAdd(false);
+  };
+  //* Store Search Value
 
   //* Use to set user
   const [data, setData] = useState([]);
@@ -75,6 +104,10 @@ export default function UserManagement() {
     setIsViewModalVisible(false);
   };
 
+  const onFinish = (values) => {
+    console.log(values);
+  };
+
   return (
     <div className="min-h-[90vh]">
       <div
@@ -85,18 +118,117 @@ export default function UserManagement() {
           {/* <div className="flex items-center gap-3">
             <h1 className="text-3xl font-bold text-base-color">Users</h1>
           </div> */}
-          <div className="flex gap-4 items-center">
+          <div className="flex justify-between gap-4 items-center  w-full">
             <Input
               placeholder="Search User..."
               value={searchText}
               onChange={(e) => onSearch(e.target.value)}
-              className="text-base font-semibold !border-input-color py-2"
+              className="w-fit text-base font-semibold !border-input-color py-2"
               prefix={
                 <SearchOutlined className="text-[#222222] font-bold text-lg mr-2" />
               }
             />
+            <button
+              onClick={showModalTaskAdd}
+              className="flex whitespace-nowrap gap-2 text-xl font-bold bg-highlight-color rounded-md py-3 px-10 text-white"
+            >
+              {" "}
+              Add user
+            </button>
           </div>
         </div>
+        <Modal
+          title={
+            <p className="text-center text-2xl font-medium text-[#00721E]">
+              Task Generator
+            </p>
+          }
+          open={isModalOpenTaskAdd}
+          onOk={handleOkTaskAdd}
+          onCancel={handleCancelTaskAdd}
+          footer={null}
+          width={1000}
+        >
+          <Form
+            name="basic"
+            className="grid grid-cols-3 gap-5"
+            form={form}
+            onFinish={onFinish}
+            layout="vertical"
+          >
+            <div
+              onChange={handleImageUpload}
+              className="border border-dashed border-gray-300 p-4 rounded-md h-fit"
+            >
+              <Form.Item name="image">
+                <Upload
+                  beforeUpload={() => false} // Prevent automatic upload to server
+                  maxCount={1}
+                  accept="image/*"
+                  className="flex flex-col items-center justify-center gap-2"
+                >
+                  <div className="flex items-center justify-center">
+                    <FaCloudUploadAlt className="text-8xl " />
+                  </div>
+                  <p className="text-center">
+                    Drag and drop your files here or click to upload
+                  </p>
+                </Upload>
+              </Form.Item>
+            </div>
+            <div className="col-span-2">
+              <div className="grid md:grid-cols-2 gap-5">
+                <Form.Item label="First Name" name="firstName">
+                  <Input placeholder="Enter your First Name" />
+                </Form.Item>
+                <Form.Item label="Last Name" name="lastName">
+                  <Input placeholder="Enter your Last Name" />
+                </Form.Item>
+              </div>
+              <div className="grid md:grid-cols-2 gap-5">
+                <Form.Item label="Phone Number" name="phoneNumber">
+                  <Input placeholder="Enter your Phone Number" />
+                </Form.Item>
+                <Form.Item label="Address" name="address">
+                  <Input placeholder="Enter your Address" />
+                </Form.Item>
+              </div>
+              <div className="grid md:grid-cols-2 gap-5">
+                <div>
+                  <Form.Item label="Email" name="email">
+                    <Input placeholder="Enter your Email" />
+                  </Form.Item>
+                </div>
+                <div className="flex  gap-5 ">
+                  <Form.Item label="Rge Nr." name="rgeNr">
+                    <Input placeholder="Enter your Rge Nr." />
+                  </Form.Item>
+                  <Form.Item label="Konto Nr." name="kontoNr">
+                    <Input placeholder="Enter your Konto Nr." />
+                  </Form.Item>{" "}
+                </div>
+              </div>
+              <div className="grid md:grid-cols-2 gap-5">
+                <Form.Item label="CVR Number" name="cvrNumber">
+                  <Input placeholder="Enter your CVR Number" />
+                </Form.Item>
+                <Form.Item label="Website Link" name="websiteLink">
+                  <Input placeholder="Enter your Website Link" />
+                </Form.Item>
+              </div>
+            </div>
+
+            <Form.Item label={null} className="col-span-3 text-end">
+              <button
+                className="text-xl font-medium text-white bg-highlight-color px-10 py-2 rounded-md "
+                type="primary"
+                htmlType="submit"
+              >
+                Create
+              </button>
+            </Form.Item>
+          </Form>
+        </Modal>
         <div className="px-2 lg:px-6">
           <UserTable
             data={data}
@@ -106,19 +238,6 @@ export default function UserManagement() {
             pageSize={12}
           />
         </div>
-        {/* 
-        <ViewEarningTable
-          isViewModalVisible={isViewModalVisible}
-          handleCancel={handleCancel}
-          currentRecord={currentRecord}
-          handleBlock={handleBlock}
-        /> */}
-        {/* <DeleteCarModal
-          isDeleteModalVisible={isDeleteModalVisible}
-          handleDelete={handleDelete}
-          handleCancel={handleCancel}
-          currentRecord={currentRecord}
-        /> */}
       </div>
     </div>
   );

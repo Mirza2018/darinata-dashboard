@@ -29,9 +29,9 @@ const ViewUserCarBlockModal = ({
       footer={null}
       centered
       style={{ textAlign: "center" }}
-      className="lg:min-w-[700px] !bg-[#FFF9FD]"
+      className="lg:min-w-[700px] "
     >
-      <div className="p-10 grid gap-4 bg-[#FFF9FD]">
+      <div className="p-10 grid gap-4 ">
         <h1 className="text-[32px] font-medium ">
           {block
             ? "Do you want to unblock this car?"
@@ -46,7 +46,7 @@ const ViewUserCarBlockModal = ({
         <div className="flex justify-around mx-20">
           <button
             onClick={handleCancel}
-            className="bg-[#F3F9FB] border border-[#ADD8E6] text-black py-3 text-xl font-semibold rounded-lg mt-8 w-fit px-8 "
+            className="border border-[#ADD8E6] text-black py-3 text-xl font-semibold rounded-lg mt-8 w-fit px-8 "
           >
             No
           </button>
