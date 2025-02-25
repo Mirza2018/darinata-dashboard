@@ -89,7 +89,7 @@ const ViewTaskManagementTable = ({
 
           {/* Action Buttons */}
           <div className="flex justify-end gap-4 mt-6">
-            <Button size="large" className="min-w-[100px] bg-white">
+            <Button size="large" className="min-w-[100px] bg-base-color border-secondary-color">
               No
             </Button>
             <Button

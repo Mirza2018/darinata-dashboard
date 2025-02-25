@@ -1,3 +1,8 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.img-text-warp  .ant-upload-list-text {
+
+    max-width: 300px;
+}

@@ -328,7 +328,7 @@ const DashboardLayout = () => {
           }}
         />
       ),
-      label: <NavLink to="user-management">User Management</NavLink>,
+      label: <NavLink   to="user-management">User Management</NavLink>,
     },
     {
       key: "dealer-management",

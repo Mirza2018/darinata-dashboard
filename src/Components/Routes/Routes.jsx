@@ -52,6 +52,7 @@ import TaskManagement from "../TaskManagementPage/TaskManagement";
 import SingleUserManagement from "../UserManagement/SingleUserManagement";
 import SingleDealer from "../DelarManagementPage/SingleDealerPage/SingleDealer";
 import ContractData from "../DelarManagementPage/SingleDealerPage/ContractData";
+import UserCarInfo from "../UserManagement/UserCarInfo";
 
 function AuthRedirect() {
   const navigate = useNavigate();
@@ -109,13 +110,18 @@ const router = createBrowserRouter([
         element: <UserManagement />,
       },
       {
-        path: "user-management/:id",
-        element: <SingleUserManagement />,
+        path: "user-management/car-info",
+        element: <UserCarInfo />,
       },
       {
         path: "dealer-management",
         element: <DelarManagementMainPage />,
       },
+      {
+        path: "user-management/:id",
+        element: <SingleUserManagement />,
+      },
+
       {
         path: "dealer-management/:id",
         element: <SingleDealer />,

@@ -13,7 +13,7 @@ const SignIn = () => {
     navigate("/dashboard"); // Correct use of navigate function
   };
   return (
-    <div className="text-base-color bg-[#E6F3F7]">
+    <div className=" bg-[#E6F3F7]">
       <div className="max-w-[1350px] w-[90%] mx-auto grid grid-cols-1 lg:grid-cols-2 items-center justify-items-center gap-10 min-h-screen py-10">
         <div className="hidden lg:block">
           <img
@@ -33,7 +33,7 @@ const SignIn = () => {
                   className="h-[60px] w-[245px] mx-auto"
                 />
               </div>
-              <h1 className="text-4xl font-semibold mb-4">Log in</h1>
+              <h1 className="text-4xl font-semibold mb-4 ">Log in</h1>
               <p className="text-base font-normal  mb-2 text-[#1E1E1E] ">
                 Welcome back! Please enter your details.
               </p>
@@ -61,7 +61,7 @@ const SignIn = () => {
             >
               <Input
                 placeholder="Enter your email"
-                className="py-2 px-3 text-xl bg-site-color border !border-[#1E1E1E] text-base-color hover:bg-transparent hover:border-secoundary-color focus:bg-transparent focus:border-secoundary-color !bg-white"
+                className="py-2 px-3 text-xl bg-site-color border !border-[#1E1E1E] r hover:bg-transparent hover:border-secoundary-color focus:bg-transparent focus:border-secoundary-color !bg-white"
               />
             </Form.Item>
             <Typography.Title level={4} style={{ color: "#222222" }}>
@@ -79,7 +79,7 @@ const SignIn = () => {
             >
               <Input.Password
                 placeholder="Enter your password"
-                className="py-2 px-3 text-xl bg-site-color border !border-[#1E1E1E] text-base-color hover:bg-transparent hover:border-secoundary-color focus:bg-transparent focus:border-secoundary-color !bg-white"
+                className="py-2 px-3 text-xl bg-site-color border !border-[#1E1E1E] hover:bg-transparent hover:border-secoundary-color focus:bg-transparent focus:border-secoundary-color !bg-white"
               />
             </Form.Item>
             <Typography.Title level={4} style={{ color: "#222222" }}>
@@ -106,7 +106,7 @@ const SignIn = () => {
               <Checkbox className="">Remember me</Checkbox>
               <Link
                 to="/forgot-password"
-                className="!text-[#1E1E1E] !underline"
+                className="!text-[#1E1E1E] "
               >
                 Forgot Password?
               </Link>
@@ -115,7 +115,7 @@ const SignIn = () => {
             <Form.Item>
               <Button
                 type="primary"
-                className="w-full py-6 border border-[#FF991C] hover:border-input-colortext-xl text-white bg-[#FF991C] hover:!bg-[#FF991C] font-semibold rounded-2xl mt-8 "
+                className="w-full py-6 border border-[#FF991C] hover:border-input-colortext-xl  bg-[#FF991C] hover:!bg-[#FF991C] font-semibold rounded-2xl mt-8 "
                 htmlType="submit"
               >
                 Sign In

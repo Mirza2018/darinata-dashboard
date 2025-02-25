@@ -15,7 +15,7 @@ const OtpPage = () => {
   };
 
   return (
-    <div className="text-base-color bg-[#E6F3F7]">
+    <div className=" bg-[#E6F3F7]">
       <div className="max-w-[1350px] w-[90%] mx-auto flex flex-col lg:flex-row justify-center gap-10 items-center min-h-screen bg-site-color py-10">
         <div className="w-full md:w-[80%] lg:w-[50%] hidden lg:block">
           <img

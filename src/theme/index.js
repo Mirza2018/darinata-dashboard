@@ -8,6 +8,7 @@ export const mainTheme = {
       itemColor: "#222222",
       itemSelectedBg: "#FF991C",
       itemSelectedColor: "white",
+
     },
     Form: {
       colorError: "#F5382C",

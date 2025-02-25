@@ -41,8 +41,9 @@ const EditProfile = () => {
       <Form
         onFinish={onFinish}
         layout="vertical"
-        className="bg-transparent py-10 text-base-color h-full w-full lg:w-[70%]"
+        className="bg-transparent py-10 h-full w-full lg:w-[70%]"
       >
+        <h1 className="text-2xl font-bold ms-10 mb-10">Profile</h1>
         <div className="mt-12 flex items-center gap-x-4">
           <div className=" relative">
             <img
@@ -64,18 +65,9 @@ const EditProfile = () => {
                   cursor: "pointer",
                 }}
               >
-                <Button
-                  style={{
-                    zIndex: 1,
-                    opacity: 1,
-                    height: "36px",
-                    width: "36px",
-                    borderRadius: "90px",
-                    fontSize: "18px",
-                  }}
-                >
-                  <EditOutlined style={{ color: "#f5382c" }} />
-                </Button>
+                <button className="bg-highlight-color h-9 w-9 rounded-full text-xl">
+                  <EditOutlined className="bg-highlight-color text-white" />
+                </button>
               </Upload>
             </Form.Item>
           </div>
@@ -89,13 +81,13 @@ const EditProfile = () => {
           <Form.Item
             initialValue={profileData.email}
             name="email"
-            className="text-white "
+            className=" "
           >
             <Input
               suffix={<MdOutlineEdit />}
               type="email"
               placeholder="Enter your email"
-              className="cursor-not-allowed py-2 px-3 text-xl bg-site-color border !border-input-color text-base-color hover:bg-transparent hover:border-secoundary-color focus:bg-transparent focus:border-secoundary-color"
+              className="cursor-not-allowed py-2 px-3 text-xl bg-site-color border !border-input-color  hover:bg-transparent hover:border-secoundary-color focus:bg-transparent focus:border-secoundary-color"
             />
           </Form.Item>
           <Typography.Title level={5} style={{ color: "#222222" }}>
@@ -109,7 +101,7 @@ const EditProfile = () => {
             <Input
               suffix={<MdOutlineEdit />}
               placeholder="Enter your Name"
-              className="cursor-not-allowed py-2 px-3 text-xl bg-site-color border !border-input-color text-base-color hover:bg-transparent hover:border-secoundary-color focus:bg-transparent focus:border-secoundary-color"
+              className="cursor-not-allowed py-2 px-3 text-xl bg-site-color border !border-input-color hover:bg-transparent hover:border-secoundary-color focus:bg-transparent focus:border-secoundary-color"
             />
           </Form.Item>
           <Typography.Title level={5} style={{ color: "#222222" }}>
@@ -123,7 +115,7 @@ const EditProfile = () => {
             <Input
               suffix={<MdOutlineEdit />}
               placeholder="Enter your address"
-              className="cursor-not-allowed py-2 px-3 text-xl bg-site-color border !border-input-color text-base-color hover:bg-transparent hover:border-secoundary-color focus:bg-transparent focus:border-secoundary-color"
+              className="cursor-not-allowed py-2 px-3 text-xl bg-site-color border !border-input-color  hover:bg-transparent hover:border-secoundary-color focus:bg-transparent focus:border-secoundary-color"
             />
           </Form.Item>
           <Typography.Title level={5} style={{ color: "#222222" }}>
@@ -137,7 +129,7 @@ const EditProfile = () => {
             <Input
               suffix={<MdOutlineEdit />}
               placeholder="Enter your Contact number"
-              className="cursor-not-allowed py-2 px-3 text-xl bg-site-color border !border-input-color text-base-color hover:bg-transparent hover:border-secoundary-color focus:bg-transparent focus:border-secoundary-color"
+              className="cursor-not-allowed py-2 px-3 text-xl bg-site-color border !border-input-color  hover:bg-transparent hover:border-secoundary-color focus:bg-transparent focus:border-secoundary-color"
             />
           </Form.Item>
           <Form.Item>

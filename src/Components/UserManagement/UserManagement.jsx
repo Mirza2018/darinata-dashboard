@@ -5,13 +5,17 @@ import { DatePicker, Form, Input, Modal, Upload, Button } from "antd";
 import axios from "axios";
 import UserTable from "./UserTable";
 import { FaCloudUploadAlt } from "react-icons/fa";
+import { useNavigate } from "react-router-dom";
 
 export default function UserManagement() {
   const [form] = Form.useForm();
+  const router = useNavigate();
+
+
   const { TextArea } = Input;
   //* Store Search Value
   const [searchText, setSearchText] = useState("");
-  const [isModalOpenTaskAdd, setIsModalOpenTaskAdd] = useState(false);
+  const [isModalOpenAddUser, setIsModalOpenAddUser] = useState(false);
 
   const [imageUrl, setImageUrl] = useState("");
   const handleImageUpload = (info) => {
@@ -27,14 +31,14 @@ export default function UserManagement() {
     }
   };
 
-  const showModalTaskAdd = () => {
-    setIsModalOpenTaskAdd(true);
+  const showModalAddUser = () => {
+    setIsModalOpenAddUser(true);
   };
-  const handleOkTaskAdd = () => {
-    setIsModalOpenTaskAdd(false);
+  const handleOkAddUser = () => {
+    setIsModalOpenAddUser(false);
   };
-  const handleCancelTaskAdd = () => {
-    setIsModalOpenTaskAdd(false);
+  const handleCancelAddUser = () => {
+    setIsModalOpenAddUser(false);
   };
   //* Store Search Value
 
@@ -66,13 +70,6 @@ export default function UserManagement() {
 
     fetchData();
   }, []);
-
-  //   const filteredData = useMemo(() => {
-  //     if (!searchText) return data;
-  //     return data.filter((item) =>
-  //       item.userName.toLowerCase().includes(searchText.toLowerCase())
-  //     );
-  //   }, [data, searchText]);
 
   const onSearch = (value) => {
     setSearchText(value);
@@ -106,13 +103,16 @@ export default function UserManagement() {
 
   const onFinish = (values) => {
     console.log(values);
+    form.resetFields();
+    handleCancelAddUser();
+    router("car-info");
   };
 
   return (
     <div className="min-h-[90vh]">
       <div
         className="bg-[#FFFFFF] p-3 rounded"
-        style={{ boxShadow: "0px 0px 5px 2px #00000040" }}
+        style={{ boxShadow: "0px 0px 2px 1px #00000040" }}
       >
         <div className="flex justify-between p-6">
           {/* <div className="flex items-center gap-3">
@@ -129,43 +129,38 @@ export default function UserManagement() {
               }
             />
             <button
-              onClick={showModalTaskAdd}
+              onClick={showModalAddUser}
               className="flex whitespace-nowrap gap-2 text-xl font-bold bg-highlight-color rounded-md py-3 px-10 text-white"
             >
-              {" "}
               Add user
             </button>
           </div>
         </div>
         <Modal
-          title={
-            <p className="text-center text-2xl font-medium text-[#00721E]">
-              Task Generator
-            </p>
-          }
-          open={isModalOpenTaskAdd}
-          onOk={handleOkTaskAdd}
-          onCancel={handleCancelTaskAdd}
+          title={null}
+          open={isModalOpenAddUser}
+          onOk={handleOkAddUser}
+          onCancel={handleCancelAddUser}
           footer={null}
           width={1000}
         >
           <Form
             name="basic"
-            className="grid grid-cols-3 gap-5"
+            className="md:grid md:grid-cols-3  gap-5 p-10 "
             form={form}
             onFinish={onFinish}
             layout="vertical"
           >
             <div
               onChange={handleImageUpload}
-              className="border border-dashed border-gray-300 p-4 rounded-md h-fit"
+              className="border border-dashed border-gray-300 md:mb-0 mb-5 p-4 rounded-md h-fit"
             >
               <Form.Item name="image">
                 <Upload
                   beforeUpload={() => false} // Prevent automatic upload to server
                   maxCount={1}
                   accept="image/*"
-                  className="flex flex-col items-center justify-center gap-2"
+                  className="flex flex-col items-center justify-center gap-2 img-text-warp"
                 >
                   <div className="flex items-center justify-center">
                     <FaCloudUploadAlt className="text-8xl " />
@@ -176,7 +171,7 @@ export default function UserManagement() {
                 </Upload>
               </Form.Item>
             </div>
-            <div className="col-span-2">
+            <div className="md:col-span-2 ">
               <div className="grid md:grid-cols-2 gap-5">
                 <Form.Item label="First Name" name="firstName">
                   <Input placeholder="Enter your First Name" />

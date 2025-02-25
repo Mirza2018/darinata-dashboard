@@ -41,6 +41,8 @@ import upArrow from "./icons/upArrow.svg";
 import girl from "./icons/girl.png";
 import person from "./icons/person.png";
 import incomeAmount from "./icons/income-amount.png";
+import star from "./icons/star.svg";
+import dk from "./icons/dk.svg";
 
 export const AllImages = {
   logo,
@@ -61,7 +63,9 @@ export const AllImages = {
   forgotLogo,
   newPassLogo,
   otpLogo,
-  task
+  task,
+  star,
+  dk,
 };
 
 export const AuthImages = {

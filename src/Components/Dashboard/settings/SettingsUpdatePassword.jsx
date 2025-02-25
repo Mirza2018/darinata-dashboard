@@ -14,10 +14,10 @@ const SettingsUpdatePassword = () => {
     >
       <div className="w-full lg:w-[70%]">
         <div className="mb-10">
-          <p className="text-3xl lg:text-[40px] text-base-color font-medium mb-8">
+          <p className="text-3xl lg:text-[40px] font-medium mb-8">
             Update Password
           </p>
-          <p className="md:text-xl text-base-color">
+          <p className="md:text-xl ">
             To update your password, check email for OTP being sent. Enter it in
             designated field to complete reset process.
           </p>
@@ -39,7 +39,7 @@ const SettingsUpdatePassword = () => {
           >
             <Input.Password
               placeholder="Enter your password"
-              className="py-2 px-3 text-xl bg-site-color border  text-base-color hover:bg-transparent hover:border-secoundary-color focus:bg-transparent focus:border-secoundary-color"
+              className="py-2 px-3 text-xl bg-site-color border   hover:bg-transparent hover:border-secoundary-color focus:bg-transparent focus:border-secoundary-color"
             />
           </Form.Item>
           <Typography.Title level={4} style={{ color: "#222222" }}>
@@ -66,7 +66,7 @@ const SettingsUpdatePassword = () => {
           >
             <Input.Password
               placeholder="Enter your password"
-              className="py-2 px-3 text-xl bg-site-color border !border-input-color text-base-color hover:bg-transparent hover:border-secoundary-color focus:bg-transparent focus:border-secoundary-color"
+              className="py-2 px-3 text-xl bg-site-color border !border-input-color  hover:bg-transparent hover:border-secoundary-color focus:bg-transparent focus:border-secoundary-color"
             />
           </Form.Item>
 

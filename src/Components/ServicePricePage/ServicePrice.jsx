@@ -74,10 +74,9 @@ export default function ServicePrice() {
     <div className="min-h-[90vh]">
       <div
         className="bg-[#FFFFFF] p-3 rounded"
-        style={{ boxShadow: "0px 0px 5px 2px #00000040" }}
+        style={{ boxShadow: "0px 0px 2px 1px #00000040" }}
       >
         <div className="flex justify-between p-6">
-
           <div className="flex gap-4 items-center">
             <Input
               placeholder="Search User..."

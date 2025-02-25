@@ -28,10 +28,10 @@ const ViewTaskCompleteTable = ({
       footer={null}
       centered
       style={{ textAlign: "center" }}
-      className="lg:min-w-[700px] "
+      className="lg:min-w-[500px] "
     >
       <div className="p-10 grid gap-4 ">
-        <h1 className="text-[32px] font-medium ">
+        <h1 className="text-2xl font-medium ">
           {/* {block
             ? "Do you want to unblock this car?"
             : "Are you sure you want to temporarily block this car?"} */}
@@ -43,10 +43,10 @@ const ViewTaskCompleteTable = ({
             type="number"
             className="py-2 px-3 text-xl bg-site-color border !border-input-color text-base-color hover:bg-transparent hover:border-secoundary-color focus:bg-transparent focus:border-secoundary-color"
           /> */}
-        <div className="flex justify-around mx-20">
+        <div className="flex justify-around gap-14">
           <button
             onClick={handleCancel2}
-            className=" border border-[#ADD8E6] text-black py-3 text-xl font-semibold rounded-lg mt-8 w-fit px-8 "
+            className=" border border-secondary-color bg-base-color text-black py-3 text-xl font-semibold rounded-lg mt-8 w-full px-8 "
           >
             No
           </button>
@@ -55,7 +55,7 @@ const ViewTaskCompleteTable = ({
               setBlock(!block);
               handleCancel2();
             }}
-            className="bg-[#00721E] border border-[#ADD8E6] text-white py-3 text-xl font-semibold rounded-lg mt-8 w-fit px-8 "
+            className="bg-[#00721E] border border-[#ADD8E6] text-white py-3 text-xl font-semibold rounded-lg mt-8 w-full px-8 "
           >
             Yes
           </button>

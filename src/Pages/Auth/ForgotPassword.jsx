@@ -11,7 +11,7 @@ const ForgotPassword = () => {
     navigate("/verify-otp");
   };
   return (
-    <div className="text-base-color bg-[#E6F3F7]">
+    <div className=" bg-[#E6F3F7]">
       <div className="max-w-[1350px] w-[90%] mx-auto flex flex-col lg:flex-row justify-center gap-10 items-center min-h-screen bg-site-color py-10">
         <div className="w-full md:w-[80%] lg:w-[50%] r hidden lg:block">
           <img
@@ -63,7 +63,7 @@ const ForgotPassword = () => {
                 <Input
                   placeholder="Enter your email"
                   type="email"
-                  className="py-2 px-3 text-xl bg-site-color border !border-[#1E1E1E] !bg-white text-base-color hover:bg-transparent hover:border-secoundary-color focus:bg-transparent focus:border-secoundary-color"
+                  className="py-2 px-3 text-xl bg-site-color border !border-[#1E1E1E] !bg-white  hover:bg-transparent hover:border-secoundary-color focus:bg-transparent focus:border-secoundary-color"
                 />
               </Form.Item>
 

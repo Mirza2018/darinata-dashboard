@@ -21,10 +21,10 @@ const SettingsOtpPage = () => {
     >
       <div className="w-full lg:w-[70%]">
         <div className="mb-10">
-          <p className="text-3xl lg:text-[40px] text-secondary-color font-medium mb-8">
+          <p className="text-3xl lg:text-[40px] font-medium mb-8">
             Verify OTP
           </p>
-          <p className="md:text-xl text-base-color">
+          <p className="md:text-xl ">
             To update your password, check email for OTP being sent. Enter it in
             designated field to complete reset process.
           </p>
@@ -34,7 +34,7 @@ const SettingsOtpPage = () => {
             <div className="flex justify-center items-center">
               <OTPInput
                 inputStyle="!w-[55px] h-[45px] !sm:w-[76px] sm:h-[64px] text-[20px] sm:text-[30px] bg-transparent border border-input-color
-                      hover:border-input-color focus:bg-transparent focus:border-input-color rounded-lg mr-[10px] sm:mr-[20px] text-secondary-color"
+                      hover:border-input-color focus:bg-transparent focus:border-input-color rounded-lg mr-[10px] sm:mr-[20px] text-black "
                 value={otp}
                 onChange={setOtp}
                 numInputs={4}
@@ -43,7 +43,7 @@ const SettingsOtpPage = () => {
             </div>
           </Form.Item>
           <div className="flex justify-between py-1">
-            <p className=" text-base-color">Didn’t get OTP?</p>
+            <p className=" ">Didn’t get OTP?</p>
             <Link
               to="/settings/otp-page"
               className="text-secondary-color hover:text-secondary-color"
