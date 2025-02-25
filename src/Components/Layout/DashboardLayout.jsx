@@ -246,6 +246,49 @@ const DashboardLayout = () => {
   //     ),
   //   },
   // ];
+
+  const currentPath = location.pathname;
+  const activeKeys = (() => {
+    if (currentPath.includes("/dashboard")) {
+      return ["dashboard"];
+    }
+    if (currentPath.includes("/total-Car-Sell")) {
+      return ["total-Car-Sell"];
+    }
+    if (currentPath.includes("/total-earning")) {
+      return ["total-earning"];
+    }
+    if (currentPath.includes("/service-price")) {
+      return ["service-price"];
+    }
+    if (currentPath.includes("/user-management")) {
+      return ["user-management"];
+    }
+    if (currentPath.includes("/dealer-management")) {
+      return ["dealer-management"];
+    }
+    if (currentPath.includes("/task-management")) {
+      return ["task-management"];
+    }
+    if (
+      currentPath.includes("/change-password") ||
+      currentPath.includes("/profile") ||
+      currentPath.includes("/forgot-password") ||
+      currentPath.includes("/update-password") ||
+      currentPath.includes("/otp-page")
+    ) {
+      return ["change-password"];
+    }
+    if (currentPath.includes("/terms-of-service")) {
+      return ["terms-of-service"];
+    }
+    if (currentPath.includes("/privacy-policy")) {
+      return ["privacy-policy"];
+    }
+
+
+    return [currentPath.split("/")[1]]; // Default fallback
+  })();
   const adminMenuItems = [
     {
       key: "dashboard",
@@ -311,11 +354,13 @@ const DashboardLayout = () => {
           }}
         />
       ),
+
       label: <NavLink to="service-price">Service Price</NavLink>,
     },
 
     {
       key: "user-management",
+
       icon: (
         <img
           src={userManagement}
@@ -328,7 +373,7 @@ const DashboardLayout = () => {
           }}
         />
       ),
-      label: <NavLink   to="user-management">User Management</NavLink>,
+      label: <NavLink to="user-management">User Management</NavLink>,
     },
     {
       key: "dealer-management",
@@ -401,9 +446,14 @@ const DashboardLayout = () => {
           alt="change-password"
           width={20}
           style={{
-            filter: location.pathname.includes("change-password")
-              ? "brightness(0) invert(1)"
-              : undefined,
+            filter:
+              location.pathname.includes("change-password") ||
+              location.pathname.includes("forgot-password") ||
+              location.pathname.includes("update-password") ||
+              location.pathname.includes("otp-page") ||
+              location.pathname.includes("/profile")
+                ? "brightness(0) invert(1)"
+                : undefined,
           }}
         />
       ),
@@ -532,272 +582,268 @@ const DashboardLayout = () => {
     // },
   ];
 
-  const mvrMenuItems = [
-    {
-      key: "dashboard",
-      icon: (
-        <img
-          src={dashboardLogo}
-          alt="dashboard"
-          width={20}
-          style={{
-            filter: location.pathname.includes("dashboard")
-              ? "brightness(0) invert(1)"
-              : undefined,
-          }}
-        />
-      ),
-      label: <NavLink to="dashboard">Dashboard</NavLink>,
-    },
-    {
-      key: "appointment",
-      icon: (
-        <img
-          src={appointment}
-          alt="Appointment"
-          width={20}
-          style={{
-            filter: location.pathname.includes("appointment")
-              ? "brightness(0) invert(1)"
-              : undefined,
-          }}
-        />
-      ),
-      label: <NavLink to="appointment">Appointment</NavLink>,
-    },
-    {
-      key: "chat",
-      icon: (
-        <img
-          src={chat}
-          alt="Chat"
-          width={20}
-          style={{
-            filter: location.pathname.includes("chat")
-              ? "brightness(0) invert(1)"
-              : undefined,
-          }}
-        />
-      ),
-      label: <NavLink to="chat">Chat</NavLink>,
-    },
-    {
-      key: "profile",
-      icon: (
-        <img
-          src={profile}
-          alt="profile"
-          width={16}
-          height={16}
-          style={{
-            filter: location.pathname.includes("profile")
-              ? "brightness(0) invert(1)"
-              : undefined,
-          }}
-        />
-      ),
-      label: <NavLink to="profile">Profile</NavLink>,
-    },
+  // const mvrMenuItems = [
+  //   {
+  //     key: "dashboard",
+  //     icon: (
+  //       <img
+  //         src={dashboardLogo}
+  //         alt="dashboard"
+  //         width={20}
+  //         style={{
+  //           filter: location.pathname.includes("dashboard")
+  //             ? "brightness(0) invert(1)"
+  //             : undefined,
+  //         }}
+  //       />
+  //     ),
+  //     label: <NavLink to="dashboard">Dashboard</NavLink>,
+  //   },
+  //   {
+  //     key: "appointment",
+  //     icon: (
+  //       <img
+  //         src={appointment}
+  //         alt="Appointment"
+  //         width={20}
+  //         style={{
+  //           filter: location.pathname.includes("appointment")
+  //             ? "brightness(0) invert(1)"
+  //             : undefined,
+  //         }}
+  //       />
+  //     ),
+  //     label: <NavLink to="appointment">Appointment</NavLink>,
+  //   },
+  //   {
+  //     key: "chat",
+  //     icon: (
+  //       <img
+  //         src={chat}
+  //         alt="Chat"
+  //         width={20}
+  //         style={{
+  //           filter: location.pathname.includes("chat")
+  //             ? "brightness(0) invert(1)"
+  //             : undefined,
+  //         }}
+  //       />
+  //     ),
+  //     label: <NavLink to="chat">Chat</NavLink>,
+  //   },
+  //   {
+  //     key: "profile",
+  //     icon: (
+  //       <img
+  //         src={profile}
+  //         alt="profile"
+  //         width={16}
+  //         height={16}
+  //         style={{
+  //           filter: location.pathname.includes("profile")
+  //             ? "brightness(0) invert(1)"
+  //             : undefined,
+  //         }}
+  //       />
+  //     ),
+  //     label: <NavLink to="profile">Profile</NavLink>,
+  //   },
 
-    {
-      key: "settings",
-      label: <span className="text-base-color"> Settings</span>,
-      icon: <img src={setting} alt="dashboard" width={16} height={16} />,
-      children: [
-        {
-          key: "change-password",
-          icon: <span>&#8226;</span>,
-          label: (
-            <NavLink to="settings/change-password">Change Password</NavLink>
-          ),
-        },
-      ],
-    },
-    {
-      key: "logout",
-      icon: (
-        <img
-          src={logout}
-          alt="logout"
-          width={16}
-          height={16}
-          style={{ color: "#222222", fontSize: "16px" }}
-        />
-      ),
-      label: (
-        <div onClick={() => localStorage.removeItem("clinivea_user")}>
-          <NavLink to="/signin">Logout</NavLink>
-        </div>
-      ),
-    },
-  ];
-  const userMenuItems = [
-    {
-      key: "dashboard",
-      icon: (
-        <img
-          src={dashboardLogo}
-          alt="dashboard"
-          width={20}
-          style={{
-            filter: location.pathname.includes("dashboard")
-              ? "brightness(0) invert(1)"
-              : undefined,
-          }}
-        />
-      ),
-      label: <NavLink to="dashboard">Dashboard</NavLink>,
-    },
+  //   {
+  //     key: "settings",
+  //     label: <span className="text-base-color"> Settings</span>,
+  //     icon: <img src={setting} alt="dashboard" width={16} height={16} />,
+  //     children: [
+  //       {
+  //         key: "change-password",
+  //         icon: <span>&#8226;</span>,
+  //         label: (
+  //           <NavLink to="settings/change-password">Change Password</NavLink>
+  //         ),
+  //       },
+  //     ],
+  //   },
+  //   {
+  //     key: "logout",
+  //     icon: (
+  //       <img
+  //         src={logout}
+  //         alt="logout"
+  //         width={16}
+  //         height={16}
+  //         style={{ color: "#222222", fontSize: "16px" }}
+  //       />
+  //     ),
+  //     label: (
+  //       <div onClick={() => localStorage.removeItem("clinivea_user")}>
+  //         <NavLink to="/signin">Logout</NavLink>
+  //       </div>
+  //     ),
+  //   },
+  // ];
+  // const userMenuItems = [
+  //   {
+  //     key: "dashboard",
+  //     icon: (
+  //       <img
+  //         src={dashboardLogo}
+  //         alt="dashboard"
+  //         width={20}
+  //         style={{
+  //           filter: location.pathname.includes("dashboard")
+  //             ? "brightness(0) invert(1)"
+  //             : undefined,
+  //         }}
+  //       />
+  //     ),
+  //     label: <NavLink to="dashboard">Dashboard</NavLink>,
+  //   },
 
-    {
-      key: "healthrecord",
-      icon: (
-        <img
-          src={healthrecordinterface}
-          alt="Healthrecord"
-          width={20}
-          style={{
-            filter: location.pathname.includes("healthrecord")
-              ? "brightness(0) invert(1)"
-              : undefined,
-          }}
-        />
-      ),
-      label: <NavLink to="healthrecord">Health Records Interface</NavLink>,
-    },
+  //   {
+  //     key: "healthrecord",
+  //     icon: (
+  //       <img
+  //         src={healthrecordinterface}
+  //         alt="Healthrecord"
+  //         width={20}
+  //         style={{
+  //           filter: location.pathname.includes("healthrecord")
+  //             ? "brightness(0) invert(1)"
+  //             : undefined,
+  //         }}
+  //       />
+  //     ),
+  //     label: <NavLink to="healthrecord">Health Records Interface</NavLink>,
+  //   },
 
-    {
-      key: "cliniveapay",
-      icon: (
-        <img
-          src={cliniveapay}
-          alt="cliniveapay"
-          width={20}
-          style={{
-            filter: location.pathname.includes("cliniveapay")
-              ? "brightness(0) invert(1)"
-              : undefined,
-          }}
-        />
-      ),
-      label: <NavLink to="cliniveapay">Clinivea Pay</NavLink>,
-    },
+  //   {
+  //     key: "cliniveapay",
+  //     icon: (
+  //       <img
+  //         src={cliniveapay}
+  //         alt="cliniveapay"
+  //         width={20}
+  //         style={{
+  //           filter: location.pathname.includes("cliniveapay")
+  //             ? "brightness(0) invert(1)"
+  //             : undefined,
+  //         }}
+  //       />
+  //     ),
+  //     label: <NavLink to="cliniveapay">Clinivea Pay</NavLink>,
+  //   },
 
-    {
-      key: "mvrcommunication",
-      icon: (
-        <img
-          src={mvrcommunication}
-          alt="mvrcommunication"
-          width={20}
-          style={{
-            filter: location.pathname.includes("mvrcommunication")
-              ? "brightness(0) invert(1)"
-              : undefined,
-          }}
-        />
-      ),
-      label: <NavLink to="mvrcommunication">MVR Communication</NavLink>,
-    },
+  //   {
+  //     key: "mvrcommunication",
+  //     icon: (
+  //       <img
+  //         src={mvrcommunication}
+  //         alt="mvrcommunication"
+  //         width={20}
+  //         style={{
+  //           filter: location.pathname.includes("mvrcommunication")
+  //             ? "brightness(0) invert(1)"
+  //             : undefined,
+  //         }}
+  //       />
+  //     ),
+  //     label: <NavLink to="mvrcommunication">MVR Communication</NavLink>,
+  //   },
 
-    {
-      key: "calendarappointments",
-      icon: (
-        <img
-          src={calendarappointments}
-          alt="calendarappointments"
-          width={20}
-          style={{
-            filter: location.pathname.includes("calendarappointments")
-              ? "brightness(0) invert(1)"
-              : undefined,
-          }}
-        />
-      ),
-      label: (
-        <NavLink to="calendarappointments">Calendar & Appointments</NavLink>
-      ),
-    },
+  //   {
+  //     key: "calendarappointments",
+  //     icon: (
+  //       <img
+  //         src={calendarappointments}
+  //         alt="calendarappointments"
+  //         width={20}
+  //         style={{
+  //           filter: location.pathname.includes("calendarappointments")
+  //             ? "brightness(0) invert(1)"
+  //             : undefined,
+  //         }}
+  //       />
+  //     ),
+  //     label: (
+  //       <NavLink to="calendarappointments">Calendar & Appointments</NavLink>
+  //     ),
+  //   },
 
-    {
-      key: "wellnesstrack",
-      icon: (
-        <img
-          src={wellnesstrack}
-          alt="wellnesstrack"
-          width={20}
-          style={{
-            filter: location.pathname.includes("wellnesstrack")
-              ? "brightness(0) invert(1)"
-              : undefined,
-          }}
-        />
-      ),
-      label: (
-        <NavLink to="wellnesstrack">
-          Actionable Insights and Wellness Tracking
-        </NavLink>
-      ),
-    },
+  //   {
+  //     key: "wellnesstrack",
+  //     icon: (
+  //       <img
+  //         src={wellnesstrack}
+  //         alt="wellnesstrack"
+  //         width={20}
+  //         style={{
+  //           filter: location.pathname.includes("wellnesstrack")
+  //             ? "brightness(0) invert(1)"
+  //             : undefined,
+  //         }}
+  //       />
+  //     ),
+  //     label: (
+  //       <NavLink to="wellnesstrack">
+  //         Actionable Insights and Wellness Tracking
+  //       </NavLink>
+  //     ),
+  //   },
 
-    {
-      key: "profile",
-      icon: (
-        <img
-          src={profile}
-          alt="profile"
-          width={16}
-          height={16}
-          style={{
-            filter: location.pathname.includes("profile")
-              ? "brightness(0) invert(1)"
-              : undefined,
-          }}
-        />
-      ),
-      label: <NavLink to="profile">Profile</NavLink>,
-    },
+  //   {
+  //     key: "profile",
+  //     icon: (
+  //       <img
+  //         src={profile}
+  //         alt="profile"
+  //         width={16}
+  //         height={16}
+  //         style={{
+  //           filter: location.pathname.includes("profile")
+  //             ? "brightness(0) invert(1)"
+  //             : undefined,
+  //         }}
+  //       />
+  //     ),
+  //     label: <NavLink to="profile">Profile</NavLink>,
+  //   },
 
-    {
-      key: "settings",
-      label: <span className="text-base-color"> Settings</span>,
-      icon: <img src={setting} alt="dashboard" width={16} height={16} />,
-      children: [
-        {
-          key: "change-password",
-          icon: <span>&#8226;</span>,
-          label: (
-            <NavLink to="settings/change-password">Change Password</NavLink>
-          ),
-        },
-      ],
-    },
-    {
-      key: "logout",
-      icon: (
-        <img
-          src={logout}
-          alt="logout"
-          width={16}
-          height={16}
-          style={{ color: "#222222", fontSize: "16px" }}
-        />
-      ),
-      label: (
-        <div onClick={() => localStorage.removeItem("clinivea_user")}>
-          <NavLink to="/signin">Logout</NavLink>
-        </div>
-      ),
-    },
-  ];
+  //   {
+  //     key: "settings",
+  //     label: <span className="text-base-color"> Settings</span>,
+  //     icon: <img src={setting} alt="dashboard" width={16} height={16} />,
+  //     children: [
+  //       {
+  //         key: "change-password",
+  //         icon: <span>&#8226;</span>,
+  //         label: (
+  //           <NavLink to="settings/change-password">Change Password</NavLink>
+  //         ),
+  //       },
+  //     ],
+  //   },
+  //   {
+  //     key: "logout",
+  //     icon: (
+  //       <img
+  //         src={logout}
+  //         alt="logout"
+  //         width={16}
+  //         height={16}
+  //         style={{ color: "#222222", fontSize: "16px" }}
+  //       />
+  //     ),
+  //     label: (
+  //       <div onClick={() => localStorage.removeItem("clinivea_user")}>
+  //         <NavLink to="/signin">Logout</NavLink>
+  //       </div>
+  //     ),
+  //   },
+  // ];
 
   // Select the appropriate menu items based on user role
   const menuItems =
-    userRole?.role === "admin"
-      ? adminMenuItems
-      : userRole?.role === "mvr"
-      ? mvrMenuItems
-      : userMenuItems;
+    userRole?.role === "admin" ? adminMenuItems : userRole?.role === "mvr";
 
   return (
     <div className="h-screen bg-white ">
@@ -832,7 +878,7 @@ const DashboardLayout = () => {
           <Menu
             mode="inline"
             defaultSelectedKeys={pathSegment}
-            selectedKeys={pathSegment}
+            selectedKeys={activeKeys}
             style={{
               backgroundColor: "transparent",
               border: "none",

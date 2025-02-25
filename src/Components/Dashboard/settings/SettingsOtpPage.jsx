@@ -17,7 +17,7 @@ const SettingsOtpPage = () => {
   return (
     <div
       className="container w-[90%] mx-auto bg-primary-color min-h-[80vh] p-20 flex justify-center items-center"
-      style={{ boxShadow: "0px 0px 5px 2px #00000040" }}
+      style={{ boxShadow: "0px 0px 2px 1px #00000040" }}
     >
       <div className="w-full lg:w-[70%]">
         <div className="mb-10">

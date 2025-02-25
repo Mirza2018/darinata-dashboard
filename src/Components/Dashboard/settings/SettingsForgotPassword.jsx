@@ -15,10 +15,10 @@ const SettingsForgotPassword = () => {
     >
       <div className="w-full lg:w-[70%]">
         <div className="mb-10">
-          <p className="text-3xl lg:text-[36px] text-base-color font-medium mb-8">
+          <p className="text-3xl lg:text-[36px]  font-medium mb-8">
             Forgot Password
           </p>
-          <p className="md:text-lg lg:text-xl text-base-color">
+          <p className="md:text-lg lg:text-xl ">
             Enter your email address to get a verification code for resetting
             your password.
           </p>
@@ -43,7 +43,7 @@ const SettingsForgotPassword = () => {
           >
             <Input
               placeholder="Enter your mail"
-              className="py-2 px-3 text-xl bg-site-color border  text-base-color hover:bg-transparent hover:border-secoundary-color focus:bg-transparent focus:border-secoundary-color"
+              className="py-2 px-3 text-xl bg-site-color border  hover:bg-transparent hover:border-secoundary-color focus:bg-transparent focus:border-secoundary-color"
             />
           </Form.Item>
           <Form.Item>
