@@ -3,56 +3,49 @@ import { createBrowserRouter, useNavigate } from "react-router-dom";
 import ForgotPassword from "../../Pages/Auth/ForgotPassword";
 import DashboardLayout from "../Layout/DashboardLayout";
 
-import AllUsers from "../Dashboard/Users/Users";
-import AssignMVR from "../Dashboard/AssignMVR/AssignMVR";
-import SingleAssignMVR from "../Dashboard/AssignMVR/SingleAssignMVR";
-import AddMVR from "../Dashboard/MVR/AddMVR";
-import AllMVR from "../Dashboard/MVR/AllMVR";
-import Subscription from "../Dashboard/Subscription/Subscription";
 import FAQ from "../Dashboard/FAQ/FAQ";
+import Subscription from "../Dashboard/Subscription/Subscription";
 
-import Profile from "../../Pages/Profile/Profile";
 import EditProfile from "../../Pages/Profile/EditProfile";
+import Profile from "../../Pages/Profile/Profile";
 
+import OtpPage from "../../Pages/Auth/OtpPage";
 import SignIn from "../../Pages/Auth/SignIn";
 import UpdatePassword from "../../Pages/Auth/UpdatePassword";
-import OtpPage from "../../Pages/Auth/OtpPage";
+import Logout from "../Dashboard/Logout";
 import SettingsChangePassword from "../Dashboard/settings/SettingsChangePassword";
 import SettingsForgotPassword from "../Dashboard/settings/SettingsForgotPassword";
 import SettingsOtpPage from "../Dashboard/settings/SettingsOtpPage";
 import SettingsUpdatePassword from "../Dashboard/settings/SettingsUpdatePassword";
-import Logout from "../Dashboard/Logout";
 
-import TermsOfService from "../Dashboard/settings/TermsOfService";
 import AboutUs from "../Dashboard/settings/AboutUs";
 import PrivacyPolicy from "../Dashboard/settings/PrivacyPolicy";
+import TermsOfService from "../Dashboard/settings/TermsOfService";
 
-import Notifications from "../Dashboard/Notifications";
-import Earning from "../Dashboard/Earning/Earning";
-import Appointment from "../Dashboard/Appointment/Appointment";
-import Chat from "../Dashboard/Chat/Chat";
 import { useEffect } from "react";
-import Loading from "../UI/Loading";
-import ProtectedRoute from "./ProtectedRoute";
-import AdminDashboard from "../Dashboard/AdminDashBoard";
-import MvrDashboard from "../Dashboard/MvrDashBoard";
-import CalendarappointmentsPage from "../Dashboard/Calendarappointments/CalendarappointmentsPage";
-import UserDashboardPage from "../../Pages/UserDashboardPage";
-import MedicalHistory from "../Dashboard/UserHealthRecord/MedicalHistory";
-import UserHealthRecoardPage from "../../Pages/UserHealthRecoardPage";
 import ActionableWellnessTracking from "../../Pages/ActionableWellnessTracking";
 import CliniveaPayPage from "../../Pages/CliniveaPayPage";
-import CarSellTable from "../TotalCarSellPage/CarSellTable";
+import UserDashboardPage from "../../Pages/UserDashboardPage";
+import UserHealthRecoardPage from "../../Pages/UserHealthRecoardPage";
+import AdminDashboard from "../Dashboard/AdminDashBoard";
+import Appointment from "../Dashboard/Appointment/Appointment";
+import CalendarappointmentsPage from "../Dashboard/Calendarappointments/CalendarappointmentsPage";
+import Chat from "../Dashboard/Chat/Chat";
+import MvrDashboard from "../Dashboard/MvrDashBoard";
+import Notifications from "../Dashboard/Notifications";
 import DelarManagementMainPage from "../DelarManagementPage/DelarManagementMainPage";
-import EarningTable from "../TotalEarningPage/EarningTable";
-import TotalEarning from "../TotalEarningPage/TotalEarning";
-import UserManagement from "../UserManagement/UserManagement";
+import ContractData from "../DelarManagementPage/SingleDealerPage/ContractData";
+import SingleDealer from "../DelarManagementPage/SingleDealerPage/SingleDealer";
+import EveryContractPage from "../EveryContract/EveryContractPage";
 import ServicePrice from "../ServicePricePage/ServicePrice";
 import TaskManagement from "../TaskManagementPage/TaskManagement";
+import CarSellTable from "../TotalCarSellPage/CarSellTable";
+import TotalEarning from "../TotalEarningPage/TotalEarning";
+import Loading from "../UI/Loading";
 import SingleUserManagement from "../UserManagement/SingleUserManagement";
-import SingleDealer from "../DelarManagementPage/SingleDealerPage/SingleDealer";
-import ContractData from "../DelarManagementPage/SingleDealerPage/ContractData";
 import UserCarInfo from "../UserManagement/UserCarInfo";
+import UserManagement from "../UserManagement/UserManagement";
+import ProtectedRoute from "./ProtectedRoute";
 
 function AuthRedirect() {
   const navigate = useNavigate();
@@ -92,6 +85,14 @@ const router = createBrowserRouter([
       {
         path: "dashboard",
         element: <AdminDashboard />,
+      },
+      {
+        path: "every-contract",
+        element: <EveryContractPage />,
+      },
+      {
+        path: "every-contract/contract/:id",
+        element: <ContractData />,
       },
       {
         path: "total-Car-Sell",

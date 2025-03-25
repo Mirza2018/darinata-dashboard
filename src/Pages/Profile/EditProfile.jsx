@@ -1,4 +1,4 @@
-/ eslint-disable no-unused-vars /
+/ eslint-disable no-unused-vars /;
 import { Button, Form, Input, Typography, Upload } from "antd";
 import profileImage from "/images/profileImage.png";
 import { useState } from "react";
@@ -7,15 +7,18 @@ import { MdOutlineEdit } from "react-icons/md";
 
 const EditProfile = () => {
   const profileData = {
-    fullname: "James Mitchell",
+    firstName: "Tom",
+    lastName: "Cruise",
     email: "emily@gmail.com",
     address: "Vancouver, BC VG1Z4, Canada",
+    po: "3000",
+    city: "Vancouver",
     contactNumber: "+99-01846875456",
   };
 
   const [imageUrl, setImageUrl] = useState(profileImage);
 
-  const handleImageUpload = (info)=> {
+  const handleImageUpload = (info) => {
     if (info.file.status === "removed") {
       setImageUrl(profileImage); // Reset to null or fallback image
     } else {
@@ -71,10 +74,39 @@ const EditProfile = () => {
               </Upload>
             </Form.Item>
           </div>
-          <p className="text-5xl font-semibold -mt-16">James Mitchell</p>
+          <p className="text-5xl font-semibold -mt-16">Tom cruise</p>
         </div>
 
         <div className=" text-white mt-5">
+          <Typography.Title level={5} style={{ color: "#222222" }}>
+            First Name
+          </Typography.Title>
+          <Form.Item
+            initialValue={profileData.firstName}
+            name="firstName"
+            className="text-white"
+          >
+            <Input
+              suffix={<MdOutlineEdit />}
+              placeholder="Enter your first name"
+              className="cursor-not-allowed py-2 px-3 text-xl bg-site-color border !border-input-color hover:bg-transparent hover:border-secoundary-color focus:bg-transparent focus:border-secoundary-color"
+            />
+          </Form.Item>
+
+          <Typography.Title level={5} style={{ color: "#222222" }}>
+            Last Name
+          </Typography.Title>
+          <Form.Item
+            initialValue={profileData.lastName}
+            name="lastName"
+            className="text-white"
+          >
+            <Input
+              suffix={<MdOutlineEdit />}
+              placeholder="Enter your last name"
+              className="cursor-not-allowed py-2 px-3 text-xl bg-site-color border !border-input-color hover:bg-transparent hover:border-secoundary-color focus:bg-transparent focus:border-secoundary-color"
+            />
+          </Form.Item>
           <Typography.Title level={5} style={{ color: "#222222" }}>
             Email
           </Typography.Title>
@@ -90,20 +122,7 @@ const EditProfile = () => {
               className="cursor-not-allowed py-2 px-3 text-xl bg-site-color border !border-input-color  hover:bg-transparent hover:border-secoundary-color focus:bg-transparent focus:border-secoundary-color"
             />
           </Form.Item>
-          <Typography.Title level={5} style={{ color: "#222222" }}>
-            Full Name
-          </Typography.Title>
-          <Form.Item
-            initialValue={profileData.fullname}
-            name="fullname"
-            className="text-white"
-          >
-            <Input
-              suffix={<MdOutlineEdit />}
-              placeholder="Enter your Name"
-              className="cursor-not-allowed py-2 px-3 text-xl bg-site-color border !border-input-color hover:bg-transparent hover:border-secoundary-color focus:bg-transparent focus:border-secoundary-color"
-            />
-          </Form.Item>
+
           <Typography.Title level={5} style={{ color: "#222222" }}>
             Address
           </Typography.Title>
@@ -118,6 +137,42 @@ const EditProfile = () => {
               className="cursor-not-allowed py-2 px-3 text-xl bg-site-color border !border-input-color  hover:bg-transparent hover:border-secoundary-color focus:bg-transparent focus:border-secoundary-color"
             />
           </Form.Item>
+          <div className="flex gap-5 w-full">
+            <div className="flex-1">
+              <Typography.Title level={5} style={{ color: "#222222" }}>
+                Postal Code
+              </Typography.Title>
+              <Form.Item
+                initialValue={profileData.po}
+                name="po"
+                className="text-white"
+              >
+                <Input
+                  suffix={<MdOutlineEdit />}
+                  placeholder="Enter your postal code"
+                  className="cursor-not-allowed py-2 px-3 text-xl bg-site-color border !border-input-color  hover:bg-transparent hover:border-secoundary-color focus:bg-transparent focus:border-secoundary-color"
+                />
+              </Form.Item>
+            </div>
+
+            <div className="flex-1">
+              <Typography.Title level={5} style={{ color: "#222222" }}>
+                City
+              </Typography.Title>
+              <Form.Item
+                initialValue={profileData.city}
+                name="city"
+                className="text-white"
+              >
+                <Input
+                  suffix={<MdOutlineEdit />}
+                  placeholder="Enter your address"
+                  className="cursor-not-allowed py-2 px-3 text-xl bg-site-color border !border-input-color  hover:bg-transparent hover:border-secoundary-color focus:bg-transparent focus:border-secoundary-color"
+                />
+              </Form.Item>
+            </div>
+          </div>
+
           <Typography.Title level={5} style={{ color: "#222222" }}>
             Contact number
           </Typography.Title>

@@ -2,7 +2,7 @@
 import { Button, Space, Table, Tooltip } from "antd";
 import { GoEye } from "react-icons/go";
 import { RiDeleteBin6Line } from "react-icons/ri";
-
+ 
 const EarningTable = ({
   data,
   loading,
@@ -42,7 +42,7 @@ const EarningTable = ({
       dataIndex: "price",
       key: "price",
     },
-    {
+    { 
       title: "Service Charge",
       dataIndex: "serviceCharge",
       key: "serviceCharge",

@@ -3,14 +3,11 @@ import { useEffect, useState } from "react";
 import { SearchOutlined } from "@ant-design/icons";
 import { Input } from "antd";
 import axios from "axios";
-
-import ViewEarningTable from "./ViewEarningTable";
-import EarningTable from "./EarningTable";
-
+import ViewEarningTable from "../TotalEarningPage/ViewEarningTable";
+import ContractTable from "./ContractTable";
 
 
-
-export default function TotalEarning() {
+export default function EveryContractPage() {
   //* Store Search Value
   const [searchText, setSearchText] = useState("");
 
@@ -42,7 +39,6 @@ export default function TotalEarning() {
 
     fetchData();
   }, []);
-
 
   const onSearch = (value) => {
     setSearchText(value);
@@ -94,7 +90,7 @@ export default function TotalEarning() {
           </div>
         </div>
         <div className="px-2 lg:px-6">
-          <EarningTable
+          <ContractTable
             data={data}
             loading={loading}
             showViewModal={showViewModal}

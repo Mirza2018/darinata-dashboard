@@ -11,7 +11,6 @@ export default function UserManagement() {
   const [form] = Form.useForm();
   const router = useNavigate();
 
-
   const { TextArea } = Input;
   //* Store Search Value
   const [searchText, setSearchText] = useState("");
@@ -189,24 +188,19 @@ export default function UserManagement() {
                 </Form.Item>
               </div>
               <div className="grid md:grid-cols-2 gap-5">
-                <div>
-                  <Form.Item label="Email" name="email">
-                    <Input placeholder="Enter your Email" />
-                  </Form.Item>
-                </div>
-                <div className="flex  gap-5 ">
-                  <Form.Item label="Rge Nr." name="rgeNr">
-                    <Input placeholder="Enter your Rge Nr." />
-                  </Form.Item>
-                  <Form.Item label="Konto Nr." name="kontoNr">
-                    <Input placeholder="Enter your Konto Nr." />
-                  </Form.Item>{" "}
-                </div>
-              </div>
-              <div className="grid md:grid-cols-2 gap-5">
-                <Form.Item label="CVR Number" name="cvrNumber">
-                  <Input placeholder="Enter your CVR Number" />
+                <Form.Item label="Email" name="email">
+                  <Input placeholder="Enter your Email" />
                 </Form.Item>
+
+                <Form.Item label="Rge Nr." name="rgeNr">
+                  <Input placeholder="Enter your Rge Nr." />
+                </Form.Item>
+              </div>
+
+              <div className="grid md:grid-cols-2 gap-5">
+                <Form.Item label="Konto Nr." name="kontoNr">
+                  <Input placeholder="Enter your Konto Nr." />
+                </Form.Item>{" "}
                 <Form.Item label="Website Link" name="websiteLink">
                   <Input placeholder="Enter your Website Link" />
                 </Form.Item>

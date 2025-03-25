@@ -2,12 +2,16 @@ import { Form, Input, Typography } from "antd";
 import profileImage from "/images/profileImage.png";
 import { EditOutlined } from "@ant-design/icons";
 import { Link } from "react-router-dom";
+import React from "react";
 
 const Profile = () => {
   const profileData = {
-    fullname: "James Mitchell",
+    firstName: "Tom",
+    lastName: "Cruise",
     email: "emily@gmail.com",
     address: "Vancouver, BC VG1Z4, Canada",
+    po: "3000",
+    city: "Vancouver",
     contactNumber: "+99-01846875456",
   };
 
@@ -25,15 +29,37 @@ const Profile = () => {
           </div>
           <Link to="edit-profile" className="hover:text-blue-500">
             <div className="mt-10 bg-base-color border border-secondary-color  px-5 py-3 rounded-lg">
-              <div className="flex gap-1">
+              <div className="flex gap-1 whitespace-nowrap">
                 <EditOutlined style={{ color: "#000" }} />
-                <p className="">Edit Profile</p>
+                <p className=" whitespace-nowrap">Edit Profile</p>
               </div>
             </div>
           </Link>
         </div>
         <div className="flex flex-col items-center text-white mt-5">
           <Form layout="vertical" className="bg-transparent p-4 w-full">
+            <Typography.Title level={5} style={{ color: "#222222" }}>
+              First Name
+            </Typography.Title>
+            <Form.Item className="text-white">
+              <Input
+                readOnly
+                value={profileData.firstName}
+                placeholder="Enter your first name"
+                className="cursor-not-allowed py-2 px-3 text-xl bg-site-color border !border-input-color hover:bg-transparent hover:border-secoundary-color focus:bg-transparent focus:border-secoundary-color"
+              />
+            </Form.Item>
+            <Typography.Title level={5} style={{ color: "#222222" }}>
+              Last Name
+            </Typography.Title>
+            <Form.Item className="text-white">
+              <Input
+                readOnly
+                value={profileData.lastName}
+                placeholder="Enter your last name"
+                className="cursor-not-allowed py-2 px-3 text-xl bg-site-color border !border-input-color hover:bg-transparent hover:border-secoundary-color focus:bg-transparent focus:border-secoundary-color"
+              />
+            </Form.Item>
             <Typography.Title level={5} style={{ color: "#222222" }}>
               Email
             </Typography.Title>
@@ -44,17 +70,7 @@ const Profile = () => {
                 className="cursor-not-allowed py-2 px-3 text-xl bg-site-color border !border-input-color  hover:bg-transparent hover:border-secoundary-color focus:bg-transparent focus:border-secoundary-color"
               />
             </Form.Item>
-            <Typography.Title level={5} style={{ color: "#222222" }}>
-              Full Name
-            </Typography.Title>
-            <Form.Item className="text-white">
-              <Input
-                readOnly
-                value={profileData.fullname}
-                placeholder="Enter your full name"
-                className="cursor-not-allowed py-2 px-3 text-xl bg-site-color border !border-input-color hover:bg-transparent hover:border-secoundary-color focus:bg-transparent focus:border-secoundary-color"
-              />
-            </Form.Item>
+
             <Typography.Title level={5} style={{ color: "#222222" }}>
               Address
             </Typography.Title>
@@ -66,6 +82,36 @@ const Profile = () => {
                 className="cursor-not-allowed py-2 px-3 text-xl bg-site-color border !border-input-color  hover:bg-transparent hover:border-secoundary-color focus:bg-transparent focus:border-secoundary-color"
               />
             </Form.Item>
+
+            <div className="flex gap-5 w-full">
+              <div className="flex-1">
+                <Typography.Title level={5} style={{ color: "#222222" }}>
+                  Postal Code
+                </Typography.Title>
+                <Form.Item className="text-white">
+                  <Input
+                    readOnly
+                    value={profileData.po}
+                    placeholder="Enter your postal code"
+                    className="cursor-not-allowed py-2 px-3 text-xl bg-site-color border !border-input-color  hover:bg-transparent hover:border-secoundary-color focus:bg-transparent focus:border-secoundary-color"
+                  />
+                </Form.Item>
+              </div>
+              <div className="flex-1">
+                <Typography.Title level={5} style={{ color: "#222222" }}>
+                  City
+                </Typography.Title>
+                <Form.Item className="text-white">
+                  <Input
+                    readOnly
+                    value={profileData.city}
+                    placeholder="Enter your city"
+                    className="cursor-not-allowed py-2 px-3 text-xl bg-site-color border !border-input-color  hover:bg-transparent hover:border-secoundary-color focus:bg-transparent focus:border-secoundary-color"
+                  />
+                </Form.Item>
+              </div>
+            </div>
+
             <Typography.Title level={5} style={{ color: "#222222" }}>
               Contact Number
             </Typography.Title>
