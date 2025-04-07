@@ -66,8 +66,16 @@ const ContractTable = ({
       title: "Action",
       key: "action",
       render: (_, record) => (
-        <button className="ring-green-700 ring-2 border-4 bg-[#C68C4E] text-black rounded-md  py-1 font-semibold whitespace-nowrap px-10">
-          Paid
+        <button className={` text-black rounded-md  py-1 font-semibold whitespace-nowrap ${record?.status === "Completed" ? "bg-green-600 px-6 " : "bg-red-600 px-3"}`}>    
+          {record?.status === "Completed" ? (
+            <Tooltip title="Paid" placement="topRight">
+              <span className="text-white">Paid</span>
+            </Tooltip>
+          ) : (
+            <Tooltip title="Unpaid" placement="topRight">
+              <span className="text-white">Unpaid</span>
+            </Tooltip>
+          )}
         </button>
       ),
     },
