@@ -98,14 +98,14 @@ const router = createBrowserRouter([
         path: "total-Car-Sell",
         element: <CarSellTable />,
       },
-      {
-        path: "total-earning",
-        element: <TotalEarning />,
-      },
-      {
-        path: "service-price",
-        element: <ServicePrice />,
-      },
+      // {
+      //   path: "total-earning",
+      //   element: <TotalEarning />,
+      // },
+      // {
+      //   path: "service-price",
+      //   element: <ServicePrice />,
+      // },
       {
         path: "user-management",
         element: <UserManagement />,

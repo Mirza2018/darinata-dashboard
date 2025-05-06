@@ -29,9 +29,9 @@ const OrderChart = () => {
   return (
     <div className=" bg-base-color rounded-md border border-secondary-color mt-10 ">
       <h1 className="text-2xl font-bold whitespace-nowrap pt-5 ms-8">
-        Sell Chart
+        Total Car Sell Chart
       </h1>
-    
+
       <div className="w-full h-80">
         <ResponsiveContainer>
           <AreaChart

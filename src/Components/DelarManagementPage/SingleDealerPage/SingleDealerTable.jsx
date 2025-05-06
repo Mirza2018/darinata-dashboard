@@ -1,5 +1,6 @@
 /* eslint-disable react/prop-types */
-import { Button, Space, Switch, Table, Tooltip } from "antd";
+import { Button, Form, Modal, Radio, Space, Switch, Table, Tooltip } from "antd";
+import { useState } from "react";
 import { GoEye } from "react-icons/go";
 import { RiDeleteBin6Line } from "react-icons/ri";
 import { Link } from "react-router-dom";
@@ -11,13 +12,14 @@ const SingleDealerTable = ({
   showDeleteModal,
   pageSize = 0,
 }) => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [statusData, setStatusData] = useState(null);
+  const statusRecord = (record) => {
+    setIsModalOpen(true);
+    setStatusData(record);
+  };
+
   const columns = [
-    // {
-    //   title: "User Name",
-    //   dataIndex: "userName",
-    //   key: "userName",
-    //   responsive: ["md"],
-    // },
     {
       title: "Car Name",
       dataIndex: "carName",
@@ -46,7 +48,7 @@ const SingleDealerTable = ({
         <>
           <Space size="middle">
             <Tooltip placement="right" title="View Details">
-              {console.log(record)}
+              {/* {console.log(record)} */}
               <Link to={`contract/${record._id}`}>
                 <p className="text-xs font-semibold border hover:text-secondary-color border-[#00721E] px-2 py-1 rounded">
                   See Contract Peper
@@ -79,8 +81,31 @@ const SingleDealerTable = ({
       title: "Status",
       dataIndex: "status",
       key: "status",
+      render: (_, record) => (
+        <button
+          onClick={() => statusRecord(record)}
+          className={` text-black rounded-md  py-1 font-semibold whitespace-nowrap ${
+            record?.status === "Completed"
+              ? "bg-green-600 px-6 "
+              : "bg-yellow-600 px-3"
+          }`}
+        >
+          {record?.status === "Completed" ? (
+            <Tooltip title="Paid" placement="topRight">
+              <span className="text-white">Paid</span>
+            </Tooltip>
+          ) : (
+            <Tooltip title="Unpaid" placement="topRight">
+              <span className="text-white">Non Paid</span>
+            </Tooltip>
+          )}
+        </button>
+      ),
     },
   ];
+  const onFinish = (value) => {
+    console.log({ value });
+  };
 
   return (
     <div>
@@ -92,6 +117,41 @@ const SingleDealerTable = ({
         rowKey="id"
         scroll={{ x: true }}
       />
+      <Modal
+        title="Payment Status"
+        open={isModalOpen}
+        onOk={() => setIsModalOpen(false)}
+        onCancel={() => setIsModalOpen(false)}
+        footer={[]}
+      >
+        <Form onFinish={onFinish}>
+          {/* {console.log(statusData)} */}
+
+          <Form.Item name="paymentStatus">
+            <Radio.Group
+              className="flex flex-col gap-3"
+              options={[
+                { value: "paid", label: "Paid" },
+                { value: "nonpaid", label: "Non Paid" },
+              ]}
+            />
+          </Form.Item>
+          <div className="flex  gap-5 justify-center">
+            <button
+              onClick={() => setIsModalOpen(false)}
+              className=" bg-blue-100  px-3 py-1 rounded text-xl font-medium"
+            >
+              Cancel
+            </button>
+            <button
+              onClick={() => setIsModalOpen(false)}
+              className=" bg-green-400 text-white px-3 py-1 rounded text-xl font-medium"
+            >
+              Update
+            </button>
+          </div>
+        </Form>
+      </Modal>
     </div>
   );
 };

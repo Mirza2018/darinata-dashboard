@@ -11,14 +11,20 @@ import {
 } from "recharts";
 
 const data = [
-  { name: "Sunday", Order: 475 },
-  { name: "Monday", Order: 580 },
-  { name: "Tuesday", Order: 300 },
-  { name: "Wednesday", Order: 525 },
-  { name: "Thursday", Order: 375 },
-  { name: "Friday", Order: 450 },
-  { name: "Saturday", Order: 575 },
+  { name: "January", Cars: 475 },
+  { name: "February", Cars: 580 },
+  { name: "March", Cars: 300 },
+  { name: "April", Cars: 525 },
+  { name: "May", Cars: 375 },
+  { name: "June", Cars: 450 },
+  { name: "July", Cars: 575 },
+  { name: "August", Cars: 600 },
+  { name: "September", Cars: 420 },
+  { name: "October", Cars: 510 },
+  { name: "November", Cars: 480 },
+  { name: "December", Cars: 550 },
 ];
+
 
 const TotalRevenue = () => {
   // Formatter function to add 'K' suffix to Y-axis values
@@ -31,7 +37,7 @@ const TotalRevenue = () => {
     <div className=" bg-base-color border border-secondary-color mt-10 rounded-md px-5 ">
       <div className="flex justify-between  mt-4">
         <h1 className="text-2xl font-bold whitespace-nowrap pt-5 ms-8">
-          Total Revenue
+          Total Car Sell
         </h1>
         <div>
           <ConfigProvider
@@ -83,12 +89,12 @@ const TotalRevenue = () => {
               </linearGradient>
             </defs>
             <Tooltip
-              formatter={(value, name, props) => [`${value}K`, "Order"]}
+              formatter={(value, name, props) => [`${value} pcs`, "Cars"]}
               labelFormatter={(label) => ` ${label}`}
             />
             <Area
               type="monotone"
-              dataKey="Order"
+              dataKey="Cars"
               stroke="#2D9CDB"
               fill="url(#colorOrder)"
             />
