@@ -6,3 +6,33 @@
 
     max-width: 300px;
 }
+
+
+.noText .ant-upload-list-text {
+    display: none !important;
+  }
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+  
+  .scrollbar-hide {
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+  }
+  
+  .myShadow {
+    /* box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.15); */
+    box-shadow: 0px 0px 18px -1px rgba(248, 250, 252, 0.6) inset;
+    -webkit-box-shadow: 0px 0px 18px -1px rgba(248, 250, 252, 0.6) inset;
+    -moz-box-shadow: 0px 0px 18px -1px rgba(248, 250, 252, 0.6) inset;
+  }
+  
+  .hide-x-scrollbar {
+    overflow-x: auto;
+    scrollbar-width: none; /* Firefox */
+  }
+  
+  .hide-x-scrollbar::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, Edge */
+  }
+  

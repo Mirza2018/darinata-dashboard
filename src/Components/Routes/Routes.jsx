@@ -51,12 +51,7 @@ function AuthRedirect() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    const user = JSON.parse(localStorage.getItem("clinivea_user"));
-    if (user && user.role) {
-      navigate(`/${user.role}/dashboard`, { replace: true });
-    } else {
-      navigate("/signin", { replace: true });
-    }
+    navigate(`/admin/dashboard`, { replace: true });
   }, [navigate]);
 
   // Optionally display a loading indicator
@@ -193,129 +188,129 @@ const router = createBrowserRouter([
       },
     ],
   },
-  {
-    path: "mvr",
-    element: (
-      <ProtectedRoute role="mvr">
-        <DashboardLayout />
-      </ProtectedRoute>
-    ),
-    children: [
-      {
-        path: "dashboard",
-        element: <MvrDashboard />,
-      },
-      {
-        path: "appointment",
-        element: <Appointment />,
-      },
-      {
-        path: "chat",
-        element: <Chat />,
-      },
-      {
-        path: "profile",
-        element: <Profile />,
-      },
-      {
-        path: "profile/edit-profile",
-        element: <EditProfile />,
-      },
+  // {
+  //   path: "mvr",
+  //   element: (
+  //     <ProtectedRoute role="mvr">
+  //       <DashboardLayout />
+  //     </ProtectedRoute>
+  //   ),
+  //   children: [
+  //     {
+  //       path: "dashboard",
+  //       element: <MvrDashboard />,
+  //     },
+  //     {
+  //       path: "appointment",
+  //       element: <Appointment />,
+  //     },
+  //     {
+  //       path: "chat",
+  //       element: <Chat />,
+  //     },
+  //     {
+  //       path: "profile",
+  //       element: <Profile />,
+  //     },
+  //     {
+  //       path: "profile/edit-profile",
+  //       element: <EditProfile />,
+  //     },
 
-      {
-        path: "settings/forgot-password",
-        element: <SettingsForgotPassword />,
-      },
-      {
-        path: "settings/change-password",
-        element: <SettingsChangePassword />,
-      },
-      {
-        path: "settings/update-password",
-        element: <SettingsUpdatePassword />,
-      },
-      {
-        path: "settings/otp-page",
-        element: <SettingsOtpPage />,
-      },
-      {
-        path: "logout",
-        element: <Logout />,
-      },
-      {
-        path: "notifications",
-        element: <Notifications />,
-      },
-    ],
-  },
-  {
-    path: "user",
-    element: (
-      <ProtectedRoute role="user">
-        <DashboardLayout />
-      </ProtectedRoute>
-    ),
-    children: [
-      {
-        path: "dashboard",
-        element: <UserDashboardPage />,
-      },
-      {
-        path: "healthrecord",
-        element: <UserHealthRecoardPage />,
-      },
-      {
-        path: "cliniveapay",
-        element: <CliniveaPayPage />,
-      },
-      {
-        path: "mvrcommunication",
-        element: <Chat />,
-      },
-      {
-        path: "calendarappointments",
-        element: <CalendarappointmentsPage />,
-      },
+  //     {
+  //       path: "settings/forgot-password",
+  //       element: <SettingsForgotPassword />,
+  //     },
+  //     {
+  //       path: "settings/change-password",
+  //       element: <SettingsChangePassword />,
+  //     },
+  //     {
+  //       path: "settings/update-password",
+  //       element: <SettingsUpdatePassword />,
+  //     },
+  //     {
+  //       path: "settings/otp-page",
+  //       element: <SettingsOtpPage />,
+  //     },
+  //     {
+  //       path: "logout",
+  //       element: <Logout />,
+  //     },
+  //     {
+  //       path: "notifications",
+  //       element: <Notifications />,
+  //     },
+  //   ],
+  // },
+  // {
+  //   path: "user",
+  //   element: (
+  //     <ProtectedRoute role="user">
+  //       <DashboardLayout />
+  //     </ProtectedRoute>
+  //   ),
+  //   children: [
+  //     {
+  //       path: "dashboard",
+  //       element: <UserDashboardPage />,
+  //     },
+  //     {
+  //       path: "healthrecord",
+  //       element: <UserHealthRecoardPage />,
+  //     },
+  //     {
+  //       path: "cliniveapay",
+  //       element: <CliniveaPayPage />,
+  //     },
+  //     {
+  //       path: "mvrcommunication",
+  //       element: <Chat />,
+  //     },
+  //     {
+  //       path: "calendarappointments",
+  //       element: <CalendarappointmentsPage />,
+  //     },
 
-      {
-        path: "wellnesstrack",
-        element: <ActionableWellnessTracking />,
-      },
-      {
-        path: "profile",
-        element: <Profile />,
-      },
-      {
-        path: "profile/edit-profile",
-        element: <EditProfile />,
-      },
+  //     {
+  //       path: "wellnesstrack",
+  //       element: <ActionableWellnessTracking />,
+  //     },
+  //     {
+  //       path: "profile",
+  //       element: <Profile />,
+  //     },
+  //     {
+  //       path: "profile/edit-profile",
+  //       element: <EditProfile />,
+  //     },
 
-      {
-        path: "settings/forgot-password",
-        element: <SettingsForgotPassword />,
-      },
-      {
-        path: "settings/change-password",
-        element: <SettingsChangePassword />,
-      },
-      {
-        path: "settings/update-password",
-        element: <SettingsUpdatePassword />,
-      },
-      {
-        path: "settings/otp-page",
-        element: <SettingsOtpPage />,
-      },
-      {
-        path: "logout",
-        element: <Logout />,
-      },
-      {
-        path: "notifications",
-        element: <Notifications />,
-      },
-    ],
-  },
+  //     {
+  //       path: "settings/forgot-password",
+  //       element: <SettingsForgotPassword />,
+  //     },
+  //     {
+  //       path: "settings/change-password",
+  //       element: <SettingsChangePassword />,
+  //     },
+  //     {
+  //       path: "settings/update-password",
+  //       element: <SettingsUpdatePassword />,
+  //     },
+  //     {
+  //       path: "settings/otp-page",
+  //       element: <SettingsOtpPage />,
+  //     },
+  //     {
+  //       path: "logout",
+  //       element: <Logout />,
+  //     },
+  //     {
+  //       path: "notifications",
+  //       element: <Notifications />,
+  //     },
+  //   ],
+  // },
 
   {
     path: "signin",

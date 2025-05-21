@@ -5,10 +5,23 @@ import { Input } from "antd";
 import axios from "axios";
 import ViewEarningTable from "../TotalEarningPage/ViewEarningTable";
 import ContractTable from "./ContractTable";
+import { useEveryContractQuery } from "../../redux/api/adminApi";
 
 
 export default function EveryContractPage() {
+
+  const {
+    data: everyContract,
+    currentData,
+    isLoading,
+    isFetching,
+    isSuccess,
+  } = useEveryContractQuery();
+
+  const displayedData = everyContract ?? currentData;
   //* Store Search Value
+  console.log(displayedData);
+  
   const [searchText, setSearchText] = useState("");
 
   //* Use to set user
@@ -91,8 +104,8 @@ export default function EveryContractPage() {
         </div>
         <div className="px-2 lg:px-6">
           <ContractTable
-            data={data}
-            loading={loading}
+            data={displayedData?.data?.result}
+            loading={isLoading}
             showViewModal={showViewModal}
             showDeleteModal={showDeleteModal}
             pageSize={12}

@@ -9,7 +9,7 @@ const ViewEarningTable = ({
   currentRecord,
   handleBlock,
 }) => {
-  console.log("currentRecord", currentRecord);
+  // console.log("currentRecord", currentRecord);
   return (
     <Modal
       title={

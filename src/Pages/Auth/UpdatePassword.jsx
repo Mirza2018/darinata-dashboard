@@ -2,13 +2,59 @@ import { Button, Form, Input, Typography } from "antd";
 
 import { useNavigate } from "react-router-dom";
 import { AllImages, AuthImages } from "../../../public/images/AllImages";
+import { useResetPasswordMutation } from "../../redux/api/authApi";
+import { useDispatch } from "react-redux";
+import { toast } from "sonner";
+import { clearAuth } from "../../redux/slices/authSlice";
 
 const ChangePassword = () => {
+  const [resetPassword] = useResetPasswordMutation();
   const navigate = useNavigate();
-  const onFinish = (values) => {
+  const dispatch = useDispatch();
+
+  const onFinish = async (values) => {
     console.log("Success:", values);
-    navigate("/signin");
+    const toastId = toast.loading("Password is Reseting...");
+
+    try {
+      const res = await resetPassword(values).unwrap();
+
+      console.log(res);
+
+      toast.success(res.message, {
+        id: toastId,
+        duration: 2000,
+      });
+      dispatch(clearAuth());
+
+      // const decodeToken = jwtDecode(res?.data?.accessToken);
+      // dispatch(setAccessToken(res?.data?.accessToken));
+      // dispatch(setUserInfo(decodeToken));
+      // cookies.set("car_trading_accessToken", res?.data?.accessToken);
+
+      navigate("/signin");
+    } catch (error) {
+      console.error("Login Error:", error); // Log the error for debugging
+
+      toast.error(
+        error?.data?.message ||
+          error?.error ||
+          "An error occurred during reset password please try later",
+        {
+          id: toastId,
+          duration: 2000,
+        }
+      );
+    }
   };
+
+
+
+
+  // const onFinish = (values) => {
+  //   console.log("Success:", values);
+  //   navigate("/signin");
+  // };
 
   return (
     <div className="w-full flex flex-col lg:flex-row justify-around items-center min-h-screen bg-[#E6F3F7]  ">

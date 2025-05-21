@@ -2,14 +2,57 @@ import { Button, Form, Input } from "antd";
 
 import { useNavigate } from "react-router-dom";
 import { AllImages, AuthImages } from "../../../public/images/AllImages";
+import { useForgetPasswordMutation } from "../../redux/api/authApi";
+import { useDispatch } from "react-redux";
+import { toast } from "sonner";
+import { setForgotPasswordToken, setResendSignUpToken } from "../../redux/slices/authSlice";
 
 const ForgotPassword = () => {
+  const [forgotPassEmail] = useForgetPasswordMutation();
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
-  const onFinish = (values) => {
+  const onFinish = async (values) => {
+    const toastId = toast.loading(" Password reseting...");
     console.log("Success:", values);
-    navigate("/verify-otp");
+
+    try {
+      const res = await forgotPassEmail(values).unwrap();
+
+      console.log("res: ", res?.data?.forgotPasswordToken);
+      dispatch(setForgotPasswordToken(res?.data?.forgotPasswordToken));
+      dispatch(setResendSignUpToken(res?.data?.forgotPasswordToken));
+
+      toast.success(res.message, {
+        id: toastId,
+        duration: 2000,
+      });
+      navigate("/verify-otp");
+    } catch (error) {
+      console.error("Login Error:", error);
+
+      toast.error(
+        error?.data?.message ||
+          error?.error ||
+          "An error occurred during Reset password",
+        {
+          id: toastId,
+          duration: 2000,
+        }
+      );
+    }
   };
+
+
+
+
+
+
+ 
+  // const onFinish = (values) => {
+  //   console.log("Success:", values);
+  //   navigate("/verify-otp");
+  // };
   return (
     <div className=" bg-[#E6F3F7]">
       <div className="max-w-[1350px] w-[90%] mx-auto flex flex-col lg:flex-row justify-center gap-10 items-center min-h-screen bg-site-color py-10">
@@ -20,7 +63,7 @@ const ForgotPassword = () => {
             width={0}
             height={0}
             sizes="100vw"
-            className="w-full object-cover rounded-xl aspect-square" 
+            className="w-full object-cover rounded-xl aspect-square"
           />
         </div>
         {/* <div className="h-[80vh] w-[2px] bg-[#F5382C] hidden lg:block"></div> */}

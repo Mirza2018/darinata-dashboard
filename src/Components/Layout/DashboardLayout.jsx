@@ -298,8 +298,8 @@ const DashboardLayout = () => {
     },
   ];
 
-  const menuItems =
-    userRole?.role === "admin" ? adminMenuItems : userRole?.role === "mvr";
+  const menuItems = adminMenuItems;
+    // userRole?.role === "admin" ? adminMenuItems : userRole?.role === "mvr";
 
   return (
     <div className="h-screen bg-white ">

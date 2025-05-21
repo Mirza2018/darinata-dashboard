@@ -2,16 +2,56 @@ import { Checkbox, Button, Input, Form, Typography, Select } from "antd";
 import { Link, useNavigate } from "react-router-dom";
 import { AllImages } from "../../../public/images/AllImages";
 import { DownOutlined } from "@ant-design/icons";
+import { useUserLoginMutation } from "../../redux/api/authApi";
+import { useDispatch } from "react-redux";
+import Cookies from "universal-cookie";
+import { toast } from "sonner";
+import { jwtDecode } from "jwt-decode";
+import { setAccessToken, setUserInfo } from "../../redux/slices/authSlice";
 
 const SignIn = () => {
+  const [userLogin] = useUserLoginMutation();
+  const dispatch = useDispatch();
   const navigate = useNavigate(); // useNavigate hook for navigation
+  const cookies = new Cookies();
 
-  const onFinish = (values) => {
-    console.log("clinivea_user:", values);
-    localStorage.removeItem("clinivea_user");
-    localStorage.setItem("clinivea_user", JSON.stringify(values));
-    navigate("/dashboard"); // Correct use of navigate function
+  const onFinish = async (values) => {
+    const toastId = toast.loading(" Logging in...");
+    console.log("car-trading:", values);
+
+    try {
+      const res = await userLogin(values).unwrap();
+      const decodeToken = jwtDecode(res?.data?.accessToken);
+
+      dispatch(setAccessToken(res?.data?.accessToken));
+      dispatch(setUserInfo(decodeToken));
+      console.log("res: ", res, decodeToken);
+      cookies.set("car_trading_accessToken", res?.data?.accessToken);
+      toast.success(res.message, {
+        id: toastId,
+        duration: 2000,
+      });
+      navigate("/dashboard");
+    } catch (error) {
+      console.error("Login Error:", error); // Log the error for debugging
+
+      toast.error(
+        error?.data?.message ||
+          error?.error ||
+          "An error occurred during Login",
+        {
+          id: toastId,
+          duration: 2000,
+        }
+      );
+    }
+
+    return;
+
+
   };
+
+ 
   return (
     <div className=" bg-[#E6F3F7]">
       <div className="max-w-[1350px] w-[90%] mx-auto grid grid-cols-1 lg:grid-cols-2 items-center justify-items-center gap-10 min-h-screen py-10">
@@ -85,29 +125,10 @@ const SignIn = () => {
             <Typography.Title level={4} style={{ color: "#222222" }}>
               Role
             </Typography.Title>
-            <Form.Item
-              rules={[{ required: true }]}
-              name="role"
-              className="text-white"
-            >
-              <Select
-                placeholder="Select Role"
-                suffixIcon={
-                  <DownOutlined className="text-[#222222] text-xl  mt-1" />
-                }
-                className="h-12 text-xl bg-site-color  text-base-color   "
-              >
-                <Select.Option value="admin">Admin</Select.Option>
-                {/* <Select.Option value="mvr">MVR </Select.Option>
-                <Select.Option value="user">User </Select.Option> */}
-              </Select>
-            </Form.Item>
+
             <div className="flex justify-between items-center mt-10">
               <Checkbox className="">Remember me</Checkbox>
-              <Link
-                to="/forgot-password"
-                className="!text-[#1E1E1E] "
-              >
+              <Link to="/forgot-password" className="!text-[#1E1E1E] ">
                 Forgot Password?
               </Link>
             </div>

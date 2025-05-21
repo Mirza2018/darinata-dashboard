@@ -21,40 +21,62 @@ const ContractTable = ({ data, loading, pageSize = 0 }) => {
     },
     {
       title: "Dealer Name",
-      dataIndex: "ownerName",
-      key: "ownerName",
-      responsive: ["md"],
+      dataIndex: "profile",
+      key: "dealer",
+      render: (text) => (
+        <div className="whitespace-nowrap">
+          {text?.first_name} {text?.last_name}
+        </div>
+      ),
     },
     {
       title: "Car Name",
-      dataIndex: "brandName",
-      key: "brandName",
+      dataIndex: "carModel",
+      key: "carModel",
+      render: (text) => <div className="whitespace-nowrap">{text?.brand}</div>,
     },
     {
       title: "User Name",
-      dataIndex: "ownerName",
-      key: "ownerName",
+      dataIndex: "privateUserProfile",
+      key: "privateUserProfile",
+      render: (text) => (
+        <div className="whitespace-nowrap">
+          {text?.first_name} {text?.last_name}
+        </div>
+      ),
     },
     {
       title: "Car Price",
-      dataIndex: "price",
-      key: "price",
+      dataIndex: "car",
+      key: "car",
+      render: (text) => (
+        <div className="whitespace-nowrap">{text?.expectedPrice} DKK</div>
+      ),
     },
     {
       title: "Color",
-      dataIndex: "color",
-      key: "color",
+      dataIndex: "carModel",
+      key: "carModel",
+      render: (text) => <div className="whitespace-nowrap">{text?.color}</div>,
     },
     {
       title: "Contract",
-      dataIndex: "status",
-      key: "status",
-      render: (text) => (
-        <Link to={`contract/999`}>
-          <button className="border-green-700 border text-black rounded-md px-2 py-1 font-semibold whitespace-nowrap">
-            See Contract Peper
-          </button>
-        </Link>
+      dataIndex: "action",
+      key: "action",
+      render: (_, record) => (
+        <>
+          {record?.status === "sold" ? (
+            <Link to={`contract/${record?.car?._id}`}>
+              <button className="bg-green-600 border text-white rounded-md px-10 py-1 font-semibold whitespace-nowrap">
+                See Contract Paper
+              </button>
+            </Link>
+          ) : (
+            <p className="bg-yellow-600 border text-white rounded-md w-fix text-center py-1 font-semibold whitespace-nowrap">
+              No Contract Done
+            </p>
+          )}
+        </>
       ),
     },
     // {
@@ -70,18 +92,18 @@ const ContractTable = ({ data, loading, pageSize = 0 }) => {
         <button
           onClick={() => statusRecord(record)}
           className={` text-black rounded-md  py-1 font-semibold whitespace-nowrap ${
-            record?.status === "Completed"
+            record?.status === "sold"
               ? "bg-green-600 px-6 "
               : "bg-yellow-600 px-3"
           }`}
         >
-          {record?.status === "Completed" ? (
-            <Tooltip title="Paid" placement="topRight">
-              <span className="text-white">Paid</span>
+          {record?.status === "sold" ? (
+            <Tooltip title="Unpaid" placement="topRight">
+              <span className="text-white">Sold</span>
             </Tooltip>
           ) : (
-            <Tooltip title="Unpaid" placement="topRight">
-              <span className="text-white">Non Paid</span>
+            <Tooltip title="Paid" placement="topRight">
+              <span className="text-white">Not Sold</span>
             </Tooltip>
           )}
         </button>
@@ -94,6 +116,7 @@ const ContractTable = ({ data, loading, pageSize = 0 }) => {
   };
   return (
     <div>
+      {/* <pre>{JSON.stringify(data, null, 3)}</pre> */}
       <Table
         columns={columns}
         dataSource={data}

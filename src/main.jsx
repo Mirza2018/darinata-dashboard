@@ -5,11 +5,16 @@ import router from "./Components/Routes/Routes.jsx";
 import { ConfigProvider } from "antd";
 import React from "react";
 import { mainTheme } from "./theme/index.js";
+import Providers from "./lib/Providers";
+import { Toaster } from "sonner";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <ConfigProvider theme={mainTheme}>
-      <RouterProvider router={router} />
+      <Providers>
+        <Toaster richColors position={"top-center"} />
+        <RouterProvider router={router} />
+      </Providers>
     </ConfigProvider>
   </React.StrictMode>
 );
