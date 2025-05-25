@@ -7,8 +7,17 @@ import TaskManagementTable from "./TaskManageMentTable";
 import ViewTaskManagementTable from "./ViewTaskManagementTable";
 import ViewTaskCompleteTable from "./ViewTaskCompleteTable";
 import { AllIcons, AllImages } from "../../../public/images/AllImages";
+import {
+  useTaskCreateMutation,
+  useTaskListQuery,
+} from "../../redux/api/adminApi";
+import { toast } from "sonner";
 
 export default function TaskManagement() {
+  const { data: taskData, isLoading } = useTaskListQuery();
+  const [createtask] = useTaskCreateMutation();
+  console.log(taskData);
+
   const [form] = Form.useForm();
   const { TextArea } = Input;
   //* Store Search Value
@@ -25,7 +34,7 @@ export default function TaskManagement() {
   };
 
   //* Use to set user
-  const [data, setData] = useState([]);
+  // const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
 
   //* It's Use to Show Modal
@@ -38,29 +47,6 @@ export default function TaskManagement() {
   //* It's Use to Set Seclected User to delete and view
   const [currentRecord, setCurrentRecord] = useState(null);
   const [currentRecord2, setCurrentRecord2] = useState(null);
-
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await axios.get("/data/taskData.json");
-
-        setData(response?.data);
-      } catch (error) {
-        console.error("Error fetching data:", error);
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchData();
-  }, []);
-
-  //   const filteredData = useMemo(() => {
-  //     if (!searchText) return data;
-  //     return data.filter((item) =>
-  //       item.userName.toLowerCase().includes(searchText.toLowerCase())
-  //     );
-  //   }, [data, searchText]);
 
   const onSearch = (value) => {
     setSearchText(value);
@@ -99,10 +85,52 @@ export default function TaskManagement() {
     console.log("Blocked User:", { id: data?.id, userName: data?.userName });
     setIsViewModalVisible(false);
   };
-  const onFinish = (values) => {
+  const onFinish =async (values) => {
+    const toastId = toast.loading("Task is Creating...");
+    // handleCancelTaskAdd();
+    const date = new Date(values.deadline).toISOString();
+    values.deadline = date;
     console.log(values);
-    handleCancelTaskAdd();
-    form.resetFields();
+
+  
+
+    try {
+      const res = await createtask(values).unwrap();
+      console.log(res);
+      toast.success("Task is Create Successfully", {
+        id: toastId,
+        duration: 2000,
+      });
+      form.resetFields();
+    } catch (error) {
+      console.log(error);
+      toast.error(
+        error?.data?.message ||
+          "There is an problem to Create task",
+        {
+          id: toastId,
+          duration: 2000,
+        }
+      );
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   };
 
   return (
@@ -150,16 +178,52 @@ export default function TaskManagement() {
               onFinish={onFinish}
               layout="vertical"
             >
-              <Form.Item label="Task title" name="taskTitle">
+              <Form.Item
+                rules={[
+                  {
+                    required: true,
+                    message: "Please enter Task title",
+                  },
+                ]}
+                label="Task title"
+                name="taskTitle"
+              >
                 <Input placeholder="Enter task title" />
               </Form.Item>
-              <Form.Item label="Task Description" name="taskDescription">
+              <Form.Item
+                rules={[
+                  {
+                    required: true,
+                    message: "Please enter Task Description",
+                  },
+                ]}
+                label="Task Description"
+                name="taskDescription"
+              >
                 <TextArea placeholder="Enter task description" rows={4} />
               </Form.Item>
-              <Form.Item label="Assign To" name="assign">
-                <Input placeholder="Enter assignee name" />
+              <Form.Item
+                rules={[
+                  {
+                    required: true,
+                    message: "Please enter assign Id",
+                  },
+                ]}
+                label="Assign To"
+                name="assignTo"
+              >
+                <Input placeholder="Enter assignee Id" />
               </Form.Item>
-              <Form.Item label="Deadline" name="deadline">
+              <Form.Item
+                rules={[
+                  {
+                    required: true,
+                    message: "Please enter Task deadline",
+                  },
+                ]}
+                label="Deadline"
+                name="deadline"
+              >
                 <DatePicker className=" w-full border border-secondary-color bg-base-color" />
               </Form.Item>
 
@@ -177,12 +241,12 @@ export default function TaskManagement() {
         </div>
         <div className="px-2 lg:px-6">
           <TaskManagementTable
-            data={data}
-            loading={loading}
+            data={taskData?.data}
+            loading={isLoading}
             showViewModal={showViewModal}
             showViewModal2={showViewModal2}
             showDeleteModal={showDeleteModal}
-            pageSize={12}
+            pageSize={1}
           />
         </div>
 

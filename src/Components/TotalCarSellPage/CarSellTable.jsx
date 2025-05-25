@@ -6,8 +6,19 @@ import axios from "axios";
 import DeleteCarModal from "./DeleteCarModal";
 import ViewCarTable from "./ViewCarTable";
 import CarTable from "./carTable";
+import { useSellCarQuery } from "../../redux/api/adminApi";
 
 export default function CarSellTable() {
+  const {
+    data: sellCarData,
+    currentData,
+    isError,
+    isFetching,
+    isLoading,
+  } = useSellCarQuery();
+  const displayData = sellCarData ?? currentData;
+  console.log(displayData);
+
   //* Store Search Value
   const [searchText, setSearchText] = useState("");
 
@@ -101,7 +112,7 @@ export default function CarSellTable() {
         </div>
         <div className="px-2 lg:px-6">
           <CarTable
-            data={data}
+            data={displayData?.data?.result}
             loading={loading}
             showViewModal={showViewModal}
             showDeleteModal={showDeleteModal}
@@ -112,10 +123,10 @@ export default function CarSellTable() {
         <ViewCarTable
           isViewModalVisible={isViewModalVisible}
           handleCancel={handleCancel}
-          currentRecord={currentRecord}
+          data={currentRecord}
+          currentRecord={data}
           handleBlock={handleBlock}
         />
-
       </div>
     </div>
   );

@@ -32,8 +32,8 @@ const SingleDealerTable = ({
     },
     {
       title: "Car Price",
-      dataIndex: "carPrice",
-      key: "carPrice",
+      dataIndex: "expectedPrice",
+      key: "expectedPrice",
     },
     {
       title: "Color",
@@ -49,7 +49,7 @@ const SingleDealerTable = ({
           <Space size="middle">
             <Tooltip placement="right" title="View Details">
               {/* {console.log(record)} */}
-              <Link to={`contract/${record._id}`}>
+              <Link to={`contract/${record?.carId}`}>
                 <p className="text-xs font-semibold border hover:text-secondary-color border-[#00721E] px-2 py-1 rounded">
                   See Contract Peper
                 </p>
@@ -152,6 +152,7 @@ const SingleDealerTable = ({
           </div>
         </Form>
       </Modal>
+      <pre>{JSON.stringify(data,null,2)}</pre>
     </div>
   );
 };

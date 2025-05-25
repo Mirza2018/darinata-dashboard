@@ -2,6 +2,7 @@ import { notification } from "antd";
 
 export const tagTypes = {
   user: "User",
+  task:"Task",
   allUsers: "AllUsers",
   categorys: "Categorirs",
   profile: "Profile",
@@ -20,4 +21,5 @@ export const tagTypesList = [
   tagTypes.terms,
   tagTypes.notification,
   tagTypes.notificationCount,
+  tagTypes.task
 ];

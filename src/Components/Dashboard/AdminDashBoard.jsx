@@ -15,8 +15,14 @@ import PieCharts from "../MainDashBoardPage/PieChart";
 import OrderChart from "../MainDashBoardPage/OrderChart";
 import TotalRevenue from "../MainDashBoardPage/Totalrevenue";
 import CustomerMap from "../MainDashBoardPage/CustomerMap";
+import { useCustomerMapQuery, useTotalCountQuery } from "../../redux/api/adminApi";
 
 const AdminDashboard = () => {
+  const { data: totalCount } = useTotalCountQuery();
+  // console.log(totalCount);
+  const { data: customerMap } = useCustomerMapQuery();
+  console.log(customerMap);
+
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
 
@@ -88,12 +94,14 @@ const AdminDashboard = () => {
                     <img src={AllIcons.sell} className="h-10 w-10" alt="" />
                   </div>
                   <div className="text-start">
-                    <p className="text-4xl font-bold mb-1">75</p>
+                    <p className="text-4xl font-bold mb-1">
+                      {totalCount?.data?.totalSell}
+                    </p>
                     <p className="text-base font-normal ">Total Car Sell</p>
-                    <div className="text-xs font-normal text-[#A3A3A3] flex justify-center items-center gap-1">
+                    {/* <div className="text-xs font-normal text-[#A3A3A3] flex justify-center items-center gap-1">
                       <img src={AllIcons.upArrow} className="h-10 w-4" alt="" />
                       4% (30 days)
-                    </div>
+                    </div> */}
                   </div>
                 </div>
               </div>
@@ -108,12 +116,14 @@ const AdminDashboard = () => {
                     <img src={AllIcons.car} className="h-10 w-10" alt="" />
                   </div>
                   <div className="text-start">
-                    <p className="text-4xl font-bold mb-1">$45</p>
-                    <p className="text-base font-normal ">Unsold Total Car</p>
-                    <div className="text-xs font-normal text-[#A3A3A3] flex justify-center items-center gap-1">
+                    <p className="text-4xl font-bold mb-1">
+                      {totalCount?.data?.totalSold}
+                    </p>
+                    <p className="text-base font-normal ">Total Sold Car</p>
+                    {/* <div className="text-xs font-normal text-[#A3A3A3] flex justify-center items-center gap-1">
                       <img src={AllIcons.upArrow} className="h-10 w-4" alt="" />
                       2% (25 days)
-                    </div>
+                    </div> */}
                   </div>
                 </div>
               </div>
@@ -152,12 +162,14 @@ const AdminDashboard = () => {
                     />
                   </div>
                   <div className="text-start">
-                    <p className="text-4xl font-bold mb-1">357</p>
+                    <p className="text-4xl font-bold mb-1">
+                      {totalCount?.data?.totalUser}
+                    </p>
                     <p className="text-base font-normal ">Total User</p>
-                    <div className="text-xs font-normal text-[#A3A3A3] flex justify-center items-center gap-1">
+                    {/* <div className="text-xs font-normal text-[#A3A3A3] flex justify-center items-center gap-1">
                       <img src={AllIcons.upArrow} className="h-10 w-4" alt="" />
                       4% (30 days)
-                    </div>
+                    </div> */}
                   </div>
                 </div>
               </div>
@@ -172,12 +184,14 @@ const AdminDashboard = () => {
                     <img src={AllIcons.dealer} className="h-10 w-10" alt="" />
                   </div>
                   <div className="text-start">
-                    <p className="text-4xl font-bold mb-1">65</p>
+                    <p className="text-4xl font-bold mb-1">
+                      {totalCount?.data?.totalDealer}
+                    </p>
                     <p className="text-base font-normal ">Total Dealer</p>
-                    <div className="text-xs font-normal text-[#A3A3A3] flex justify-center items-center gap-1">
+                    {/* <div className="text-xs font-normal text-[#A3A3A3] flex justify-center items-center gap-1">
                       <img src={AllIcons.upArrow} className="h-10 w-4" alt="" />
                       25% (30 days)
-                    </div>
+                    </div> */}
                   </div>
                 </div>
               </div>
@@ -199,7 +213,7 @@ const AdminDashboard = () => {
               <TotalRevenue />
             </div> */}
             <React.Fragment>
-              <CustomerMap />
+              <CustomerMap customerMap={customerMap} />
             </React.Fragment>
           </div>
 

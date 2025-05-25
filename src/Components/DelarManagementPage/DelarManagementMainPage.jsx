@@ -7,8 +7,23 @@ import DealerTable from "./DealerTable";
 import ViewDealerTable from "./ViewDealerTable";
 import { FaCloudUploadAlt } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
-
+import { useUsersListQuery } from "../../redux/api/adminApi";
+  
 export default function DelarManagementMainPage() {
+    const { 
+      data: userData,
+      currentData,
+      isLoading,
+      isFetching,
+      isSuccess,
+    } = useUsersListQuery();
+  
+    const displayedData = userData ?? currentData;
+  console.log(displayedData);
+  const dealerData = displayedData?.data.filter(
+    (dealer) => dealer?.role == "dealer"
+  );
+  
   //* Store Search Value
   const [form] = Form.useForm();
     const router = useNavigate();
@@ -214,7 +229,8 @@ export default function DelarManagementMainPage() {
         </Modal>
         <div className="px-2 lg:px-6">
           <DealerTable
-            data={data}
+            // data={displayedData?.data}
+            data={dealerData}
             loading={loading}
             showViewModal={showViewModal}
             showDeleteModal={showDeleteModal}

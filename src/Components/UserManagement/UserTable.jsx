@@ -1,5 +1,6 @@
 /* eslint-disable react/prop-types */
 import { Button, Space, Table, Tooltip } from "antd";
+import { render } from "react-dom";
 import { GoEye } from "react-icons/go";
 import { RiDeleteBin6Line } from "react-icons/ri";
 import { Link } from "react-router-dom";
@@ -14,15 +15,19 @@ const UserTable = ({
   const columns = [
     {
       title: "User Name",
-      dataIndex: "userName",
-      key: "userName",
-      responsive: ["md"],
+      dataIndex: "profile",
+      key: "profile",
+      render: (text) => (
+        <div className="whitespace-nowrap">
+          {text.first_name} {text.last_name}
+        </div>
+      ),
     },
-    {
-      title: "CRV Number",
-      dataIndex: "cvrNumber",
-      key: "cvrNumber",
-    },
+    // {
+    //   title: "CRV Number",
+    //   dataIndex: "cvrNumber",
+    //   key: "cvrNumber",
+    // },
     {
       title: "Email",
       dataIndex: "email",
@@ -30,13 +35,24 @@ const UserTable = ({
     },
     {
       title: "Phone",
-      dataIndex: "phone",
-      key: "phone",
+      dataIndex: "profile",
+      key: "profile",
+      render: (text) => (
+        <div className="whitespace-nowrap">
+          {text.phoneNumber ? <>{text?.phoneNumber}</> : "Not provided"}
+        </div>
+      ),
     },
+
     {
       title: "Location",
-      dataIndex: "location",
-      key: "location",
+      dataIndex: "profile",
+      key: "profile",
+      render: (text) => (
+        <div className="whitespace-nowrap">
+          {text.address ? <>{text?.address}</> : "Not provided"}
+        </div>
+      ),
     },
     {
       title: "Details",
@@ -67,6 +83,7 @@ const UserTable = ({
         rowKey="id"
         scroll={{ x: true }}
       />
+      <pre>{JSON.stringify(data, null, 3)}</pre>
     </div>
   );
 };

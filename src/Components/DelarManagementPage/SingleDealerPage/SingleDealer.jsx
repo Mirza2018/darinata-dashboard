@@ -3,10 +3,17 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import SingleDealerTable from "./SingleDealerTable";
 import ViewDealerChat from "./ViewDealerChat";
+import { useDealerDetailsQuery } from "../../../redux/api/adminApi";
 // import UserCarTable from "./UserCarTable";
 // import ViewUserCarBlockModal from "./ViewUserCarBlockModal";
 
 const SingleDealer = () => {
+  const params = useParams(); 
+  console.log(params);
+  const { data: dealerData,isLoading } = useDealerDetailsQuery(params)
+console.log(dealerData);
+
+
   const [data, setData] = useState([]);
   const [currentRecord, setCurrentRecord] = useState(null);
 
@@ -17,7 +24,7 @@ const SingleDealer = () => {
     setIsViewModalVisible(false);
     //    setIsDeleteModalVisible(false);
   };
-  const params = useParams();
+ 
   const showViewModal = (record) => {
     setCurrentRecord(record);
     setIsViewModalVisible(true);
@@ -48,8 +55,8 @@ const SingleDealer = () => {
     <div>
       <div className="px-2 lg:px-6">
         <SingleDealerTable
-          data={data}
-          loading={loading}
+          data={dealerData?.data?.result}
+          loading={isLoading}
           showViewModal={showViewModal}
           // showDeleteModal={showDeleteModal}
           pageSize={12}

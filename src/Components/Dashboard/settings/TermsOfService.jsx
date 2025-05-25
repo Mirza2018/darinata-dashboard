@@ -2,17 +2,44 @@ import { Button } from "antd";
 import JoditEditor from "jodit-react";
 import { useRef, useState } from "react";
 import ReactQuill from "react-quill";
+import { useContentCreateMutation } from "../../../redux/api/adminApi";
+import { data } from "autoprefixer";
+import { toast } from "sonner";
 
 const TermsOfService = () => {
-    const [value, setValue] = useState("");
-  const editor = useRef(null);
-  const [content, setContent] = useState("");
+  const [staticData] = useContentCreateMutation();
+  const [value, setValue] = useState("");
 
-  const handleOnSave = () => {
-    console.log(content);
+  const handleOnSave =async () => {
+    const toastId = toast.loading("Terms Of Service is Posting...");
+
+    const data = {
+      type: "terms-and-conditions",
+      content: value,
+    };
+
+    try {
+      const res = await staticData(data).unwrap();
+      console.log(res);
+      toast.success("Terms Of Service post Successfully", {
+        id: toastId,
+        duration: 2000,
+      });
+      setValue("")
+    } catch (error) {
+      console.log(error);
+      toast.error(
+        error?.data?.message || "There is an problem",
+        {
+          id: toastId,
+          duration: 2000,
+        }
+      );
+    }
+
+
   };
 
-  console.log(value);
   return (
     <div
       className="min-h-screen bg-primary-color py-1 px-8 "

@@ -2,6 +2,8 @@
 import { Divider, Form, Input, Modal } from "antd";
 import { AllImages } from "../../../public/images/AllImages";
 import React, { useEffect, useState } from "react";
+import { toast } from "sonner";
+import { useTaskActionMutation } from "../../redux/api/adminApi";
 
 const ViewTaskCompleteTable = ({
   isViewModalVisible2,
@@ -9,13 +11,34 @@ const ViewTaskCompleteTable = ({
   currentRecord2,
   handleBlock,
 }) => {
-  const [block, setBlock] = useState(currentRecord2?.isBlock);
-  //   console.log("currentRecord", currentRecord);
-  console.log("block", block);
-  useEffect(() => {
-    setBlock(currentRecord2?.isBlock);
-  }, [currentRecord2]);
+  const [taskAction] = useTaskActionMutation();
+  console.log(currentRecord2);
 
+  const handleTaskComplete = async () => {
+    const data = {
+      taskStatus: "completed",
+    };
+    const toastId = toast.loading("Task mark is accepting...");
+    try {
+      const res = await taskAction({ data, id: currentRecord2?._id }).unwrap();
+      console.log(res);
+
+      toast.success(res?.data?.message || "Task is accept Successfully", {
+        id: toastId,
+        duration: 2000,
+      });
+      handleCancel2();
+    } catch (error) {
+      console.log(error);
+      toast.error(
+        error?.data?.message || "Accepting task faceing some problem",
+        {
+          id: toastId,
+          duration: 2000,
+        }
+      );
+    }
+  };
   return (
     <Modal
       title={
@@ -51,10 +74,7 @@ const ViewTaskCompleteTable = ({
             No
           </button>
           <button
-            onClick={() => {
-              setBlock(!block);
-              handleCancel2();
-            }}
+            onClick={handleTaskComplete}
             className="bg-[#00721E] border border-[#ADD8E6] text-white py-3 text-xl font-semibold rounded-lg mt-8 w-full px-8 "
           >
             Yes

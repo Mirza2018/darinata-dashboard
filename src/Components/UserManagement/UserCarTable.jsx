@@ -30,38 +30,35 @@ const UserCarTable = ({
     },
     {
       title: "Car Price",
-      dataIndex: "carPrice",
-      key: "carPrice",
+      dataIndex: "expectedPrice",
+      key: "expectedPrice",
     },
-    {
-      title: "Status",
-      dataIndex: "status",
-      key: "status",
-    },
+    // {
+    //   title: "Status",
+    //   dataIndex: "status",
+    //   key: "status",
+    // },
     {
       title: "Color",
       dataIndex: "color",
       key: "color",
     },
-    {
-      title: "Block",
-      key: "action",
-      render: (_, record) => (
-        <>
-          <Space size="middle">
-            <Tooltip placement="right" title="View Details">
-              <p
-                className="!p-0"
-                onClick={() => showViewModal(record)}
-              >
-                <Switch default checked={record.isBlock} />
-                {console.log(record)}
-              </p>
-            </Tooltip>
-          </Space>
-        </>
-      ),
-    },
+    // {
+    //   title: "Block",
+    //   key: "action",
+    //   render: (_, record) => (
+    //     <>
+    //       <Space size="middle">
+    //         <Tooltip placement="right" title="View Details">
+    //           <p className="!p-0" onClick={() => showViewModal(record)}>
+    //             <Switch default checked={record.isBlock} />
+    //             {console.log(record)}
+    //           </p>
+    //         </Tooltip>
+    //       </Space>
+    //     </>
+    //   ),
+    // },
   ];
 
   return (

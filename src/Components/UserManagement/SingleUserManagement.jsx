@@ -4,8 +4,12 @@ import { useParams } from "react-router-dom";
 import UserCarTable from "./UserCarTable";
 import ViewUserCarBlockModal from "./ViewUserCarBlockModal";
 import { AllIcons } from "../../../public/images/AllImages";
+import { useDealerDetailsQuery } from "../../redux/api/adminApi";
 
 const SingleUserManagement = () => {
+  const params = useParams();
+  const { data: dealerData, isLoading } = useDealerDetailsQuery(params);
+  console.log(dealerData);
   const [data, setData] = useState([]);
   const [currentRecord, setCurrentRecord] = useState(null);
 
@@ -13,10 +17,10 @@ const SingleUserManagement = () => {
 
   const [loading, setLoading] = useState(true);
   const handleCancel = () => {
-    setIsViewModalVisible(false);
+    setIsViewModalVisible(false); 
     //    setIsDeleteModalVisible(false);
   };
-  const params = useParams();
+
   const showViewModal = (record) => {
     setCurrentRecord(record);
     setIsViewModalVisible(true);
@@ -112,8 +116,8 @@ const SingleUserManagement = () => {
           </div>
         </div>
         <UserCarTable
-          data={data}
-          loading={loading}
+          data={dealerData?.data?.result}
+          loading={isLoading}
           showViewModal={showViewModal}
           // showDeleteModal={showDeleteModal}
           pageSize={12}

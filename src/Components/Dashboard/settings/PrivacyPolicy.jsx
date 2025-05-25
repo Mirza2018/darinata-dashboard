@@ -4,18 +4,38 @@ import { useRef } from "react";
 import React, { useState } from "react";
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
+import { toast } from "sonner";
+import { useContentCreateMutation } from "../../../redux/api/adminApi";
 
 const PrivacyPolicy = () => {
-    const [value, setValue] = useState("");
+   const [staticData] = useContentCreateMutation();
+  const [value, setValue] = useState("");
   const editor = useRef(null);
   const [content, setContent] = useState("");
+  const handleOnSave = async () => {
+    const toastId = toast.loading("  Privacy Policy is Posting...");
 
-  const handleOnSave = () => {
-    console.log(content);
+    const data = {
+      type: "privacy-policy",
+      content: value,
+    };
+
+    try {
+      const res = await staticData(data).unwrap();
+      console.log(res);
+      toast.success("  Privacy Policy post Successfully", {
+        id: toastId,
+        duration: 2000,
+      });
+      setValue("");
+    } catch (error) {
+      console.log(error);
+      toast.error(error?.data?.message || "There is an problem", {
+        id: toastId,
+        duration: 2000,
+      });
+    }
   };
-
-  console.log(value);
-  
 
   return (
     <div
@@ -23,9 +43,7 @@ const PrivacyPolicy = () => {
       style={{ boxShadow: "0px 0px 5px 2px #00000040" }}
     >
       <div className="p-2 rounded">
-        <h1 className="text-4xl font-bold py-4 !text-black ">
-          Privacy Policy
-        </h1>
+        <h1 className="text-4xl font-bold py-4 !text-black ">Privacy Policy</h1>
         <div className="">
           {/* <JoditEditor
             ref={editor}

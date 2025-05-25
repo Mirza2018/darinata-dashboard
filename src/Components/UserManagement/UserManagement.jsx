@@ -6,8 +6,20 @@ import axios from "axios";
 import UserTable from "./UserTable";
 import { FaCloudUploadAlt } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
-
+import { useUsersListQuery } from "../../redux/api/adminApi";
+ 
 export default function UserManagement() {
+  const { 
+    data: userData,
+    currentData,
+    isLoading,
+    isFetching,
+    isSuccess,
+  } = useUsersListQuery();
+
+  const displayedData = userData ?? currentData;
+  console.log(displayedData);
+
   const [form] = Form.useForm();
   const router = useNavigate();
 
@@ -220,7 +232,7 @@ export default function UserManagement() {
         </Modal>
         <div className="px-2 lg:px-6">
           <UserTable
-            data={data}
+            data={displayedData?.data}
             loading={loading}
             showViewModal={showViewModal}
             showDeleteModal={showDeleteModal}

@@ -10,47 +10,80 @@ const CarTable = ({
   showDeleteModal,
   pageSize = 0,
 }) => {
+  const testData = data;
   const columns = [
     {
-      title: "Car Owner Name",
-      dataIndex: "ownerName",
-      key: "ownerName",
-      responsive: ["md"],
+      title: "Private User",
+      dataIndex: "privateUserProfile",
+      key: "privateUserProfile",
+      render: (text) => (
+        <div className="whitespace-nowrap">
+          {text?.first_name} {text?.last_name}
+        </div>
+      ),
     },
     {
       title: "Dealer Name",
-      dataIndex: "dealerName",
-      key: "dealerName",
+      dataIndex: "profile",
+      key: "profile",
+      render: (text) => (
+        <div className="whitespace-nowrap">
+          {text?.first_name} {text?.last_name}
+        </div>
+      ),
     },
     {
-      title: "Brand Name",
-      dataIndex: "brandName",
-      key: "brandName",
-    },
-    {
-      title: "Car Model",
+      title: "Brand Name & Modle",
       dataIndex: "carModel",
       key: "carModel",
+      render: (text) => (
+        <div className="whitespace-nowrap">
+          {text?.brand} {text?.model}
+        </div>
+      ),
     },
+    // {
+    //   title: "Car Model",
+    //   dataIndex: "carModel",
+    //   key: "carModel",
+    //   render: (text) => <div className="whitespace-nowrap"></div>,
+    // },
     {
       title: "CRV Number",
-      dataIndex: "cvrNumber",
-      key: "cvrNumber",
+      dataIndex: "profile",
+      key: "profile",
+      render: (text) => (
+        <div className="whitespace-nowrap">
+          {text?.cvrNumber ? <> {text?.cvrNumber}</> : "Not available"}
+        </div>
+      ),
     },
     {
       title: "Location",
-      dataIndex: "location",
-      key: "location",
+      dataIndex: "company",
+      key: "company",
+      render: (text) => (
+        <div className="whitespace-nowrap">
+          {text?.city}( {text?.postCode})
+        </div>
+      ),
     },
     {
       title: "Color",
-      dataIndex: "color",
-      key: "color",
+      dataIndex: "carModel",
+      key: "carModel",
+      render: (text) => <div className="whitespace-nowrap">{text?.color}</div>,
     },
+
     {
       title: "Price",
-      dataIndex: "price",
-      key: "price",
+      dataIndex: "car",
+      key: "car",
+      render: (text) => (
+        <div className="whitespace-nowrap">
+          {text?.expectedPrice ? <>{text?.expectedPrice} DKK</> : ""}
+        </div>
+      ),
     },
     {
       title: "Status",
@@ -71,7 +104,6 @@ const CarTable = ({
                 style={{ fontSize: "24px" }}
               />
             </Tooltip>
-    
           </Space>
         </>
       ),
@@ -87,6 +119,7 @@ const CarTable = ({
         rowKey="id"
         scroll={{ x: true }}
       />
+      <pre>{JSON.stringify(testData, null, 3)}</pre>
     </div>
   );
 };

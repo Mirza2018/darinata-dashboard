@@ -23,7 +23,7 @@ const data = [
   { name: "Dec", uv: 36 },
 ];
 
-const CustomerMap = () => {
+const CustomerMap = ({ customerMap }) => {
   // Formatter function to add 'K' suffix to Y-axis values
   const yAxisTickFormatter = (value) => `${value}K`;
 
@@ -64,7 +64,7 @@ const CustomerMap = () => {
       <div className="w-full h-80 mt-2">
         <ResponsiveContainer>
           <BarChart
-            data={data}
+            data={customerMap?.data}
             margin={{
               top: 10,
               right: 20,
@@ -73,7 +73,7 @@ const CustomerMap = () => {
             }}
             barCategoryGap={30} // Adjust the gap between bars if necessary
           >
-            <XAxis dataKey="name" tick={[]} axisLine={false} tickMargin={6} />
+            <XAxis dataKey="month" tick={[]} axisLine={false} tickMargin={6} />
             <YAxis tickMargin={16} tick={[]} axisLine={false} />
             {/* Add several horizontal black lines using ReferenceLine */}
             <ReferenceLine y={20} stroke="#22222255" strokeWidth={0.5} />
@@ -82,7 +82,7 @@ const CustomerMap = () => {
             <ReferenceLine y={80} stroke="#22222255" strokeWidth={0.5} />
             <ReferenceLine y={100} stroke="#22222255" strokeWidth={0.5} />
             <Bar
-              dataKey="uv"
+              dataKey="totalSales"
               fill="#FF991C" // Bar color
               barSize={14} // Width of each bar
             />
