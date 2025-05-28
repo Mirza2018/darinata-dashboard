@@ -20,7 +20,15 @@ export const adminApi = baseApi.injectEndpoints({
 
     UsersList: build.query({
       query: () => ({
-        url: `/users/list`,
+        url: `/users/list?role=private_user`,
+        method: "GET",
+      }),
+      providesTags: [tagTypes.user],
+    }),
+
+    dealerList: build.query({
+      query: () => ({
+        url: `/users/list?role=dealer`,
         method: "GET",
       }),
       providesTags: [tagTypes.user],
@@ -31,6 +39,18 @@ export const adminApi = baseApi.injectEndpoints({
         url: `/users/${dealerId.id}`,
         method: "GET",
       }),
+      providesTags: tagTypes.payment,
+    }),
+
+    conversationDetails: build.query({
+      query: (conversationId) => {
+        console.log("conversationId", conversationId);
+        
+        return {
+          url: `/conversation/message/${conversationId}`,
+          method: "GET",
+        };
+      },
       providesTags: [tagTypes.user],
     }),
 
@@ -60,7 +80,17 @@ export const adminApi = baseApi.injectEndpoints({
           method: "GET",
         };
       },
-      providesTags: tagTypes.task,
+      // providesTags: tagTypes.task,
+    }),
+
+    totalSalesChart: build.query({
+      query: () => {
+        return {
+          url: `/sell_car/total_sales_chart?year=2025`,
+          method: "GET",
+        };
+      },
+      // providesTags: tagTypes.task,
     }),
 
     taskAction: build.mutation({
@@ -94,6 +124,34 @@ export const adminApi = baseApi.injectEndpoints({
       // invalidatesTags: tagTypes.task,
     }),
 
+    
+    createUser: build.mutation({
+      query: (userData) => {
+        return {
+          url: `/auth/create_user`,
+          method: "POST",
+          body: userData,
+        };
+      },
+      // invalidatesTags: tagTypes.task,
+    }),
+
+
+    changePayment: build.mutation({
+      query: (paymentAction) => {
+        return {
+          url: `/sell_car/action`,
+          method: "PATCH",
+          body: paymentAction,
+        };
+      },
+      invalidatesTags: tagTypes.payment,
+    }),
+
+
+
+
+
     // createCtegory: build.mutation({
     //   query: (category) => ({
     //     url: `/category/create`,
@@ -111,11 +169,16 @@ export const {
   useEveryContractQuery,
   useSellCarQuery,
   useUsersListQuery,
+  useDealerListQuery,
   useDealerDetailsQuery,
   useTaskListQuery,
   useTaskActionMutation,
   useTaskCreateMutation,
   useContentCreateMutation,
   useTotalCountQuery,
-  useCustomerMapQuery
+  useCustomerMapQuery,
+  useTotalSalesChartQuery,
+  useCreateUserMutation,
+  useConversationDetailsQuery,
+  useChangePaymentMutation
 } = adminApi;

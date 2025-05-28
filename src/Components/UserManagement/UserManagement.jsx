@@ -6,10 +6,14 @@ import axios from "axios";
 import UserTable from "./UserTable";
 import { FaCloudUploadAlt } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
-import { useUsersListQuery } from "../../redux/api/adminApi";
- 
+import {
+  useCreateUserMutation,
+  useUsersListQuery,
+} from "../../redux/api/adminApi";
+import { toast } from "sonner";
+
 export default function UserManagement() {
-  const { 
+  const {
     data: userData,
     currentData,
     isLoading,
@@ -17,8 +21,10 @@ export default function UserManagement() {
     isSuccess,
   } = useUsersListQuery();
 
+  const [createData] = useCreateUserMutation();
+
   const displayedData = userData ?? currentData;
-  console.log(displayedData);
+  // console.log(displayedData);
 
   const [form] = Form.useForm();
   const router = useNavigate();
@@ -112,11 +118,44 @@ export default function UserManagement() {
     setIsViewModalVisible(false);
   };
 
-  const onFinish = (values) => {
+  const onFinish = async (values) => {
     console.log(values);
-    form.resetFields();
-    handleCancelAddUser();
-    router("car-info");
+
+    // router("car-info");
+
+    const toastId = toast.loading("User is creating...");
+    const data = { ...values, role: "private_user" };
+
+    delete data.profileImage;
+
+    const formData = new FormData();
+    formData.append("data", JSON.stringify(data));
+    formData.append(
+      "profileImage",
+      data?.profileImage?.fileList[0].originFileObj
+    );
+
+    console.log(data);
+  
+    try {
+      const res = await createData(formData).unwrap();
+      console.log(res);
+      toast.success(res?.message || "user is create Successfully", {
+        id: toastId,
+        duration: 2000,
+      });
+      form.resetFields();
+      handleCancelAddUser();
+    } catch (error) {
+      console.log(error);
+      toast.error(
+        error?.data?.message || "There is an problem to create user",
+        {
+          id: toastId,
+          duration: 2000,
+        }
+      );
+    }
   };
 
   return (
@@ -166,7 +205,7 @@ export default function UserManagement() {
               onChange={handleImageUpload}
               className="border border-dashed border-gray-300 md:mb-0 mb-5 p-4 rounded-md h-fit"
             >
-              <Form.Item name="image">
+              <Form.Item name="profileImage">
                 <Upload
                   beforeUpload={() => false} // Prevent automatic upload to server
                   maxCount={1}
@@ -184,37 +223,43 @@ export default function UserManagement() {
             </div>
             <div className="md:col-span-2 ">
               <div className="grid md:grid-cols-2 gap-5">
-                <Form.Item label="First Name" name="firstName">
-                  <Input placeholder="Enter your First Name" />
+                <Form.Item label="First Name" name="first_name">
+                  <Input required placeholder="Enter your First Name" />
                 </Form.Item>
-                <Form.Item label="Last Name" name="lastName">
-                  <Input placeholder="Enter your Last Name" />
+                <Form.Item label="Last Name" name="last_name">
+                  <Input required placeholder="Enter your Last Name" />
                 </Form.Item>
               </div>
               <div className="grid md:grid-cols-2 gap-5">
                 <Form.Item label="Phone Number" name="phoneNumber">
-                  <Input placeholder="Enter your Phone Number" />
+                  <Input required placeholder="Enter your Phone Number" />
                 </Form.Item>
                 <Form.Item label="Address" name="address">
-                  <Input placeholder="Enter your Address" />
+                  <Input required placeholder="Enter your Address" />
                 </Form.Item>
               </div>
               <div className="grid md:grid-cols-2 gap-5">
                 <Form.Item label="Email" name="email">
-                  <Input placeholder="Enter your Email" />
+                  <Input required placeholder="Enter your Email" />
                 </Form.Item>
 
-                <Form.Item label="Rge Nr." name="rgeNr">
-                  <Input placeholder="Enter your Rge Nr." />
+                <Form.Item label="Rge Nr." name="regNo">
+                  <Input required placeholder="Enter your Rge Nr." />
                 </Form.Item>
               </div>
 
               <div className="grid md:grid-cols-2 gap-5">
                 <Form.Item label="Konto Nr." name="kontoNr">
-                  <Input placeholder="Enter your Konto Nr." />
+                  <Input required placeholder="Enter your Konto Nr." />
                 </Form.Item>{" "}
                 <Form.Item label="Website Link" name="websiteLink">
                   <Input placeholder="Enter your Website Link" />
+                </Form.Item>
+                <Form.Item label="Password" name="password">
+                  <Input.Password
+                    required
+                    placeholder="Enter your Password Link"
+                  />
                 </Form.Item>
               </div>
             </div>

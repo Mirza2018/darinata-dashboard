@@ -1,7 +1,8 @@
-import { Card, Button, Typography, Modal } from "antd";
+import { Card, Button, Typography, Modal, Image } from "antd";
 import { FilePdfOutlined } from "@ant-design/icons";
 import React from "react";
 import Title from "antd/es/skeleton/Title";
+import { getBaseUrl, getImageUrl } from "../../redux/getBaseUrl";
 
 const { Text } = Typography; // Correct import for Text
 
@@ -11,7 +12,7 @@ const ViewTaskManagementTable = ({
   currentRecord,
   handleBlock,
 }) => {
-  console.log("currentRecord", currentRecord);
+  console.log("currentRecord105", currentRecord);
   const taskData = {
     title: "Task Title",
     dealerName: "Harry",
@@ -20,6 +21,15 @@ const ViewTaskManagementTable = ({
     category: "Administrative Issues",
   };
 
+  const taskImage =
+    currentRecord?.taskResolve?.[currentRecord?.taskResolve?.length - 1]
+      ?.taskFile;
+
+  const taskDescription =
+    currentRecord?.taskResolve?.[currentRecord?.taskResolve?.length - 1]
+      ?.solutionDetails;
+ 
+  // console.log(getImageUrl() + taskImage);
   return (
     <Modal
       title={
@@ -34,7 +44,10 @@ const ViewTaskManagementTable = ({
       style={{ textAlign: "center" }}
       className="lg:min-w-[800px] h-fit !bg-[#FFF9FD]"
     >
-      <div className=" bg-gray-50 p-4">
+
+
+
+{ !taskData || !taskDescription   ?<p className="text-2xl font-medium">No file Submit ....</p> :<>   <div className=" bg-gray-50 p-4">
         <div className="max-w-3xl  space-y-4 text-start">
           {/* Task Details Card */}
 
@@ -47,28 +60,26 @@ const ViewTaskManagementTable = ({
             <div className="space-y-2">
               <div>
                 <Text className="text-gray-600">Dealer Name: </Text>
-                <Text strong>{taskData.dealerName}</Text>
+                <Text strong>
+                  {currentRecord?.dealerInfo?.first_name}{" "}
+                  {currentRecord?.dealerInfo?.last_name}
+                </Text>
               </div>
 
               <div>
                 <Text className="text-gray-600">Description: </Text>
-                <Text strong>{taskData.description}</Text>
+                <Text strong> {currentRecord?.taskDescription}</Text>
               </div>
 
               <div>
                 <Text className="text-gray-600">Due Date: </Text>
-                <Text strong>{taskData.dueDate}</Text>
+                <Text strong>{currentRecord?.deadline.split("T")[0]}</Text>
               </div>
-
               <div>
-                <Text className="text-gray-600">Category: </Text>
-                <Text strong>{taskData.category}</Text>
+                <Text className="text-gray-600 ">Task Image: </Text>
+                <img className="!w-28 pt-3" src={getImageUrl() + taskImage} />
               </div>
             </div>
-
-            <Button icon={<FilePdfOutlined />} className="mt-4">
-              See PDF
-            </Button>
           </Card>
 
           {/* Info Box */}
@@ -77,19 +88,22 @@ const ViewTaskManagementTable = ({
               <Text strong className="block text-lg">
                 Unanswered Questions
               </Text>
-              <Text className="text-gray-600">Respond to customer inquiry</Text>
+              <Text className="text-gray-600">{taskDescription}</Text>
             </div>
-            <Button
+            {/* <Button
               type="primary"
               className="bg-[#F5A623] hover:bg-[#E69512] border-none"
             >
               Recreate
-            </Button>
+            </Button> */}
           </div>
 
           {/* Action Buttons */}
-          <div className="flex justify-end gap-4 mt-6">
-            <Button size="large" className="min-w-[100px] bg-base-color border-secondary-color">
+          {/* <div className="flex justify-end gap-4 mt-6">
+            <Button
+              size="large"
+              className="min-w-[100px] bg-base-color border-secondary-color"
+            >
               No
             </Button>
             <Button
@@ -99,9 +113,12 @@ const ViewTaskManagementTable = ({
             >
               yes
             </Button>
-          </div>
+          </div> */}
         </div>
-      </div>
+      </div></>}
+
+
+   
     </Modal>
   );
 };

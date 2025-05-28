@@ -67,12 +67,12 @@ const ContractTable = ({ data, loading, pageSize = 0 }) => {
         <>
           {record?.status === "sold" ? (
             <Link to={`contract/${record?.car?._id}`}>
-              <button className="bg-green-600 border text-white rounded-md px-10 py-1 font-semibold whitespace-nowrap">
+              <button className="bg-green-600 border w-fit text-white rounded-md px-10 py-1 font-semibold whitespace-nowrap">
                 See Contract Paper
               </button>
             </Link>
           ) : (
-            <p className="bg-yellow-600 border text-white rounded-md w-fix text-center py-1 font-semibold whitespace-nowrap">
+            <p className="bg-yellow-600 border w-fit text-white rounded-md w-fix text-center px-11 py-1 font-semibold whitespace-nowrap">
               No Contract Done
             </p>
           )}
@@ -90,7 +90,7 @@ const ContractTable = ({ data, loading, pageSize = 0 }) => {
       key: "action",
       render: (_, record) => (
         <button
-          onClick={() => statusRecord(record)}
+          // onClick={() => statusRecord(record)}
           className={` text-black rounded-md  py-1 font-semibold whitespace-nowrap ${
             record?.status === "sold"
               ? "bg-green-600 px-6 "
@@ -99,7 +99,7 @@ const ContractTable = ({ data, loading, pageSize = 0 }) => {
         >
           {record?.status === "sold" ? (
             <Tooltip title="Unpaid" placement="topRight">
-              <span className="text-white">Sold</span>
+              <span className="text-white px-2">Sold</span>
             </Tooltip>
           ) : (
             <Tooltip title="Paid" placement="topRight">

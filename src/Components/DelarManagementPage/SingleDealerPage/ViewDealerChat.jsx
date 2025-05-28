@@ -1,10 +1,14 @@
 /* eslint-disable react/prop-types */
 import { CloseOutlined } from "@ant-design/icons";
-import { Avatar, Badge, Button, Divider, Modal } from "antd";
+import { Avatar, Badge, Button, Divider, Modal, Spin } from "antd";
 
 import React from "react";
 import { AllImages } from "../../../../public/images/AllImages";
-
+import {
+  useConversationDetailsQuery,
+  useDealerDetailsQuery,
+} from "../../../redux/api/adminApi";
+import { getImageUrl } from "../../../redux/getBaseUrl";
 
 const ViewDealerChat = ({
   isViewModalVisible,
@@ -12,7 +16,38 @@ const ViewDealerChat = ({
   currentRecord,
   handleBlock,
 }) => {
-  console.log("currentRecord", currentRecord);
+  console.log("currentRecord", currentRecord?.conversationId);
+
+  const { data, isLoading } = useConversationDetailsQuery(
+    currentRecord?.conversationId
+  );
+
+  const { data: dealerData, isLoading: isDealerLoading } =
+    useDealerDetailsQuery({ id: currentRecord?.dealerId });
+  const { data: carownerData, isLoading: isCarOwner } = useDealerDetailsQuery({
+    id: currentRecord?.carOwner,
+  });
+
+  console.log(
+    "conversation Dealer",
+    dealerData?.data?.user?.email,
+    dealerData?.data?.user?.profile?.profileImage
+  );
+  console.log(
+    "conversation carowener",
+    carownerData?.data?.user?.email,
+    carownerData?.data?.user?.profile?.profileImage
+  );
+
+  let dealerImage;
+  let carOwenerImage;
+  if (dealerData?.data?.user?.profile?.profileImage) {
+    dealerImage = getImageUrl() + dealerData?.data?.user?.profile?.profileImage;
+  }
+  if (carOwenerImage?.data?.user?.profile?.profileImage) {
+    dealerImage =
+      getImageUrl() + carOwenerImage?.data?.user?.profile?.profileImage;
+  }
 
   const chatData = {
     user: {
@@ -70,110 +105,164 @@ const ViewDealerChat = ({
       style={{ textAlign: "center" }}
       className="lg:min-w-[800px] !bg-[#FFF9FD]"
     >
-      <div className="max-w-2xl mx-auto bg-gray-50 h-screen flex flex-col">
-        {/* Chat Header */}
-        <div className="bg-white p-4 flex items-center justify-between border-b">
-          <div className="flex items-center gap-3">
-            <Badge dot status="success" offset={[-2, 32]}>
-              {/* <Avatar src={chatData.user.avatar} size={40} /> */}
-              <Avatar src={AllImages.person1} size={40} />
-            </Badge>
-            <div>
-              <h2 className="font-semibold">{chatData.user.name}</h2>
-              {chatData.user.isTyping && (
-                <p className="text-sm text-gray-500">Larry is Typing....</p>
-              )}
-            </div>
-          </div>
-          {/* <Button
+      <div className=" bg-gray-50 flex flex-col">
+        {isLoading ? (
+          <Spin size="large"></Spin>
+        ) : (
+          <>
+            {/* Chat Header */}
+            <div className="bg-white p-4 flex items-center justify-between border-b">
+              <div className="flex items-center gap-3">
+                {/* <Avatar src={chatData.user.avatar} size={40} /> */}
+                {carOwenerImage ? (
+                  <Avatar src={carOwenerImage} size={40} />
+                ) : (
+                  <Avatar
+                    style={{ backgroundColor: "#fde3cf", color: "#f56a00" }}
+                  >
+                    {carownerData?.data?.user?.profile?.first_name.slice(0, 1)}
+                  </Avatar>
+                )}
+
+                <div>
+                  <h2 className="font-semibold">
+                    {carownerData?.data?.user?.profile?.first_name}{" "}
+                    {carownerData?.data?.user?.profile?.last_name}{" "}
+                    {/* ({carownerData?.data?.user?.email}) */}
+                  </h2>
+                  {/* {chatData.user.isTyping && (
+                    <p className="text-sm text-gray-500">Larry is Typing....</p>
+                  )} */}
+                </div>
+              </div>
+              {/* <Button
             type="text"
             icon={<CloseOutlined />}
             className="border-none shadow-none"
           /> */}
-        </div>
+            </div>
 
-        {/* Chat Messages */}
-        <div className="flex-1 overflow-y-auto p-4 space-y-4">
-          {chatData.messages.map((message) => (
-            <div
-              key={message.id}
-              className={`flex ${
-                message.sender === "other" ? "justify-end" : "justify-start"
-              }`}
-            >
-              {message.sender === "user" && (
-                // <Avatar src={chatData.user.avatar} className="mt-1 mr-2" />
-                <Avatar src={AllImages.person1} className="mt-1 mr-2" />
-              )}
-              <div
-                className={`max-w-[70%] ${
-                  message.sender === "other" ? "items-end" : "items-start"
-                }`}
-              >
+            {/* Chat Messages */}
+            <div className="flex-1 overflow-y-auto p-4 space-y-4 max-h-[500px]">
+              {data?.data.map((message) => (
                 <div
-                  className={`rounded-lg p-3 ${
-                    message.sender === "other"
-                      ? "bg-coral-100 text-black"
-                      : "bg-gray-100"
+                  key={message.id}
+                  className={`flex ${
+                    message?.senderId === currentRecord?.carOwner
+                      ? "justify-end"
+                      : "justify-start"
                   }`}
                 >
-                  {message.text}
+                  {message?.senderId === currentRecord?.dealerId && (
+                    <>
+                      {carOwenerImage ? (
+                        <Avatar src={carOwenerImage} className="mt-1 mr-2" />
+                      ) : (
+                        <Avatar
+                          style={{
+                            backgroundColor: "#fde3cf",
+                            color: "#f56a00",
+                          }}
+                        >
+                          {carownerData?.data?.user?.profile?.first_name.slice(
+                            0,
+                            1
+                          )}
+                        </Avatar>
+                      )}
+                    </>
+                  )}
+                  <div
+                    className={`max-w-[70%] ${
+                      message?.senderId === currentRecord?.carOwner
+                        ? "items-end"
+                        : "items-start"
+                    }`}
+                  >
+                    <div
+                      className={`rounded-lg p-3 ${
+                        message?.senderId === currentRecord?.carOwner
+                          ? "bg-coral-100 text-black"
+                          : "bg-gray-100"
+                      }`}
+                    >
+                      {message?.message}
+                    </div>
+                    <span className="text-xs text-gray-500 mt-1">
+                      {message.time}
+                    </span>
+                  </div>
+                  {message?.senderId === currentRecord?.carOwner && (
+                    // <Avatar src={dealerImage} className="mt-1 ml-2" />
+                    <>
+                      {dealerImage ? (
+                        <Avatar src={dealerImage} className="mt-1 mr-2" />
+                      ) : (
+                        <Avatar
+                          style={{
+                            backgroundColor: "#fde3cf",
+                            color: "#f56a00",
+                          }}
+                        >
+                          {dealerData?.data?.user?.profile?.first_name.slice(
+                            0,
+                            1
+                          )}
+                        </Avatar>
+                      )}
+                    </>
+                  )}
                 </div>
-                <span className="text-xs text-gray-500 mt-1">
-                  {message.time}
-                </span>
-              </div>
-              {message.sender === "other" && (
-                // <Avatar src="/placeholder.svg" className="mt-1 ml-2" />
-                <Avatar src={AllImages.person2} className="mt-1 ml-2" />
-              )}
+              ))}
             </div>
-          ))}
-        </div>
 
-        {/* Chat Info */}
-        <div className="bg-white p-4 border-t">
-          <div className="grid grid-cols-2 gap-4">
-            <div>
-              <p className="text-sm">
-                <span className="text-gray-500">Chat ID:</span>{" "}
-                {chatData.chatInfo.id}
-              </p>
-              <p className="text-sm">
-                <span className="text-gray-500">Dealer Name:</span>{" "}
-                {chatData.chatInfo.dealerName}
-              </p>
-              <p className="text-sm">
-                <span className="text-gray-500">User Name:</span>{" "}
-                {chatData.chatInfo.userName}
-              </p>
-              <p className="text-sm">
-                <span className="text-gray-500">Last Activity:</span>{" "}
-                {chatData.chatInfo.lastActivity}
-              </p>
-            </div>
-            <div>
-              <p className="text-sm">
-                <span className="text-gray-500">Status:</span>{" "}
-                {chatData.chatInfo.status}
-              </p>
-              <p className="text-sm">
-                <span className="text-gray-500">Report:</span>{" "}
-                {chatData.chatInfo.report}
-              </p>
-              <p className="text-sm">
-                <span className="text-gray-500">See Reason:</span>{" "}
-                {chatData.chatInfo.seeReason}
-              </p>
-            </div>
-          </div>
-          <div className="flex justify-end gap-3 mt-4">
+            {/* Chat Info */}
+            <div className="bg-white p-4 border-t">
+              <div className="grid grid-cols-2 gap-4">
+                <div>
+                  <p className="text-sm">
+                    <span className="text-gray-500">Chat ID:</span>{" "}
+                   { currentRecord?.conversationId}
+                  </p>
+                  <p className="text-sm">
+                    <span className="text-gray-500">Dealer Name:</span>{" "}
+                    {dealerData?.data?.user?.profile?.first_name}{" "}
+                    {dealerData?.data?.user?.profile?.last_name}{" "}
+                  </p>
+                  <p className="text-sm">
+                    <span className="text-gray-500">User Name:</span>{" "}
+                    {carownerData?.data?.user?.profile?.first_name}{" "}
+                    {carownerData?.data?.user?.profile?.last_name}{" "}
+                  </p>
+                  {/* <p className="text-sm">
+                    <span className="text-gray-500">Last Activity:</span>{" "}
+                    {currentRecord?.conversationId}
+                  </p> */}
+                </div>
+                <div>
+                  <p className="text-sm">
+                    <span className="text-gray-500">Status:</span>{" "}
+                    {chatData.chatInfo.status}
+                  </p>
+                  <p className="text-sm">
+                    <span className="text-gray-500">Report:</span>{" "}
+                    {chatData.chatInfo.report}
+                  </p>
+                  <p className="text-sm">
+                    <span className="text-gray-500">See Reason:</span>{" "}
+                    {chatData.chatInfo.seeReason}
+                  </p>
+                </div>
+              </div>
+              {/* <div className="flex justify-end gap-3 mt-4">
             <Button onClick={handleCancel}>Cancel</Button>
-            <Button  danger type="primary">
+            <Button danger type="primary">
               Delete
             </Button>
-          </div>
-        </div>
+          </div> */}
+            </div>
+          </>
+        )}
       </div>
     </Modal>
   );

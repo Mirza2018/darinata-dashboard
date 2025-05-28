@@ -9,9 +9,9 @@ import { useDealerDetailsQuery } from "../../../redux/api/adminApi";
 
 const SingleDealer = () => {
   const params = useParams(); 
-  console.log(params);
+  // console.log(params);
   const { data: dealerData,isLoading } = useDealerDetailsQuery(params)
-console.log(dealerData);
+// console.log(dealerData);
 
 
   const [data, setData] = useState([]);
@@ -49,7 +49,7 @@ console.log(dealerData);
     fetchData();
   }, []);
 
-  console.log("single data",data);
+  // console.log("single data",data);
 
   return (
     <div>

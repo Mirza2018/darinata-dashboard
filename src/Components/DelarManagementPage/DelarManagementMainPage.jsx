@@ -7,22 +7,22 @@ import DealerTable from "./DealerTable";
 import ViewDealerTable from "./ViewDealerTable";
 import { FaCloudUploadAlt } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
-import { useUsersListQuery } from "../../redux/api/adminApi";
+import { useCreateUserMutation, useDealerListQuery, useUsersListQuery } from "../../redux/api/adminApi";
+import { toast } from "sonner";
   
 export default function DelarManagementMainPage() {
-    const { 
+    const {
       data: userData,
       currentData,
       isLoading,
       isFetching,
       isSuccess,
-    } = useUsersListQuery();
+    } = useDealerListQuery();
+    const [createData] = useCreateUserMutation();
   
     const displayedData = userData ?? currentData;
   console.log(displayedData);
-  const dealerData = displayedData?.data.filter(
-    (dealer) => dealer?.role == "dealer"
-  );
+
   
   //* Store Search Value
   const [form] = Form.useForm();
@@ -68,12 +68,7 @@ export default function DelarManagementMainPage() {
     fetchData();
   }, []);
 
-  //   const filteredData = useMemo(() => {
-  //     if (!searchText) return data;
-  //     return data.filter((item) =>
-  //       item.userName.toLowerCase().includes(searchText.toLowerCase())
-  //     );
-  //   }, [data, searchText]);
+
 
   const onSearch = (value) => {
     setSearchText(value);
@@ -104,12 +99,50 @@ export default function DelarManagementMainPage() {
     console.log("Blocked User:", { id: data?.id, userName: data?.userName });
     setIsViewModalVisible(false);
   };
-    const onFinish = (values) => {
-      console.log(values);
+  
+
+
+  const onFinish = async (values) => {
+    // console.log(values);
+
+    // router("car-info");
+
+    const toastId = toast.loading("Dealer is creating...");
+    const data = { ...values, role: "dealer" };
+    console.log(data);
+    
+
+    delete data.profileImage;
+
+    const formData = new FormData();
+    formData.append("data", JSON.stringify(data));
+    formData.append(
+      "profileImage",
+      data?.profileImage?.fileList[0].originFileObj
+    );
+
+    console.log(data);
+
+    try {
+      const res = await createData(formData).unwrap();
+      console.log(res);
+      toast.success(res?.message || "Dealer is create Successfully", {
+        id: toastId,
+        duration: 2000,
+      });
       form.resetFields();
       handleCancelAddDealer();
-      // router("car-info");
-    };
+    } catch (error) {
+      console.log(error);
+      toast.error(
+        error?.data?.message || "There is an problem to create Dealer",
+        {
+          id: toastId,
+          duration: 2000,
+        }
+      );
+    }
+  };
 
   return (
     <div className="min-h-[90vh]">
@@ -118,9 +151,6 @@ export default function DelarManagementMainPage() {
         style={{ boxShadow: "0px 0px 2px 1px #00000040" }}
       >
         <div className="flex justify-between p-6">
-          {/* <div className="flex items-center gap-3">
-            <h1 className="text-3xl font-bold text-base-color">Users</h1>
-          </div> */}
           <div className="flex justify-between gap-4 items-center  w-full">
             <Input
               placeholder="Search User..."
@@ -158,7 +188,7 @@ export default function DelarManagementMainPage() {
               // onChange={handleImageUpload}
               className="border border-dashed border-gray-300 md:mb-0 mb-5 p-4 rounded-md h-fit"
             >
-              <Form.Item name="image">
+              <Form.Item name="profileImage">
                 <Upload
                   beforeUpload={() => false} // Prevent automatic upload to server
                   maxCount={1}
@@ -174,45 +204,55 @@ export default function DelarManagementMainPage() {
                 </Upload>
               </Form.Item>
             </div>
+
             <div className="md:col-span-2 ">
               <div className="grid md:grid-cols-2 gap-5">
-                <Form.Item label="First Name" name="firstName">
-                  <Input placeholder="Enter your First Name" />
+                <Form.Item label="First Name" name="first_name">
+                  <Input required placeholder="Enter your First Name" />
                 </Form.Item>
-                <Form.Item label="Last Name" name="lastName">
-                  <Input placeholder="Enter your Last Name" />
+                <Form.Item label="Last Name" name="last_name">
+                  <Input required placeholder="Enter your Last Name" />
                 </Form.Item>
               </div>
               <div className="grid md:grid-cols-2 gap-5">
                 <Form.Item label="Phone Number" name="phoneNumber">
-                  <Input placeholder="Enter your Phone Number" />
+                  <Input required placeholder="Enter your Phone Number" />
                 </Form.Item>
                 <Form.Item label="Address" name="address">
-                  <Input placeholder="Enter your Address" />
+                  <Input required placeholder="Enter your Address" />
                 </Form.Item>
               </div>
               <div className="grid md:grid-cols-2 gap-5">
-                <div>
-                  <Form.Item label="Email" name="email">
-                    <Input placeholder="Enter your Email" />
-                  </Form.Item>
-                </div>
-                <div className="flex  gap-5 ">
-                  <Form.Item label="Rge Nr." name="rgeNr">
-                    <Input placeholder="Enter your Rge Nr." />
-                  </Form.Item>
-                  <Form.Item label="Konto Nr." name="kontoNr">
-                    <Input placeholder="Enter your Konto Nr." />
-                  </Form.Item>{" "}
-                </div>
+                <Form.Item label="Email" name="email">
+                  <Input required placeholder="Enter your Email" />
+                </Form.Item>
+
+                <Form.Item label="Password" name="password">
+                  <Input.Password
+                    required
+                    placeholder="Enter your Password Link"
+                  />
+                </Form.Item>
               </div>
               <div className="grid md:grid-cols-2 gap-5">
                 <Form.Item label="CVR Number" name="cvrNumber">
-                  <Input placeholder="Enter your CVR Number" />
+                  <Input.Password
+                    required
+                    placeholder="Enter your CVR Number"
+                  />
                 </Form.Item>
                 <Form.Item label="Website Link" name="websiteLink">
                   <Input placeholder="Enter your Website Link" />
                 </Form.Item>
+              </div>
+
+              <div className="grid md:grid-cols-2 gap-5">
+                <Form.Item label="Rge Nr." name="regNo">
+                  <Input required placeholder="Enter your Rge Nr." />
+                </Form.Item>
+                <Form.Item label="Konto Nr." name="kontoNr">
+                  <Input required placeholder="Enter your Konto Nr." />
+                </Form.Item>{" "}
               </div>
             </div>
 
@@ -229,8 +269,8 @@ export default function DelarManagementMainPage() {
         </Modal>
         <div className="px-2 lg:px-6">
           <DealerTable
-            // data={displayedData?.data}
-            data={dealerData}
+            data={displayedData?.data}
+            // data={displayedData}
             loading={loading}
             showViewModal={showViewModal}
             showDeleteModal={showDeleteModal}

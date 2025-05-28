@@ -17,7 +17,7 @@ const SignIn = () => {
 
   const onFinish = async (values) => {
     const toastId = toast.loading(" Logging in...");
-    console.log("car-trading:", values);
+    console.log("car_trading_dealer:", values);
 
     try {
       const res = await userLogin(values).unwrap();
@@ -26,7 +26,7 @@ const SignIn = () => {
       dispatch(setAccessToken(res?.data?.accessToken));
       dispatch(setUserInfo(decodeToken));
       console.log("res: ", res, decodeToken);
-      cookies.set("car_trading_accessToken", res?.data?.accessToken);
+      cookies.set("car_trading_dealer_accessToken", res?.data?.accessToken);
       toast.success(res.message, {
         id: toastId,
         duration: 2000,
@@ -47,11 +47,8 @@ const SignIn = () => {
     }
 
     return;
-
-
   };
 
- 
   return (
     <div className=" bg-[#E6F3F7]">
       <div className="max-w-[1350px] w-[90%] mx-auto grid grid-cols-1 lg:grid-cols-2 items-center justify-items-center gap-10 min-h-screen py-10">

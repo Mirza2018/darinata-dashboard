@@ -34,7 +34,7 @@ const storage =
 
 // Configuration for persisting only the accessToken from authSlice
 const persistConfig = {
-  key: "car-trading",
+  key: "car_trading_dealer",
   storage,
   whitelist: ["auth"], // Persist only the accessToken
   blacklist: ["baseApi"], // Don't persist userInfo
@@ -45,7 +45,7 @@ const rootReducer = {
 
   auth: authReducer, // Regular auth reducer (will be persisted separately)
 };
- 
+
 // Create persisted reducer for the auth slice
 const persistedAuthReducer = persistReducer(
   persistConfig,

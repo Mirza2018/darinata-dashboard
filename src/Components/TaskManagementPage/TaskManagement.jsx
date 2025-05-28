@@ -16,7 +16,7 @@ import { toast } from "sonner";
 export default function TaskManagement() {
   const { data: taskData, isLoading } = useTaskListQuery();
   const [createtask] = useTaskCreateMutation();
-  console.log(taskData);
+  console.log(taskData?.data[13]);
 
   const [form] = Form.useForm();
   const { TextArea } = Input;

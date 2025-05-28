@@ -9,7 +9,7 @@ import { useDealerDetailsQuery } from "../../redux/api/adminApi";
 const SingleUserManagement = () => {
   const params = useParams();
   const { data: dealerData, isLoading } = useDealerDetailsQuery(params);
-  console.log(dealerData);
+  console.log(dealerData?.data?.meta?.total);
   const [data, setData] = useState([]);
   const [currentRecord, setCurrentRecord] = useState(null);
 
@@ -62,18 +62,17 @@ const SingleUserManagement = () => {
                   <img src={AllIcons.sell} className="h-10 w-10" alt="" />
                 </div>
                 <div className="text-start">
-                  <p className="text-4xl font-bold mb-1">5</p>
-                  <p className="text-base font-normal ">Total Car Sell</p>
-                  <div className="text-xs font-normal text-[#A3A3A3] flex justify-center items-center gap-1">
-                    <img src={AllIcons.upArrow} className="h-10 w-4" alt="" />
-                    4% (30 days)
-                  </div>
+                  <p className="text-4xl font-bold mb-1">
+                    {dealerData?.data?.meta?.total}
+                  </p>
+                  <p className="text-base font-normal ">Total Car List</p>
+                 
                 </div>
               </div>
             </div>
           </div>
 
-          <div>
+          {/* <div>
             <div className="flex bg-base-color border border-secondary-color gap-5 flex-wrap rounded-lg  py-2 px-1 lg:p-5 items-center justify-center flex-1">
               <div
                 className="flex 
@@ -113,7 +112,7 @@ const SingleUserManagement = () => {
                 </div>
               </div>
             </div>
-          </div>
+          </div> */}
         </div>
         <UserCarTable
           data={dealerData?.data?.result}

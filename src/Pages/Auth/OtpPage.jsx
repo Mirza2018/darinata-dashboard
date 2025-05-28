@@ -3,12 +3,20 @@ import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import OTPInput from "react-otp-input";
 import { AllImages, AuthImages } from "../../../public/images/AllImages";
-import { useForgetOtpVerifyMutation, useResendOTPMutation } from "../../redux/api/authApi";
+import {
+  useForgetOtpVerifyMutation,
+  useResendOTPMutation,
+} from "../../redux/api/authApi";
 import { useDispatch, useSelector } from "react-redux";
 import { toast } from "sonner";
-import { clearForgotPasswordToken, clearResendSignUpToken, setForgotPasswordToken, setResetPasswordToken } from "../../redux/slices/authSlice";
+import {
+  clearForgotPasswordToken,
+  clearResendSignUpToken,
+  setForgotPasswordToken,
+  setResetPasswordToken,
+} from "../../redux/slices/authSlice";
 
-const OtpPage = () => { 
+const OtpPage = () => {
   const [varifyOtp] = useForgetOtpVerifyMutation();
   const [resendOtp] = useResendOTPMutation();
   const [otp, setOtp] = useState("");
@@ -17,8 +25,6 @@ const OtpPage = () => {
   const dispatch = useDispatch();
 
   const resendToken = useSelector((state) => state.auth.resendSignUpToken);
-
-
 
   const handleResendOtp = async () => {
     dispatch(clearForgotPasswordToken());
@@ -71,7 +77,7 @@ const OtpPage = () => {
       //   const decodeToken = jwtDecode(res?.data?.accessToken);
       //   dispatch(setAccessToken(res?.data?.accessToken));
       //   dispatch(setUserInfo(decodeToken));
-      //   cookies.set("car_trading_accessToken", res?.data?.accessToken);
+      //   cookies.set("car_trading_dealer_accessToken", res?.data?.accessToken);
       navigate("/update-password");
     } catch (error) {
       console.error("Login Error:", error); // Log the error for debugging
@@ -87,11 +93,6 @@ const OtpPage = () => {
       );
     }
   };
-
-
-
-
-
 
   // const handleOTPSubmit = () => {
   //   console.log("OTP:", otp);

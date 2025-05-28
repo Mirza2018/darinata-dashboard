@@ -1,9 +1,20 @@
 /* eslint-disable react/prop-types */
-import { Button, Form, Modal, Radio, Space, Switch, Table, Tooltip } from "antd";
+import {
+  Button,
+  Form,
+  Modal,
+  Radio,
+  Space,
+  Switch,
+  Table,
+  Tooltip,
+} from "antd";
 import { useState } from "react";
 import { GoEye } from "react-icons/go";
 import { RiDeleteBin6Line } from "react-icons/ri";
 import { Link } from "react-router-dom";
+import { toast } from "sonner";
+import { useChangePaymentMutation } from "../../../redux/api/adminApi";
 
 const SingleDealerTable = ({
   data,
@@ -12,6 +23,7 @@ const SingleDealerTable = ({
   showDeleteModal,
   pageSize = 0,
 }) => {
+  const [changePaymet] = useChangePaymentMutation();
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [statusData, setStatusData] = useState(null);
   const statusRecord = (record) => {
@@ -65,14 +77,23 @@ const SingleDealerTable = ({
       render: (_, record) => (
         <>
           <Space size="middle">
-            <Tooltip placement="right" title="View Details">
+            {record?.conversationId ? (
+              <Tooltip placement="right" title="View Details">
+                <p
+                  onClick={() => showViewModal(record)}
+                  className="text-xs font-semibold border border-[#00721E] px-2 py-1 rounded cursor-pointer hover:text-secondary-color"
+                >
+                  Check
+                </p>
+              </Tooltip>
+            ) : (
               <p
-                onClick={() => showViewModal(record)}
+                // onClick={() => showViewModal(record)}
                 className="text-xs font-semibold border border-[#00721E] px-2 py-1 rounded cursor-pointer hover:text-secondary-color"
               >
-                Check
+                No conversation
               </p>
-            </Tooltip>
+            )}
           </Space>
         </>
       ),
@@ -85,12 +106,14 @@ const SingleDealerTable = ({
         <button
           onClick={() => statusRecord(record)}
           className={` text-black rounded-md  py-1 font-semibold whitespace-nowrap ${
-            record?.status === "Completed"
+            record?.paymentStatus === "paid"
               ? "bg-green-600 px-6 "
               : "bg-yellow-600 px-3"
           }`}
         >
-          {record?.status === "Completed" ? (
+          {console.log(record?.paymentStatus)}
+
+          {record?.paymentStatus === "paid" ? (
             <Tooltip title="Paid" placement="topRight">
               <span className="text-white">Paid</span>
             </Tooltip>
@@ -103,8 +126,32 @@ const SingleDealerTable = ({
       ),
     },
   ];
-  const onFinish = (value) => {
-    console.log({ value });
+  const onFinish = async (value) => {
+    const toastId = toast.loading("Payment status is updating...");
+    const data = {
+      action: value?.paymentStatus,
+      saleCarId: statusData?.saleCarId,
+    };
+    console.log(data);
+    
+    // return;
+    try {
+      const res = await changePaymet(data).unwrap();
+      console.log(res);
+      toast.success("Payment status is Update successfully", {
+        id: toastId,
+        duration: 2000,
+      });
+    } catch (error) {
+      console.log(error);
+      
+      toast.error("There is an error to update payment status", {
+        id: toastId,
+        duration: 2000,
+      });
+    }
+
+    // console.log(value?.paymentStatus);
   };
 
   return (
@@ -132,10 +179,12 @@ const SingleDealerTable = ({
               className="flex flex-col gap-3"
               options={[
                 { value: "paid", label: "Paid" },
-                { value: "nonpaid", label: "Non Paid" },
+                { value: "unpaid", label: "Un Paid" },
               ]}
             />
           </Form.Item>
+
+          <pre>{JSON.stringify(statusData, null, 2)}</pre>
           <div className="flex  gap-5 justify-center">
             <button
               onClick={() => setIsModalOpen(false)}
@@ -152,7 +201,7 @@ const SingleDealerTable = ({
           </div>
         </Form>
       </Modal>
-      <pre>{JSON.stringify(data,null,2)}</pre>
+      <pre>{JSON.stringify(data, null, 2)}</pre>
     </div>
   );
 };

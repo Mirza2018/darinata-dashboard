@@ -15,13 +15,15 @@ import PieCharts from "../MainDashBoardPage/PieChart";
 import OrderChart from "../MainDashBoardPage/OrderChart";
 import TotalRevenue from "../MainDashBoardPage/Totalrevenue";
 import CustomerMap from "../MainDashBoardPage/CustomerMap";
-import { useCustomerMapQuery, useTotalCountQuery } from "../../redux/api/adminApi";
+import { useCustomerMapQuery, useTotalCountQuery, useTotalSalesChartQuery } from "../../redux/api/adminApi";
 
 const AdminDashboard = () => {
   const { data: totalCount } = useTotalCountQuery();
   // console.log(totalCount);
   const { data: customerMap } = useCustomerMapQuery();
-  console.log(customerMap);
+  // console.log(customerMap);
+  const { data: totalSalesChart } = useTotalSalesChartQuery();
+  console.log(totalSalesChart);
 
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -206,7 +208,7 @@ const AdminDashboard = () => {
             {/* <React.Fragment>
               <OrderChart />
             </React.Fragment> */}
-            <TotalRevenue />
+            <TotalRevenue totalSalesChart={totalSalesChart} />
           </div>
           <div className="">
             {/* <div className="xl:col-span-2">

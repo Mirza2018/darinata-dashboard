@@ -30,7 +30,7 @@ const ChangePassword = () => {
       // const decodeToken = jwtDecode(res?.data?.accessToken);
       // dispatch(setAccessToken(res?.data?.accessToken));
       // dispatch(setUserInfo(decodeToken));
-      // cookies.set("car_trading_accessToken", res?.data?.accessToken);
+      // cookies.set("car_trading_dealer_accessToken", res?.data?.accessToken);
 
       navigate("/signin");
     } catch (error) {
@@ -47,9 +47,6 @@ const ChangePassword = () => {
       );
     }
   };
-
-
-
 
   // const onFinish = (values) => {
   //   console.log("Success:", values);

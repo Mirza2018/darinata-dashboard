@@ -26,7 +26,7 @@ const data = [
 ];
 
 
-const TotalRevenue = () => {
+const TotalRevenue = ({ totalSalesChart }) => {
   // Formatter function to add 'K' suffix to Y-axis values
   const yAxisTickFormatter = (value) => `${value}`;
 
@@ -50,7 +50,7 @@ const TotalRevenue = () => {
               },
             }}
           >
-            <Select
+            {/* <Select
               defaultValue="2024"
               style={{ width: 80 }}
               options={[
@@ -59,7 +59,7 @@ const TotalRevenue = () => {
                 { value: "2022", label: "2022" },
                 { value: "2021", label: "2021" },
               ]}
-            />
+            /> */}
           </ConfigProvider>
         </div>
       </div>
@@ -67,7 +67,7 @@ const TotalRevenue = () => {
       <div className="w-full h-80">
         <ResponsiveContainer>
           <AreaChart
-            data={data}
+            data={totalSalesChart?.data}
             margin={{
               top: 20,
               right: 30,
@@ -76,7 +76,7 @@ const TotalRevenue = () => {
             }}
           >
             <XAxis
-              dataKey="name"
+              dataKey="month"
               tick={{ ...tickStyle }}
               tickMargin={6}
               axisLine={false}
@@ -94,7 +94,8 @@ const TotalRevenue = () => {
             />
             <Area
               type="monotone"
-              dataKey="Cars"
+              // dataKey="Cars"
+              dataKey="totalSales"
               stroke="#2D9CDB"
               fill="url(#colorOrder)"
             />
