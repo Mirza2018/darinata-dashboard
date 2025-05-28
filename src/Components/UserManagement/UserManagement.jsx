@@ -13,18 +13,31 @@ import {
 import { toast } from "sonner";
 
 export default function UserManagement() {
+  const [filters, setFilters] = useState({
+    page: 1,
+    limit:8,
+  });
+
+  const onPageChange = (page, limit) => {
+    setFilters((prev) => ({
+      ...prev,
+      page,
+      limit,
+    }));
+  };
+
   const {
     data: userData,
     currentData,
     isLoading,
     isFetching,
     isSuccess,
-  } = useUsersListQuery();
+  } = useUsersListQuery(filters);
 
   const [createData] = useCreateUserMutation();
 
   const displayedData = userData ?? currentData;
-  // console.log(displayedData);
+  // console.log("meta", displayedData?.meta);
 
   const [form] = Form.useForm();
   const router = useNavigate();
@@ -168,8 +181,8 @@ export default function UserManagement() {
           {/* <div className="flex items-center gap-3">
             <h1 className="text-3xl font-bold text-base-color">Users</h1>
           </div> */}
-          <div className="flex justify-between gap-4 items-center  w-full">
-            <Input
+          <div className="flex justify-end gap-4 items-center  w-full">
+            {/* <Input
               placeholder="Search User..."
               value={searchText}
               onChange={(e) => onSearch(e.target.value)}
@@ -177,7 +190,7 @@ export default function UserManagement() {
               prefix={
                 <SearchOutlined className="text-[#222222] font-bold text-lg mr-2" />
               }
-            />
+            /> */}
             <button
               onClick={showModalAddUser}
               className="flex whitespace-nowrap gap-2 text-xl font-bold bg-highlight-color rounded-md py-3 px-10 text-white"
@@ -281,7 +294,8 @@ export default function UserManagement() {
             loading={loading}
             showViewModal={showViewModal}
             showDeleteModal={showDeleteModal}
-            pageSize={12}
+            meta={displayedData?.meta}
+            onPageChange={onPageChange}
           />
         </div>
       </div>

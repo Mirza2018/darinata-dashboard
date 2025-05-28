@@ -9,15 +9,29 @@ import CarTable from "./carTable";
 import { useSellCarQuery } from "../../redux/api/adminApi";
 
 export default function CarSellTable() {
+  const [filters, setFilters] = useState({
+    page: 1,
+    limit: 8,
+  });
+
+  const onPageChange = (page, limit) => {
+    setFilters((prev) => ({
+      ...prev,
+      page,
+      limit,
+    }));
+  };
+
+
   const {
     data: sellCarData,
     currentData,
     isError,
     isFetching,
     isLoading,
-  } = useSellCarQuery();
+  } = useSellCarQuery(filters);
   const displayData = sellCarData ?? currentData;
-  console.log(displayData);
+  console.log("meta", displayData?.data?.meta);
 
   //* Store Search Value
   const [searchText, setSearchText] = useState("");
@@ -98,7 +112,7 @@ export default function CarSellTable() {
           {/* <div className="flex items-center gap-3">
             <h1 className="text-3xl font-bold text-base-color">Users</h1>
           </div> */}
-          <div className="flex gap-4 items-center">
+          {/* <div className="flex gap-4 items-center">
             <Input
               placeholder="Search User..."
               value={searchText}
@@ -108,7 +122,7 @@ export default function CarSellTable() {
                 <SearchOutlined className="text-[#222222] font-bold text-lg mr-2" />
               }
             />
-          </div>
+          </div> */}
         </div>
         <div className="px-2 lg:px-6">
           <CarTable
@@ -116,7 +130,8 @@ export default function CarSellTable() {
             loading={loading}
             showViewModal={showViewModal}
             showDeleteModal={showDeleteModal}
-            pageSize={12}
+            meta={displayData?.data?.meta}
+            onPageChange={onPageChange}
           />
         </div>
 

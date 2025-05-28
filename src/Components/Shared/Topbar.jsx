@@ -3,9 +3,12 @@
 import { BarsOutlined, BellFilled } from "@ant-design/icons";
 import { Dropdown, Flex, Typography } from "antd";
 import { Link } from "react-router-dom";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import user from "/images/user.png";
+import profileImage from "/images/profileImage.png";
 import { AllImages } from "../../../public/images/AllImages";
+import { getImageUrl } from "../../redux/getBaseUrl";
+import { useProfileQuery } from "../../redux/api/adminApi";
 
 const notifications = [
   {
@@ -36,6 +39,13 @@ const notifications = [
 ];
 
 const Topbar = ({ collapsed, setCollapsed }) => {
+  const [myImage, setImageUrl] = useState(profileImage);
+    const { data, currentData, isLoading, isFetching, isSuccess } =
+      useProfileQuery();
+    const displayedData = data ?? currentData;
+  useEffect(() => {
+    setImageUrl(getImageUrl() + displayedData?.data?.profile?.profileImage);
+  }, [displayedData?.data?.profile]);
   const user = JSON.parse(localStorage.getItem("clinivea_user"));
   const [notificationCount, setNotificationCount] = useState(
     notifications.length
@@ -62,7 +72,7 @@ const Topbar = ({ collapsed, setCollapsed }) => {
         </div>
       ))}
       <Link
-        to={`/${user?.role}/notifications`}
+        to={`/admin/notifications`}
         className="w-2/3 mx-auto bg-highlight-color text-white rounded h-8 py-1 cursor-pointer hover:text-white"
       >
         See More
@@ -84,16 +94,18 @@ const Topbar = ({ collapsed, setCollapsed }) => {
         >
           <p className="text-text-color text-base font-semibold">
             {" "}
-            <span className="text-text-light-color font-normal">Hello, </span>David Wilson
+            <span className="text-text-light-color font-normal">Hello, </span>
+            {displayedData?.data?.profile?.first_name}{" "}
+            {displayedData?.data?.profile?.last_name}
           </p>
           <img
-            src={AllImages.user}
+            src={myImage}
             alt="profile_pic"
             style={{ width: "45px", height: "45px", marginRight: "10px" }}
             className="rounded-full"
           />
         </Link>
-        <Dropdown
+        {/* <Dropdown
           overlay={notificationMenu}
           trigger={["hover"]}
           placement="bottomRight"
@@ -104,7 +116,7 @@ const Topbar = ({ collapsed, setCollapsed }) => {
             size="small"
             className=" py-4 px-2 rounded-full border border-secondary-color  h-6 text-base font-bold !text-highlight-color"
           />
-        </Dropdown>
+        </Dropdown> */}
       </div>
     </div>
   );

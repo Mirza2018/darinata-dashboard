@@ -2,18 +2,21 @@ import { Form, Input, Typography } from "antd";
 import profileImage from "/images/profileImage.png";
 import { EditOutlined } from "@ant-design/icons";
 import { Link } from "react-router-dom";
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { useProfileQuery } from "../../redux/api/adminApi";
+import { useSelector } from "react-redux";
+import { getImageUrl } from "../../redux/getBaseUrl";
 
 const Profile = () => {
-  const profileData = {
-    firstName: "Tom",
-    lastName: "Cruise",
-    email: "emily@gmail.com",
-    address: "Vancouver, BC VG1Z4, Canada",
-    po: "3000",
-    city: "Vancouver",
-    contactNumber: "+99-01846875456",
-  };
+  const [myImage, setImageUrl] = useState(profileImage);
+  const { data, currentData, isLoading, isFetching, isSuccess } =
+    useProfileQuery();
+  const displayedData = data ?? currentData;
+
+  const userInfo = useSelector((state) => state.auth.userInfo);
+  useEffect(() => {
+    setImageUrl(getImageUrl() + displayedData?.data?.profile?.profileImage);
+  }, [displayedData?.data?.profile]);
 
   return (
     <div
@@ -24,8 +27,11 @@ const Profile = () => {
         <h1 className="text-2xl font-bold ms-10 mb-10">Profile</h1>
         <div className="flex items-center justify-between">
           <div className="flex items-center justify-center gap-8">
-            <img className="h-40 w-40 relative" src={profileImage} alt="" />
-            <p className="text-5xl font-semibold">{profileData.fullname}</p>
+            <img className=" w-40 aspect-square object-contain rounded-full ring-1 relative" src={myImage} alt="" />
+            <p className="text-5xl font-semibold">
+              {displayedData?.data?.profile?.first_name}{" "}
+              {displayedData?.data?.profile?.last_name}
+            </p>
           </div>
           <Link to="edit-profile" className="hover:text-blue-500">
             <div className="mt-10 bg-base-color border border-secondary-color  px-5 py-3 rounded-lg">
@@ -37,14 +43,17 @@ const Profile = () => {
           </Link>
         </div>
         <div className="flex flex-col items-center text-white mt-5">
-          <Form layout="vertical" className="bg-transparent p-4 w-full">
+          <Form
+            initialValues={displayedData?.data?.profile}
+            layout="vertical"
+            className="bg-transparent p-4 w-full"
+          >
             <Typography.Title level={5} style={{ color: "#222222" }}>
               First Name
             </Typography.Title>
-            <Form.Item className="text-white">
+            <Form.Item className="text-white" name="first_name">
               <Input
                 readOnly
-                value={profileData.firstName}
                 placeholder="Enter your first name"
                 className="cursor-not-allowed py-2 px-3 text-xl bg-site-color border !border-input-color hover:bg-transparent hover:border-secoundary-color focus:bg-transparent focus:border-secoundary-color"
               />
@@ -52,10 +61,9 @@ const Profile = () => {
             <Typography.Title level={5} style={{ color: "#222222" }}>
               Last Name
             </Typography.Title>
-            <Form.Item className="text-white">
+            <Form.Item name="last_name" className="text-white">
               <Input
                 readOnly
-                value={profileData.lastName}
                 placeholder="Enter your last name"
                 className="cursor-not-allowed py-2 px-3 text-xl bg-site-color border !border-input-color hover:bg-transparent hover:border-secoundary-color focus:bg-transparent focus:border-secoundary-color"
               />
@@ -65,8 +73,8 @@ const Profile = () => {
             </Typography.Title>
             <Form.Item className="text-white ">
               <Input
-                value={profileData.email}
                 readOnly
+                value={userInfo?.email}
                 className="cursor-not-allowed py-2 px-3 text-xl bg-site-color border !border-input-color  hover:bg-transparent hover:border-secoundary-color focus:bg-transparent focus:border-secoundary-color"
               />
             </Form.Item>
@@ -74,10 +82,9 @@ const Profile = () => {
             <Typography.Title level={5} style={{ color: "#222222" }}>
               Address
             </Typography.Title>
-            <Form.Item className="text-white">
+            <Form.Item name="address" className="text-white">
               <Input
                 readOnly
-                value={profileData.address}
                 placeholder="Enter your contact number"
                 className="cursor-not-allowed py-2 px-3 text-xl bg-site-color border !border-input-color  hover:bg-transparent hover:border-secoundary-color focus:bg-transparent focus:border-secoundary-color"
               />
@@ -86,12 +93,11 @@ const Profile = () => {
             <div className="flex gap-5 w-full">
               <div className="flex-1">
                 <Typography.Title level={5} style={{ color: "#222222" }}>
-                  Postal Code
+                  Zip Code
                 </Typography.Title>
-                <Form.Item className="text-white">
+                <Form.Item name="zip" className="text-white">
                   <Input
                     readOnly
-                    value={profileData.po}
                     placeholder="Enter your postal code"
                     className="cursor-not-allowed py-2 px-3 text-xl bg-site-color border !border-input-color  hover:bg-transparent hover:border-secoundary-color focus:bg-transparent focus:border-secoundary-color"
                   />
@@ -101,10 +107,9 @@ const Profile = () => {
                 <Typography.Title level={5} style={{ color: "#222222" }}>
                   City
                 </Typography.Title>
-                <Form.Item className="text-white">
+                <Form.Item name="city" className="text-white">
                   <Input
                     readOnly
-                    value={profileData.city}
                     placeholder="Enter your city"
                     className="cursor-not-allowed py-2 px-3 text-xl bg-site-color border !border-input-color  hover:bg-transparent hover:border-secoundary-color focus:bg-transparent focus:border-secoundary-color"
                   />
@@ -115,10 +120,9 @@ const Profile = () => {
             <Typography.Title level={5} style={{ color: "#222222" }}>
               Contact Number
             </Typography.Title>
-            <Form.Item className="text-white">
+            <Form.Item name="phoneNumber" className="text-white">
               <Input
                 readOnly
-                value={profileData.contactNumber}
                 placeholder="Enter your contact number"
                 className="cursor-not-allowed py-2 px-3 text-xl bg-site-color border !border-input-color  hover:bg-transparent hover:border-secoundary-color focus:bg-transparent focus:border-secoundary-color"
               />

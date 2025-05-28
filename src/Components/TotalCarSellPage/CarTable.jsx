@@ -8,7 +8,8 @@ const CarTable = ({
   loading,
   showViewModal,
   showDeleteModal,
-  pageSize = 0,
+  meta,
+  onPageChange,
 }) => {
   const testData = data;
   const columns = [
@@ -115,11 +116,17 @@ const CarTable = ({
         columns={columns}
         dataSource={data}
         loading={loading}
-        pagination={pageSize > 0 ? { pageSize } : false}
+        pagination={{
+          current: meta?.page,
+          pageSize: meta?.limit,
+          total: meta?.total,
+          onChange: onPageChange,
+          showSizeChanger: true,
+        }}
         rowKey="id"
         scroll={{ x: true }}
       />
-      <pre>{JSON.stringify(testData, null, 3)}</pre>
+      {/* <pre>{JSON.stringify(testData, null, 3)}</pre> */}
     </div>
   );
 };

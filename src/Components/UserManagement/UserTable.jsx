@@ -9,8 +9,9 @@ const UserTable = ({
   data,
   loading,
   showViewModal,
-  showDeleteModal,
-  pageSize = 0,
+  meta,
+  onPageChange,
+
 }) => {
   const columns = [
     {
@@ -79,11 +80,17 @@ const UserTable = ({
         columns={columns}
         dataSource={data}
         loading={loading}
-        pagination={pageSize > 0 ? { pageSize } : false}
+        pagination={{
+          current: meta?.page,
+          pageSize: meta?.limit,
+          total: meta?.total,
+          onChange: onPageChange,
+          showSizeChanger: true,
+        }}
         rowKey="id"
         scroll={{ x: true }}
       />
-      <pre>{JSON.stringify(data, null, 3)}</pre>
+      {/* <pre>{JSON.stringify(data, null, 3)}</pre> */}
     </div>
   );
 };

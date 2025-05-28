@@ -10,8 +10,8 @@ const TaskManagementTable = ({
   loading,
   showViewModal,
   showViewModal2,
-  showDeleteModal,
-  pageSize = 0,
+  meta,
+  onPageChange,
 }) => {
   const columns = [
     {
@@ -99,7 +99,13 @@ const TaskManagementTable = ({
         columns={columns}
         dataSource={data}
         loading={loading}
-        pagination={pageSize}
+        pagination={{
+          current: meta?.page,
+          pageSize: meta?.limit,
+          total: meta?.total,
+          onChange: onPageChange,
+          showSizeChanger: true,
+        }}
         rowKey="id"
         scroll={{ x: true }}
       />

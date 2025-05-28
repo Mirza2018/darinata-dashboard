@@ -4,13 +4,7 @@ import { GoEye } from "react-icons/go";
 import { RiDeleteBin6Line } from "react-icons/ri";
 import { Link } from "react-router-dom"; 
 
-const DealerTable = ({
-  data,
-  loading,
-  showViewModal,
-  showDeleteModal,
-  pageSize = 0,
-}) => { 
+const DealerTable = ({ data, loading, showViewModal, meta, onPageChange }) => {
   // const columns = [
   //   {
   //     title: "serialNumber",
@@ -66,6 +60,11 @@ const DealerTable = ({
 
   const columns = [
     {
+      title: "Dealer ID",
+      dataIndex: "_id",
+      key: "_id",
+    },
+    {
       title: "User Name",
       dataIndex: "profile",
       key: "profile",
@@ -75,11 +74,7 @@ const DealerTable = ({
         </div>
       ),
     },
-    // {
-    //   title: "CRV Number",
-    //   dataIndex: "cvrNumber",
-    //   key: "cvrNumber",
-    // },
+
     {
       title: "Email",
       dataIndex: "email",
@@ -130,11 +125,17 @@ const DealerTable = ({
         columns={columns}
         dataSource={data}
         loading={loading}
-        pagination={pageSize > 0 ? { pageSize } : false}
+        pagination={{
+          current: meta?.page,
+          pageSize: meta?.limit,
+          total: meta?.total,
+          onChange: onPageChange,
+          showSizeChanger: true,
+        }}
         rowKey="serialNumber"
         scroll={{ x: true }}
       />
-      <pre>{ JSON.stringify(data,null,3)}</pre>
+      {/* <pre>{JSON.stringify(data, null, 3)}</pre> */}
     </div>
   );
 };

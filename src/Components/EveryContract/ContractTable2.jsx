@@ -4,7 +4,7 @@ import { useState } from "react";
 import { GoEye } from "react-icons/go";
 import { Link } from "react-router-dom";
 
-const ContractTable = ({ data, loading, meta, onPageChange }) => {
+const ContractTable2 = ({ data, loading, meta, onPageChange }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [statusData, setStatusData] = useState(null);
   const statusRecord = (record) => {
@@ -14,59 +14,63 @@ const ContractTable = ({ data, loading, meta, onPageChange }) => {
   const columns = [
     {
       title: "SL",
-      dataIndex: "ownerName",
-      key: "ownerName",
+      dataIndex: "mark",
+      key: "mark",
       responsive: ["md"],
       render: (text, record, index) => <span>{index + 1}</span>,
     },
+    // {
+    //   title: "Dealer Name",
+    //   dataIndex: "profile",
+    //   key: "dealer",
+    //   render: (text) => (
+    //     <div className="whitespace-nowrap">
+    //       {text?.first_name} {text?.last_name}
+    //     </div>
+    //   ),
+    // },
     {
-      title: "Dealer Name",
-      dataIndex: "profile",
-      key: "dealer",
-      render: (text) => (
+      title: "Car Details",
+      dataIndex: "mark",
+      key: "mark",
+      render: (text, record) => (
         <div className="whitespace-nowrap">
-          {text?.first_name} {text?.last_name}
+          {record.mark} {record.model}
         </div>
       ),
     },
-    {
-      title: "Car Name",
-      dataIndex: "carModel",
-      key: "carModel",
-      render: (text) => <div className="whitespace-nowrap">{text?.brand}</div>,
-    },
-    {
-      title: "User Name",
-      dataIndex: "privateUserProfile",
-      key: "privateUserProfile",
-      render: (text) => (
-        <div className="whitespace-nowrap">
-          {text?.first_name} {text?.last_name}
-        </div>
-      ),
-    },
+    // {
+    //   title: "User Name",
+    //   dataIndex: "privateUserProfile",
+    //   key: "privateUserProfile",
+    //   render: (text) => (
+    //     <div className="whitespace-nowrap">
+    //       {text?.first_name} {text?.last_name}
+    //     </div>
+    //   ),
+    // },
     {
       title: "Car Price",
-      dataIndex: "car",
-      key: "car",
+      dataIndex: "cashPrice",
+      key: "cashPrice",
       render: (text) => (
-        <div className="whitespace-nowrap">{text?.expectedPrice} DKK</div>
+        <div className="whitespace-nowrap">{text} .kr</div>
       ),
     },
-    {
-      title: "Color",
-      dataIndex: "carModel",
-      key: "carModel",
-      render: (text) => <div className="whitespace-nowrap">{text?.color}</div>,
-    },
+    // {
+    //   title: "Color",
+    //   dataIndex: "carModel",
+    //   key: "carModel",
+    //   render: (text) => <div className="whitespace-nowrap">{text?.color}</div>,
+    // },
     {
       title: "Contract",
       dataIndex: "action",
       key: "action",
       render: (_, record) => (
-        <> 
+        <>
           {record?.status === "sold" ? (
-            <Link to={`contract/${record?.car?._id}`}>
+            <Link to={`contract/${record?._id}`}>
               <button className="bg-green-600 border w-fit text-white rounded-md px-10 py-1 font-semibold whitespace-nowrap">
                 See Contract Paper
               </button>
@@ -166,9 +170,9 @@ const ContractTable = ({ data, loading, meta, onPageChange }) => {
           </div>
         </Form>
       </Modal>
-      ;
+      
     </div>
   );
 };
 
-export default ContractTable;
+export default ContractTable2;

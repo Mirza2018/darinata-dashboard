@@ -1,12 +1,36 @@
 import { Button, Form, Input, Typography } from "antd";
 import { Link, useNavigate } from "react-router-dom";
+import { useChangePasswordMutation } from "../../../redux/api/adminApi";
+import { toast } from "sonner";
 
 const SettingsChangePassword = () => {
-  const user = JSON.parse(localStorage.getItem("clinivea_user"));
+  const [changePass] = useChangePasswordMutation();
+  const [form] = Form.useForm();
   const navigate = useNavigate();
-  const onFinish = (values) => {
+  const onFinish = async (values) => {
     console.log("Success:", values);
-    navigate("/signin");
+
+    const toastId = toast.loading("Password is changing...");
+
+    try {
+      const res = await changePass(values).unwrap();
+      console.log(res);
+      toast.success(res?.message || "Password is change successfully", {
+        id: toastId,
+        duration: 2000,
+      });
+      form.resetFields();
+      navigate('/')
+    } catch (error) {
+      console.log(error);
+      toast.error(
+        error?.data?.message || "There is an problem changeing problem",
+        {
+          id: toastId,
+          duration: 2000,
+        }
+      );
+    }
   };
   return (
     <div>
@@ -16,6 +40,7 @@ const SettingsChangePassword = () => {
       >
         <div className="w-full lg:w-[70%]">
           <Form
+            form={form}
             onFinish={onFinish}
             layout="vertical"
             className="bg-transparent w-full"
@@ -30,7 +55,7 @@ const SettingsChangePassword = () => {
                   message: "Please enter your current password!",
                 },
               ]}
-              name="currentPassword"
+              name="oldPassword"
               className="text-white "
             >
               <Input.Password
@@ -57,7 +82,7 @@ const SettingsChangePassword = () => {
               Re-enter new Password
             </Typography.Title>
             <Form.Item
-              name="reEnterPassword"
+              name="confirmPassword"
               className="text-white"
               rules={[
                 { required: true, message: "Please confirm your password!" },
@@ -82,7 +107,7 @@ const SettingsChangePassword = () => {
             </Form.Item>
             <div className="mt-10">
               <Link
-                to={`/${user?.role}/settings/forgot-password`}
+                to={`/admin/settings/forgot-password`}
                 className=" text-lg !underline"
               >
                 Forgot Password?

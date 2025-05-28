@@ -14,9 +14,24 @@ import {
 import { toast } from "sonner";
 
 export default function TaskManagement() {
-  const { data: taskData, isLoading } = useTaskListQuery();
+  const [filters, setFilters] = useState({
+    page: 1,
+    limit: 8,
+  });
+
+  const onPageChange = (page, limit) => {
+    setFilters((prev) => ({
+      ...prev,
+      page,
+      limit,
+    }));
+  };
+  const { data: taskData, isLoading } = useTaskListQuery(filters);
+
+
+
   const [createtask] = useTaskCreateMutation();
-  console.log(taskData?.data[13]);
+  console.log("meta", taskData);
 
   const [form] = Form.useForm();
   const { TextArea } = Input;
@@ -143,8 +158,8 @@ export default function TaskManagement() {
           {/* <div className="flex items-center gap-3">
             <h1 className="text-3xl font-bold text-base-color">Users</h1>
           </div> */}
-          <div className="flex justify-between gap-4 items-center  w-full">
-            <Input
+          <div className="flex justify-end gap-4 items-center  w-full">
+            {/* <Input
               placeholder="Search User..."
               value={searchText}
               onChange={(e) => onSearch(e.target.value)}
@@ -152,7 +167,7 @@ export default function TaskManagement() {
               prefix={
                 <SearchOutlined className="text-[#222222] font-bold text-lg mr-2" />
               }
-            />
+            /> */}
             <button
               onClick={showModalTaskAdd}
               className="flex whitespace-nowrap gap-2 text-xl font-bold bg-highlight-color rounded-md py-3 px-10 text-white"
@@ -209,10 +224,10 @@ export default function TaskManagement() {
                     message: "Please enter assign Id",
                   },
                 ]}
-                label="Assign To"
+                label="Input Dealer Id"
                 name="assignTo"
               >
-                <Input placeholder="Enter assignee Id" />
+                <Input placeholder="Enter dealer Id" />
               </Form.Item>
               <Form.Item
                 rules={[
@@ -241,12 +256,13 @@ export default function TaskManagement() {
         </div>
         <div className="px-2 lg:px-6">
           <TaskManagementTable
-            data={taskData?.data}
+            data={taskData?.data?.result}
             loading={isLoading}
             showViewModal={showViewModal}
             showViewModal2={showViewModal2}
             showDeleteModal={showDeleteModal}
-            pageSize={1}
+            meta={taskData?.data?.pagination}
+            onPageChange={onPageChange}
           />
         </div>
 

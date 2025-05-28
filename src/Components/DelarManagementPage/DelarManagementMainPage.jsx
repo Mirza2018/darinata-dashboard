@@ -11,18 +11,30 @@ import { useCreateUserMutation, useDealerListQuery, useUsersListQuery } from "..
 import { toast } from "sonner";
   
 export default function DelarManagementMainPage() {
+  const [filters, setFilters] = useState({
+    page: 1,
+    limit: 8,
+  });
+
+  const onPageChange = (page, limit) => {
+    setFilters((prev) => ({
+      ...prev,
+      page,
+      limit,
+    }));
+  };
     const {
       data: userData,
       currentData,
       isLoading,
       isFetching,
       isSuccess,
-    } = useDealerListQuery();
+    } = useDealerListQuery(filters);
     const [createData] = useCreateUserMutation();
   
     const displayedData = userData ?? currentData;
-  console.log(displayedData);
-
+  // console.log(displayedData);
+  // console.log("meta", displayedData?.meta);
   
   //* Store Search Value
   const [form] = Form.useForm();
@@ -151,8 +163,8 @@ export default function DelarManagementMainPage() {
         style={{ boxShadow: "0px 0px 2px 1px #00000040" }}
       >
         <div className="flex justify-between p-6">
-          <div className="flex justify-between gap-4 items-center  w-full">
-            <Input
+          <div className="flex justify-end gap-4 items-center  w-full">
+            {/* <Input
               placeholder="Search User..."
               value={searchText}
               onChange={(e) => onSearch(e.target.value)}
@@ -160,7 +172,7 @@ export default function DelarManagementMainPage() {
               prefix={
                 <SearchOutlined className="text-[#222222] font-bold text-lg mr-2" />
               }
-            />
+            /> */}
             <button
               onClick={showModalAddDealer}
               className="flex whitespace-nowrap gap-2 text-xl font-bold bg-highlight-color rounded-md py-3 px-10 text-white"
@@ -274,7 +286,8 @@ export default function DelarManagementMainPage() {
             loading={loading}
             showViewModal={showViewModal}
             showDeleteModal={showDeleteModal}
-            pageSize={12}
+            meta={displayedData?.meta}
+            onPageChange={onPageChange}
           />
         </div>
 

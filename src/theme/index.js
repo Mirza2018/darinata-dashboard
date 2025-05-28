@@ -20,6 +20,7 @@ export const mainTheme = {
       activeBg: "rgb(243,249,251)",
       colorBgContainer: "rgb(243,249,251)",
       colorBorder: "rgb(173,216,230)",
+      
     },
     Checkbox: {
       colorPrimary: "#F5382C",

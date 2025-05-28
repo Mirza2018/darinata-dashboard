@@ -4,32 +4,45 @@ import { baseApi } from "./baseApi";
 export const adminApi = baseApi.injectEndpoints({
   endpoints: (build) => ({
     everyContract: build.query({
-      query: () => ({
+      query: (params) => ({
         url: `/sell_car?filter=sold`,
         method: "GET",
+        params,
       }),
       providesTags: [tagTypes.categorys],
     }),
+    everyContract2: build.query({
+      query: (params) => ({
+        url: `/offer_car/every_offer_contact`,
+        method: "GET",
+        params,
+      }),
+      providesTags: [tagTypes.categorys],
+    }),
+
     sellCar: build.query({
-      query: () => ({
+      query: (params) => ({
         url: `/sell_car?filter=sell`,
         method: "GET",
+        params,
       }),
       providesTags: [tagTypes.categorys],
     }),
 
     UsersList: build.query({
-      query: () => ({
+      query: (params) => ({
         url: `/users/list?role=private_user`,
         method: "GET",
+        params,
       }),
       providesTags: [tagTypes.user],
     }),
 
     dealerList: build.query({
-      query: () => ({
+      query: (params) => ({
         url: `/users/list?role=dealer`,
         method: "GET",
+        params,
       }),
       providesTags: [tagTypes.user],
     }),
@@ -45,7 +58,7 @@ export const adminApi = baseApi.injectEndpoints({
     conversationDetails: build.query({
       query: (conversationId) => {
         console.log("conversationId", conversationId);
-        
+
         return {
           url: `/conversation/message/${conversationId}`,
           method: "GET",
@@ -55,10 +68,11 @@ export const adminApi = baseApi.injectEndpoints({
     }),
 
     taskList: build.query({
-      query: () => {
+      query: (params) => {
         return {
           url: `/task/task_list`,
           method: "GET",
+          params,
         };
       },
       providesTags: tagTypes.task,
@@ -124,7 +138,6 @@ export const adminApi = baseApi.injectEndpoints({
       // invalidatesTags: tagTypes.task,
     }),
 
-    
     createUser: build.mutation({
       query: (userData) => {
         return {
@@ -135,7 +148,6 @@ export const adminApi = baseApi.injectEndpoints({
       },
       // invalidatesTags: tagTypes.task,
     }),
-
 
     changePayment: build.mutation({
       query: (paymentAction) => {
@@ -148,9 +160,38 @@ export const adminApi = baseApi.injectEndpoints({
       invalidatesTags: tagTypes.payment,
     }),
 
+    profile: build.query({
+      query: () => {
+        return {
+          url: `/profile/my_profile`,
+          method: "GET",
+        };
+      },
+      providesTags: tagTypes.profile,
+    }),
+    updateProfile: build.mutation({
+      query: (profileInfo) => {
+        console.log("hi", profileInfo);
+        // return;
+        return {
+          url: `/profile/update_profile/${profileInfo.userId}`,
+          method: "PATCH",
+          body: profileInfo.fromData,
+        };
+      },
+      invalidatesTags: tagTypes.profile,
+    }),
 
-
-
+    changePassword: build.mutation({
+      query: (changepass) => {
+        return {
+          url: `/auth/change_password`,
+          method: "POST",
+          body: changepass,
+        };
+      },
+      invalidatesTags: [tagTypes.user],
+    }),
 
     // createCtegory: build.mutation({
     //   query: (category) => ({
@@ -167,6 +208,9 @@ export const adminApi = baseApi.injectEndpoints({
 
 export const {
   useEveryContractQuery,
+
+useEveryContract2Query,
+
   useSellCarQuery,
   useUsersListQuery,
   useDealerListQuery,
@@ -180,5 +224,8 @@ export const {
   useTotalSalesChartQuery,
   useCreateUserMutation,
   useConversationDetailsQuery,
-  useChangePaymentMutation
+  useChangePaymentMutation,
+  useProfileQuery,
+  useUpdateProfileMutation,
+  useChangePasswordMutation
 } = adminApi;
