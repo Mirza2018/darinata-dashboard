@@ -124,6 +124,22 @@ const DashboardLayout = () => {
       label: <NavLink to="every-contract">Every Contract</NavLink>,
     },
     {
+      key: "all-cars",
+      icon: (
+        <img
+          src={totalCar}
+          alt="all-cars"
+          width={20}
+          style={{
+            filter: location.pathname.includes("all-cars")
+              ? "brightness(0) invert(1)"
+              : undefined,
+          }}
+        />
+      ),
+      label: <NavLink to="all-cars">All Cars</NavLink>,
+    },
+    {
       key: "total-Car-Sell",
       icon: (
         <img
@@ -139,41 +155,6 @@ const DashboardLayout = () => {
       ),
       label: <NavLink to="total-Car-Sell">Total Car Sell</NavLink>,
     },
-
-    // {
-    //   key: "total-earning",
-    //   icon: (
-    //     <img
-    //       src={totalEarning}
-    //       alt="total-earning"
-    //       width={20}
-    //       style={{
-    //         filter: location.pathname.includes("total-earning")
-    //           ? "brightness(0) invert(1)"
-    //           : undefined,
-    //       }}
-    //     />
-    //   ),
-    //   label: <NavLink to="total-earning">Total Earning </NavLink>,
-    // },
-
-    // {
-    //   key: "service-price",
-    //   icon: (
-    //     <img
-    //       src={service}
-    //       alt="service-price"
-    //       width={20}
-    //       style={{
-    //         filter: location.pathname.includes("service-price")
-    //           ? "brightness(0) invert(1)"
-    //           : undefined,
-    //       }}
-    //     />
-    //   ),
-
-    //   label: <NavLink to="service-price">Service Price</NavLink>,
-    // },
 
     {
       key: "user-management",

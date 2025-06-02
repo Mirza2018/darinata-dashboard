@@ -169,6 +169,42 @@ export const adminApi = baseApi.injectEndpoints({
       },
       providesTags: tagTypes.profile,
     }),
+
+    allCarList: build.query({
+      query: (params) => {
+        return {
+          url: `/sell_car/all_car_list`,
+          method: "GET",
+          params,
+        };
+      },
+      providesTags: [tagTypes.allCar],
+    }),
+
+    deleteCar: build.mutation({
+      query: (id) => {
+        console.log(id);
+
+        return {
+          url: `/car/${id}`,
+          method: "DELETE",
+        };
+      },
+      invalidatesTags: [tagTypes.allCar],
+    }),
+    UpdateCar: build.mutation({
+      query: (data) => {
+        console.log(data);
+        // return;
+        return {
+          url: `/car/update/${data?.id}`,
+          method: "PATCH",
+          body: data?.data,
+        };
+      },
+      invalidatesTags: [tagTypes.allCar],
+    }),
+
     updateProfile: build.mutation({
       query: (profileInfo) => {
         console.log("hi", profileInfo);
@@ -209,7 +245,7 @@ export const adminApi = baseApi.injectEndpoints({
 export const {
   useEveryContractQuery,
 
-useEveryContract2Query,
+  useEveryContract2Query,
 
   useSellCarQuery,
   useUsersListQuery,
@@ -227,5 +263,8 @@ useEveryContract2Query,
   useChangePaymentMutation,
   useProfileQuery,
   useUpdateProfileMutation,
-  useChangePasswordMutation
+  useChangePasswordMutation,
+  useAllCarListQuery,
+  useDeleteCarMutation,
+  useUpdateCarMutation,
 } = adminApi;

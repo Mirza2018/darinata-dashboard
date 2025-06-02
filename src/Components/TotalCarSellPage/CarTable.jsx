@@ -82,7 +82,7 @@ const CarTable = ({
       key: "car",
       render: (text) => (
         <div className="whitespace-nowrap">
-          {text?.expectedPrice ? <>{text?.expectedPrice} DKK</> : ""}
+          {text?.expectedPrice ? <>{text?.expectedPrice} .kr</> : ""}
         </div>
       ),
     },

@@ -23,30 +23,21 @@ import PrivacyPolicy from "../Dashboard/settings/PrivacyPolicy";
 import TermsOfService from "../Dashboard/settings/TermsOfService";
 
 import { useEffect } from "react";
-import ActionableWellnessTracking from "../../Pages/ActionableWellnessTracking";
-import CliniveaPayPage from "../../Pages/CliniveaPayPage";
-import UserDashboardPage from "../../Pages/UserDashboardPage";
-import UserHealthRecoardPage from "../../Pages/UserHealthRecoardPage";
 import AdminDashboard from "../Dashboard/AdminDashBoard";
-import Appointment from "../Dashboard/Appointment/Appointment";
-import CalendarappointmentsPage from "../Dashboard/Calendarappointments/CalendarappointmentsPage";
-import Chat from "../Dashboard/Chat/Chat";
-import MvrDashboard from "../Dashboard/MvrDashBoard";
 import Notifications from "../Dashboard/Notifications";
 import DelarManagementMainPage from "../DelarManagementPage/DelarManagementMainPage";
 import ContractData from "../DelarManagementPage/SingleDealerPage/ContractData";
+import OfferContractData from "../DelarManagementPage/SingleDealerPage/OfferContractData";
 import SingleDealer from "../DelarManagementPage/SingleDealerPage/SingleDealer";
 import EveryContractPage from "../EveryContract/EveryContractPage";
-import ServicePrice from "../ServicePricePage/ServicePrice";
 import TaskManagement from "../TaskManagementPage/TaskManagement";
 import CarSellTable from "../TotalCarSellPage/CarSellTable";
-import TotalEarning from "../TotalEarningPage/TotalEarning";
 import Loading from "../UI/Loading";
 import SingleUserManagement from "../UserManagement/SingleUserManagement";
 import UserCarInfo from "../UserManagement/UserCarInfo";
 import UserManagement from "../UserManagement/UserManagement";
 import ProtectedRoute from "./ProtectedRoute";
-import OfferContractData from "../DelarManagementPage/SingleDealerPage/OfferContractData";
+import AllCarsMainPage from "../AllCars/AllCarsMainPage";
 
 function AuthRedirect() {
   const navigate = useNavigate();
@@ -87,16 +78,20 @@ const router = createBrowserRouter([
         element: <EveryContractPage />,
       },
       {
+        path: "all-cars",
+        element: <AllCarsMainPage />,
+      },
+      {
+        path: "total-Car-Sell",
+        element: <CarSellTable />,
+      },
+      {
         path: "every-contract/contract/:id",
         element: <ContractData />,
       },
       {
         path: "every-contract/offer-contract/:id",
         element: <OfferContractData />,
-      },
-      {
-        path: "total-Car-Sell",
-        element: <CarSellTable />,
       },
 
       {
