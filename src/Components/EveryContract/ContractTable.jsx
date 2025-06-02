@@ -64,8 +64,33 @@ const ContractTable = ({ data, loading, meta, onPageChange }) => {
       dataIndex: "action",
       key: "action",
       render: (_, record) => (
-        <> 
-          {record?.status === "sold" ? (
+        <>
+          <Tooltip placement="right" title="View Contract Details">
+            {/* {!record?.signatureAsDealer && !record?.signatureAsOwner && (
+              <Button className={`  !text-white  !bg-highlight-color`}>
+                <p>Pending contract</p>
+              </Button>
+            )}
+            {!record?.signatureAsDealer && record?.signatureAsOwner && (
+              <Button className={`  !text-white !bg-secondary-color !px-5`}>
+                {" "}
+                <p>Make your contract</p>{" "}
+              </Button>
+            )} */}
+            {record?.signatureAsDealer && record?.signatureAsOwner ? (
+              <Link to={`contract/${record?.car?._id}`}>
+                <Button className={`  !text-white !bg-green-500 `}>
+                  {" "}
+                  <p>See Contract Paper</p>{" "}
+                </Button>
+              </Link>
+            ) : (
+              <Button className={`  !text-white  !bg-highlight-color px-2`}>
+                <p>Pending Contract Paper</p>
+              </Button>
+            )}
+          </Tooltip>
+          {/* {record?.status === "sold" ? (
             <Link to={`contract/${record?.car?._id}`}>
               <button className="bg-green-600 border w-fit text-white rounded-md px-10 py-1 font-semibold whitespace-nowrap">
                 See Contract Paper
@@ -75,7 +100,7 @@ const ContractTable = ({ data, loading, meta, onPageChange }) => {
             <p className="bg-yellow-600 border w-fit text-white rounded-md w-fix text-center px-11 py-1 font-semibold whitespace-nowrap">
               No Contract Done
             </p>
-          )}
+          )} */}
         </>
       ),
     },
@@ -92,17 +117,17 @@ const ContractTable = ({ data, loading, meta, onPageChange }) => {
         <button
           // onClick={() => statusRecord(record)}
           className={` text-black rounded-md  py-1 font-semibold whitespace-nowrap ${
-            record?.status === "sold"
-              ? "bg-green-600 px-6 "
-              : "bg-yellow-600 px-3"
+            record?.signatureAsDealer && record?.signatureAsOwner
+              ? "bg-green-500 px-6 "
+              : "bg-highlight-color px-3"
           }`}
         >
-          {record?.status === "sold" ? (
-            <Tooltip title="Unpaid" placement="topRight">
+          {record?.signatureAsDealer && record?.signatureAsOwner ? (
+            <Tooltip title="status" placement="topRight">
               <span className="text-white px-2">Sold</span>
             </Tooltip>
           ) : (
-            <Tooltip title="Paid" placement="topRight">
+            <Tooltip title="status" placement="topRight">
               <span className="text-white">Not Sold</span>
             </Tooltip>
           )}

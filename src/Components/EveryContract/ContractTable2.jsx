@@ -1,10 +1,15 @@
 /* eslint-disable react/prop-types */
-import { Button, Form, Modal, Radio, Space, Table, Tooltip } from "antd";
+import { Button, Form, Modal, Radio, Table, Tooltip } from "antd";
 import { useState } from "react";
-import { GoEye } from "react-icons/go";
-import { Link } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { Link, useNavigate } from "react-router-dom";
+import { setOfferCarInfo } from "../../redux/slices/offerCarInfoSlice";
 
 const ContractTable2 = ({ data, loading, meta, onPageChange }) => {
+
+
+  const dispatch = useDispatch();
+  const navigate=useNavigate()
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [statusData, setStatusData] = useState(null);
   const statusRecord = (record) => {
@@ -53,9 +58,7 @@ const ContractTable2 = ({ data, loading, meta, onPageChange }) => {
       title: "Car Price",
       dataIndex: "cashPrice",
       key: "cashPrice",
-      render: (text) => (
-        <div className="whitespace-nowrap">{text} .kr</div>
-      ),
+      render: (text) => <div className="whitespace-nowrap">{text} .kr</div>,
     },
     // {
     //   title: "Color",
@@ -69,17 +72,25 @@ const ContractTable2 = ({ data, loading, meta, onPageChange }) => {
       key: "action",
       render: (_, record) => (
         <>
-          {record?.status === "sold" ? (
-            <Link to={`contract/${record?._id}`}>
-              <button className="bg-green-600 border w-fit text-white rounded-md px-10 py-1 font-semibold whitespace-nowrap">
-                See Contract Paper
-              </button>
-            </Link>
-          ) : (
-            <p className="bg-yellow-600 border w-fit text-white rounded-md w-fix text-center px-11 py-1 font-semibold whitespace-nowrap">
-              No Contract Done
-            </p>
-          )}
+          <Tooltip placement="right" title="View Contract Details">
+            {!record?.signatureAsDealer && !record?.signatureAsOwner && (
+              <Button className={`  !text-white  !bg-highlight-color`}>
+                <p>Pending Contract Paper</p>
+              </Button>
+            )}
+            {record?.signatureAsDealer && record?.signatureAsOwner && (
+              <Button
+                onClick={() => {
+                  dispatch(setOfferCarInfo(record));
+                  navigate(`offer-contract/${record?._id}`);
+                }}
+                className={`  !text-white !bg-green-500 `}
+              >
+                {" "}
+                <p>See Contract Paper</p>{" "}
+              </Button>
+            )}
+          </Tooltip>
         </>
       ),
     },
@@ -97,11 +108,11 @@ const ContractTable2 = ({ data, loading, meta, onPageChange }) => {
           // onClick={() => statusRecord(record)}
           className={` text-black rounded-md  py-1 font-semibold whitespace-nowrap ${
             record?.status === "sold"
-              ? "bg-green-600 px-6 "
-              : "bg-yellow-600 px-3"
+              ? "bg-green-500 px-6 "
+              : "bg-highlight-color px-3"
           }`}
         >
-          {record?.status === "sold" ? (
+          {record?.signatureAsDealer && record?.signatureAsOwner ? (
             <Tooltip title="Unpaid" placement="topRight">
               <span className="text-white px-2">Sold</span>
             </Tooltip>

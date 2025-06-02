@@ -1,6 +1,7 @@
 import { combineReducers, configureStore } from "@reduxjs/toolkit";
 import authReducer from "./slices/authSlice"; // Import your auth slice
 import { baseApi } from "./api/baseApi";
+import offerInfoReducer from "./slices/offerCarInfoSlice";
 import { persistReducer, persistStore } from "redux-persist";
 import createWebStorage from "redux-persist/lib/storage/createWebStorage";
 import {
@@ -36,14 +37,16 @@ const storage =
 const persistConfig = {
   key: "car_trading_dealer",
   storage,
-  whitelist: ["auth"], // Persist only the accessToken
+  whitelist: ["auth", "offerInfo"], // Persist only the accessToken
   blacklist: ["baseApi"], // Don't persist userInfo
 };
 
 const rootReducer = {
   [baseApi.reducerPath]: baseApi.reducer,
 
-  auth: authReducer, // Regular auth reducer (will be persisted separately)
+  auth: authReducer,
+  offerInfo: offerInfoReducer,
+  // Regular auth reducer (will be persisted separately)
 };
 
 // Create persisted reducer for the auth slice

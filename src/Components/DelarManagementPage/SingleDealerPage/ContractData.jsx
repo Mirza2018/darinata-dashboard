@@ -22,7 +22,7 @@ const ContractData = () => {
   // const [contractPaper] = useUpdateContactPaperMutation();
 
   const displayedData = data ?? currentData;
-  // console.log(displayedData);
+  console.log(displayedData);
 
   const inspectionDate = new Date(
     displayedData?.data?.car?.inspectionDate

@@ -46,6 +46,7 @@ import SingleUserManagement from "../UserManagement/SingleUserManagement";
 import UserCarInfo from "../UserManagement/UserCarInfo";
 import UserManagement from "../UserManagement/UserManagement";
 import ProtectedRoute from "./ProtectedRoute";
+import OfferContractData from "../DelarManagementPage/SingleDealerPage/OfferContractData";
 
 function AuthRedirect() {
   const navigate = useNavigate();
@@ -88,6 +89,10 @@ const router = createBrowserRouter([
       {
         path: "every-contract/contract/:id",
         element: <ContractData />,
+      },
+      {
+        path: "every-contract/offer-contract/:id",
+        element: <OfferContractData />,
       },
       {
         path: "total-Car-Sell",
@@ -146,7 +151,7 @@ const router = createBrowserRouter([
         path: "settings/forgot-password",
         element: <SettingsForgotPassword />,
       },
-      {  
+      {
         path: "settings/change-password",
         element: <SettingsChangePassword />,
       },
