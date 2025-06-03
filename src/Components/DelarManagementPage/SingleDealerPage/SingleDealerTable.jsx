@@ -184,7 +184,7 @@ const SingleDealerTable = ({
             />
           </Form.Item>
 
-          <pre>{JSON.stringify(statusData, null, 2)}</pre>
+          {/* <pre>{JSON.stringify(statusData, null, 2)}</pre> */}
           <div className="flex  gap-5 justify-center">
             <button
               onClick={() => setIsModalOpen(false)}
@@ -201,7 +201,7 @@ const SingleDealerTable = ({
           </div>
         </Form>
       </Modal>
-      <pre>{JSON.stringify(data, null, 2)}</pre>
+      {/* <pre>{JSON.stringify(data, null, 2)}</pre> */}
     </div>
   );
 };

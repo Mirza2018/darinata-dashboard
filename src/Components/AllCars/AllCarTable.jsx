@@ -205,7 +205,7 @@ const AllCarTable = ({
         rowKey="id"
         scroll={{ x: true }}
       />
-      <pre>{JSON.stringify(data, null, 3)}</pre>
+      {/* <pre>{JSON.stringify(data, null, 3)}</pre> */}
     </div>
   );
 };
