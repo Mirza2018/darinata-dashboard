@@ -53,6 +53,9 @@ const DashboardLayout = () => {
     if (currentPath.includes("/every-contract")) {
       return ["every-contract"];
     }
+    if (currentPath.includes("/all-cars")) {
+      return ["all-cars"];
+    }
     if (currentPath.includes("/total-Car-Sell")) {
       return ["total-Car-Sell"];
     }
