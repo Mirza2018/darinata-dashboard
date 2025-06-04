@@ -31,13 +31,14 @@ import OfferContractData from "../DelarManagementPage/SingleDealerPage/OfferCont
 import SingleDealer from "../DelarManagementPage/SingleDealerPage/SingleDealer";
 import EveryContractPage from "../EveryContract/EveryContractPage";
 import TaskManagement from "../TaskManagementPage/TaskManagement";
-import CarSellTable from "../TotalCarSellPage/CarSellTable";
+
 import Loading from "../UI/Loading";
 import SingleUserManagement from "../UserManagement/SingleUserManagement";
 import UserCarInfo from "../UserManagement/UserCarInfo";
 import UserManagement from "../UserManagement/UserManagement";
 import ProtectedRoute from "./ProtectedRoute";
 import AllCarsMainPage from "../AllCars/AllCarsMainPage";
+import CarSellTable from "../TotalCarSellPage/CarSellTable";
 
 function AuthRedirect() {
   const navigate = useNavigate();

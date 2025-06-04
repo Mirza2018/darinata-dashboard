@@ -5,8 +5,9 @@ import { Input } from "antd";
 import axios from "axios";
 import DeleteCarModal from "./DeleteCarModal";
 import ViewCarTable from "./ViewCarTable";
-import CarTable from "./carTable";
+
 import { useSellCarQuery } from "../../redux/api/adminApi";
+import CarTable from "./CarTable";
 
 export default function CarSellTable() {
   const [filters, setFilters] = useState({

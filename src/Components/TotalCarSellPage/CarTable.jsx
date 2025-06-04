@@ -7,7 +7,7 @@ const CarTable = ({
   data,
   loading,
   showViewModal,
-  showDeleteModal,
+  showDeleteModal, 
   meta,
   onPageChange,
 }) => {
