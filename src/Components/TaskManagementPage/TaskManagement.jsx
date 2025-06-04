@@ -7,13 +7,14 @@ import {
   useTaskCreateMutation,
   useTaskListQuery,
 } from "../../redux/api/adminApi";
-import TaskManagementTable from "./TaskManageMentTable";
+
 import ViewTaskCompleteTable from "./ViewTaskCompleteTable";
 import ViewTaskManagementTable from "./ViewTaskManagementTable";
+import TaskManagementTable from "./TaskManageMentTable";
 
 export default function TaskManagement() {
   const [filters, setFilters] = useState({
-    page: 1, 
+    page: 1,
     limit: 8,
   });
 
@@ -25,8 +26,6 @@ export default function TaskManagement() {
     }));
   };
   const { data: taskData, isLoading } = useTaskListQuery(filters);
-
-
 
   const [createtask] = useTaskCreateMutation();
   console.log("meta", taskData);
@@ -98,14 +97,12 @@ export default function TaskManagement() {
     console.log("Blocked User:", { id: data?.id, userName: data?.userName });
     setIsViewModalVisible(false);
   };
-  const onFinish =async (values) => {
+  const onFinish = async (values) => {
     const toastId = toast.loading("Task is Creating...");
     // handleCancelTaskAdd();
     const date = new Date(values.deadline).toISOString();
     values.deadline = date;
     console.log(values);
-
-  
 
     try {
       const res = await createtask(values).unwrap();
@@ -118,32 +115,13 @@ export default function TaskManagement() {
     } catch (error) {
       console.log(error);
       toast.error(
-        error?.data?.message ||
-          "There is an problem to Create task",
+        error?.data?.message || "There is an problem to Create task",
         {
           id: toastId,
           duration: 2000,
         }
       );
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
   };
 
   return (
@@ -249,7 +227,7 @@ export default function TaskManagement() {
                   Done
                 </button>
               </Form.Item>
-            </Form> 
+            </Form>
           </Modal>
         </div>
         <div className="px-2 lg:px-6">
