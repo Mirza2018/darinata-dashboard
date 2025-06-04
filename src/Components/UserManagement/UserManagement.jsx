@@ -1,16 +1,15 @@
 import { useEffect, useState } from "react";
 
-import { EditOutlined, SearchOutlined } from "@ant-design/icons";
-import { DatePicker, Form, Input, Modal, Upload, Button } from "antd";
+import { Form, Input, Modal, Upload } from "antd";
 import axios from "axios";
-import UserTable from "./UserTable";
 import { FaCloudUploadAlt } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
+import { toast } from "sonner";
 import {
   useCreateUserMutation,
   useUsersListQuery,
 } from "../../redux/api/adminApi";
-import { toast } from "sonner";
+import UserTable from "./UserTable";
 
 export default function UserManagement() {
   const [filters, setFilters] = useState({

@@ -1,10 +1,8 @@
 import { Button } from "antd";
-import JoditEditor from "jodit-react";
-import { useRef, useState } from "react";
+import { useState } from "react";
 import ReactQuill from "react-quill";
-import { useContentCreateMutation } from "../../../redux/api/adminApi";
-import { data } from "autoprefixer";
 import { toast } from "sonner";
+import { useContentCreateMutation } from "../../../redux/api/adminApi";
 
 const TermsOfService = () => {
   const [staticData] = useContentCreateMutation();

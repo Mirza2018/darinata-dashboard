@@ -1,11 +1,10 @@
-import { InboxOutlined, UploadOutlined } from "@ant-design/icons";
 
-import { Button, Form, Input, Radio, Upload } from "antd";
+import { Form, Input, Radio, Upload } from "antd";
 import { useForm } from "antd/es/form/Form";
-import React, { useRef } from "react";
-import { AllImages } from "../../../public/images/AllImages";
+import { useRef } from "react";
 import { FaCloudUploadAlt } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
+import { AllImages } from "../../../public/images/AllImages";
 
 const UserCarInfo = () => {
   const [form] = useForm();

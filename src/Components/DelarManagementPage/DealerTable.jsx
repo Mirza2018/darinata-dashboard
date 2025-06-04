@@ -1,8 +1,6 @@
 /* eslint-disable react/prop-types */
-import { Button, Space, Table, Tooltip } from "antd";
-import { GoEye } from "react-icons/go";
-import { RiDeleteBin6Line } from "react-icons/ri";
-import { Link } from "react-router-dom"; 
+import { Space, Table, Tooltip } from "antd";
+import { Link } from "react-router-dom";
 
 const DealerTable = ({ data, loading, showViewModal, meta, onPageChange }) => {
   // const columns = [

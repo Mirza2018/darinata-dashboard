@@ -1,7 +1,6 @@
 /* eslint-disable react/prop-types */
 import { Divider, Modal } from "antd";
 import { AllImages } from "../../../public/images/AllImages";
-import React from "react";
 
 const ViewDealerTable = ({
   isViewModalVisible,

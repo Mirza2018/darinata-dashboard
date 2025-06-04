@@ -1,11 +1,10 @@
 /* eslint-disable react/prop-types */
 import { Modal, Space, Table, Tooltip } from "antd";
 import { useState } from "react";
-import { GoEye } from "react-icons/go";
-import { RiDeleteBinLine } from "react-icons/ri";
-import { useDeleteCarMutation } from "../../redux/api/adminApi";
-import { toast } from "sonner";
 import { CiEdit } from "react-icons/ci";
+import { RiDeleteBinLine } from "react-icons/ri";
+import { toast } from "sonner";
+import { useDeleteCarMutation } from "../../redux/api/adminApi";
 import CarUpdateModel from "./CarUpdateModel";
 
 const AllCarTable = ({

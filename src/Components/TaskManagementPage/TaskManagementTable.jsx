@@ -1,11 +1,8 @@
 /* eslint-disable react/prop-types */
-import { Button, Space, Table, Tooltip } from "antd";
-import { render } from "react-dom";
-import { GoEye } from "react-icons/go";
-import { RiDeleteBin6Line } from "react-icons/ri";
+import { Space, Table, Tooltip } from "antd";
 import { dateConvert } from "../../utils/dateConvert";
 
-const TaskManagementTable = ({
+const TaskManagementTable = ({ 
   data,
   loading,
   showViewModal,
@@ -16,7 +13,7 @@ const TaskManagementTable = ({
   const columns = [
     {
       title: "Task Id",
-      dataIndex: "taskId",
+      dataIndex: "taskId", 
       key: "taskId",
       responsive: ["md"],
     },

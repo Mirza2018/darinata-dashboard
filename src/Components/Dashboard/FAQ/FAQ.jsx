@@ -1,6 +1,6 @@
 /* eslint-disable react/no-unescaped-entities */
 import { PlusOutlined } from "@ant-design/icons";
-import { Button, Input, Collapse, ConfigProvider } from "antd";
+import { Button, Collapse, ConfigProvider, Input } from "antd";
 import JoditEditor from "jodit-react";
 import { useRef, useState } from "react";
 

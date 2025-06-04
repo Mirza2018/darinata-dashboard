@@ -1,9 +1,9 @@
 import axios from "axios";
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import { useDealerDetailsQuery } from "../../../redux/api/adminApi";
 import SingleDealerTable from "./SingleDealerTable";
 import ViewDealerChat from "./ViewDealerChat";
-import { useDealerDetailsQuery } from "../../../redux/api/adminApi";
 // import UserCarTable from "./UserCarTable";
 // import ViewUserCarBlockModal from "./ViewUserCarBlockModal";
 

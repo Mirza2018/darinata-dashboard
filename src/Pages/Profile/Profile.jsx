@@ -1,11 +1,11 @@
-import { Form, Input, Typography } from "antd";
-import profileImage from "/images/profileImage.png";
 import { EditOutlined } from "@ant-design/icons";
-import { Link } from "react-router-dom";
-import React, { useEffect, useState } from "react";
-import { useProfileQuery } from "../../redux/api/adminApi";
+import { Form, Input, Typography } from "antd";
+import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
+import { Link } from "react-router-dom";
+import { useProfileQuery } from "../../redux/api/adminApi";
 import { getImageUrl } from "../../redux/getBaseUrl";
+import profileImage from "/images/profileImage.png";
 
 const Profile = () => {
   const [myImage, setImageUrl] = useState(profileImage);

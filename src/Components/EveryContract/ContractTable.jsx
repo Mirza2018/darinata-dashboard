@@ -1,7 +1,6 @@
 /* eslint-disable react/prop-types */
-import { Button, Form, Modal, Radio, Space, Table, Tooltip } from "antd";
+import { Button, Form, Modal, Radio, Table, Tooltip } from "antd";
 import { useState } from "react";
-import { GoEye } from "react-icons/go";
 import { Link } from "react-router-dom";
 
 const ContractTable = ({ data, loading, meta, onPageChange }) => {

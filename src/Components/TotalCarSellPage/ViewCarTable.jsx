@@ -1,7 +1,5 @@
 /* eslint-disable react/prop-types */
 import { Divider, Modal } from "antd";
-import { AllImages } from "../../../public/images/AllImages";
-import React from "react";
 import { getImageUrl } from "../../redux/getBaseUrl";
 
 const ViewCarTable = ({

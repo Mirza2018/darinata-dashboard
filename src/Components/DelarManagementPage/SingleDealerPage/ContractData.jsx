@@ -1,8 +1,8 @@
 import { Checkbox, Radio, Space, Spin } from "antd";
 import { useEffect, useRef, useState } from "react";
-import { getImageUrl } from "../../../redux/getBaseUrl";
-import { useContactPaperQuery } from "../../../redux/api/contract";
 import { useParams } from "react-router-dom";
+import { useContactPaperQuery } from "../../../redux/api/contract";
+import { getImageUrl } from "../../../redux/getBaseUrl";
 
 const ContractData = () => {
   const params = useParams();

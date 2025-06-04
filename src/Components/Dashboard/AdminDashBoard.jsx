@@ -1,21 +1,10 @@
-import { ConfigProvider, Select } from "antd";
-import Area_Chart from "../Chart/AreaChart";
-import Bar_Chart from "../Chart/BarChart";
-import { GrTransaction } from "react-icons/gr";
-import { Link } from "react-router-dom";
 
-import { AllIcons } from "../../../public/images/AllImages";
-import React, { useEffect, useState } from "react";
 import axios from "axios";
-import UsersTable from "../Tables/UsersTable";
-import ViewUserModal from "../UI/ViewUserModal";
-import DeleteUserModal from "../UI/DeleteUserModal";
-import { PieChart } from "recharts";
-import PieCharts from "../MainDashBoardPage/PieChart";
-import OrderChart from "../MainDashBoardPage/OrderChart";
-import TotalRevenue from "../MainDashBoardPage/Totalrevenue";
-import CustomerMap from "../MainDashBoardPage/CustomerMap";
+import React, { useEffect, useState } from "react";
+import { AllIcons } from "../../../public/images/AllImages";
 import { useCustomerMapQuery, useTotalCountQuery, useTotalSalesChartQuery } from "../../redux/api/adminApi";
+import CustomerMap from "../MainDashBoardPage/CustomerMap";
+import TotalRevenue from "../MainDashBoardPage/Totalrevenue";
 
 const AdminDashboard = () => {
   const { data: totalCount } = useTotalCountQuery();

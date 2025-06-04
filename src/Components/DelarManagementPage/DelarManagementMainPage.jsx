@@ -1,14 +1,13 @@
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useState } from "react";
 
-import { SearchOutlined } from "@ant-design/icons";
-import { DatePicker, Form, Input, Modal, Upload, Button } from "antd";
+import { Form, Input, Modal, Upload } from "antd";
 import axios from "axios";
-import DealerTable from "./DealerTable";
-import ViewDealerTable from "./ViewDealerTable";
 import { FaCloudUploadAlt } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
-import { useCreateUserMutation, useDealerListQuery, useUsersListQuery } from "../../redux/api/adminApi";
 import { toast } from "sonner";
+import { useCreateUserMutation, useDealerListQuery } from "../../redux/api/adminApi";
+import DealerTable from "./DealerTable";
+import ViewDealerTable from "./ViewDealerTable";
   
 export default function DelarManagementMainPage() {
   const [filters, setFilters] = useState({

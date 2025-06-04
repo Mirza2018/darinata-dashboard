@@ -1,8 +1,6 @@
-import { Card, Button, Typography, Modal, Image } from "antd";
-import { FilePdfOutlined } from "@ant-design/icons";
-import React from "react";
+import { Card, Modal, Typography } from "antd";
 import Title from "antd/es/skeleton/Title";
-import { getBaseUrl, getImageUrl } from "../../redux/getBaseUrl";
+import { getImageUrl } from "../../redux/getBaseUrl";
 
 const { Text } = Typography; // Correct import for Text
 

@@ -1,8 +1,5 @@
 /* eslint-disable react/prop-types */
-import { Button, Space, Table, Tooltip } from "antd";
-import { render } from "react-dom";
-import { GoEye } from "react-icons/go";
-import { RiDeleteBin6Line } from "react-icons/ri";
+import { Space, Table, Tooltip } from "antd";
 import { Link } from "react-router-dom";
 
 const UserTable = ({

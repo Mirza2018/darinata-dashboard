@@ -1,8 +1,5 @@
 /* eslint-disable react/prop-types */
-import { Button, Space, Switch, Table, Tooltip } from "antd";
-import { GoEye } from "react-icons/go";
-import { RiDeleteBin6Line } from "react-icons/ri";
-import { Link } from "react-router-dom";
+import { Table } from "antd";
 
 const UserCarTable = ({
   data,

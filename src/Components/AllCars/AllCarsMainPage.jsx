@@ -1,8 +1,8 @@
-import { Button, Input } from "antd";
-import React, { useState } from "react";
-import AllCarTable from "./AllCarTable";
 import { SearchOutlined } from "@ant-design/icons";
+import { Button, Input } from "antd";
+import { useState } from "react";
 import { useAllCarListQuery } from "../../redux/api/adminApi";
+import AllCarTable from "./AllCarTable";
 
 const AllCarsMainPage = () => {
   const [filters, setFilters] = useState({

@@ -1,9 +1,6 @@
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useState } from "react";
 
-import { SearchOutlined } from "@ant-design/icons";
-import { Input } from "antd";
 import axios from "axios";
-import DeleteCarModal from "./DeleteCarModal";
 import ViewCarTable from "./ViewCarTable";
 
 import { useSellCarQuery } from "../../redux/api/adminApi";

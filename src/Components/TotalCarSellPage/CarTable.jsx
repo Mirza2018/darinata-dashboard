@@ -1,7 +1,6 @@
 /* eslint-disable react/prop-types */
-import { Button, Space, Table, Tooltip } from "antd";
+import { Space, Table, Tooltip } from "antd";
 import { GoEye } from "react-icons/go";
-import { RiDeleteBin6Line } from "react-icons/ri";
 
 const CarTable = ({
   data,

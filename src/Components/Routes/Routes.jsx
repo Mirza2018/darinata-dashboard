@@ -30,7 +30,7 @@ import ContractData from "../DelarManagementPage/SingleDealerPage/ContractData";
 import OfferContractData from "../DelarManagementPage/SingleDealerPage/OfferContractData";
 import SingleDealer from "../DelarManagementPage/SingleDealerPage/SingleDealer";
 import EveryContractPage from "../EveryContract/EveryContractPage";
-import TaskManagement from "../TaskManagementPage/TaskManagement";
+// import TaskManagement from "../TaskManagementPage/TaskManagement";
 
 import Loading from "../UI/Loading";
 import SingleUserManagement from "../UserManagement/SingleUserManagement";
@@ -39,6 +39,7 @@ import UserManagement from "../UserManagement/UserManagement";
 import ProtectedRoute from "./ProtectedRoute";
 import AllCarsMainPage from "../AllCars/AllCarsMainPage";
 import CarSellTable from "../TotalCarSellPage/CarSellTable";
+import TaskManagement from "../TaskManagementPage/TaskManagement";
 
 function AuthRedirect() {
   const navigate = useNavigate();

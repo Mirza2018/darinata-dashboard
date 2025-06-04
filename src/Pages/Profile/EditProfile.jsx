@@ -1,16 +1,16 @@
 / eslint-disable no-unused-vars /;
-import { Button, Form, Input, Spin, Typography, Upload } from "antd";
-import profileImage from "/images/profileImage.png";
-import { useEffect, useState } from "react";
 import { EditOutlined } from "@ant-design/icons";
+import { Button, Form, Input, Spin, Typography, Upload } from "antd";
+import { useEffect, useState } from "react";
 import { MdOutlineEdit } from "react-icons/md";
+import { useSelector } from "react-redux";
+import { toast } from "sonner";
 import {
   useProfileQuery,
   useUpdateProfileMutation,
 } from "../../redux/api/adminApi";
-import { useSelector } from "react-redux";
-import { toast } from "sonner";
 import { getImageUrl } from "../../redux/getBaseUrl";
+import profileImage from "/images/profileImage.png";
 
 const EditProfile = () => {
   const { data, currentData, isLoading, isFetching, isSuccess } =

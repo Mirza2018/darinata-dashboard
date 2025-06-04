@@ -1,7 +1,5 @@
 import { Button } from "antd";
-import JoditEditor from "jodit-react";
-import { useRef } from "react";
-import React, { useState } from "react";
+import { useRef, useState } from "react";
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
 import { toast } from "sonner";

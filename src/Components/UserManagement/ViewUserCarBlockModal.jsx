@@ -1,7 +1,6 @@
 /* eslint-disable react/prop-types */
-import { Divider, Form, Input, Modal } from "antd";
-import { AllImages } from "../../../public/images/AllImages";
-import React, { useEffect, useState } from "react";
+import { Modal } from "antd";
+import { useEffect, useState } from "react";
 
 const ViewUserCarBlockModal = ({
   isViewModalVisible,

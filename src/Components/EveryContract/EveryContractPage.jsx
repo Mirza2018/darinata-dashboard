@@ -1,11 +1,9 @@
 import { useEffect, useState } from "react";
 
-import { SearchOutlined } from "@ant-design/icons";
-import { Input } from "antd";
 import axios from "axios";
+import { useEveryContract2Query, useEveryContractQuery } from "../../redux/api/adminApi";
 import ViewEarningTable from "../TotalEarningPage/ViewEarningTable";
 import ContractTable from "./ContractTable";
-import { useEveryContract2Query, useEveryContractQuery } from "../../redux/api/adminApi";
 import ContractTable2 from "./ContractTable2";
 
 

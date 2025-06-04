@@ -1,21 +1,19 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
-import { SearchOutlined } from "@ant-design/icons";
 import { DatePicker, Form, Input, Modal } from "antd";
-import axios from "axios";
-import TaskManagementTable from "./TaskManageMentTable";
-import ViewTaskManagementTable from "./ViewTaskManagementTable";
-import ViewTaskCompleteTable from "./ViewTaskCompleteTable";
-import { AllIcons, AllImages } from "../../../public/images/AllImages";
+import { toast } from "sonner";
+import { AllImages } from "../../../public/images/AllImages";
 import {
   useTaskCreateMutation,
   useTaskListQuery,
 } from "../../redux/api/adminApi";
-import { toast } from "sonner";
+import TaskManagementTable from "./TaskManageMentTable";
+import ViewTaskCompleteTable from "./ViewTaskCompleteTable";
+import ViewTaskManagementTable from "./ViewTaskManagementTable";
 
 export default function TaskManagement() {
   const [filters, setFilters] = useState({
-    page: 1,
+    page: 1, 
     limit: 8,
   });
 
@@ -251,7 +249,7 @@ export default function TaskManagement() {
                   Done
                 </button>
               </Form.Item>
-            </Form>
+            </Form> 
           </Modal>
         </div>
         <div className="px-2 lg:px-6">

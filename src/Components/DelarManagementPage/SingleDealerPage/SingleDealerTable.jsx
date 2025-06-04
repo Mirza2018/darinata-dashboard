@@ -1,17 +1,13 @@
 /* eslint-disable react/prop-types */
 import {
-  Button,
   Form,
   Modal,
   Radio,
   Space,
-  Switch,
   Table,
-  Tooltip,
+  Tooltip
 } from "antd";
 import { useState } from "react";
-import { GoEye } from "react-icons/go";
-import { RiDeleteBin6Line } from "react-icons/ri";
 import { Link } from "react-router-dom";
 import { toast } from "sonner";
 import { useChangePaymentMutation } from "../../../redux/api/adminApi";

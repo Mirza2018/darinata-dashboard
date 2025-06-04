@@ -1,12 +1,12 @@
 import { PlusOutlined } from "@ant-design/icons";
 import {
   Button,
-  Modal,
-  Form,
-  Input,
   Checkbox,
   Collapse,
   ConfigProvider,
+  Form,
+  Input,
+  Modal,
 } from "antd";
 import { useState } from "react";
 import { GoPlus } from "react-icons/go";

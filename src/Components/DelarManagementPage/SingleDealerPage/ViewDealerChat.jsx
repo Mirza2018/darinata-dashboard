@@ -1,9 +1,6 @@
 /* eslint-disable react/prop-types */
-import { CloseOutlined } from "@ant-design/icons";
-import { Avatar, Badge, Button, Divider, Modal, Spin } from "antd";
+import { Avatar, Modal, Spin } from "antd";
 
-import React from "react";
-import { AllImages } from "../../../../public/images/AllImages";
 import {
   useConversationDetailsQuery,
   useDealerDetailsQuery,
