@@ -10,7 +10,9 @@ import {
 
 import ViewTaskCompleteTable from "./ViewTaskCompleteTable";
 import ViewTaskManagementTable from "./ViewTaskManagementTable";
-import TaskManagementTable from "./TaskManageMentTable";
+import TaskManageTable from "./TaskManageTable";
+
+
 
 export default function TaskManagement() {
   const [filters, setFilters] = useState({
@@ -231,7 +233,7 @@ export default function TaskManagement() {
           </Modal>
         </div>
         <div className="px-2 lg:px-6">
-          <TaskManagementTable
+          <TaskManageTable
             data={taskData?.data?.result}
             loading={isLoading}
             showViewModal={showViewModal}

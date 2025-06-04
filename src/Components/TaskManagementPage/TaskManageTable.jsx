@@ -2,7 +2,7 @@
 import { Space, Table, Tooltip } from "antd";
 import { dateConvert } from "../../utils/dateConvert";
 
-const TaskManagementTable = ({ 
+const TaskManageTable = ({ 
   data,
   loading,
   showViewModal,
@@ -56,11 +56,6 @@ const TaskManagementTable = ({
         </div>
       ),
     },
-    // {
-    //   title: "Account Status",
-    //   dataIndex: "accountStatus",
-    //   key: "accountStatus",
-    // },
     {
       title: "Action",
       key: "action",
@@ -106,10 +101,9 @@ const TaskManagementTable = ({
         rowKey="id"
         scroll={{ x: true }}
       />
-      {/* <pre>{JSON.stringify(data, null, 2)}</pre> */}
     </div>
   );
 };
 
-export default TaskManagementTable;
+export default TaskManageTable;
   
