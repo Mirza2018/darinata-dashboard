@@ -50,7 +50,9 @@ const ContractTable = ({ data, loading, meta, onPageChange }) => {
       dataIndex: "car",
       key: "car",
       render: (text) => (
-        <div className="whitespace-nowrap">{text?.expectedPrice} DKK</div>
+        <div className="whitespace-nowrap">
+          {text?.isBid ? text?.bidPrice : text?.expectedPrice} .kr
+        </div>
       ),
     },
     {

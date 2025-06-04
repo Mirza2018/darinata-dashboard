@@ -56,7 +56,7 @@ const SignIn = () => {
           <img
             src={AllImages.signinPageImage}
             alt="logo"
-            className=" mx-auto"
+            className=" mx-auto "
           />
         </div>
         <div className="w-full md:w-[80%] lg:w-[80%] mx-auto px-10 bg-[#F3F9FB] shadow-lg rounded-xl">
@@ -67,7 +67,7 @@ const SignIn = () => {
                 <img
                   src={AllImages.logo}
                   alt="logo"
-                  className="h-[60px] w-[245px] mx-auto"
+                  className=" mx-auto w-52 aspect-square object-contain"
                 />
               </div>
               <h1 className="text-4xl font-semibold mb-4 ">Log in</h1>
