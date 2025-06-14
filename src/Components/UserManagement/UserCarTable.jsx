@@ -1,34 +1,34 @@
 /* eslint-disable react/prop-types */
 import { Table } from "antd";
 
-const UserCarTable = ({
-  data,
-  loading,
-  showViewModal,
-  showDeleteModal,
-  pageSize = 0,
-}) => {
+const UserCarTable = ({ data, loading, pageSize = 0 }) => {
+  console.log("hi", data);
+
   const columns = [
-    // {
-    //   title: "User Name",
-    //   dataIndex: "userName",
-    //   key: "userName",
-    //   responsive: ["md"],
-    // },
+    ,
     {
       title: "Car Name",
-      dataIndex: "carName",
-      key: "carName",
+      dataIndex: "carModel",
+      key: "carModel",
+      render: (text) => {
+        return <p>{text?.brand}</p>;
+      },
     },
     {
       title: "Car Model",
       dataIndex: "carModel",
       key: "carModel",
+      render: (text) => {
+        return <p>{text?.model}</p>;
+      },
     },
     {
       title: "Car Price",
       dataIndex: "expectedPrice",
       key: "expectedPrice",
+      render: (text) => {
+        return <p>{text}.kr</p>;
+      },
     },
     // {
     //   title: "Status",
@@ -37,8 +37,11 @@ const UserCarTable = ({
     // },
     {
       title: "Color",
-      dataIndex: "color",
-      key: "color",
+      dataIndex: "carModel",
+      key: "carModel",
+      render: (text) => {
+        return <p>{text?.color}</p>;
+      },
     },
     // {
     //   title: "Block",

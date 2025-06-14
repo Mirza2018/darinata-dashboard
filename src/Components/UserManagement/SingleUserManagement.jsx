@@ -2,14 +2,14 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { AllIcons } from "../../../public/images/AllImages";
-import { useDealerDetailsQuery } from "../../redux/api/adminApi";
+import { useUserDetailsQuery } from "../../redux/api/adminApi";
 import UserCarTable from "./UserCarTable";
 import ViewUserCarBlockModal from "./ViewUserCarBlockModal";
 
 const SingleUserManagement = () => {
   const params = useParams();
-  const { data: dealerData, isLoading } = useDealerDetailsQuery(params);
-  console.log(dealerData?.data?.meta?.total);
+  const { data: dealerData, isLoading } = useUserDetailsQuery(params);
+  console.log(dealerData?.data?.result);
   const [data, setData] = useState([]);
   const [currentRecord, setCurrentRecord] = useState(null);
 
@@ -17,7 +17,7 @@ const SingleUserManagement = () => {
 
   const [loading, setLoading] = useState(true);
   const handleCancel = () => {
-    setIsViewModalVisible(false); 
+    setIsViewModalVisible(false);
     //    setIsDeleteModalVisible(false);
   };
 
@@ -66,7 +66,6 @@ const SingleUserManagement = () => {
                     {dealerData?.data?.meta?.total}
                   </p>
                   <p className="text-base font-normal ">Total Car List</p>
-                 
                 </div>
               </div>
             </div>

@@ -15,12 +15,21 @@ import { Layout, Menu } from "antd";
 import Sider from "antd/es/layout/Sider";
 import { Content, Header } from "antd/es/layout/layout";
 import { useEffect, useState } from "react";
-import { Link, NavLink, Outlet, useLocation } from "react-router-dom";
+import {
+  Link,
+  NavLink,
+  Outlet,
+  useLocation,
+  useNavigate,
+} from "react-router-dom";
 import { AllImages } from "../../../public/images/AllImages";
+import { clearAuth } from "../../redux/slices/authSlice";
+import { useDispatch } from "react-redux";
 
 const DashboardLayout = () => {
   const userRole = JSON.parse(localStorage.getItem("clinivea_user")); // Parse the stored JSON string
-
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
   const location = useLocation();
   const pathSegment = location.pathname.split("/").pop();
 
@@ -43,7 +52,6 @@ const DashboardLayout = () => {
       window.removeEventListener("resize", handleResize);
     };
   }, []);
-
 
   const currentPath = location.pathname;
   const activeKeys = (() => {
@@ -89,7 +97,6 @@ const DashboardLayout = () => {
     if (currentPath.includes("/privacy-policy")) {
       return ["privacy-policy"];
     }
-
 
     return [currentPath.split("/")[1]]; // Default fallback
   })();
@@ -275,15 +282,20 @@ const DashboardLayout = () => {
         />
       ),
       label: (
-        <div onClick={() => localStorage.removeItem("clinivea_user")}>
-          <NavLink to="/signin">Logout</NavLink>
+        <div
+          onClick={() => {
+            dispatch(clearAuth());
+            navigate("/signin");
+          }}
+        >
+          <p>Logout</p>
         </div>
       ),
     },
   ];
 
   const menuItems = adminMenuItems;
-    // userRole?.role === "admin" ? adminMenuItems : userRole?.role === "mvr";
+  // userRole?.role === "admin" ? adminMenuItems : userRole?.role === "mvr";
 
   return (
     <div className="h-screen bg-white ">

@@ -2,24 +2,37 @@
 import { Spin } from "antd";
 import { jwtDecode } from "jwt-decode";
 import { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
-import { Navigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { Navigate, useNavigate } from "react-router-dom";
+import { clearAuth } from "../../redux/slices/authSlice";
 
 function ProtectedRoute({ children, role }) {
   const token = useSelector((state) => state.auth);
+  const dispatch = useDispatch();
+    const navigate = useNavigate();
   const [isAuthorized, setIsAuthorized] = useState(null);
-// console.log(token);
+
 
   useEffect(() => {
     if (token?.accessToken) {
       const decodeToken = jwtDecode(token?.accessToken);
+      const currentTime = Date.now() / 1000;
+      console.log(decodeToken.exp);
       
-      if (decodeToken?.role !== role) {
+      if (decodeToken.exp < currentTime) {
+        // Token is expired, log the user out
+        dispatch(clearAuth()); // Dispatch logout action
+        navigate("/signin");
         setIsAuthorized(false);
       } else {
-        setIsAuthorized(true);
+        // Check if the role matches
+        if (decodeToken?.role !== role) {
+          setIsAuthorized(false);
+        } else {
+          setIsAuthorized(true);
+        }
       }
-    } else {
+    } else { 
       setIsAuthorized(false);
     }
   }, [token?.accessToken, role]);

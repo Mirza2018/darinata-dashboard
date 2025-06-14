@@ -54,6 +54,13 @@ export const adminApi = baseApi.injectEndpoints({
       }),
       providesTags: tagTypes.payment,
     }),
+    userDetails: build.query({
+      query: (dealerId) => ({
+        url: `/users/private_user_total_car/${dealerId.id}`,
+        method: "GET",
+      }),
+      // providesTags: tagTypes.payment,
+    }),
 
     conversationDetails: build.query({
       query: (conversationId) => {
@@ -135,7 +142,7 @@ export const adminApi = baseApi.injectEndpoints({
           body: task,
         };
       },
-      // invalidatesTags: tagTypes.task,
+      invalidatesTags: [tagTypes.privacy],
     }),
 
     createUser: build.mutation({
@@ -229,14 +236,18 @@ export const adminApi = baseApi.injectEndpoints({
       invalidatesTags: [tagTypes.user],
     }),
 
-    // createCtegory: build.mutation({
-    //   query: (category) => ({
-    //     url: `/category/create`,
-    //     method: "POST",
-    //     body: category,
-    //   }),
-    //   invalidatesTags: [tagTypes.categorys],
-    // }),
+    staticContent: build.query({
+      query: (params) => {
+        console.log(params);
+
+        return {
+          url: `/static_content?type=${params}`,
+          method: "GET",
+          // params,
+        };
+      },
+      providesTags: [tagTypes.privacy],
+    }),
 
     //end
   }),
@@ -267,4 +278,6 @@ export const {
   useAllCarListQuery,
   useDeleteCarMutation,
   useUpdateCarMutation,
+  useUserDetailsQuery,
+  useStaticContentQuery
 } = adminApi;

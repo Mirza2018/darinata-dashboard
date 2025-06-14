@@ -1,14 +1,23 @@
 import { Button } from "antd";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import ReactQuill from "react-quill";
 import { toast } from "sonner";
-import { useContentCreateMutation } from "../../../redux/api/adminApi";
+import {
+  useContentCreateMutation,
+  useStaticContentQuery,
+} from "../../../redux/api/adminApi";
 
 const TermsOfService = () => {
+  const { data, currentData, isLoading, isFetching, isSuccess } =
+    useStaticContentQuery("terms-and-conditions");
+  const displayedData = data ?? currentData;
   const [staticData] = useContentCreateMutation();
-  const [value, setValue] = useState("");
+  const [value, setValue] = useState(displayedData?.data?.content);
+  useEffect(() => {
+    setValue(displayedData?.data?.content);
+  }, [displayedData]);
 
-  const handleOnSave =async () => {
+  const handleOnSave = async () => {
     const toastId = toast.loading("Terms Of Service is Posting...");
 
     const data = {
@@ -23,19 +32,14 @@ const TermsOfService = () => {
         id: toastId,
         duration: 2000,
       });
-      setValue("")
+      setValue("");
     } catch (error) {
       console.log(error);
-      toast.error(
-        error?.data?.message || "There is an problem",
-        {
-          id: toastId,
-          duration: 2000,
-        }
-      );
+      toast.error(error?.data?.message || "There is an problem", {
+        id: toastId,
+        duration: 2000,
+      });
     }
-
-
   };
 
   return (

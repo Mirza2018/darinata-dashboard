@@ -28,9 +28,6 @@ export default function UserManagement() {
   const {
     data: userData,
     currentData,
-    isLoading,
-    isFetching,
-    isSuccess,
   } = useUsersListQuery(filters);
 
   const [createData] = useCreateUserMutation();

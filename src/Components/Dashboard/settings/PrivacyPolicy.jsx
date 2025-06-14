@@ -1,13 +1,22 @@
 import { Button } from "antd";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
 import { toast } from "sonner";
-import { useContentCreateMutation } from "../../../redux/api/adminApi";
+import {
+  useContentCreateMutation,
+  useStaticContentQuery,
+} from "../../../redux/api/adminApi";
 
 const PrivacyPolicy = () => {
-   const [staticData] = useContentCreateMutation();
-  const [value, setValue] = useState("");
+  const { data, currentData, isLoading, isFetching, isSuccess } =
+    useStaticContentQuery("privacy-policy");
+  const displayedData = data ?? currentData;
+  const [staticData] = useContentCreateMutation();
+  const [value, setValue] = useState(displayedData?.data?.content);
+  useEffect(() => {
+    setValue(displayedData?.data?.content);
+  }, [displayedData]);
   const editor = useRef(null);
   const [content, setContent] = useState("");
   const handleOnSave = async () => {
