@@ -31,7 +31,7 @@ export const adminApi = baseApi.injectEndpoints({
 
     UsersList: build.query({
       query: (params) => ({
-        url: `/users/list?role=private_user`,
+        url: `/users/list?filter=private_user`,
         method: "GET",
         params,
       }),
@@ -40,7 +40,7 @@ export const adminApi = baseApi.injectEndpoints({
 
     dealerList: build.query({
       query: (params) => ({
-        url: `/users/list?role=dealer`,
+        url: `/users/list?filter=dealer`,
         method: "GET",
         params,
       }),
@@ -249,6 +249,19 @@ export const adminApi = baseApi.injectEndpoints({
       providesTags: [tagTypes.privacy],
     }),
 
+    userBlock: build.mutation({
+      query: (data) => {
+        // console.log("Ok data", data);
+        // return
+        return {
+          url: `/users/action/${data.id}`,
+          method: "PATCH",
+          body: data.data,
+        };
+      },
+      invalidatesTags: [tagTypes.user],
+    }),
+
     //end
   }),
 });
@@ -279,5 +292,6 @@ export const {
   useDeleteCarMutation,
   useUpdateCarMutation,
   useUserDetailsQuery,
-  useStaticContentQuery
+  useStaticContentQuery,
+  useUserBlockMutation,
 } = adminApi;

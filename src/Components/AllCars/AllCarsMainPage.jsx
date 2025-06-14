@@ -17,7 +17,7 @@ const AllCarsMainPage = () => {
       page,
       limit,
     }));
-  };
+  };  
 
   //   console.log(searchText);
 

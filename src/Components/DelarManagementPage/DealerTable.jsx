@@ -1,60 +1,59 @@
 /* eslint-disable react/prop-types */
-import { Space, Table, Tooltip } from "antd";
+import { Modal, Space, Table, Tooltip } from "antd";
 import { Link } from "react-router-dom";
+import { useUserBlockMutation } from "../../redux/api/adminApi";
+import { useState } from "react";
+import { toast } from "sonner";
 
 const DealerTable = ({ data, loading, showViewModal, meta, onPageChange }) => {
-  // const columns = [
-  //   {
-  //     title: "serialNumber",
-  //     dataIndex: "serialNumber",
-  //     key: "serialNumber",
-  //     responsive: ["md"],
-  //   },
-
-  //   {
-  //     title: "Dealer Name",
-  //     dataIndex: "dealerName",
-  //     key: "dealerName",
-  //   },
-  //   {
-  //     title: "CRV Number",
-  //     dataIndex: "cvrNumber",
-  //     key: "cvrNumber",
-  //   },
-  //   {
-  //     title: "email",
-  //     dataIndex: "email",
-  //     key: "email",
-  //   },
-  //   {
-  //     title: "phone",
-  //     dataIndex: "phone",
-  //     key: "phone",
-  //   },
-
-  //   {
-  //     title: "Location",
-  //     dataIndex: "location",
-  //     key: "location",
-  //   },
-  //   {
-  //     title: "Action",
-  //     key: "action",
-  //     render: (_, record) => (
-  //       <>
-  //         <Space size="middle">
-  //           <Tooltip placement="left" title="View Details">
-  //             <Link onClick={() => showViewModal(record)} to={`${record._id}`}>
-  //               <p className="text-xs font-semibold border hover:text-secondary-color border-[#00721E] px-2 py-1 rounded">
-  //                 See Details
-  //               </p>
-  //             </Link>
-  //           </Tooltip>
-  //         </Space>
-  //       </>
-  //     ),
-  //   },
-  // ];
+  const [UserBlock] = useUserBlockMutation();
+  const [isOpen, setIsOpen] = useState(false);
+  const [record, setIsRecord] = useState(null);
+  const handleBlock = async (id) => {
+    const toastId = toast.loading("User is Blocking...");
+    const data = {
+      action: "block",
+    };
+    try {
+      const res = await UserBlock({ data, id }).unwrap();
+      console.log(res);
+      toast.success("User Block successfully", {
+        id: toastId,
+        duration: 2000,
+      });
+      setIsOpen(false);
+    } catch (error) {
+      console.log(error);
+      toast.error(error?.data?.message || "There is an problem to block user", {
+        id: toastId,
+        duration: 2000,
+      });
+    }
+  };
+  const handleUnBlock = async (id) => {
+    const toastId = toast.loading("User is Unblocking...");
+    const data = {
+      action: "unblock",
+    };
+    try {
+      const res = await UserBlock({ data, id }).unwrap();
+      console.log(res);
+      toast.success("User Unblock successfully", {
+        id: toastId,
+        duration: 2000,
+      });
+      setIsOpen(false);
+    } catch (error) {
+      console.log(error);
+      toast.error(
+        error?.data?.message || "There is an problem to Unblock user",
+        {
+          id: toastId,
+          duration: 2000,
+        }
+      );
+    }
+  };
 
   const columns = [
     {
@@ -63,7 +62,7 @@ const DealerTable = ({ data, loading, showViewModal, meta, onPageChange }) => {
       key: "_id",
     },
     {
-      title: "User Name",
+      title: "Dealer Name",
       dataIndex: "profile",
       key: "profile",
       render: (text) => (
@@ -100,6 +99,35 @@ const DealerTable = ({ data, loading, showViewModal, meta, onPageChange }) => {
       ),
     },
     {
+      title: "Action",
+      key: "action",
+      render: (_, record) => (
+        <>
+          {record?.status == "blocked" ? (
+            <button
+              onClick={() => {
+                setIsOpen(true);
+                setIsRecord(record);
+              }}
+              className="bg-yellow-600 text-white px-2 rounded-lg font-medium"
+            >
+              Unblock
+            </button>
+          ) : (
+            <button
+              onClick={() => {
+                setIsOpen(true);
+                setIsRecord(record);
+              }}
+              className="bg-red-600 text-white px-5 rounded-lg font-medium"
+            >
+              Block
+            </button>
+          )}
+        </>
+      ),
+    },
+    {
       title: "Details",
       key: "action",
       render: (_, record) => (
@@ -133,7 +161,49 @@ const DealerTable = ({ data, loading, showViewModal, meta, onPageChange }) => {
         rowKey="serialNumber"
         scroll={{ x: true }}
       />
-      {/* <pre>{JSON.stringify(data, null, 3)}</pre> */}
+      <Modal
+        title=""
+        closable={{ "aria-label": "Custom Close Button" }}
+        open={isOpen}
+        onOk={() => setIsOpen(false)}
+        onCancel={() => setIsOpen(false)}
+        footer={[]}
+      >
+        {console.log(record?.status)}
+        <h1 className="flex justify-center items-center text-xl  font-medium">
+          {record?.status == "blocked" ? (
+            <> Do you want to Unblock user?</>
+          ) : (
+            <> Do you want to block user?</>
+          )}
+
+          {/* */}
+        </h1>
+        <div className="flex justify-center items-center mt-5 gap-5">
+          {record?.status == "blocked" ? (
+            <button
+              onClick={() => handleUnBlock(record?._id)}
+              className="bg-green-600 text-white px-2 text-lg rounded-lg font-medium"
+            >
+              Yes
+            </button>
+          ) : (
+            <button
+              onClick={() => handleBlock(record?._id)}
+              className="bg-green-600 text-white px-2 text-lg rounded-lg font-medium"
+            >
+              Yes
+            </button>
+          )}
+
+          <button
+            onClick={() => setIsOpen(false)}
+            className="bg-red-600 text-white px-2 text-lg rounded-lg font-medium"
+          >
+            No
+          </button>
+        </div>
+      </Modal>
     </div>
   );
 };

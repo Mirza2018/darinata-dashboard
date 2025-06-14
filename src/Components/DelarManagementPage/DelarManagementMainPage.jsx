@@ -1,15 +1,20 @@
 import { useEffect, useState } from "react";
 
-import { Form, Input, Modal, Upload } from "antd";
+import { Button, Form, Input, Modal, Upload } from "antd";
 import axios from "axios";
 import { FaCloudUploadAlt } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
 import { toast } from "sonner";
-import { useCreateUserMutation, useDealerListQuery } from "../../redux/api/adminApi";
+import {
+  useCreateUserMutation,
+  useDealerListQuery,
+} from "../../redux/api/adminApi";
 import DealerTable from "./DealerTable";
 import ViewDealerTable from "./ViewDealerTable";
-  
+import { SearchOutlined } from "@ant-design/icons";
+
 export default function DelarManagementMainPage() {
+  const [searchText, setSearchText] = useState("");
   const [filters, setFilters] = useState({
     page: 1,
     limit: 8,
@@ -22,23 +27,31 @@ export default function DelarManagementMainPage() {
       limit,
     }));
   };
-    const {
-      data: userData,
-      currentData,
-      isLoading,
-      isFetching,
-      isSuccess,
-    } = useDealerListQuery(filters);
-    const [createData] = useCreateUserMutation();
-  
-    const displayedData = userData ?? currentData;
+
+  const handleSearch = () => {
+    console.log(searchText);
+    setFilters((prev) => ({
+      ...prev,
+      searchTerm: searchText,
+    }));
+  };
+  const {
+    data: userData,
+    currentData,
+    isLoading,
+    isFetching,
+    isSuccess,
+  } = useDealerListQuery(filters);
+  const [createData] = useCreateUserMutation();
+
+  const displayedData = userData ?? currentData;
   // console.log(displayedData);
   // console.log("meta", displayedData?.meta);
-  
+
   //* Store Search Value
   const [form] = Form.useForm();
-    const router = useNavigate();
-  const [searchText, setSearchText] = useState("");
+  const router = useNavigate();
+
   const [isModalOpenAddDealer, setIsModalOpenAddDealer] = useState(false);
 
   //* Use to set user
@@ -79,8 +92,6 @@ export default function DelarManagementMainPage() {
     fetchData();
   }, []);
 
-
-
   const onSearch = (value) => {
     setSearchText(value);
   };
@@ -110,8 +121,6 @@ export default function DelarManagementMainPage() {
     console.log("Blocked User:", { id: data?.id, userName: data?.userName });
     setIsViewModalVisible(false);
   };
-  
-
 
   const onFinish = async (values) => {
     // console.log(values);
@@ -121,7 +130,6 @@ export default function DelarManagementMainPage() {
     const toastId = toast.loading("Dealer is creating...");
     const data = { ...values, role: "dealer" };
     console.log(data);
-    
 
     delete data.profileImage;
 
@@ -162,16 +170,24 @@ export default function DelarManagementMainPage() {
         style={{ boxShadow: "0px 0px 2px 1px #00000040" }}
       >
         <div className="flex justify-between p-6">
-          <div className="flex justify-end gap-4 items-center  w-full">
-            {/* <Input
-              placeholder="Search User..."
-              value={searchText}
-              onChange={(e) => onSearch(e.target.value)}
-              className="w-fit text-base font-semibold !border-input-color py-2"
-              prefix={
-                <SearchOutlined className="text-[#222222] font-bold text-lg mr-2" />
-              }
-            /> */}
+          <div className="flex justify-between gap-4 items-center  w-full">
+            <div className="flex gap-4 items-center">
+              <Input
+                placeholder="Search first name..."
+                value={searchText}
+                onChange={(e) => onSearch(e.target.value)}
+                className="w-fit text-base font-semibold !border-input-color py-2"
+                prefix={
+                  <SearchOutlined className="text-[#222222] font-bold text-lg mr-2" />
+                }
+              />
+              <Button
+                onClick={handleSearch}
+                type="primary"
+                shape="circle"
+                icon={<SearchOutlined />}
+              />
+            </div>
             <button
               onClick={showModalAddDealer}
               className="flex whitespace-nowrap gap-2 text-xl font-bold bg-highlight-color rounded-md py-3 px-10 text-white"

@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-import { Form, Input, Modal, Upload } from "antd";
+import { Button, Form, Input, Modal, Upload } from "antd";
 import axios from "axios";
 import { FaCloudUploadAlt } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
@@ -10,8 +10,10 @@ import {
   useUsersListQuery,
 } from "../../redux/api/adminApi";
 import UserTable from "./UserTable";
+import { SearchOutlined } from "@ant-design/icons";
 
 export default function UserManagement() {
+  const [searchText, setSearchText] = useState("");
   const [filters, setFilters] = useState({
     page: 1,
     limit:8,
@@ -24,7 +26,13 @@ export default function UserManagement() {
       limit,
     }));
   };
-
+  const handleSearch = () => {
+    console.log(searchText);
+    setFilters((prev) => ({
+      ...prev,
+      searchTerm: searchText,
+    }));
+  };
   const {
     data: userData,
     currentData,
@@ -40,7 +48,7 @@ export default function UserManagement() {
 
   const { TextArea } = Input;
   //* Store Search Value
-  const [searchText, setSearchText] = useState("");
+
   const [isModalOpenAddUser, setIsModalOpenAddUser] = useState(false);
 
   const [imageUrl, setImageUrl] = useState("");
@@ -177,16 +185,24 @@ export default function UserManagement() {
           {/* <div className="flex items-center gap-3">
             <h1 className="text-3xl font-bold text-base-color">Users</h1>
           </div> */}
-          <div className="flex justify-end gap-4 items-center  w-full">
-            {/* <Input
-              placeholder="Search User..."
-              value={searchText}
-              onChange={(e) => onSearch(e.target.value)}
-              className="w-fit text-base font-semibold !border-input-color py-2"
-              prefix={
-                <SearchOutlined className="text-[#222222] font-bold text-lg mr-2" />
-              }
-            /> */}
+          <div className="flex justify-between gap-4 items-center  w-full">
+            <div className="flex gap-4 items-center">
+              <Input
+                placeholder="Search first name..."
+                value={searchText}
+                onChange={(e) => onSearch(e.target.value)}
+                className="w-fit text-base font-semibold !border-input-color py-2"
+                prefix={
+                  <SearchOutlined className="text-[#222222] font-bold text-lg mr-2" />
+                }
+              />
+              <Button
+                onClick={handleSearch}
+                type="primary"
+                shape="circle"
+                icon={<SearchOutlined />}
+              />
+            </div>
             <button
               onClick={showModalAddUser}
               className="flex whitespace-nowrap gap-2 text-xl font-bold bg-highlight-color rounded-md py-3 px-10 text-white"
