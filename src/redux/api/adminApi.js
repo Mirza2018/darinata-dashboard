@@ -35,7 +35,7 @@ export const adminApi = baseApi.injectEndpoints({
         method: "GET",
         params,
       }),
-      providesTags: [tagTypes.people],
+      providesTags: [tagTypes.people, tagTypes.user],
     }),
 
     dealerList: build.query({
@@ -44,7 +44,7 @@ export const adminApi = baseApi.injectEndpoints({
         method: "GET",
         params,
       }),
-      providesTags: [tagTypes.people],
+      providesTags: [tagTypes.people, tagTypes.user],
     }),
 
     dealerDetails: build.query({
