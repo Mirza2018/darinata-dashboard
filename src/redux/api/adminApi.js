@@ -35,7 +35,7 @@ export const adminApi = baseApi.injectEndpoints({
         method: "GET",
         params,
       }),
-      providesTags: [tagTypes.user],
+      providesTags: [tagTypes.people],
     }),
 
     dealerList: build.query({
@@ -44,7 +44,7 @@ export const adminApi = baseApi.injectEndpoints({
         method: "GET",
         params,
       }),
-      providesTags: [tagTypes.user],
+      providesTags: [tagTypes.people],
     }),
 
     dealerDetails: build.query({
@@ -82,7 +82,7 @@ export const adminApi = baseApi.injectEndpoints({
           params,
         };
       },
-      providesTags: tagTypes.task,
+      providesTags: [tagTypes.task],
     }),
     totalCount: build.query({
       query: () => {
@@ -91,7 +91,7 @@ export const adminApi = baseApi.injectEndpoints({
           method: "GET",
         };
       },
-      providesTags: tagTypes.task,
+      providesTags: [tagTypes.people],
     }),
 
     customerMap: build.query({
@@ -122,7 +122,7 @@ export const adminApi = baseApi.injectEndpoints({
           body: task.data,
         };
       },
-      invalidatesTags: tagTypes.task,
+      invalidatesTags: [tagTypes.task],
     }),
     taskCreate: build.mutation({
       query: (task) => {
@@ -132,7 +132,7 @@ export const adminApi = baseApi.injectEndpoints({
           body: task,
         };
       },
-      invalidatesTags: tagTypes.task,
+      invalidatesTags: [tagTypes.task],
     }),
     contentCreate: build.mutation({
       query: (task) => {
@@ -153,7 +153,7 @@ export const adminApi = baseApi.injectEndpoints({
           body: userData,
         };
       },
-      // invalidatesTags: tagTypes.task,
+      invalidatesTags: [tagTypes.people],
     }),
 
     changePayment: build.mutation({

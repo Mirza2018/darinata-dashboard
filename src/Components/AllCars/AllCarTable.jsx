@@ -40,7 +40,7 @@ const AllCarTable = ({
     try {
       const res = await deleteCar(record?._id).unwrap();
       console.log(res);
-      toast.success(res?.message, "Car is delete successfully...", {
+      toast.success(res?.message || "Car is delete successfully...", {
         id: toastId,
         duration: 2000,
       });

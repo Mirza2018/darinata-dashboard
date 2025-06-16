@@ -27,7 +27,7 @@ import { clearAuth } from "../../redux/slices/authSlice";
 import { useDispatch } from "react-redux";
 
 const DashboardLayout = () => {
-  const userRole = JSON.parse(localStorage.getItem("clinivea_user")); // Parse the stored JSON string
+
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const location = useLocation();

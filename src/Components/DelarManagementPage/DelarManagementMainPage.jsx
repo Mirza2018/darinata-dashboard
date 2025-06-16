@@ -263,7 +263,7 @@ export default function DelarManagementMainPage() {
               </div>
               <div className="grid md:grid-cols-2 gap-5">
                 <Form.Item label="CVR Number" name="cvrNumber">
-                  <Input.Password
+                  <Input
                     required
                     placeholder="Enter your CVR Number"
                   />

@@ -8,7 +8,7 @@ const ViewTaskCompleteTable = ({
   handleCancel2,
   currentRecord2,
   handleBlock,
-}) => {
+}) => { 
   const [taskAction] = useTaskActionMutation();
   console.log(currentRecord2);
 

@@ -25,7 +25,8 @@ const CarUpdateModel = ({
     try {
       const res = await updateCar({ id: record?._id, data: formData }).unwrap();
       console.log(res);
-      toast.success(res?.message, "Car data is update successfully...", {
+
+      toast.success(res?.message || "Car data is updated successfully...", {
         id: toastId,
         duration: 2000,
       });
