@@ -16,7 +16,7 @@ export default function UserManagement() {
   const [searchText, setSearchText] = useState("");
   const [filters, setFilters] = useState({
     page: 1,
-    limit:8,
+    limit: 8,
   });
 
   const onPageChange = (page, limit) => {
@@ -26,17 +26,14 @@ export default function UserManagement() {
       limit,
     }));
   };
-  const handleSearch = () => {
+  const handleSearch = (search) => {
     console.log(searchText);
     setFilters((prev) => ({
       ...prev,
-      searchTerm: searchText,
+      searchTerm: search,
     }));
   };
-  const {
-    data: userData,
-    currentData,
-  } = useUsersListQuery(filters);
+  const { data: userData, currentData } = useUsersListQuery(filters);
 
   const [createData] = useCreateUserMutation();
 
@@ -153,7 +150,7 @@ export default function UserManagement() {
     );
 
     console.log(data);
-  
+
     try {
       const res = await createData(formData).unwrap();
       console.log(res);
@@ -189,19 +186,19 @@ export default function UserManagement() {
             <div className="flex gap-4 items-center">
               <Input
                 placeholder="Search first name..."
-                value={searchText}
-                onChange={(e) => onSearch(e.target.value)}
+                // value={searchText}
+                onChange={(e) => handleSearch(e.target.value)}
                 className="w-fit text-base font-semibold !border-input-color py-2"
                 prefix={
                   <SearchOutlined className="text-[#222222] font-bold text-lg mr-2" />
                 }
               />
-              <Button
+              {/* <Button
                 onClick={handleSearch}
                 type="primary"
                 shape="circle"
                 icon={<SearchOutlined />}
-              />
+              /> */}
             </div>
             <button
               onClick={showModalAddUser}

@@ -1,7 +1,7 @@
 import { Checkbox, Form, InputNumber, Modal, Radio } from "antd";
 import { useForm } from "antd/es/form/Form";
 import TextArea from "antd/es/input/TextArea";
-import React from "react";
+import React, { useEffect } from "react";
 import { toast } from "sonner";
 import { useUpdateCarMutation } from "../../redux/api/adminApi";
 
@@ -12,8 +12,11 @@ const CarUpdateModel = ({
 }) => {
   const [updateCar] = useUpdateCarMutation();
   const [form] = useForm();
+  useEffect(() => {
+    form.setFieldsValue(record);
+  }, [record, form]);
 
-  console.log(record);
+  // console.log(record);
   const onFinish = async (values) => {
     const toastId = toast.loading("Car data is Updateing...");
 

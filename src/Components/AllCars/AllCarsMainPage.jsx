@@ -8,6 +8,7 @@ const AllCarsMainPage = () => {
   const [filters, setFilters] = useState({
     page: 1,
     limit: 8,
+    sort: "-updatedAt",
   });
   const [searchText, setSearchText] = useState("");
 
@@ -17,7 +18,7 @@ const AllCarsMainPage = () => {
       page,
       limit,
     }));
-  };  
+  };
 
   //   console.log(searchText);
 
@@ -29,13 +30,15 @@ const AllCarsMainPage = () => {
     setSearchText(value);
   };
 
-  const handleSearch = () => {
+  const handleSearch = (search) => {
     console.log(searchText);
     setFilters((prev) => ({
       ...prev,
-      searchTerm: searchText,
+      searchTerm: search,
     }));
   };
+
+  console.log(searchText);
 
   return (
     <div className="min-h-[90vh]">
@@ -50,18 +53,14 @@ const AllCarsMainPage = () => {
           <div className="flex gap-4 items-center">
             <Input
               placeholder="Search Brand Name Or Modle Name..."
-              value={searchText}
-              onChange={(e) => onSearch(e.target.value)}
+              // value={searchText}
+              onChange={(e) => {
+                handleSearch(e.target.value);
+              }}
+              prefix={
+                <SearchOutlined className="text-[#222222] font-bold text-lg mr-2" />
+              }
               className="text-base font-semibold !border-input-color py-2 md:w-[400px]"
-              //   prefix={
-              //     <SearchOutlined className="text-[#222222] font-bold text-lg mr-2" />
-              //   }
-            />
-            <Button
-              onClick={handleSearch}
-              type="primary"
-              shape="circle"
-              icon={<SearchOutlined />}
             />
           </div>
         </div>
@@ -73,8 +72,6 @@ const AllCarsMainPage = () => {
             onPageChange={onPageChange}
           />
         </div>
-
- 
       </div>
     </div>
   );

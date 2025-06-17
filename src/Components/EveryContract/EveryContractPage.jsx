@@ -1,16 +1,19 @@
 import { useEffect, useState } from "react";
 
 import axios from "axios";
-import { useEveryContract2Query, useEveryContractQuery } from "../../redux/api/adminApi";
+import {
+  useEveryContract2Query,
+  useEveryContractQuery,
+} from "../../redux/api/adminApi";
 import ViewEarningTable from "../TotalEarningPage/ViewEarningTable";
 import ContractTable from "./ContractTable";
 import ContractTable2 from "./ContractTable2";
-
 
 export default function EveryContractPage() {
   const [filters, setFilters] = useState({
     page: 1,
     limit: 8,
+    sort: "-updatedAt",
   });
 
   const onPageChange = (page, limit) => {
@@ -37,15 +40,13 @@ export default function EveryContractPage() {
     isSuccess: isSuccess2,
   } = useEveryContract2Query(filters);
 
-
-
   const displayedData = everyContract ?? currentData;
   const displayedData2 = everyContract2 ?? currentData2;
   //* Store Search Value
   console.log("meta", displayedData2);
-  
+
   const [searchText, setSearchText] = useState("");
-const [iscontract,setIscontract]=useState(false)
+  const [iscontract, setIscontract] = useState(false);
   //* Use to set user
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);

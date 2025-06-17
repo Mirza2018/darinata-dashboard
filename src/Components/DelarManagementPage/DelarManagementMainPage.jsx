@@ -28,11 +28,11 @@ export default function DelarManagementMainPage() {
     }));
   };
 
-  const handleSearch = () => {
+  const handleSearch = (search) => {
     console.log(searchText);
     setFilters((prev) => ({
       ...prev,
-      searchTerm: searchText,
+      searchTerm: search,
     }));
   };
   const {
@@ -174,19 +174,19 @@ export default function DelarManagementMainPage() {
             <div className="flex gap-4 items-center">
               <Input
                 placeholder="Search first name..."
-                value={searchText}
-                onChange={(e) => onSearch(e.target.value)}
+                // value={searchText}
+                onChange={(e) => handleSearch(e.target.value)}
                 className="w-fit text-base font-semibold !border-input-color py-2"
                 prefix={
                   <SearchOutlined className="text-[#222222] font-bold text-lg mr-2" />
                 }
               />
-              <Button
+              {/* <Button
                 onClick={handleSearch}
                 type="primary"
                 shape="circle"
                 icon={<SearchOutlined />}
-              />
+              /> */}
             </div>
             <button
               onClick={showModalAddDealer}
@@ -263,10 +263,7 @@ export default function DelarManagementMainPage() {
               </div>
               <div className="grid md:grid-cols-2 gap-5">
                 <Form.Item label="CVR Number" name="cvrNumber">
-                  <Input
-                    required
-                    placeholder="Enter your CVR Number"
-                  />
+                  <Input required placeholder="Enter your CVR Number" />
                 </Form.Item>
                 <Form.Item label="Website Link" name="websiteLink">
                   <Input placeholder="Enter your Website Link" />
