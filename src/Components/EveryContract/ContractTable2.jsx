@@ -106,18 +106,20 @@ const ContractTable2 = ({ data, loading, meta, onPageChange }) => {
       render: (_, record) => (
         <button
           // onClick={() => statusRecord(record)}
-          className={` text-black rounded-md  py-1 font-semibold whitespace-nowrap ${
-            record?.status === "sold"
+
+          className={` text-black rounded-md  py-1 font-semibold whitespace-nowrap bg-green-500 px-6  ${
+            record?.status == "accept"
               ? "bg-green-500 px-6 "
               : "bg-highlight-color px-3"
           }`}
         >
+   
           {record?.signatureAsDealer && record?.signatureAsOwner ? (
-            <Tooltip title="Unpaid" placement="topRight">
+            <Tooltip title="" placement="topRight">
               <span className="text-white px-2">Sold</span>
             </Tooltip>
           ) : (
-            <Tooltip title="Paid" placement="topRight">
+            <Tooltip title="" placement="topRight">
               <span className="text-white">Not Sold</span>
             </Tooltip>
           )}

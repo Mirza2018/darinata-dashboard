@@ -24,12 +24,12 @@ const OfferContractData = () => {
   };
 
   const [isValueIncressed, setIsValueIncreased] = useState(
-    displayedData?.data?.isMoms
+    displayedData?.isMoms
   );
 
   useEffect(() => {
-    setIsValueIncreased(displayedData?.data?.isMoms);
-  }, [displayedData?.data?.isMoms]);
+    setIsValueIncreased(displayedData?.isMoms);
+  }, [displayedData?.isMoms]);
   // Access localStorage only on the client side for initial load
 
   return (
@@ -345,7 +345,8 @@ const OfferContractData = () => {
                       ? `${
                           carPrice +
                           carPrice * 0.25 -
-                          displayedData?.advancedPayment
+                          (displayedData?.advancedPayment +
+                            displayedData?.advancedPayment * 0.25)
                         } .kr`
                       : `${carPrice - displayedData?.advancedPayment} .kr`}{" "}
                   </>

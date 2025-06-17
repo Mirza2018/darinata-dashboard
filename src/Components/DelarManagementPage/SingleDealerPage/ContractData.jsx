@@ -19,7 +19,17 @@ const ContractData = () => {
 
   const displayedData = data ?? currentData;
   console.log(displayedData);
-
+  let carPrice;
+  if (displayedData?.data?.car?.isBid) {
+    carPrice = displayedData?.data?.car?.bidPrice;
+  } else {
+    carPrice = displayedData?.data?.expectedPrice;
+  }
+  useEffect(() => {
+    if (carPrice) {
+      setAdvanceAmount(displayedData?.data?.advancedPayment);
+    }
+  }, [displayedData?.data?.advancedPayment, carPrice]);
   const inspectionDate = new Date(
     displayedData?.data?.car?.inspectionDate
   ).toDateString();
@@ -320,11 +330,8 @@ const ContractData = () => {
                 </div>
                 <p className="bg-base-color px-8 py-2 border border-secondary-color rounded-md">
                   {isValueIncressed
-                    ? `${
-                        displayedData?.data?.expectedPrice +
-                        displayedData?.data?.expectedPrice * 0.25
-                      } .kr`
-                    : `${displayedData?.data?.expectedPrice} .kr`}
+                    ? `${carPrice + carPrice * 0.25} .kr`
+                    : `${carPrice} .kr`}
                 </p>
               </div>
 
@@ -345,13 +352,32 @@ const ContractData = () => {
               <div className="flex justify-between items-start w-full gap-5  flex-wrap border-secondary-color border p-2">
                 <h1>Samlet købesum (DKK)</h1>
                 <p className="bg-base-color px-2 py-2 border border-secondary-color rounded-md ">
-                  {displayedData?.data?.expectedPrice ? (
+                  {advanceAmount ? (
+                    <>
+                      {" "}
+                      {isValueIncressed
+                        ? `${
+                            carPrice +
+                            carPrice * 0.25 -
+                            (advanceAmount + advanceAmount * 0.25)
+                          } .kr`
+                        : `${carPrice - advanceAmount} .kr`}{" "}
+                    </>
+                  ) : (
+                    <>
+                      {isValueIncressed
+                        ? `${carPrice + carPrice * 0.25} .kr`
+                        : `${carPrice} .kr`}
+                    </>
+                  )}
+                  {/* {displayedData?.data?.expectedPrice ? (
                     <>
                       {isValueIncressed
                         ? `${
                             displayedData?.data?.expectedPrice +
                             displayedData?.data?.expectedPrice * 0.25 -
-                            displayedData?.data?.advancedPayment
+                            (displayedData?.data?.advancedPayment +
+                              displayedData?.data?.advancedPayment * 0.25)
                           } .kr`
                         : `${
                             displayedData?.data?.expectedPrice -
@@ -367,7 +393,7 @@ const ContractData = () => {
                           } .kr`
                         : `${displayedData?.data?.expectedPrice} .kr`}
                     </>
-                  )}
+                  )} */}
                 </p>
               </div>
 
@@ -497,11 +523,8 @@ const ContractData = () => {
             <div className="!flex !justify-end !items-end">
               <button className="bg-base-color w-fit px-8 py-2 border border-secondary-color rounded-md text-end h-fit whitespace-nowrap">
                 {isValueIncressed
-                  ? `${
-                      displayedData?.data?.expectedPrice +
-                      displayedData?.data?.expectedPrice * 0.25
-                    } .kr`
-                  : `${displayedData?.data?.expectedPrice} .kr`}
+                  ? `${carPrice + carPrice * 0.25} .kr`
+                  : `${carPrice} .kr`}
               </button>
             </div>
           </section>
