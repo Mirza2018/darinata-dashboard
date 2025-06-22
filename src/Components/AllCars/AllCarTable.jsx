@@ -10,8 +10,6 @@ import CarUpdateModel from "./CarUpdateModel";
 const AllCarTable = ({
   data,
   loading,
-  showViewModal,
-  showDeleteModal,
   meta,
   onPageChange,
 }) => {

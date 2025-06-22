@@ -4,12 +4,36 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import { toast } from "sonner";
 import { useUserBlockMutation } from "../../redux/api/adminApi";
+import { FaTrashAlt } from "react-icons/fa";
+
 
 const UserTable = ({ data, loading, showViewModal, meta, onPageChange }) => {
   const [UserBlock] = useUserBlockMutation();
   const [isOpen, setIsOpen] = useState(false);
+  const [isOpen2, setIsOpen2] = useState(false);
   const [record, setIsRecord] = useState(null);
 
+  const handleDelete = async (id) => { 
+    const toastId = toast.loading("User is Deleteing...");
+    const data = {
+      action: "delete",
+    };
+    try {
+      const res = await UserBlock({ data, id }).unwrap();
+      console.log(res);
+      toast.success("User Delete successfully", {
+        id: toastId,
+        duration: 2000,
+      });
+      setIsOpen2(false);
+    } catch (error) {
+      console.log(error);
+      toast.error(error?.data?.message || "There is an problem to block user", {
+        id: toastId,
+        duration: 2000,
+      });
+    }
+  };
   const handleBlock = async (id) => {
     const toastId = toast.loading("User is Blocking...");
     const data = {
@@ -31,6 +55,16 @@ const UserTable = ({ data, loading, showViewModal, meta, onPageChange }) => {
       });
     }
   };
+
+
+
+
+
+
+
+
+
+
   const handleUnBlock = async (id) => {
     const toastId = toast.loading("User is Unblocking...");
     const data = {
@@ -102,7 +136,7 @@ const UserTable = ({ data, loading, showViewModal, meta, onPageChange }) => {
       title: "Action",
       key: "action",
       render: (_, record) => (
-        <>
+        <div className="flex gap-5">
           {record?.status == "blocked" ? (
             <button
               onClick={() => {
@@ -124,7 +158,16 @@ const UserTable = ({ data, loading, showViewModal, meta, onPageChange }) => {
               Block
             </button>
           )}
-        </>
+          <button
+            onClick={() => {
+              setIsOpen2(true);
+              setIsRecord(record);
+            }}
+            className="text-red-600  rounded-lg font-medium"
+          >
+            <FaTrashAlt/>
+          </button>
+        </div>
       ),
     },
     {
@@ -135,7 +178,7 @@ const UserTable = ({ data, loading, showViewModal, meta, onPageChange }) => {
           <Space size="middle">
             <Tooltip placement="right" title="View Details">
               <Link onClick={() => showViewModal(record)} to={`${record._id}`}>
-                <p className="text-xs font-semibold border border-[#00721E] hover:text-secondary-color px-2 py-1 rounded">
+                <p className="text-lg font-semibold border border-[#00721E] hover:text-secondary-color px-2 py-1 rounded ">
                   See Details
                 </p>
               </Link>
@@ -200,6 +243,35 @@ const UserTable = ({ data, loading, showViewModal, meta, onPageChange }) => {
 
           <button
             onClick={() => setIsOpen(false)}
+            className="bg-red-600 text-white px-2 text-lg rounded-lg font-medium"
+          >
+            No
+          </button>
+        </div>
+      </Modal>
+      <Modal
+        title=""
+        closable={{ "aria-label": "Custom Close Button" }}
+        open={isOpen2}
+        onOk={() => setIsOpen2(false)}
+        onCancel={() => setIsOpen2(false)}
+        footer={[]}
+      >
+        {console.log(record?.status)}
+        <h1 className="flex justify-center items-center text-xl  font-medium">
+          Do you want to Delete this user?
+          {/* */}
+        </h1>
+        <div className="flex justify-center items-center mt-5 gap-5">
+          <button
+            onClick={() => handleDelete(record?._id)}
+            className="bg-green-600 text-white px-2 text-lg rounded-lg font-medium"
+          >
+            Yes
+          </button>
+
+          <button
+            onClick={() => setIsOpen2(false)}
             className="bg-red-600 text-white px-2 text-lg rounded-lg font-medium"
           >
             No

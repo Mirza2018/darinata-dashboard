@@ -24,7 +24,7 @@ export default function DelarManagementMainPage() {
     setFilters((prev) => ({
       ...prev,
       page,
-      limit,
+      limit, 
     }));
   };
 
