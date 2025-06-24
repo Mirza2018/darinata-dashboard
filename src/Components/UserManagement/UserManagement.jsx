@@ -25,7 +25,7 @@ export default function UserManagement() {
       page,
       limit,
     }));
-  };
+  }; 
   const handleSearch = (search) => {
     console.log(searchText);
     setFilters((prev) => ({
@@ -245,45 +245,101 @@ export default function UserManagement() {
             </div>
             <div className="md:col-span-2 ">
               <div className="grid md:grid-cols-2 gap-5">
-                <Form.Item label="First Name" name="first_name">
-                  <Input required placeholder="Enter your First Name" />
+                <Form.Item
+                  rules={[
+                    {
+                      required: true,
+                      message: "Please inptut First Name",
+                    },
+                  ]}
+                  label="First Name"
+                  name="first_name"
+                >
+                  <Input required placeholder="Enter First Name" />
                 </Form.Item>
-                <Form.Item label="Last Name" name="last_name">
-                  <Input required placeholder="Enter your Last Name" />
+                <Form.Item
+                  rules={[
+                    {
+                      required: true,
+                      message: "Please inptut Last Name",
+                    },
+                  ]}
+                  label="Last Name"
+                  name="last_name"
+                >
+                  <Input required placeholder="Enter Last Name" />
                 </Form.Item>
               </div>
               <div className="grid md:grid-cols-2 gap-5">
-                <Form.Item label="Phone Number" name="phoneNumber">
-                  <Input required placeholder="Enter your Phone Number" />
+                <Form.Item
+                  rules={[
+                    {
+                      required: true,
+                      message: "Please inptut Phone Number",
+                    },
+                  ]}
+                  label="Phone Number"
+                  name="phoneNumber"
+                >
+                  <Input required placeholder="Enter Phone Number" />
                 </Form.Item>
-                <Form.Item label="Address" name="address">
-                  <Input required placeholder="Enter your Address" />
+                <Form.Item
+                  rules={[
+                    {
+                      required: true,
+                      message: "Please inptut Email",
+                    },
+                  ]}
+                  label="Email"
+                  name="email"
+                >
+                  <Input required placeholder="Enter Email" />
                 </Form.Item>
               </div>
               <div className="grid md:grid-cols-2 gap-5">
-                <Form.Item label="Email" name="email">
-                  <Input required placeholder="Enter your Email" />
+                <Form.Item label="Zip" name="zip">
+                  <Input required placeholder="Ente zip" />
+                </Form.Item>
+                <Form.Item label="City" name="city">
+                  <Input required placeholder="Enter city name" />
+                </Form.Item>
+              </div>
+              <div className="grid md:grid-cols-2 gap-5">
+                <Form.Item label="Street" name="street">
+                  <Input required placeholder="Enter street name" />
                 </Form.Item>
 
-                <Form.Item label="Rge Nr." name="regNo">
-                  <Input required placeholder="Enter your Rge Nr." />
+                <Form.Item label="Address" name="address">
+                  <Input required placeholder="Enter Address" />
                 </Form.Item>
               </div>
 
               <div className="grid md:grid-cols-2 gap-5">
                 <Form.Item label="Konto Nr." name="kontoNr">
-                  <Input required placeholder="Enter your Konto Nr." />
-                </Form.Item>{" "}
-                <Form.Item label="Website Link" name="websiteLink">
+                  <Input required placeholder="Enter Konto Nr." />
+                </Form.Item>
+                <Form.Item label="Rge Nr." name="regNo">
+                  <Input required placeholder="Enter Rge Nr." />
+                </Form.Item>
+                {/* <Form.Item label="Website Link" name="websiteLink">
                   <Input placeholder="Enter your Website Link" />
-                </Form.Item>
-                <Form.Item label="Password" name="password">
-                  <Input.Password
-                    required
-                    placeholder="Enter your Password Link"
-                  />
-                </Form.Item>
+                </Form.Item> */}
               </div>
+              <Form.Item
+                rules={[
+                  {
+                    required: true,
+                    message: "Please inptut Password",
+                  },
+                ]}
+                label="Password"
+                name="password"
+              >
+                <Input.Password
+                  required
+                  placeholder="Enter your Password Link"
+                />
+              </Form.Item>
             </div>
 
             <Form.Item label={null} className="col-span-3 text-end">

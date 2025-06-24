@@ -179,7 +179,7 @@ const UserTable = ({ data, loading, showViewModal, meta, onPageChange }) => {
             <Tooltip placement="right" title="View Details">
               <Link onClick={() => showViewModal(record)} to={`${record._id}`}>
                 <p className="text-lg font-semibold border border-[#00721E] hover:text-secondary-color px-2 py-1 rounded ">
-                  See Details
+                  Car Details
                 </p>
               </Link>
             </Tooltip>

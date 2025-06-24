@@ -90,7 +90,7 @@ const DealerTable = ({ data, loading, showViewModal, meta, onPageChange }) => {
       key: "profile",
       render: (text) => (
         <div className="whitespace-nowrap">
-          {text.first_name} {text.last_name}
+          {text?.first_name} {text?.last_name}
         </div>
       ),
     },
@@ -106,7 +106,7 @@ const DealerTable = ({ data, loading, showViewModal, meta, onPageChange }) => {
       key: "profile",
       render: (text) => (
         <div className="whitespace-nowrap">
-          {text.phoneNumber ? <>{text?.phoneNumber}</> : "Not provided"}
+          {text?.phoneNumber ? <>{text?.phoneNumber}</> : "Not provided"}
         </div>
       ),
     },
@@ -117,7 +117,7 @@ const DealerTable = ({ data, loading, showViewModal, meta, onPageChange }) => {
       key: "profile",
       render: (text) => (
         <div className="whitespace-nowrap">
-          {text.address ? <>{text?.address}</> : "Not provided"}
+          {text?.address ? <>{text?.address}</> : "Not provided"}
         </div>
       ),
     },

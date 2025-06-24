@@ -234,27 +234,80 @@ export default function DelarManagementMainPage() {
 
             <div className="md:col-span-2 ">
               <div className="grid md:grid-cols-2 gap-5">
-                <Form.Item label="First Name" name="first_name">
+                <Form.Item
+                  rules={[
+                    {
+                      required: true,
+                      message: "Please Enter First Name",
+                    },
+                  ]}
+                  label="First Name"
+                  name="first_name"
+                >
                   <Input required placeholder="Enter your First Name" />
                 </Form.Item>
-                <Form.Item label="Last Name" name="last_name">
+                <Form.Item
+                  rules={[
+                    {
+                      required: true,
+                      message: "Please Enter Last Name",
+                    },
+                  ]}
+                  label="Last Name"
+                  name="last_name"
+                >
                   <Input required placeholder="Enter your Last Name" />
                 </Form.Item>
               </div>
               <div className="grid md:grid-cols-2 gap-5">
-                <Form.Item label="Phone Number" name="phoneNumber">
+                <Form.Item
+                  rules={[
+                    {
+                      required: true,
+                      message: "Please Enter Phone Number",
+                    },
+                  ]}
+                  label="Phone Number"
+                  name="phoneNumber"
+                >
                   <Input required placeholder="Enter your Phone Number" />
                 </Form.Item>
-                <Form.Item label="Address" name="address">
-                  <Input required placeholder="Enter your Address" />
+                <Form.Item
+                  rules={[
+                    {
+                      required: true,
+                      message: "Please Enter Email",
+                    },
+                  ]}
+                  label="Email"
+                  name="email"
+                >
+                  <Input required placeholder="Enter your Email" />
                 </Form.Item>
               </div>
               <div className="grid md:grid-cols-2 gap-5">
-                <Form.Item label="Email" name="email">
-                  <Input required placeholder="Enter your Email" />
+                <Form.Item label="Zip" name="zip">
+                  <Input required placeholder="Ente zip" />
+                </Form.Item>
+                <Form.Item label="City" name="city">
+                  <Input required placeholder="Enter city name" />
+                </Form.Item>
+              </div>
+              <div className="grid md:grid-cols-2 gap-5">
+                <Form.Item label="Address" name="address">
+                  <Input required placeholder="Enter your Address" />
                 </Form.Item>
 
-                <Form.Item label="Password" name="password">
+                <Form.Item
+                  rules={[
+                    {
+                      required: true,
+                      message: "Please Enter Password",
+                    },
+                  ]}
+                  label="Password"
+                  name="password"
+                >
                   <Input.Password
                     required
                     placeholder="Enter your Password Link"
