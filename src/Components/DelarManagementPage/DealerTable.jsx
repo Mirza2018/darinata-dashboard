@@ -81,8 +81,8 @@ const DealerTable = ({ data, loading, showViewModal, meta, onPageChange }) => {
   const columns = [
     {
       title: "Dealer ID",
-      dataIndex: "_id",
-      key: "_id",
+      dataIndex: "uuid",
+      key: "uuid",
     },
     {
       title: "Dealer Name",

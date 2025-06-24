@@ -114,6 +114,7 @@ export default function TaskManagement() {
         duration: 2000,
       });
       form.resetFields();
+      handleOkTaskAdd()
     } catch (error) {
       console.log(error);
       toast.error(
@@ -203,7 +204,7 @@ export default function TaskManagement() {
                   },
                 ]}
                 label="Input Dealer Id"
-                name="assignTo"
+                name="uuid"
               >
                 <Input placeholder="Enter dealer Id" />
               </Form.Item>
