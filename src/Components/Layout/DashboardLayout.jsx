@@ -132,7 +132,7 @@ const DashboardLayout = () => {
           }}
         />
       ),
-      label: <NavLink to="total-Car-Sell">Total Car Sell</NavLink>,
+      label: <NavLink to="total-Car-Sell">Dealer Buy Now</NavLink>,
     },
     {
       key: "every-contract",
@@ -164,7 +164,7 @@ const DashboardLayout = () => {
           }}
         />
       ),
-      label: <NavLink to="all-cars">All Cars</NavLink>,
+      label: <NavLink to="all-cars">All Cars (Sell+Sold)</NavLink>,
     },
     {
       key: "user-management",

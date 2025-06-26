@@ -61,7 +61,7 @@ export default function UserManagement() {
       }
     }
   };
-
+ 
   const showModalAddUser = () => {
     setIsModalOpenAddUser(true);
   };
@@ -116,21 +116,6 @@ export default function UserManagement() {
     setIsDeleteModalVisible(true);
   };
 
-  const handleDelete = (data) => {
-    // Handle delete action here
-    console.log({ id: data?.id, userName: data?.userName });
-    setIsDeleteModalVisible(false);
-  };
-
-  const handleCancel = () => {
-    setIsViewModalVisible(false);
-    setIsDeleteModalVisible(false);
-  };
-
-  const handleBlock = (data) => {
-    console.log("Blocked User:", { id: data?.id, userName: data?.userName });
-    setIsViewModalVisible(false);
-  };
 
   const onFinish = async (values) => {
     console.log(values);
@@ -297,15 +282,42 @@ export default function UserManagement() {
                 </Form.Item>
               </div>
               <div className="grid md:grid-cols-2 gap-5">
-                <Form.Item label="Zip" name="zip">
+                <Form.Item
+                  rules={[
+                    {
+                      required: true,
+                      message: "Please inptut Zip",
+                    },
+                  ]}
+                  label="Zip"
+                  name="zip"
+                >
                   <Input required placeholder="Ente zip" />
                 </Form.Item>
-                <Form.Item label="City" name="city">
+                <Form.Item
+                  rules={[
+                    {
+                      required: true,
+                      message: "Please inptut City",
+                    },
+                  ]}
+                  label="City"
+                  name="city"
+                >
                   <Input required placeholder="Enter city name" />
                 </Form.Item>
               </div>
               <div className="grid md:grid-cols-2 gap-5">
-                <Form.Item label="Street" name="street">
+                <Form.Item
+                  rules={[
+                    {
+                      required: true,
+                      message: "Please inptut Street",
+                    },
+                  ]}
+                  label="Street"
+                  name="street"
+                >
                   <Input required placeholder="Enter street name" />
                 </Form.Item>
 

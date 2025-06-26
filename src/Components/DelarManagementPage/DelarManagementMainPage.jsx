@@ -24,7 +24,7 @@ export default function DelarManagementMainPage() {
     setFilters((prev) => ({
       ...prev,
       page,
-      limit, 
+      limit,
     }));
   };
 
@@ -202,11 +202,11 @@ export default function DelarManagementMainPage() {
           onOk={handleOkAddDealer}
           onCancel={handleCancelAddDealer}
           footer={null}
-          width={1000}
+          width={900}
         >
           <Form
             name="basic"
-            className="md:grid md:grid-cols-3  gap-5 p-10 "
+            className="md:grid md:grid-cols-3  gap-5 p-5 "
             form={form}
             onFinish={onFinish}
             layout="vertical"
@@ -286,18 +286,97 @@ export default function DelarManagementMainPage() {
                 </Form.Item>
               </div>
               <div className="grid md:grid-cols-2 gap-5">
-                <Form.Item label="Zip" name="zip">
+                <Form.Item
+                  rules={[
+                    {
+                      required: true,
+                      message: "Please Enter Zip",
+                    },
+                  ]}
+                  label="Zip"
+                  name="zip"
+                >
                   <Input required placeholder="Ente zip" />
                 </Form.Item>
-                <Form.Item label="City" name="city">
+                <Form.Item
+                  rules={[
+                    {
+                      required: true,
+                      message: "Please Enter City",
+                    },
+                  ]}
+                  label="City"
+                  name="city"
+                >
                   <Input required placeholder="Enter city name" />
                 </Form.Item>
               </div>
               <div className="grid md:grid-cols-2 gap-5">
-                <Form.Item label="Address" name="address">
+                <Form.Item
+                  rules={[
+                    {
+                      required: true,
+                      message: "Please Enter Address",
+                    },
+                  ]}
+                  label="Address"
+                  name="address"
+                >
                   <Input required placeholder="Enter your Address" />
                 </Form.Item>
 
+                <Form.Item
+                  rules={[
+                    {
+                      required: true,
+                      message: "Please Enter Street",
+                    },
+                  ]}
+                  label="Street"
+                  name="street"
+                >
+                  <Input required placeholder="Enter your Street Link" />
+                </Form.Item>
+              </div>
+              <div className="grid md:grid-cols-2 gap-5">
+                <Form.Item
+                  rules={[
+                    {
+                      required: true,
+                      message: "Please Enter CVR Number",
+                    },
+                  ]}
+                  label="CVR Number"
+                  name="cvrNumber"
+                >
+                  <Input required placeholder="Enter your CVR Number" />
+                </Form.Item>
+                <Form.Item
+                  rules={[
+                    {
+                      required: true,
+                      message: "Please Enter Company Name",
+                    },
+                  ]}
+                  label="Company Name"
+                  name="companyName"
+                >
+                  <Input required placeholder="Enter your company name" />
+                </Form.Item>{" "}
+              </div>
+
+              <div className="grid md:grid-cols-2 gap-5">
+                <Form.Item label="Rge Nr." name="regNo">
+                  <Input required placeholder="Enter your Rge Nr." />
+                </Form.Item>
+                <Form.Item label="Konto Nr." name="kontoNr">
+                  <Input required placeholder="Enter your Konto Nr." />
+                </Form.Item>{" "}
+              </div>
+              <div className="grid md:grid-cols-2 gap-5">
+                <Form.Item label="Website Link" name="websiteLink">
+                  <Input placeholder="Enter your Website Link" />
+                </Form.Item>
                 <Form.Item
                   rules={[
                     {
@@ -313,23 +392,6 @@ export default function DelarManagementMainPage() {
                     placeholder="Enter your Password Link"
                   />
                 </Form.Item>
-              </div>
-              <div className="grid md:grid-cols-2 gap-5">
-                <Form.Item label="CVR Number" name="cvrNumber">
-                  <Input required placeholder="Enter your CVR Number" />
-                </Form.Item>
-                <Form.Item label="Website Link" name="websiteLink">
-                  <Input placeholder="Enter your Website Link" />
-                </Form.Item>
-              </div>
-
-              <div className="grid md:grid-cols-2 gap-5">
-                <Form.Item label="Rge Nr." name="regNo">
-                  <Input required placeholder="Enter your Rge Nr." />
-                </Form.Item>
-                <Form.Item label="Konto Nr." name="kontoNr">
-                  <Input required placeholder="Enter your Konto Nr." />
-                </Form.Item>{" "}
               </div>
             </div>
 

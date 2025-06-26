@@ -4,13 +4,16 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import { toast } from "sonner";
 import { useUserBlockMutation } from "../../redux/api/adminApi";
-import { FaTrashAlt } from "react-icons/fa";
+import { FaEdit, FaTrashAlt } from "react-icons/fa";
+import EditProfile from "../../Pages/Profile/EditProfile";
+import EditUserInfo from "./EditUserInfo";
 
 
 const UserTable = ({ data, loading, showViewModal, meta, onPageChange }) => {
   const [UserBlock] = useUserBlockMutation();
   const [isOpen, setIsOpen] = useState(false);
   const [isOpen2, setIsOpen2] = useState(false);
+  const [isOpen3, setIsOpen3] = useState(false);
   const [record, setIsRecord] = useState(null);
 
   const handleDelete = async (id) => { 
@@ -167,6 +170,15 @@ const UserTable = ({ data, loading, showViewModal, meta, onPageChange }) => {
           >
             <FaTrashAlt/>
           </button>
+          <button
+            onClick={() => {
+              setIsOpen3(true);
+              setIsRecord(record);
+            }}
+            className="text-red-600  rounded-lg font-medium"
+          >
+            <FaEdit/>
+          </button>
         </div>
       ),
     },
@@ -278,6 +290,8 @@ const UserTable = ({ data, loading, showViewModal, meta, onPageChange }) => {
           </button>
         </div>
       </Modal>
+
+      <EditUserInfo setIsOpen3={setIsOpen3} isOpen3={isOpen3} record={record} />
     </div>
   );
 };

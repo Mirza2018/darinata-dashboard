@@ -86,12 +86,34 @@ const AdminDashboard = () => {
                   </div>
                   <div className="text-start">
                     <p className="text-4xl font-bold mb-1">
-                      {totalCount?.data?.totalSell}
+                      {totalCount?.data?.carForSell}
                     </p>
-                    <p className="text-base font-normal ">Total Car Sell</p>
+                    <p className="text-base font-normal ">Car for Sell</p>
                     {/* <div className="text-xs font-normal text-[#A3A3A3] flex justify-center items-center gap-1">
                       <img src={AllIcons.upArrow} className="h-10 w-4" alt="" />
                       4% (30 days)
+                    </div> */}
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div className="flex-1">
+              <div className="flex bg-base-color border border-secondary-color gap-5 flex-wrap rounded-lg  py-2 px-1 lg:p-5 items-center justify-center flex-1">
+                <div
+                  className="flex 
+                 gap-2 xl:gap-4 items-center"
+                >
+                  <div className="p-3 rounded-full bg-[#00B07426]  w-fit">
+                    <img src={AllIcons.car} className="h-10 w-10" alt="" />
+                  </div>
+                  <div className="text-start">
+                    <p className="text-4xl font-bold mb-1">
+                      {totalCount?.data?.carForBuy}
+                    </p>
+                    <p className="text-base font-normal ">car For Buy</p>
+                    {/* <div className="text-xs font-normal text-[#A3A3A3] flex justify-center items-center gap-1">
+                      <img src={AllIcons.upArrow} className="h-10 w-4" alt="" />
+                      2% (25 days)
                     </div> */}
                   </div>
                 </div>

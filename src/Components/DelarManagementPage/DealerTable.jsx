@@ -4,12 +4,14 @@ import { Link } from "react-router-dom";
 import { useUserBlockMutation } from "../../redux/api/adminApi";
 import { useState } from "react";
 import { toast } from "sonner";
-import { FaTrashAlt } from "react-icons/fa";
+import { FaEdit, FaTrashAlt } from "react-icons/fa";
+import DealerInfoEdit from "./DealerInfoEdit";
 
 const DealerTable = ({ data, loading, showViewModal, meta, onPageChange }) => {
   const [UserBlock] = useUserBlockMutation();
   const [isOpen, setIsOpen] = useState(false);
   const [isOpen2, setIsOpen2] = useState(false);
+  const [isOpen3, setIsOpen3] = useState(false);
   const [record, setIsRecord] = useState(null);
   const handleDelete = async (id) => {
     const toastId = toast.loading("Dealer is Deleteing...");
@@ -157,6 +159,15 @@ const DealerTable = ({ data, loading, showViewModal, meta, onPageChange }) => {
           >
             <FaTrashAlt />
           </button>
+          <button
+            onClick={() => {
+              setIsOpen3(true);
+              setIsRecord(record);
+            }}
+            className="text-red-600  rounded-lg font-medium"
+          >
+            <FaEdit  />
+          </button>
         </div>
       ),
     },
@@ -266,6 +277,12 @@ const DealerTable = ({ data, loading, showViewModal, meta, onPageChange }) => {
           </button>
         </div>
       </Modal>
+
+      <DealerInfoEdit
+        record={record}
+        setIsOpen3={setIsOpen3}
+        isOpen3={isOpen3}
+      />
     </div>
   );
 };

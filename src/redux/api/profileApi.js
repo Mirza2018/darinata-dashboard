@@ -27,7 +27,24 @@ export const profileApi = baseApi.injectEndpoints({
       }),
       providesTags: [tagTypes.profile],
     }),
+    updateProfileAnother: build.mutation({
+      query: (profileInfo) => {
+        console.log("hi", profileInfo);
+        // return;
+        return {
+          url: `/profile/update_profile/${profileInfo.id}`,
+          method: "PUT",
+          body: profileInfo.data,
+        };
+      },
+      invalidatesTags: [tagTypes.people, tagTypes.user],
+    }),
   }),
 });
 
-export const { useGetProfileQuery, useProfileUpdsateMutation, useUserRatioQuery } = profileApi;
+export const {
+  useGetProfileQuery,
+  useProfileUpdsateMutation,
+  useUserRatioQuery,
+  useUpdateProfileAnotherMutation,
+} = profileApi;
