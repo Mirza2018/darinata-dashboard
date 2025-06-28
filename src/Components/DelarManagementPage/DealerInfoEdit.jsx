@@ -157,7 +157,7 @@ const DealerInfoEdit = ({ record, setIsOpen3, isOpen3 }) => {
             </Form.Item>
           </div>
           <div className="grid md:grid-cols-2 gap-5">
-            <Form.Item
+            {/* <Form.Item
               rules={[
                 {
                   required: true,
@@ -168,7 +168,7 @@ const DealerInfoEdit = ({ record, setIsOpen3, isOpen3 }) => {
               name="address"
             >
               <Input required placeholder="Enter your Address" />
-            </Form.Item>
+            </Form.Item> */}
 
             <Form.Item
               rules={[
@@ -181,6 +181,9 @@ const DealerInfoEdit = ({ record, setIsOpen3, isOpen3 }) => {
               name="street"
             >
               <Input required placeholder="Enter your Street Link" />
+            </Form.Item>
+            <Form.Item label="Website Link" name="websiteLink">
+              <Input placeholder="Enter your Website Link" />
             </Form.Item>
           </div>
           <div className="grid md:grid-cols-2 gap-5">
@@ -217,11 +220,6 @@ const DealerInfoEdit = ({ record, setIsOpen3, isOpen3 }) => {
             <Form.Item label="Konto Nr." name="kontoNr">
               <Input required placeholder="Enter your Konto Nr." />
             </Form.Item>{" "}
-          </div>
-          <div className="grid md:grid-cols-2 gap-5">
-            <Form.Item label="Website Link" name="websiteLink">
-              <Input placeholder="Enter your Website Link" />
-            </Form.Item>
           </div>
         </div>
 

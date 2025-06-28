@@ -63,7 +63,7 @@ export default function UserManagement() {
   };
  
   const showModalAddUser = () => {
-    setIsModalOpenAddUser(true);
+    setIsModalOpenAddUser(true); 
   };
   const handleOkAddUser = () => {
     setIsModalOpenAddUser(false);
@@ -321,37 +321,37 @@ export default function UserManagement() {
                   <Input required placeholder="Enter street name" />
                 </Form.Item>
 
-                <Form.Item label="Address" name="address">
+                {/* <Form.Item label="Address" name="address">
                   <Input required placeholder="Enter Address" />
+                </Form.Item> */}
+                <Form.Item label="Konto Nr." name="kontoNr">
+                  <Input required placeholder="Enter Konto Nr." />
                 </Form.Item>
               </div>
 
               <div className="grid md:grid-cols-2 gap-5">
-                <Form.Item label="Konto Nr." name="kontoNr">
-                  <Input required placeholder="Enter Konto Nr." />
-                </Form.Item>
                 <Form.Item label="Rge Nr." name="regNo">
                   <Input required placeholder="Enter Rge Nr." />
                 </Form.Item>
                 {/* <Form.Item label="Website Link" name="websiteLink">
                   <Input placeholder="Enter your Website Link" />
                 </Form.Item> */}
+                <Form.Item
+                  rules={[
+                    {
+                      required: true,
+                      message: "Please inptut Password",
+                    },
+                  ]}
+                  label="Password"
+                  name="password"
+                >
+                  <Input.Password
+                    required
+                    placeholder="Enter your Password Link"
+                  />
+                </Form.Item>
               </div>
-              <Form.Item
-                rules={[
-                  {
-                    required: true,
-                    message: "Please inptut Password",
-                  },
-                ]}
-                label="Password"
-                name="password"
-              >
-                <Input.Password
-                  required
-                  placeholder="Enter your Password Link"
-                />
-              </Form.Item>
             </div>
 
             <Form.Item label={null} className="col-span-3 text-end">
