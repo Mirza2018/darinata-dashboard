@@ -179,13 +179,13 @@ const EditUserInfo = ({ record, setIsOpen3, isOpen3 }) => {
               <Input required placeholder="Enter Address" />
             </Form.Item> */}
             <Form.Item label="Konto Nr." name="kontoNr">
-              <Input required placeholder="Enter Konto Nr." />
+              <Input  placeholder="Enter Konto Nr." />
             </Form.Item>
           </div>
 
           <div className="grid md:grid-cols-2 gap-5">
             <Form.Item label="Rge Nr." name="regNo">
-              <Input required placeholder="Enter Rge Nr." />
+              <Input  placeholder="Enter Rge Nr." />
             </Form.Item>
           </div>
         </div>

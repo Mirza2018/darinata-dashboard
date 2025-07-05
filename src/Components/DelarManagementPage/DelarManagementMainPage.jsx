@@ -312,18 +312,7 @@ export default function DelarManagementMainPage() {
                 </Form.Item>
               </div>
               <div className="grid md:grid-cols-2 gap-5">
-                {/* <Form.Item
-                  rules={[
-                    {
-                      required: true,
-                      message: "Please Enter Address",
-                    },
-                  ]}
-                  label="Address"
-                  name="address"
-                >
-                  <Input required placeholder="Enter your Address" />
-                </Form.Item> */}
+  
 
                 <Form.Item
                   rules={[
@@ -370,10 +359,10 @@ export default function DelarManagementMainPage() {
 
               <div className="grid md:grid-cols-2 gap-5">
                 <Form.Item label="Rge Nr." name="regNo">
-                  <Input required placeholder="Enter your Rge Nr." />
+                  <Input  placeholder="Enter your Rge Nr." />
                 </Form.Item>
                 <Form.Item label="Konto Nr." name="kontoNr">
-                  <Input required placeholder="Enter your Konto Nr." />
+                  <Input  placeholder="Enter your Konto Nr." />
                 </Form.Item>{" "}
               </div>
               <div className="">
@@ -389,7 +378,7 @@ export default function DelarManagementMainPage() {
                 >
                   <Input.Password
                     required
-                    placeholder="Enter your Password Link"
+                    placeholder="Enter your Password "
                   />
                 </Form.Item>
               </div>

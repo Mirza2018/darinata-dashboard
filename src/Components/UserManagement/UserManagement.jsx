@@ -325,13 +325,13 @@ export default function UserManagement() {
                   <Input required placeholder="Enter Address" />
                 </Form.Item> */}
                 <Form.Item label="Konto Nr." name="kontoNr">
-                  <Input required placeholder="Enter Konto Nr." />
+                  <Input  placeholder="Enter Konto Nr." />
                 </Form.Item>
               </div>
 
               <div className="grid md:grid-cols-2 gap-5">
                 <Form.Item label="Rge Nr." name="regNo">
-                  <Input required placeholder="Enter Rge Nr." />
+                  <Input  placeholder="Enter Rge Nr." />
                 </Form.Item>
                 {/* <Form.Item label="Website Link" name="websiteLink">
                   <Input placeholder="Enter your Website Link" />
@@ -348,7 +348,7 @@ export default function UserManagement() {
                 >
                   <Input.Password
                     required
-                    placeholder="Enter your Password Link"
+                    placeholder="Enter your Password "
                   />
                 </Form.Item>
               </div>

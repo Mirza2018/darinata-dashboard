@@ -215,10 +215,10 @@ const DealerInfoEdit = ({ record, setIsOpen3, isOpen3 }) => {
 
           <div className="grid md:grid-cols-2 gap-5">
             <Form.Item label="Rge Nr." name="regNo">
-              <Input required placeholder="Enter your Rge Nr." />
+              <Input  placeholder="Enter your Rge Nr." />
             </Form.Item>
             <Form.Item label="Konto Nr." name="kontoNr">
-              <Input required placeholder="Enter your Konto Nr." />
+              <Input  placeholder="Enter your Konto Nr." />
             </Form.Item>{" "}
           </div>
         </div>
