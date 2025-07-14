@@ -14,7 +14,7 @@ const OfferContractData = () => {
   // console.log(params);
 
   const advancedRef = useRef();
-  const agrimentRef = useRef();
+  const agrimentRef = useRef(); 
   const contractRef = useRef();
 
   const inspectionDate = new Date(
@@ -114,19 +114,11 @@ const OfferContractData = () => {
                 </p>
               </div>
               <div className="grid grid-cols-2 bg-base-color border-x font-medium border-t border-secondary-color leading-10">
-                <p className="ps-2">E-mail</p>
+                <p className="ps-2">Address</p>
                 <p className="border-s border-secondary-color ps-2">
-                  {displayedData?.dealerUser?.email &&
-                    displayedData?.dealerUser?.email}
+                  {displayedData?.dealerUserProfile?.street}
                 </p>
               </div>
-              {/* <div className="grid grid-cols-2 bg-base-color border-x font-medium border-t border-secondary-color leading-10">
-                <p className="ps-2">street</p>
-                <p className="border-s border-secondary-color ps-2 overflow-x-scroll hide-x-scrollbar">
-                  {displayedData?.dealerUserProfile?.city &&
-                    displayedData?.dealerUserProfile?.city.split(",")[1]}
-                </p>
-              </div> */}
               <div className="grid grid-cols-2 bg-base-color border-x font-medium border-t border-secondary-color leading-10">
                 <p className="ps-2">Postnr.</p>
                 <p className="border-s border-secondary-color ps-2">
@@ -137,8 +129,7 @@ const OfferContractData = () => {
               <div className="grid grid-cols-2 bg-base-color border-x font-medium border-t border-secondary-color leading-10">
                 <p className="ps-2">By</p>
                 <p className="border-s border-secondary-color ps-2 overflow-x-scroll hide-x-scrollbar">
-                  {displayedData?.dealerUserProfile?.city &&
-                    displayedData?.dealerUserProfile?.city.split(",")[0]}
+                  {displayedData?.dealerUserProfile?.city}
                 </p>
               </div>
               <div className="grid grid-cols-2 bg-base-color border-x font-medium border-t border-secondary-color leading-10">
@@ -148,12 +139,19 @@ const OfferContractData = () => {
                     displayedData?.dealerUserProfile?.phoneNumber}
                 </p>
               </div>
-              <div className="grid grid-cols-2 bg-base-color border-x font-medium border-y border-secondary-color leading-10">
+              <div className="grid grid-cols-2 bg-base-color border-x font-medium border-t border-secondary-color leading-10">
                 <p className="ps-2">Privatperson / Virksomhed CVR</p>
                 <p className="overflow-x-scroll  hide-x-scrollbar border-s border-secondary-color ps-2">
                   {displayedData?.dealerUserProfile?.cvrNumber
                     ? displayedData?.dealerUserProfile?.cvrNumber
                     : "Private "}
+                </p>
+              </div>
+              <div className="grid grid-cols-2 bg-base-color border-x font-medium border-y border-secondary-color leading-10">
+                <p className="ps-2">E-mail</p>
+                <p className="border-s border-secondary-color ps-2">
+                  {displayedData?.dealerUser?.email &&
+                    displayedData?.dealerUser?.email}
                 </p>
               </div>
             </section>
@@ -178,11 +176,11 @@ const OfferContractData = () => {
                     displayedData?.privateUserProfile?.last_name}
                 </p>
               </div>
+
               <div className="grid grid-cols-2 bg-base-color border-x font-medium border-t border-secondary-color leading-10">
-                <p className="ps-2">E-mail</p>
+                <p className="ps-2">Address</p>
                 <p className="overflow-x-scroll  hide-x-scrollbar border-s border-secondary-color ps-2">
-                  {displayedData?.privateUser?.email &&
-                    displayedData?.privateUser?.email}
+                  {displayedData?.submitListing?.street}
                 </p>
               </div>
               <div className="grid grid-cols-2 bg-base-color border-x font-medium border-t border-secondary-color leading-10">
@@ -199,11 +197,24 @@ const OfferContractData = () => {
                     displayedData?.submitListing?.city}
                 </p>
               </div>
-              <div className="grid grid-cols-2 bg-base-color border-x font-medium border-y border-secondary-color leading-10">
+              <div className="grid grid-cols-2 bg-base-color border-x font-medium border-t border-secondary-color leading-10">
                 <p className="ps-2">Telefon</p>
                 <p className="overflow-x-scroll  hide-x-scrollbar border-s border-secondary-color ps-2">
                   {displayedData?.submitListing?.phoneNumber &&
                     displayedData?.submitListing?.phoneNumber}
+                </p>
+              </div>
+              <div className="grid grid-cols-2 bg-base-color border-x font-medium border-t border-secondary-color leading-10">
+                <p className="ps-2">Privatperson / Virksomhed CVR </p>
+                <p className="overflow-x-scroll  hide-x-scrollbar border-s border-secondary-color ps-2">
+                  Private
+                </p>
+              </div>
+              <div className="grid grid-cols-2 bg-base-color border-x font-medium border-y border-secondary-color leading-10">
+                <p className="ps-2">E-mail</p>
+                <p className="overflow-x-scroll  hide-x-scrollbar border-s border-secondary-color ps-2">
+                  {displayedData?.privateUser?.email &&
+                    displayedData?.privateUser?.email}
                 </p>
               </div>
             </section>
@@ -253,7 +264,11 @@ const OfferContractData = () => {
               <div className="grid grid-cols-2 bg-base-color border-x font-medium border-t border-secondary-color leading-10">
                 <p className="ps-2">Chassisnummer</p>
                 <p className="border-s border-secondary-color ps-2">
-                  {displayedData?.data?.car?.chassisNumber}
+                  {displayedData?.chassisNumber ? (
+                    <>{displayedData?.chassisNumber}</>
+                  ) : (
+                    <>No chassisNumber found</>
+                  )}
                 </p>
               </div>
 
@@ -267,7 +282,11 @@ const OfferContractData = () => {
               <div className="grid grid-cols-2 bg-base-color border-x font-medium border-t border-secondary-color leading-10">
                 <p className="ps-2">Licensnummer</p>
                 <p className="border-s border-secondary-color ps-2">
-                  {displayedData?.carLicensePlateNumber}
+                  {displayedData?.carLicensePlateNumber ? (
+                    <>{displayedData?.carLicensePlateNumber}</>
+                  ) : (
+                    <>Offer Car Without License</>
+                  )}
                 </p>
               </div>
 

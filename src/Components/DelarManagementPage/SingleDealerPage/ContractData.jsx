@@ -7,7 +7,7 @@ import html2canvas from "html2canvas";
 import jsPDF from "jspdf";
 import { PiPrinterThin } from "react-icons/pi";
 
-const ContractData = () => {
+const ContractData = () => { 
   const params = useParams();
   console.log(params);
 
@@ -140,6 +140,12 @@ const ContractData = () => {
                       displayedData?.data?.company?.last_name}
                   </p>
                 </div>
+                <div className="grid grid-cols-2 bg-base-color border-x font-medium border-t border-secondary-color leading-10">
+                  <p className="ps-2">Address</p>
+                  <p className="border-s border-secondary-color ps-2">
+                    {displayedData?.data?.company?.street}
+                  </p>
+                </div>
 
                 <div className="grid grid-cols-2 bg-base-color border-x font-medium border-t border-secondary-color leading-10">
                   <p className="ps-2">Postnr.</p>
@@ -151,8 +157,7 @@ const ContractData = () => {
                 <div className="grid grid-cols-2 bg-base-color border-x font-medium border-t border-secondary-color leading-10">
                   <p className="ps-2">By</p>
                   <p className="border-s border-secondary-color ps-2 overflow-x-scroll hide-x-scrollbar">
-                    {displayedData?.data?.company?.city &&
-                      displayedData?.data?.company?.city.split(",")[0]}
+                    {displayedData?.data?.company?.city}
                   </p>
                 </div>
 
@@ -163,12 +168,18 @@ const ContractData = () => {
                       displayedData?.data?.company?.phoneNumber}
                   </p>
                 </div>
-                <div className="grid grid-cols-2 bg-base-color border-x font-medium border-y border-secondary-color leading-10">
+                <div className="grid grid-cols-2 bg-base-color border-x font-medium border-t border-secondary-color leading-10">
                   <p className="ps-2">Privatperson / Virksomhed CVR </p>
                   <p className="overflow-x-scroll  hide-x-scrollbar border-s border-secondary-color ps-2">
                     {displayedData?.data?.company?.cvrNumber
                       ? displayedData?.data?.company?.cvrNumber
                       : "Private "}
+                  </p>
+                </div>
+                <div className="grid grid-cols-2 bg-base-color border-x font-medium border-y border-secondary-color leading-10">
+                  <p className="ps-2">Email</p>
+                  <p className="overflow-x-scroll  hide-x-scrollbar border-s border-secondary-color ps-2">
+                    {displayedData?.data?.privateUser?.email}
                   </p>
                 </div>
               </section>
@@ -195,26 +206,42 @@ const ContractData = () => {
                       displayedData?.data?.dealer?.last_name}
                   </p>
                 </div>
-
                 <div className="grid grid-cols-2 bg-base-color border-x font-medium border-t border-secondary-color leading-10">
-                  <p className="ps-2">E-mail</p>
-                  <p className="overflow-x-scroll  hide-x-scrollbar border-s border-secondary-color ps-2">
-                    {displayedData?.data?.dealer?.email}
+                  <p className="ps-2">Address</p>
+                  <p className="border-s border-secondary-color ps-2">
+                    {displayedData?.data?.dealer?.street}
                   </p>
                 </div>
-
                 <div className="grid grid-cols-2 bg-base-color border-x font-medium border-t border-secondary-color leading-10">
                   <p className="ps-2">Postnr.</p>
                   <p className="overflow-x-scroll  hide-x-scrollbar border-s border-secondary-color ps-2">
-                    {displayedData?.data?.dealer?.zip &&
-                      displayedData?.data?.dealer?.zip}
+                    {displayedData?.data?.dealer?.zip}
+                  </p>
+                </div>
+                <div className="grid grid-cols-2 bg-base-color border-x font-medium border-t border-secondary-color leading-10">
+                  <p className="ps-2">By</p>
+                  <p className="overflow-x-scroll  hide-x-scrollbar border-s border-secondary-color ps-2">
+                    {displayedData?.data?.dealer?.city}
+                  </p>
+                </div>
+
+                <div className="grid grid-cols-2 bg-base-color border-x font-medium border-t border-secondary-color leading-10">
+                  <p className="ps-2">Telefon</p>
+                  <p className="overflow-x-scroll  hide-x-scrollbar border-s border-secondary-color ps-2">
+                    {displayedData?.data?.dealer?.phoneNumber}
+                  </p>
+                </div>
+
+                <div className="grid grid-cols-2 bg-base-color border-x font-medium border-t border-secondary-color leading-10">
+                  <p className="ps-2">Privatperson / Virksomhed CVR </p>
+                  <p className="overflow-x-scroll  hide-x-scrollbar border-s border-secondary-color ps-2">
+                    {displayedData?.data?.dealer?.cvrNumber}
                   </p>
                 </div>
                 <div className="grid grid-cols-2 bg-base-color border-x font-medium border-y border-secondary-color leading-10">
-                  <p className="ps-2">By</p>
+                  <p className="ps-2">E-mail</p>
                   <p className="overflow-x-scroll  hide-x-scrollbar border-s border-secondary-color ps-2">
-                    {displayedData?.data?.dealer?.city &&
-                      displayedData?.data?.dealer?.city}
+                    {displayedData?.data?.dealer?.email}
                   </p>
                 </div>
               </section>
@@ -233,8 +260,9 @@ const ContractData = () => {
                 <div className="grid grid-cols-2 bg-base-color border-x font-medium border-t border-secondary-color leading-10">
                   <p className="ps-2">Mærke & model</p>
                   <p className="border-s border-secondary-color ps-2">
-                    {displayedData?.data?.carModel?.brand}
-                    {displayedData?.data?.carModel?.model}
+                    {displayedData?.data?.carModel?.brand +
+                      " " +
+                      displayedData?.data?.carModel?.model}
                   </p>
                 </div>
 
