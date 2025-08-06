@@ -52,13 +52,6 @@ const PrivacyPolicy = () => {
       <div className="p-2 rounded">
         <h1 className="text-4xl font-bold py-4 !text-black ">Privacy Policy</h1>
         <div className="">
-          {/* <JoditEditor
-            ref={editor}
-            value={content}
-            config={{ height: 500, theme: "light", readonly: false }}
-            onBlur={(newContent) => setContent(newContent)}
-          /> */}
-          {/* <ReactQuill theme="snow" value={value}  onChange={setValue} /> */}
           <ReactQuill
             theme="snow"
             value={value}
