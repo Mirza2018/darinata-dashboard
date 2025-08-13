@@ -40,6 +40,7 @@ import ProtectedRoute from "./ProtectedRoute";
 import AllCarsMainPage from "../AllCars/AllCarsMainPage";
 import CarSellTable from "../TotalCarSellPage/CarSellTable";
 import TaskManagement from "../TaskManagementPage/TaskManagement";
+import BrandAdd from "../BrandAdd/BrandAdd";
 
 function AuthRedirect() {
   const navigate = useNavigate();
@@ -125,6 +126,10 @@ const router = createBrowserRouter([
       {
         path: "task-management",
         element: <TaskManagement />,
+      },
+      {
+        path: "brand-add",
+        element: <BrandAdd />,
       },
 
       {

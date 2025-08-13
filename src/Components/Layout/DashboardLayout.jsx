@@ -70,6 +70,9 @@ const DashboardLayout = () => {
     if (currentPath.includes("/total-earning")) {
       return ["total-earning"];
     }
+    if (currentPath.includes("/brand-add")) {
+      return ["brand-add"];
+    }
     if (currentPath.includes("/service-price")) {
       return ["service-price"];
     }
@@ -215,6 +218,23 @@ const DashboardLayout = () => {
       ),
       label: <NavLink to="task-management">Task Management</NavLink>,
     },
+    {
+      key: "brand-add",
+      icon: (
+        <img
+          src={totalCar}
+          alt="brand-add"
+          width={20}
+          style={{
+            filter: location.pathname.includes("brand-add")
+              ? "brightness(0) invert(1)"
+              : undefined,
+          }}
+        />
+      ),
+      label: <NavLink to="brand-add">Brand Add</NavLink>,
+    },
+
     {
       key: "change-password",
       icon: (

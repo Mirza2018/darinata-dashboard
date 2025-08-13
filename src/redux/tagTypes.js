@@ -13,6 +13,7 @@ export const tagTypes = {
   terms: "Terms",
   notification: "Notification",
   notificationCount: "NotificationCount",
+  brand:"Brand"
 };
 
 export const tagTypesList = [
@@ -28,4 +29,5 @@ export const tagTypesList = [
   tagTypes.terms,
   tagTypes.notification,
   tagTypes.notificationCount,
+  tagTypes.brand
 ];

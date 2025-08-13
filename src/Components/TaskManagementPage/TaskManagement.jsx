@@ -20,7 +20,7 @@ export default function TaskManagement() {
     limit: 8,
   });
 
-  const onPageChange = (page, limit) => {
+  const onPageChange = (page, limit) => { 
     setFilters((prev) => ({
       ...prev,
       page,

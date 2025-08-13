@@ -199,6 +199,7 @@ export const adminApi = baseApi.injectEndpoints({
       },
       invalidatesTags: [tagTypes.allCar],
     }),
+
     UpdateCar: build.mutation({
       query: (data) => {
         console.log(data);
@@ -212,9 +213,43 @@ export const adminApi = baseApi.injectEndpoints({
       invalidatesTags: [tagTypes.allCar],
     }),
 
+    createBrand: build.mutation({
+      query: (brandData) => {
+        console.log(brandData);
+
+        return {
+          url: `/car/add_brand`,
+          method: "POST",
+          body: brandData,
+        };
+      },
+      invalidatesTags: [tagTypes.brand],
+    }),
+
+    allBrand: build.query({
+      query: (params) => {
+        return {
+          url: `/car/get_brand`,
+          method: "GET",
+          params,
+        };
+      },
+      providesTags: [tagTypes.brand],
+    }),
+
+    deleteBrand: build.mutation({
+      query: (id) => {
+        console.log(id);
+        return {
+          url: `/car/delete_brand/${id}`,
+          method: "DELETE",
+        };
+      },
+      invalidatesTags: [tagTypes.brand],
+    }),
+
     updateProfile: build.mutation({
       query: (profileInfo) => {
-        console.log("hi", profileInfo);
         // return;
         return {
           url: `/profile/update_profile/${profileInfo.userId}`,
@@ -294,4 +329,7 @@ export const {
   useUserDetailsQuery,
   useStaticContentQuery,
   useUserBlockMutation,
+  useAllBrandQuery,
+  useCreateBrandMutation,
+  useDeleteBrandMutation
 } = adminApi;
