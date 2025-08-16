@@ -26,7 +26,7 @@ const DealerInfoEdit = ({ record, setIsOpen3, isOpen3 }) => {
     }
   }, [record, form]);
   const onFinish = async (values) => {
-    const toastId = toast.loading("Dealer info is Updating...");
+    const toastId = toast.loading("Forhandleroplysningerne opdateres...");
     const data = { ...values };
     console.log(data);
     // const formData = new FormData();
@@ -40,7 +40,7 @@ const DealerInfoEdit = ({ record, setIsOpen3, isOpen3 }) => {
         id: record?.profile?._id,
       }).unwrap();
       console.log(res);
-      toast.success(res?.message || "Dealer is update Successfully", {
+      toast.success("Forhandleren er opdateret.", {
         id: toastId,
         duration: 2000,
       });
@@ -48,13 +48,10 @@ const DealerInfoEdit = ({ record, setIsOpen3, isOpen3 }) => {
       setIsOpen3(false);
     } catch (error) {
       console.log(error);
-      toast.error(
-        error?.data?.message || "There is an problem to create Dealer",
-        {
-          id: toastId,
-          duration: 2000,
-        }
-      );
+      toast.error("Der er et problem med at oprette forhandleren", {
+        id: toastId,
+        duration: 2000,
+      });
     }
   };
   return (
@@ -79,25 +76,25 @@ const DealerInfoEdit = ({ record, setIsOpen3, isOpen3 }) => {
               rules={[
                 {
                   required: true,
-                  message: "Please Enter First Name",
+                  message: "Indtast venligst fornavn.",
                 },
               ]}
-              label="First Name"
+              label="Fornavn"
               name="first_name"
             >
-              <Input required placeholder="Enter your First Name" />
+              <Input required placeholder="Indtast dit fornavn." />
             </Form.Item>
             <Form.Item
               rules={[
                 {
                   required: true,
-                  message: "Please Enter Last Name",
+                  message: "Indtast venligst efternavn.",
                 },
               ]}
-              label="Last Name"
+              label="Efternavn"
               name="last_name"
             >
-              <Input required placeholder="Enter your Last Name" />
+              <Input required placeholder="Indtast venligst dit efternavn." />
             </Form.Item>
           </div>
           <div className="grid md:grid-cols-2 gap-5">
@@ -105,28 +102,28 @@ const DealerInfoEdit = ({ record, setIsOpen3, isOpen3 }) => {
               rules={[
                 {
                   required: true,
-                  message: "Please Enter Phone Number",
+                  message: "Indtast venligst telefonnummer.",
                 },
               ]}
-              label="Phone Number"
+              label="Telefonnummer"
               name="phoneNumber"
             >
-              <Input required placeholder="Enter your Phone Number" />
+              <Input required placeholder="Indtast dit telefonnummer." />
             </Form.Item>
             <Form.Item
               rules={[
                 {
                   required: true,
-                  message: "Please Enter Email",
+                  message: "Indtast venligst e-mail.",
                 },
               ]}
-              label="Email"
+              label="E-mail"
             >
               <Input
                 value={record?.email}
                 className="cursor-not-allowed"
                 required
-                placeholder="Enter your Email"
+                placeholder="Indtast venligst din e-mail."
               />
             </Form.Item>
           </div>
@@ -135,25 +132,25 @@ const DealerInfoEdit = ({ record, setIsOpen3, isOpen3 }) => {
               rules={[
                 {
                   required: true,
-                  message: "Please Enter Zip",
+                  message: "Indtast venligst postnummer.",
                 },
               ]}
-              label="Zip"
+              label="Postnummer"
               name="zip"
             >
-              <Input required placeholder="Ente zip" />
+              <Input required placeholder="Indtast venligst dit postnummer." />
             </Form.Item>
             <Form.Item
               rules={[
                 {
                   required: true,
-                  message: "Please Enter City",
+                  message: "Indtast venligst by.",
                 },
               ]}
-              label="City"
+              label="By"
               name="city"
             >
-              <Input required placeholder="Enter city name" />
+              <Input required placeholder="Indtast venligst bynavn." />
             </Form.Item>
           </div>
           <div className="grid md:grid-cols-2 gap-5">
@@ -174,16 +171,16 @@ const DealerInfoEdit = ({ record, setIsOpen3, isOpen3 }) => {
               rules={[
                 {
                   required: true,
-                  message: "Please Enter Street",
+                  message: "Indtast venligst gade.",
                 },
               ]}
-              label="Street"
+              label="Gade"
               name="street"
             >
-              <Input required placeholder="Enter your Street Link" />
+              <Input required placeholder="Indtast dit gadelink." />
             </Form.Item>
-            <Form.Item label="Website Link" name="websiteLink">
-              <Input placeholder="Enter your Website Link" />
+            <Form.Item label="Websidelink" name="websiteLink">
+              <Input placeholder="Indtast dit hjemmeside-link." />
             </Form.Item>
           </div>
           <div className="grid md:grid-cols-2 gap-5">
@@ -191,34 +188,34 @@ const DealerInfoEdit = ({ record, setIsOpen3, isOpen3 }) => {
               rules={[
                 {
                   required: true,
-                  message: "Please Enter CVR Number",
+                  message: "Indtast venligst CVR-nummer.",
                 },
               ]}
-              label="CVR Number"
+              label="CVR-nummer"
               name="cvrNumber"
             >
-              <Input required placeholder="Enter your CVR Number" />
+              <Input required placeholder="Indtast venligst dit CVR-nummer." />
             </Form.Item>
             <Form.Item
               rules={[
                 {
                   required: true,
-                  message: "Please Enter Company Name",
+                  message: "Indtast venligst firmanavn.",
                 },
               ]}
-              label="Company Name"
+              label="Firmanavn"
               name="companyName"
             >
-              <Input required placeholder="Enter your company name" />
+              <Input required placeholder="Indtast dit firmanavn." />
             </Form.Item>{" "}
           </div>
 
           <div className="grid md:grid-cols-2 gap-5">
-            <Form.Item label="Rge Nr." name="regNo">
-              <Input  placeholder="Enter your Rge Nr." />
+            <Form.Item label="Reg. nr." name="regNo">
+              <Input placeholder="Indtast dit registreringsnummer." />
             </Form.Item>
-            <Form.Item label="Konto Nr." name="kontoNr">
-              <Input  placeholder="Enter your Konto Nr." />
+            <Form.Item label="Kontonummer" name="kontoNr">
+              <Input placeholder="Indtast dit kontonummer." />
             </Form.Item>{" "}
           </div>
         </div>
@@ -229,7 +226,7 @@ const DealerInfoEdit = ({ record, setIsOpen3, isOpen3 }) => {
             type="primary"
             htmlType="submit"
           >
-            Update
+            Opdater
           </button>
         </Form.Item>
       </Form>

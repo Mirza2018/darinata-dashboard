@@ -42,62 +42,67 @@ const ViewTaskManagementTable = ({
       style={{ textAlign: "center" }}
       className="lg:min-w-[800px] h-fit !bg-[#FFF9FD]"
     >
+      {!taskData || !taskDescription ? (
+        <p className="text-2xl font-medium">Ingen fil indsendt.</p>
+      ) : (
+        <>
+          {" "}
+          <div className=" bg-gray-50 p-4">
+            <div className="max-w-3xl  space-y-4 text-start">
+              {/* Task Details Card */}
 
+              <Card className="border rounded-lg shadow-sm">
+                <h1 className="font-bold text-xl">Opgavetitel</h1>
+                <Title level={4} className="mb-4">
+                  {taskData.title}
+                </Title>
 
+                <div className="space-y-2">
+                  <div>
+                    <Text className="text-gray-600">Forhandlernavn: </Text>
+                    <Text strong>
+                      {currentRecord?.dealerInfo?.first_name}{" "}
+                      {currentRecord?.dealerInfo?.last_name}
+                    </Text>
+                  </div>
 
-{ !taskData || !taskDescription   ?<p className="text-2xl font-medium">No file Submit ....</p> :<>   <div className=" bg-gray-50 p-4">
-        <div className="max-w-3xl  space-y-4 text-start">
-          {/* Task Details Card */}
+                  <div>
+                    <Text className="text-gray-600">Beskrivelse: </Text>
+                    <Text strong> {currentRecord?.taskDescription}</Text>
+                  </div>
 
-          <Card className="border rounded-lg shadow-sm">
-            <h1 className="font-bold text-xl">Task Title</h1>
-            <Title level={4} className="mb-4">
-              {taskData.title}
-            </Title>
+                  <div>
+                    <Text className="text-gray-600">Forfaldsdato: </Text>
+                    <Text strong>{currentRecord?.deadline.split("T")[0]}</Text>
+                  </div>
+                  <div>
+                    <Text className="text-gray-600 ">Opgavebillede: </Text>
+                    <img
+                      className="!w-28 pt-3"
+                      src={getImageUrl() + taskImage}
+                    />
+                  </div>
+                </div>
+              </Card>
 
-            <div className="space-y-2">
-              <div>
-                <Text className="text-gray-600">Dealer Name: </Text>
-                <Text strong>
-                  {currentRecord?.dealerInfo?.first_name}{" "}
-                  {currentRecord?.dealerInfo?.last_name}
-                </Text>
-              </div>
-
-              <div>
-                <Text className="text-gray-600">Description: </Text>
-                <Text strong> {currentRecord?.taskDescription}</Text>
-              </div>
-
-              <div>
-                <Text className="text-gray-600">Due Date: </Text>
-                <Text strong>{currentRecord?.deadline.split("T")[0]}</Text>
-              </div>
-              <div>
-                <Text className="text-gray-600 ">Task Image: </Text>
-                <img className="!w-28 pt-3" src={getImageUrl() + taskImage} />
-              </div>
-            </div>
-          </Card>
-
-          {/* Info Box */}
-          <div className="bg-[#B4E4E9] p-4 rounded-lg flex justify-between items-center">
-            <div>
-              <Text strong className="block text-lg">
-                Unanswered Questions
-              </Text>
-              <Text className="text-gray-600">{taskDescription}</Text>
-            </div>
-            {/* <Button
+              {/* Info Box */}
+              <div className="bg-[#B4E4E9] p-4 rounded-lg flex justify-between items-center">
+                <div>
+                  <Text strong className="block text-lg">
+                    Ubesvarede spørgsmål
+                  </Text>
+                  <Text className="text-gray-600">{taskDescription}</Text>
+                </div>
+                {/* <Button
               type="primary"
               className="bg-[#F5A623] hover:bg-[#E69512] border-none"
             >
               Recreate
             </Button> */}
-          </div>
+              </div>
 
-          {/* Action Buttons */}
-          {/* <div className="flex justify-end gap-4 mt-6">
+              {/* Action Buttons */}
+              {/* <div className="flex justify-end gap-4 mt-6">
             <Button
               size="large"
               className="min-w-[100px] bg-base-color border-secondary-color"
@@ -112,11 +117,10 @@ const ViewTaskManagementTable = ({
               yes
             </Button>
           </div> */}
-        </div>
-      </div></>}
-
-
-   
+            </div>
+          </div>
+        </>
+      )}
     </Modal>
   );
 };

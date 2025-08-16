@@ -88,7 +88,7 @@ const AdminDashboard = () => {
                     <p className="text-4xl font-bold mb-1">
                       {totalCount?.data?.carForSell}
                     </p>
-                    <p className="text-base font-normal ">Car for Sell</p>
+                    <p className="text-base font-normal ">Bil til salg</p>
                     {/* <div className="text-xs font-normal text-[#A3A3A3] flex justify-center items-center gap-1">
                       <img src={AllIcons.upArrow} className="h-10 w-4" alt="" />
                       4% (30 days)
@@ -110,7 +110,7 @@ const AdminDashboard = () => {
                     <p className="text-4xl font-bold mb-1">
                       {totalCount?.data?.carForBuy}
                     </p>
-                    <p className="text-base font-normal ">car For Buy</p>
+                    <p className="text-base font-normal ">Bil til køb</p>
                     {/* <div className="text-xs font-normal text-[#A3A3A3] flex justify-center items-center gap-1">
                       <img src={AllIcons.upArrow} className="h-10 w-4" alt="" />
                       2% (25 days)
@@ -132,7 +132,7 @@ const AdminDashboard = () => {
                     <p className="text-4xl font-bold mb-1">
                       {totalCount?.data?.totalSold}
                     </p>
-                    <p className="text-base font-normal ">Total Sold Car</p>
+                    <p className="text-base font-normal ">Total solgte biler</p>
                     {/* <div className="text-xs font-normal text-[#A3A3A3] flex justify-center items-center gap-1">
                       <img src={AllIcons.upArrow} className="h-10 w-4" alt="" />
                       2% (25 days)
@@ -178,7 +178,9 @@ const AdminDashboard = () => {
                     <p className="text-4xl font-bold mb-1">
                       {totalCount?.data?.totalUser}
                     </p>
-                    <p className="text-base font-normal ">Total User</p>
+                    <p className="text-base font-normal ">
+                      Total antal brugere
+                    </p>
                     {/* <div className="text-xs font-normal text-[#A3A3A3] flex justify-center items-center gap-1">
                       <img src={AllIcons.upArrow} className="h-10 w-4" alt="" />
                       4% (30 days)
@@ -200,7 +202,9 @@ const AdminDashboard = () => {
                     <p className="text-4xl font-bold mb-1">
                       {totalCount?.data?.totalDealer}
                     </p>
-                    <p className="text-base font-normal ">Total Dealer</p>
+                    <p className="text-base font-normal ">
+                      Total antal forhandlere
+                    </p>
                     {/* <div className="text-xs font-normal text-[#A3A3A3] flex justify-center items-center gap-1">
                       <img src={AllIcons.upArrow} className="h-10 w-4" alt="" />
                       25% (30 days)

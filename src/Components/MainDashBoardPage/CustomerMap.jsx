@@ -8,20 +8,7 @@ import {
   ResponsiveContainer,
 } from "recharts";
 
-const data = [
-  { name: "Jan", uv: 80 },
-  { name: "Feb", uv: 70 },
-  { name: "Mar", uv: 50 },
-  { name: "Apr", uv: 60 },
-  { name: "May", uv: 30 },
-  { name: "Jun", uv: 20 },
-  { name: "Jul", uv: 45 },
-  { name: "Aug", uv: 36 },
-  { name: "Sep", uv: 53 },
-  { name: "Oct", uv: 69 },
-  { name: "Nov", uv: 78 },
-  { name: "Dec", uv: 36 },
-];
+
 
 const CustomerMap = ({ customerMap }) => {
   // Formatter function to add 'K' suffix to Y-axis values
@@ -34,7 +21,7 @@ const CustomerMap = ({ customerMap }) => {
     <div className="bg-base-color border border-secondary-color px-5 mt-10 rounded-md">
       <div className="flex justify-between  mt-4">
         <h1 className="text-2xl font-bold whitespace-nowrap pt-5 ms-8">
-          Customer Map
+          Kort over kunder
         </h1>
         <div>
           <ConfigProvider

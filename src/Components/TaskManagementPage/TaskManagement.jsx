@@ -100,7 +100,7 @@ export default function TaskManagement() {
     setIsViewModalVisible(false);
   };
   const onFinish = async (values) => {
-    const toastId = toast.loading("Task is Creating...");
+    const toastId = toast.loading("Opgaven er ved at blive oprettet...");
     // handleCancelTaskAdd();
     const date = new Date(values.deadline).toISOString();
     values.deadline = date;
@@ -109,7 +109,7 @@ export default function TaskManagement() {
     try {
       const res = await createtask(values).unwrap();
       console.log(res);
-      toast.success("Task is Create Successfully", {
+      toast.success("Opgaven er oprettet.", {
         id: toastId,
         duration: 2000,
       });
@@ -117,13 +117,10 @@ export default function TaskManagement() {
       handleOkTaskAdd()
     } catch (error) {
       console.log(error);
-      toast.error(
-        error?.data?.message || "There is an problem to Create task",
-        {
-          id: toastId,
-          duration: 2000,
-        }
-      );
+      toast.error("Der er et problem med at oprette opgaven.", {
+        id: toastId,
+        duration: 2000,
+      });
     }
   };
 
@@ -152,13 +149,13 @@ export default function TaskManagement() {
               className="flex whitespace-nowrap gap-2 text-xl font-bold bg-highlight-color rounded-md py-3 px-10 text-white"
             >
               {" "}
-              <img src={AllImages.task} className="!invert" /> Create Task
+              <img src={AllImages.task} className="!invert" /> Opret opgave
             </button>
           </div>
           <Modal
             title={
               <p className="text-center text-2xl font-medium text-[#00721E]">
-                Task Generator
+                Opgavegenerator
               </p>
             }
             open={isModalOpenTaskAdd}
@@ -176,43 +173,43 @@ export default function TaskManagement() {
                 rules={[
                   {
                     required: true,
-                    message: "Please enter Task title",
+                    message: "Indtast venligst opgavetitel.",
                   },
                 ]}
-                label="Task title"
+                label="Opgavetitel"
                 name="taskTitle"
               >
-                <Input placeholder="Enter task title" />
+                <Input placeholder="Indtast opgavetitel" />
               </Form.Item>
               <Form.Item
                 rules={[
                   {
                     required: true,
-                    message: "Please enter Task Description",
+                    message: "Indtast venligst opgavebeskrivelsen.",
                   },
                 ]}
-                label="Task Description"
+                label="Opgavebeskrivelse"
                 name="taskDescription"
               >
-                <TextArea placeholder="Enter task description" rows={4} />
+                <TextArea placeholder="Indtast opgavebeskrivelse" rows={4} />
               </Form.Item>
               <Form.Item
                 rules={[
                   {
                     required: true,
-                    message: "Please enter assign Id",
+                    message: "Indtast venligst tildelings-ID.",
                   },
                 ]}
-                label="Input Dealer Id"
+                label="Indtast forhandler-ID"
                 name="uuid"
               >
-                <Input placeholder="Enter dealer Id" />
+                <Input placeholder="Indtast forhandler-ID" />
               </Form.Item>
               <Form.Item
                 rules={[
                   {
                     required: true,
-                    message: "Please enter Task deadline",
+                    message: "Indtast venligst opgavens deadline.",
                   },
                 ]}
                 label="Deadline"
@@ -227,7 +224,7 @@ export default function TaskManagement() {
                   type="primary"
                   htmlType="submit"
                 >
-                  Done
+                  Udført
                 </button>
               </Form.Item>
             </Form>

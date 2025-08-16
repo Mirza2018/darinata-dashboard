@@ -54,18 +54,18 @@ export default function BrandAdd() {
   };
 
   const handleSubmit = async (e) => {
-    const toastId = toast.loading("Car Brand is Adding...");
+    const toastId = toast.loading("Bilmærket tilføjes...");
     e.preventDefault();
 
     if (!formData.brandName.trim()) {
-      toast.warning("Please enter a brand name", {
+      toast.warning("Indtast et bilmærke", {
         id: toastId,
         duration: 2000,
       });
       return;
     }
     if (!formData.brandLogo) {
-      toast.warning("Please enter a brand logo", {
+      toast.warning("Indtast venligst et mærkelogo", {
         id: toastId,
         duration: 2000,
       });
@@ -84,7 +84,7 @@ export default function BrandAdd() {
 
       const res = await createBrand(submitData).unwrap();
       console.log(res);
-      toast.success("Brand is added successfully", {
+      toast.success("Mærket er tilføjet.", {
         id: toastId,
         duration: 2000,
       });
@@ -97,7 +97,7 @@ export default function BrandAdd() {
       const fileInput = document.getElementById("brandLogo");
       if (fileInput) fileInput.value = "";
     } catch (error) {
-      toast.error("Failed to create brand. Please try again.", {
+      toast.error("Mærkeoprettelse mislykkedes. Prøv venligst igen.", {
         id: toastId,
         duration: 2000,
       });
@@ -105,16 +105,16 @@ export default function BrandAdd() {
   };
 
   const handleDelete = async (id) => {
-    const toastId = toast.loading("Car Brand is Deleteing...");
+    const toastId = toast.loading("Bilmærket slettes...");
     try {
       const res = await deleteBrand(id).unwrap();
       console.log(res);
-      toast.success("Brand is Deleted successfully", {
+      toast.success("Mærket er blevet slettet.", {
         id: toastId,
         duration: 2000,
       });
     } catch (error) {
-      toast.error("There is an problem, Please try again.", {
+      toast.error("Der er et problem. Prøv venligst igen.", {
         id: toastId,
         duration: 2000,
       });
@@ -130,15 +130,13 @@ export default function BrandAdd() {
         style={{ boxShadow: "0px 0px 2px 1px #00000040" }}
       >
         <div className="flex justify-between items-center mb-6">
-          <h1 className="text-2xl font-bold text-gray-800">
-            Car Brands Management
-          </h1>
+          <h1 className="text-2xl font-bold text-gray-800">Opgavetitel</h1>
           <button
             onClick={() => setShowForm(!showForm)}
-            className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded-lg transition-colors duration-200 flex items-center gap-2"
+            className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded-lg transition-colors duration-200 flex items-center justify-center gap-2"
           >
-            <span className="text-lg">+</span>
-            Add New Brand
+            <span className="text-xl">+</span>
+            Tilføj et nyt bilmærke
           </button>
         </div>
 
@@ -146,7 +144,7 @@ export default function BrandAdd() {
         {showForm && (
           <div className="bg-gray-50 p-6 rounded-lg mb-6 border-2 border-dashed border-gray-300">
             <h2 className="text-xl font-semibold mb-4 text-gray-700">
-              Add New Car Brand
+              Tilføj et nyt bilmærke
             </h2>
             <form onSubmit={handleSubmit} className="space-y-4">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -155,7 +153,7 @@ export default function BrandAdd() {
                     htmlFor="brandName"
                     className="block text-sm font-medium text-gray-700 mb-2"
                   >
-                    Brand Name *
+                    Mærkenavn *
                   </label>
                   <input
                     type="text"
@@ -163,7 +161,7 @@ export default function BrandAdd() {
                     name="brandName"
                     value={formData.brandName}
                     onChange={handleInputChange}
-                    placeholder="Enter brand name (e.g., Tesla, Ford)"
+                    placeholder="Indtast venligst et mærkenavn (f.eks. Tesla, Ford)."
                     className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-all"
                     required
                   />
@@ -174,7 +172,7 @@ export default function BrandAdd() {
                     htmlFor="brandLogo"
                     className="block text-sm font-medium text-gray-700 mb-2"
                   >
-                    Brand Logo
+                    Mærkelogo
                   </label>
                   <input
                     type="file"
@@ -196,12 +194,12 @@ export default function BrandAdd() {
                   {isCreating ? (
                     <>
                       <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
-                      Adding...
+                      Tilføjer...
                     </>
                   ) : (
                     <>
                       <span>✓</span>
-                      Add Brand
+                      Tilføj bilmærke
                     </>
                   )}
                 </button>
@@ -213,7 +211,7 @@ export default function BrandAdd() {
                   }}
                   className="bg-gray-500 hover:bg-gray-600 text-white px-6 py-2 rounded-lg transition-colors duration-200"
                 >
-                  Cancel
+                  Annuller
                 </button>
               </div>
             </form>
@@ -223,7 +221,7 @@ export default function BrandAdd() {
         {isFetching ? (
           <div className="flex justify-center items-center py-12">
             <div className="w-8 h-8 border-4 border-blue-500 border-t-transparent rounded-full animate-spin"></div>
-            <span className="ml-3 text-gray-600">Loading brands...</span>
+            <span className="ml-3 text-gray-600">Indlæser bilmærker...</span>
           </div>
         ) : (
           /* Brands Grid */
@@ -252,7 +250,7 @@ export default function BrandAdd() {
                       onClick={() => handleDelete(brand?._id)}
                       className="flex-1 bg-red-50 hover:bg-red-100 text-red-600 py-2 px-3 rounded text-sm transition-colors duration-200"
                     >
-                      Delete
+                      Slet
                     </button>
                   </div>
                 </div>

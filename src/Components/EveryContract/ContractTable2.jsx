@@ -35,7 +35,7 @@ const ContractTable2 = ({ data, loading, meta, onPageChange }) => {
     //   ),
     // },
     {
-      title: "Car Details",
+      title: "Biloplysninger",
       dataIndex: "mark",
       key: "mark",
       render: (text, record) => (
@@ -55,7 +55,7 @@ const ContractTable2 = ({ data, loading, meta, onPageChange }) => {
     //   ),
     // },
     {
-      title: "Car Price",
+      title: "Bilpris",
       dataIndex: "cashPrice",
       key: "cashPrice",
       render: (text) => <div className="whitespace-nowrap">{text} .kr</div>,
@@ -67,7 +67,7 @@ const ContractTable2 = ({ data, loading, meta, onPageChange }) => {
     //   render: (text) => <div className="whitespace-nowrap">{text?.color}</div>,
     // },
     {
-      title: "Contract",
+      title: "Kontrakt",
       dataIndex: "action",
       key: "action",
       render: (_, record) => (
@@ -75,7 +75,7 @@ const ContractTable2 = ({ data, loading, meta, onPageChange }) => {
           <Tooltip placement="right" title="View Contract Details">
             {!record?.signatureAsDealer && !record?.signatureAsOwner && (
               <Button className={`  !text-white  !bg-highlight-color`}>
-                <p>Pending Contract Paper</p>
+                <p>Afventer kontraktpapir</p>
               </Button>
             )}
             {record?.signatureAsDealer && record?.signatureAsOwner && (
@@ -87,7 +87,7 @@ const ContractTable2 = ({ data, loading, meta, onPageChange }) => {
                 className={`  !text-white !bg-green-500 `}
               >
                 {" "}
-                <p>See Contract Paper</p>{" "}
+                <p>Se kontraktpapir</p>{" "}
               </Button>
             )}
           </Tooltip>
@@ -113,14 +113,13 @@ const ContractTable2 = ({ data, loading, meta, onPageChange }) => {
               : "bg-highlight-color px-3"
           }`}
         >
-   
           {record?.signatureAsDealer && record?.signatureAsOwner ? (
             <Tooltip title="" placement="topRight">
-              <span className="text-white px-2">Sold</span>
+              <span className="text-white px-2">Solgt</span>
             </Tooltip>
           ) : (
             <Tooltip title="" placement="topRight">
-              <span className="text-white">Not Sold</span>
+              <span className="text-white">Ikke solgt</span>
             </Tooltip>
           )}
         </button>

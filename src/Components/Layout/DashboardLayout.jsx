@@ -135,7 +135,7 @@ const DashboardLayout = () => {
           }}
         />
       ),
-      label: <NavLink to="total-Car-Sell">Dealer Buy Now</NavLink>,
+      label: <NavLink to="total-Car-Sell">Forhandler Køb nu</NavLink>,
     },
     {
       key: "every-contract",
@@ -151,7 +151,7 @@ const DashboardLayout = () => {
           }}
         />
       ),
-      label: <NavLink to="every-contract">Sold Car & contract </NavLink>,
+      label: <NavLink to="every-contract">Solgte biler og kontrakter </NavLink>,
     },
     {
       key: "all-cars",
@@ -167,7 +167,7 @@ const DashboardLayout = () => {
           }}
         />
       ),
-      label: <NavLink to="all-cars">All Cars (Sell+Sold)</NavLink>,
+      label: <NavLink to="all-cars">Alle biler (til salg + solgt)</NavLink>,
     },
     {
       key: "user-management",
@@ -184,7 +184,7 @@ const DashboardLayout = () => {
           }}
         />
       ),
-      label: <NavLink to="user-management">User Management</NavLink>,
+      label: <NavLink to="user-management">Brugerstyring</NavLink>,
     },
     {
       key: "dealer-management",
@@ -200,7 +200,7 @@ const DashboardLayout = () => {
           }}
         />
       ),
-      label: <NavLink to="dealer-management">Dealer Management</NavLink>,
+      label: <NavLink to="dealer-management">Forhandlerstyring</NavLink>,
     },
     {
       key: "task-management",
@@ -216,7 +216,7 @@ const DashboardLayout = () => {
           }}
         />
       ),
-      label: <NavLink to="task-management">Task Management</NavLink>,
+      label: <NavLink to="task-management">Opgavestyring</NavLink>,
     },
     {
       key: "brand-add",
@@ -232,7 +232,7 @@ const DashboardLayout = () => {
           }}
         />
       ),
-      label: <NavLink to="brand-add">Brand Add</NavLink>,
+      label: <NavLink to="brand-add">Tilføj bilmærke</NavLink>,
     },
 
     {
@@ -254,7 +254,7 @@ const DashboardLayout = () => {
           }}
         />
       ),
-      label: <NavLink to="settings/change-password">settings</NavLink>,
+      label: <NavLink to="settings/change-password">Indstillinger</NavLink>,
     },
 
     {
@@ -271,7 +271,7 @@ const DashboardLayout = () => {
           }}
         />
       ),
-      label: <NavLink to="terms-of-service">Terms & Conditions</NavLink>,
+      label: <NavLink to="terms-of-service">Vilkår og betingelser</NavLink>,
     },
     {
       key: "privacy-policy",
@@ -287,7 +287,7 @@ const DashboardLayout = () => {
           }}
         />
       ),
-      label: <NavLink to="privacy-policy">Privacy Policy</NavLink>,
+      label: <NavLink to="privacy-policy">Fortrolighedspolitik</NavLink>,
     },
 
     {
@@ -308,7 +308,7 @@ const DashboardLayout = () => {
             navigate("/signin");
           }}
         >
-          <p>Logout</p>
+          <p>Log ud</p>
         </div>
       ),
     },

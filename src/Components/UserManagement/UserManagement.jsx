@@ -122,7 +122,7 @@ export default function UserManagement() {
 
     // router("car-info");
 
-    const toastId = toast.loading("User is creating...");
+    const toastId = toast.loading("Brugeren oprettes...");
     const data = { ...values, role: "private_user" };
 
     delete data.profileImage;
@@ -139,7 +139,7 @@ export default function UserManagement() {
     try {
       const res = await createData(formData).unwrap();
       console.log(res);
-      toast.success(res?.message || "user is create Successfully", {
+      toast.success("Brugeren er oprettet.", {
         id: toastId,
         duration: 2000,
       });
@@ -147,13 +147,10 @@ export default function UserManagement() {
       handleCancelAddUser();
     } catch (error) {
       console.log(error);
-      toast.error(
-        error?.data?.message || "There is an problem to create user",
-        {
-          id: toastId,
-          duration: 2000,
-        }
-      );
+      toast.error("Der er et problem med at oprette brugeren.", {
+        id: toastId,
+        duration: 2000,
+      });
     }
   };
 
@@ -170,7 +167,7 @@ export default function UserManagement() {
           <div className="flex justify-between gap-4 items-center  w-full">
             <div className="flex gap-4 items-center">
               <Input
-                placeholder="Search first name..."
+                placeholder="Søg efter fornavn…"
                 // value={searchText}
                 onChange={(e) => handleSearch(e.target.value)}
                 className="w-fit text-base font-semibold !border-input-color py-2"
@@ -189,7 +186,7 @@ export default function UserManagement() {
               onClick={showModalAddUser}
               className="flex whitespace-nowrap gap-2 text-xl font-bold bg-highlight-color rounded-md py-3 px-10 text-white"
             >
-              Add user
+              Tilføj bruger
             </button>
           </div>
         </div>
@@ -223,7 +220,7 @@ export default function UserManagement() {
                     <FaCloudUploadAlt className="text-8xl " />
                   </div>
                   <p className="text-center">
-                    Drag and drop your files here or click to upload
+                    Træk og slip dine filer her, eller klik for at uploade
                   </p>
                 </Upload>
               </Form.Item>
@@ -234,25 +231,25 @@ export default function UserManagement() {
                   rules={[
                     {
                       required: true,
-                      message: "Please inptut First Name",
+                      message: "Indtast venligst dit fornavn.",
                     },
                   ]}
-                  label="First Name"
+                  label="Fornavn"
                   name="first_name"
                 >
-                  <Input required placeholder="Enter First Name" />
+                  <Input required placeholder="Indtast fornavn" />
                 </Form.Item>
                 <Form.Item
                   rules={[
                     {
                       required: true,
-                      message: "Please inptut Last Name",
+                      message: "Indtast venligst dit efternavn",
                     },
                   ]}
-                  label="Last Name"
+                  label="Efternavn"
                   name="last_name"
                 >
-                  <Input required placeholder="Enter Last Name" />
+                  <Input required placeholder="Indtast efternavn" />
                 </Form.Item>
               </div>
               <div className="grid md:grid-cols-2 gap-5">
@@ -260,25 +257,25 @@ export default function UserManagement() {
                   rules={[
                     {
                       required: true,
-                      message: "Please inptut Phone Number",
+                      message: "Indtast venligst dit telefonnummer.",
                     },
                   ]}
-                  label="Phone Number"
+                  label="Telefonnummer"
                   name="phoneNumber"
                 >
-                  <Input required placeholder="Enter Phone Number" />
+                  <Input required placeholder="Indtast telefonnummer" />
                 </Form.Item>
                 <Form.Item
                   rules={[
                     {
                       required: true,
-                      message: "Please inptut Email",
+                      message: "Indtast venligst din e-mail.",
                     },
                   ]}
-                  label="Email"
+                  label="E-mail"
                   name="email"
                 >
-                  <Input required placeholder="Enter Email" />
+                  <Input required placeholder="Indtast e-mail" />
                 </Form.Item>
               </div>
               <div className="grid md:grid-cols-2 gap-5">
@@ -286,25 +283,25 @@ export default function UserManagement() {
                   rules={[
                     {
                       required: true,
-                      message: "Please inptut Zip",
+                      message: "Indtast venligst dit postnummer",
                     },
                   ]}
-                  label="Zip"
+                  label="Postnummer"
                   name="zip"
                 >
-                  <Input required placeholder="Ente zip" />
+                  <Input required placeholder="Indtast postnummer" />
                 </Form.Item>
                 <Form.Item
                   rules={[
                     {
                       required: true,
-                      message: "Please inptut City",
+                      message: "Indtast venligst din by.",
                     },
                   ]}
-                  label="City"
+                  label="By"
                   name="city"
                 >
-                  <Input required placeholder="Enter city name" />
+                  <Input required placeholder="Indtast bynavn" />
                 </Form.Item>
               </div>
               <div className="grid md:grid-cols-2 gap-5">
@@ -312,26 +309,26 @@ export default function UserManagement() {
                   rules={[
                     {
                       required: true,
-                      message: "Please inptut Street",
+                      message: "Indtast venligst gaden.",
                     },
                   ]}
-                  label="Street"
+                  label="Gade"
                   name="street"
                 >
-                  <Input required placeholder="Enter street name" />
+                  <Input required placeholder="Indtast gadenavn" />
                 </Form.Item>
 
                 {/* <Form.Item label="Address" name="address">
                   <Input required placeholder="Enter Address" />
                 </Form.Item> */}
-                <Form.Item label="Konto Nr." name="kontoNr">
-                  <Input  placeholder="Enter Konto Nr." />
+                <Form.Item label="Kontonummer" name="kontoNr">
+                  <Input placeholder="Indtast kontonr." />
                 </Form.Item>
               </div>
 
               <div className="grid md:grid-cols-2 gap-5">
                 <Form.Item label="Rge Nr." name="regNo">
-                  <Input  placeholder="Enter Rge Nr." />
+                  <Input placeholder="Indtast reg.nr." />
                 </Form.Item>
                 {/* <Form.Item label="Website Link" name="websiteLink">
                   <Input placeholder="Enter your Website Link" />
@@ -340,15 +337,15 @@ export default function UserManagement() {
                   rules={[
                     {
                       required: true,
-                      message: "Please inptut Password",
+                      message: "Indtast venligst adgangskode.",
                     },
                   ]}
-                  label="Password"
+                  label="Adgangskode"
                   name="password"
                 >
                   <Input.Password
                     required
-                    placeholder="Enter your Password "
+                    placeholder="Indtast din adgangskode"
                   />
                 </Form.Item>
               </div>
@@ -360,7 +357,7 @@ export default function UserManagement() {
                 type="primary"
                 htmlType="submit"
               >
-                Create
+                Opret
               </button>
             </Form.Item>
           </Form>

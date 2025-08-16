@@ -65,7 +65,7 @@ const AddMVR = () => {
                   rules={[
                     {
                       required: true,
-                      message: "Category is required",
+                      message: "Kategori er påkrævet.",
                     },
                   ]}
                 >

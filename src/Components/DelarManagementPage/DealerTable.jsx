@@ -14,64 +14,22 @@ const DealerTable = ({ data, loading, showViewModal, meta, onPageChange }) => {
   const [isOpen3, setIsOpen3] = useState(false);
   const [record, setIsRecord] = useState(null);
   const handleDelete = async (id) => {
-    const toastId = toast.loading("Dealer is Deleteing...");
+    const toastId = toast.loading("Forhandleren slettes...");
     const data = {
       action: "delete",
     };
     try {
       const res = await UserBlock({ data, id }).unwrap();
       console.log(res);
-      toast.success("Dealer is Delete successfully", {
+      toast.success("Forhandleren er blevet slettet.", {
         id: toastId,
         duration: 2000,
       });
       setIsOpen2(false);
     } catch (error) {
       console.log(error);
-      toast.error(error?.data?.message || "There is an problem to block user", {
-        id: toastId,
-        duration: 2000,
-      });
-    }
-  };
-  const handleBlock = async (id) => {
-    const toastId = toast.loading("User is Blocking...");
-    const data = {
-      action: "block",
-    };
-    try {
-      const res = await UserBlock({ data, id }).unwrap();
-      console.log(res);
-      toast.success("User Block successfully", {
-        id: toastId,
-        duration: 2000,
-      });
-      setIsOpen(false);
-    } catch (error) {
-      console.log(error);
-      toast.error(error?.data?.message || "There is an problem to block user", {
-        id: toastId,
-        duration: 2000,
-      });
-    }
-  };
-  const handleUnBlock = async (id) => {
-    const toastId = toast.loading("User is Unblocking...");
-    const data = {
-      action: "unblock",
-    };
-    try {
-      const res = await UserBlock({ data, id }).unwrap();
-      console.log(res);
-      toast.success("User Unblock successfully", {
-        id: toastId,
-        duration: 2000,
-      });
-      setIsOpen(false);
-    } catch (error) {
-      console.log(error);
       toast.error(
-        error?.data?.message || "There is an problem to Unblock user",
+        error?.data?.message || "Der er et problem med at blokere brugeren.",
         {
           id: toastId,
           duration: 2000,
@@ -79,15 +37,59 @@ const DealerTable = ({ data, loading, showViewModal, meta, onPageChange }) => {
       );
     }
   };
+  const handleBlock = async (id) => {
+    const toastId = toast.loading("Brugeren blokeres...");
+    const data = {
+      action: "block",
+    };
+    try {
+      const res = await UserBlock({ data, id }).unwrap();
+      console.log(res);
+      toast.success("Brugeren er blokeret.", {
+        id: toastId,
+        duration: 2000,
+      });
+      setIsOpen(false);
+    } catch (error) {
+      console.log(error);
+      toast.error("Der er et problem med at blokere brugeren.",
+        {
+          id: toastId,
+          duration: 2000,
+        }
+      );
+    }
+  };
+  const handleUnBlock = async (id) => {
+    const toastId = toast.loading("Brugeren afblokeres...");
+    const data = {
+      action: "unblock",
+    };
+    try {
+      const res = await UserBlock({ data, id }).unwrap();
+      console.log(res);
+      toast.success("Brugeren er afblokeret.", {
+        id: toastId,
+        duration: 2000,
+      });
+      setIsOpen(false);
+    } catch (error) {
+      console.log(error);
+      toast.error("Der er et problem med at fjerne blokeringen af brugeren.", {
+        id: toastId,
+        duration: 2000,
+      });
+    }
+  };
 
   const columns = [
     {
-      title: "Dealer ID",
+      title: "Forhandler-ID",
       dataIndex: "uuid",
       key: "uuid",
     },
     {
-      title: "Dealer Name",
+      title: "Forhandlernavn",
       dataIndex: "profile",
       key: "profile",
       render: (text) => (
@@ -98,12 +100,12 @@ const DealerTable = ({ data, loading, showViewModal, meta, onPageChange }) => {
     },
 
     {
-      title: "Email",
+      title: "E-mail",
       dataIndex: "email",
       key: "email",
     },
     {
-      title: "Phone",
+      title: "Telefon",
       dataIndex: "profile",
       key: "profile",
       render: (text) => (
@@ -114,17 +116,17 @@ const DealerTable = ({ data, loading, showViewModal, meta, onPageChange }) => {
     },
 
     {
-      title: "Location",
+      title: "Lokation",
       dataIndex: "profile",
       key: "profile",
       render: (text) => (
         <div className="whitespace-nowrap">
-          {text?.address ? <>{text?.address}</> : "Not provided"}
+          {text?.address ? <>{text?.address}</> : "Ikke angivet"}
         </div>
       ),
     },
     {
-      title: "Action",
+      title: "Handling",
       key: "action",
       render: (_, record) => (
         <div className="flex gap-5">
@@ -136,7 +138,7 @@ const DealerTable = ({ data, loading, showViewModal, meta, onPageChange }) => {
               }}
               className="bg-yellow-600 text-white px-2 rounded-lg font-medium"
             >
-              Unblock
+              Ophæv blokering
             </button>
           ) : (
             <button
@@ -146,7 +148,7 @@ const DealerTable = ({ data, loading, showViewModal, meta, onPageChange }) => {
               }}
               className="bg-red-600 text-white px-5 rounded-lg font-medium"
             >
-              Block
+              Bloker
             </button>
           )}
 
@@ -166,13 +168,13 @@ const DealerTable = ({ data, loading, showViewModal, meta, onPageChange }) => {
             }}
             className="text-red-600  rounded-lg font-medium"
           >
-            <FaEdit  />
+            <FaEdit />
           </button>
         </div>
       ),
     },
     {
-      title: "Details",
+      title: "Detaljer",
       key: "action",
       render: (_, record) => (
         <>
@@ -180,7 +182,7 @@ const DealerTable = ({ data, loading, showViewModal, meta, onPageChange }) => {
             <Tooltip placement="right" title="View Details">
               <Link onClick={() => showViewModal(record)} to={`${record._id}`}>
                 <p className="text-xs font-semibold border border-[#00721E] hover:text-secondary-color px-2 py-1 rounded">
-                  See Details
+                  Se detaljer
                 </p>
               </Link>
             </Tooltip>
@@ -216,9 +218,9 @@ const DealerTable = ({ data, loading, showViewModal, meta, onPageChange }) => {
         {console.log(record?.status)}
         <h1 className="flex justify-center items-center text-xl  font-medium">
           {record?.status == "blocked" ? (
-            <> Do you want to Unblock user?</>
+            <> Vil du ophæve blokeringen af brugeren?</>
           ) : (
-            <> Do you want to block user?</>
+            <> Vil du blokere brugeren?</>
           )}
 
           {/* */}
@@ -229,14 +231,14 @@ const DealerTable = ({ data, loading, showViewModal, meta, onPageChange }) => {
               onClick={() => handleUnBlock(record?._id)}
               className="bg-green-600 text-white px-2 text-lg rounded-lg font-medium"
             >
-              Yes
+              Ja
             </button>
           ) : (
             <button
               onClick={() => handleBlock(record?._id)}
               className="bg-green-600 text-white px-2 text-lg rounded-lg font-medium"
             >
-              Yes
+              Ja
             </button>
           )}
 
@@ -244,7 +246,7 @@ const DealerTable = ({ data, loading, showViewModal, meta, onPageChange }) => {
             onClick={() => setIsOpen(false)}
             className="bg-red-600 text-white px-2 text-lg rounded-lg font-medium"
           >
-            No
+            Nej
           </button>
         </div>
       </Modal>
@@ -258,7 +260,7 @@ const DealerTable = ({ data, loading, showViewModal, meta, onPageChange }) => {
       >
         {console.log(record?.status)}
         <h1 className="flex justify-center items-center text-xl  font-medium">
-          Do you want to Delete this delear?
+          Vil du slette denne forhandler?
           {/* */}
         </h1>
         <div className="flex justify-center items-center mt-5 gap-5">
@@ -266,14 +268,14 @@ const DealerTable = ({ data, loading, showViewModal, meta, onPageChange }) => {
             onClick={() => handleDelete(record?._id)}
             className="bg-green-600 text-white px-2 text-lg rounded-lg font-medium"
           >
-            Yes
+            Ja
           </button>
 
           <button
             onClick={() => setIsOpen2(false)}
             className="bg-red-600 text-white px-2 text-lg rounded-lg font-medium"
           >
-            No
+            Nej
           </button>
         </div>
       </Modal>

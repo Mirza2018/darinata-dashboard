@@ -31,7 +31,7 @@ const EditUserInfo = ({ record, setIsOpen3, isOpen3 }) => {
 
     // router("car-info");
 
-    const toastId = toast.loading("User is updateing...");
+    const toastId = toast.loading("Brugeren opdateres...");
     const data = { ...values };
 
     console.log(data);
@@ -42,7 +42,7 @@ const EditUserInfo = ({ record, setIsOpen3, isOpen3 }) => {
         id: record?.profile?._id,
       }).unwrap();
       console.log(res);
-      toast.success(res?.message || "user is update Successfully", {
+      toast.success("Brugeren er opdateret.", {
         id: toastId,
         duration: 2000,
       });
@@ -50,13 +50,10 @@ const EditUserInfo = ({ record, setIsOpen3, isOpen3 }) => {
       setIsOpen3(false);
     } catch (error) {
       console.log(error);
-      toast.error(
-        error?.data?.message || "There is an problem to create user",
-        {
-          id: toastId,
-          duration: 2000,
-        }
-      );
+      toast.error("Der er et problem med at oprette brugeren.", {
+        id: toastId,
+        duration: 2000,
+      });
     }
   };
   return (
@@ -81,25 +78,25 @@ const EditUserInfo = ({ record, setIsOpen3, isOpen3 }) => {
               rules={[
                 {
                   required: true,
-                  message: "Please inptut First Name",
+                  message: "Indtast venligst dit fornavn.",
                 },
               ]}
-              label="First Name"
+              label="Fornavn"
               name="first_name"
             >
-              <Input required placeholder="Enter First Name" />
+              <Input required placeholder="Indtast fornavn" />
             </Form.Item>
             <Form.Item
               rules={[
                 {
                   required: true,
-                  message: "Please inptut Last Name",
+                  message: "Indtast venligst dit efternavn.",
                 },
               ]}
-              label="Last Name"
+              label="Efternavn"
               name="last_name"
             >
-              <Input required placeholder="Enter Last Name" />
+              <Input required placeholder="Indtast efternavn" />
             </Form.Item>
           </div>
           <div className="grid md:grid-cols-2 gap-5">
@@ -107,23 +104,23 @@ const EditUserInfo = ({ record, setIsOpen3, isOpen3 }) => {
               rules={[
                 {
                   required: true,
-                  message: "Please inptut Phone Number",
+                  message: "Indtast venligst dit telefonnummer.",
                 },
               ]}
-              label="Phone Number"
+              label="Telefonnummer"
               name="phoneNumber"
             >
-              <Input required placeholder="Enter Phone Number" />
+              <Input required placeholder="Indtast telefonnummer" />
             </Form.Item>
             <Form.Item
               className="cursor-not-allowed"
               rules={[
                 {
                   required: true,
-                  message: "Please inptut Email",
+                  message: "Indtast venligst din e-mailadresse.",
                 },
               ]}
-              label="Email"
+              label="E-mail"
               //   name="email"
             >
               <Input
@@ -131,7 +128,7 @@ const EditUserInfo = ({ record, setIsOpen3, isOpen3 }) => {
                 className="cursor-not-allowed"
                 readOnly
                 required
-                placeholder="Enter Email"
+                placeholder="Indtast e-mail"
               />
             </Form.Item>
           </div>
@@ -140,25 +137,25 @@ const EditUserInfo = ({ record, setIsOpen3, isOpen3 }) => {
               rules={[
                 {
                   required: true,
-                  message: "Please inptut Zip",
+                  message: "Indtast venligst dit postnummer.",
                 },
               ]}
-              label="Zip"
+              label="Postnummer"
               name="zip"
             >
-              <Input required placeholder="Ente zip" />
+              <Input required placeholder="Indtast postnummer" />
             </Form.Item>
             <Form.Item
               rules={[
                 {
                   required: true,
-                  message: "Please inptut city",
+                  message: "Indtast venligst din by.",
                 },
               ]}
-              label="City"
+              label="By"
               name="city"
             >
-              <Input required placeholder="Enter city name" />
+              <Input required placeholder="Indtast bynavn" />
             </Form.Item>
           </div>
           <div className="grid md:grid-cols-2 gap-5">
@@ -166,26 +163,26 @@ const EditUserInfo = ({ record, setIsOpen3, isOpen3 }) => {
               rules={[
                 {
                   required: true,
-                  message: "Please inptut Street",
+                  message: "Indtast venligst gaden.",
                 },
               ]}
-              label="Street"
+              label="Gade"
               name="street"
             >
-              <Input required placeholder="Enter street name" />
+              <Input required placeholder="Indtast gadenavn**" />
             </Form.Item>
 
             {/* <Form.Item label="Address" name="address">
               <Input required placeholder="Enter Address" />
             </Form.Item> */}
-            <Form.Item label="Konto Nr." name="kontoNr">
-              <Input  placeholder="Enter Konto Nr." />
+            <Form.Item label="Kontonummer" name="kontoNr">
+              <Input placeholder="Indtast kontonr." />
             </Form.Item>
           </div>
 
           <div className="grid md:grid-cols-2 gap-5">
-            <Form.Item label="Rge Nr." name="regNo">
-              <Input  placeholder="Enter Rge Nr." />
+            <Form.Item label="Reg. nr." name="regNo">
+              <Input placeholder="Indtast reg.nr." />
             </Form.Item>
           </div>
         </div>
@@ -196,7 +193,7 @@ const EditUserInfo = ({ record, setIsOpen3, isOpen3 }) => {
             type="primary"
             htmlType="submit"
           >
-            Update
+            Opdater
           </button>
         </Form.Item>
       </Form>

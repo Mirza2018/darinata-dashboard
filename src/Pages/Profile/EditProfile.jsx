@@ -41,7 +41,7 @@ const EditProfile = () => {
   }, [displayedData?.data?.profile]);
 
   const onFinish = async (values) => {
-    const toastId = toast.loading("Profile is updateing...");
+    const toastId = toast.loading("Profilen opdateres...");
 
     const data = { ...values };
     delete data.profileImage;
@@ -65,14 +65,14 @@ const EditProfile = () => {
       }).unwrap();
 
       console.log("API Response:", res);
-      toast.success(res?.data?.message || "Profile Update Successfully", {
+      toast.success("Profilen er opdateret.", {
         id: toastId,
         duration: 2000,
       });
     } catch (error) {
       console.log(error);
 
-      toast.error(error?.data?.message || "Try Again", {
+      toast.error("Prøv igen.", {
         id: toastId,
         duration: 2000,
       });
@@ -95,7 +95,7 @@ const EditProfile = () => {
           layout="vertical"
           className="bg-transparent py-10 h-full w-full lg:w-[70%]"
         >
-          <h1 className="text-2xl font-bold ms-10 mb-10">Profile</h1>
+          <h1 className="text-2xl font-bold ms-10 mb-10">Profil</h1>
           <div className="mt-12 flex items-center gap-x-4">
             <div className=" relative">
               <img
@@ -131,23 +131,23 @@ const EditProfile = () => {
 
           <div className=" text-white mt-5">
             <Typography.Title level={5} style={{ color: "#222222" }}>
-              First Name
+              Fornavn
             </Typography.Title>
             <Form.Item name="first_name" className="text-white">
               <Input
                 suffix={<MdOutlineEdit />}
-                placeholder="Enter your first name"
+                placeholder="Indtast dit fornavn"
                 className="cursor-not-allowed py-2 px-3 text-xl bg-site-color border !border-input-color hover:bg-transparent hover:border-secoundary-color focus:bg-transparent focus:border-secoundary-color"
               />
             </Form.Item>
 
             <Typography.Title level={5} style={{ color: "#222222" }}>
-              Last Name
+              Efternavn
             </Typography.Title>
             <Form.Item name="last_name" className="text-white">
               <Input
                 suffix={<MdOutlineEdit />}
-                placeholder="Enter your last name"
+                placeholder="Indtast dit efternavn"
                 className="cursor-not-allowed py-2 px-3 text-xl bg-site-color border !border-input-color hover:bg-transparent hover:border-secoundary-color focus:bg-transparent focus:border-secoundary-color"
               />
             </Form.Item>
@@ -164,24 +164,24 @@ const EditProfile = () => {
           </Form.Item> */}
 
             <Typography.Title level={5} style={{ color: "#222222" }}>
-              Address
+              Adresse
             </Typography.Title>
             <Form.Item name="address" className="text-white">
               <Input
                 suffix={<MdOutlineEdit />}
-                placeholder="Enter your address"
+                placeholder="Indtast din adresse"
                 className="cursor-not-allowed py-2 px-3 text-xl bg-site-color border !border-input-color  hover:bg-transparent hover:border-secoundary-color focus:bg-transparent focus:border-secoundary-color"
               />
             </Form.Item>
             <div className="flex gap-5 w-full">
               <div className="flex-1">
                 <Typography.Title level={5} style={{ color: "#222222" }}>
-                  Zip Code
+                  Postnummer
                 </Typography.Title>
                 <Form.Item name="zip" className="text-white">
                   <Input
                     suffix={<MdOutlineEdit />}
-                    placeholder="Enter your postal code"
+                    placeholder="Indtast dit postnummer"
                     className="cursor-not-allowed py-2 px-3 text-xl bg-site-color border !border-input-color  hover:bg-transparent hover:border-secoundary-color focus:bg-transparent focus:border-secoundary-color"
                   />
                 </Form.Item>
@@ -189,12 +189,12 @@ const EditProfile = () => {
 
               <div className="flex-1">
                 <Typography.Title level={5} style={{ color: "#222222" }}>
-                  City
+                  By
                 </Typography.Title>
                 <Form.Item name="city" className="text-white">
                   <Input
                     suffix={<MdOutlineEdit />}
-                    placeholder="Enter your address"
+                    placeholder="Indtast din adresse"
                     className="cursor-not-allowed py-2 px-3 text-xl bg-site-color border !border-input-color  hover:bg-transparent hover:border-secoundary-color focus:bg-transparent focus:border-secoundary-color"
                   />
                 </Form.Item>
@@ -202,12 +202,12 @@ const EditProfile = () => {
             </div>
 
             <Typography.Title level={5} style={{ color: "#222222" }}>
-              Contact number
+              Kontaktnummer
             </Typography.Title>
             <Form.Item name="phoneNumber" className="text-white">
               <Input
                 suffix={<MdOutlineEdit />}
-                placeholder="Enter your Contact number"
+                placeholder="Indtast dit telefonnummer"
                 className="cursor-not-allowed py-2 px-3 text-xl bg-site-color border !border-input-color  hover:bg-transparent hover:border-secoundary-color focus:bg-transparent focus:border-secoundary-color"
               />
             </Form.Item>
@@ -216,7 +216,7 @@ const EditProfile = () => {
                 className="w-full py-6 border !border-secondary-color hover:border-secondary-color text-xl !text-primary-color bg-secondary-color hover:!bg-secondary-color font-semibold rounded-2xl mt-8"
                 htmlType="submit"
               >
-                Save & Change
+                Gem og skift
               </Button>
             </Form.Item>
           </div>

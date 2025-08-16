@@ -52,7 +52,7 @@ const AllCarsMainPage = () => {
             </div> */}
           <div className="flex gap-4 items-center">
             <Input
-              placeholder="Search Brand Name Or Modle Name..."
+              placeholder="Søg efter mærke eller modelnavn..."
               // value={searchText}
               onChange={(e) => {
                 handleSearch(e.target.value);

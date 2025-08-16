@@ -56,7 +56,7 @@ const Appointment = () => {
               </h1>
               <div className="flex gap-4 items-center">
                 <Input
-                  placeholder="Search User..."
+                  placeholder="Søg efter bruger..."
                   value={searchText}
                   onChange={(e) => onSearch(e.target.value)}
                   className="text-base font-semibold  py-2"

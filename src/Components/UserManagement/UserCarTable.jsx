@@ -5,9 +5,8 @@ const UserCarTable = ({ data, loading, pageSize = 0 }) => {
   console.log("hi", data);
 
   const columns = [
-    ,
     {
-      title: "Car Name",
+      title: "Bilnavn",
       dataIndex: "carModel",
       key: "carModel",
       render: (text) => {
@@ -15,7 +14,7 @@ const UserCarTable = ({ data, loading, pageSize = 0 }) => {
       },
     },
     {
-      title: "Car Model",
+      title: "Bilmodel",
       dataIndex: "carModel",
       key: "carModel",
       render: (text) => {
@@ -23,7 +22,7 @@ const UserCarTable = ({ data, loading, pageSize = 0 }) => {
       },
     },
     {
-      title: "Car Price",
+      title: "Bilpris",
       dataIndex: "expectedPrice",
       key: "expectedPrice",
       render: (text) => {
@@ -36,7 +35,7 @@ const UserCarTable = ({ data, loading, pageSize = 0 }) => {
     //   key: "status",
     // },
     {
-      title: "Color",
+      title: "Farve",
       dataIndex: "carModel",
       key: "carModel",
       render: (text) => {

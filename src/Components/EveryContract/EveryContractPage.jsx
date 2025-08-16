@@ -131,7 +131,7 @@ export default function EveryContractPage() {
               iscontract ? "bg-white-400 text-black" : "bg-green-400 text-white"
             } `}
           >
-            Contract
+            Kontrakt
           </h1>
           <h1
             onClick={() => setIscontract(true)}
@@ -139,7 +139,7 @@ export default function EveryContractPage() {
               iscontract ? "bg-green-400 text-white" : "bg-white-400 text-black"
             } `}
           >
-            Offer Contract
+            Tilbyd kontrakt
           </h1>
         </div>
         <div className="px-2 lg:px-6">

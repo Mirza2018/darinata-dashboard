@@ -123,7 +123,7 @@ const SingleDealerTable = ({
     },
   ];
   const onFinish = async (value) => {
-    const toastId = toast.loading("Payment status is updating...");
+    const toastId = toast.loading("Betalingsstatus opdateres...");
     const data = {
       action: value?.paymentStatus,
       saleCarId: statusData?.saleCarId,
@@ -134,14 +134,14 @@ const SingleDealerTable = ({
     try {
       const res = await changePaymet(data).unwrap();
       console.log(res);
-      toast.success("Payment status is Update successfully", {
+      toast.success("Betalingsstatus er opdateret.", {
         id: toastId,
         duration: 2000,
       });
     } catch (error) {
       console.log(error);
       
-      toast.error("There is an error to update payment status", {
+      toast.error("Der er en fejl i opdateringen af betalingsstatus.", {
         id: toastId,
         duration: 2000,
       });

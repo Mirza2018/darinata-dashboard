@@ -83,7 +83,7 @@ export default function TotalEarning() {
         <div className="flex justify-between p-6">
           <div className="flex gap-4 items-center">
             <Input
-              placeholder="Search User..."
+              placeholder="Søg bruger..."
               value={searchText}
               onChange={(e) => onSearch(e.target.value)}
               className="text-base font-semibold !border-input-color py-2"

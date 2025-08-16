@@ -16,25 +16,22 @@ const ViewTaskCompleteTable = ({
     const data = {
       taskStatus: "completed",
     };
-    const toastId = toast.loading("Task mark is accepting...");
+    const toastId = toast.loading("Opgaven er ved at blive accepteret...");
     try {
       const res = await taskAction({ data, id: currentRecord2?._id }).unwrap();
       console.log(res);
 
-      toast.success(res?.data?.message || "Task is accept Successfully", {
+      toast.success("Opgaven er accepteret.", {
         id: toastId,
         duration: 2000,
       });
       handleCancel2();
     } catch (error) {
       console.log(error);
-      toast.error(
-        error?.data?.message || "Accepting task faceing some problem",
-        {
-          id: toastId,
-          duration: 2000,
-        }
-      );
+      toast.error("Der er et problem med at acceptere opgaven.", {
+        id: toastId,
+        duration: 2000,
+      });
     }
   };
   return (
@@ -56,7 +53,7 @@ const ViewTaskCompleteTable = ({
           {/* {block
             ? "Do you want to unblock this car?"
             : "Are you sure you want to temporarily block this car?"} */}
-          Do you want to mark it as completed?
+          Vil du markere den som fuldført?
         </h1>
 
         {/* <Input
@@ -69,13 +66,13 @@ const ViewTaskCompleteTable = ({
             onClick={handleCancel2}
             className=" border border-secondary-color bg-base-color text-black py-3 text-xl font-semibold rounded-lg mt-8 w-full px-8 "
           >
-            No
+            Nej
           </button>
           <button
             onClick={handleTaskComplete}
             className="bg-[#00721E] border border-[#ADD8E6] text-white py-3 text-xl font-semibold rounded-lg mt-8 w-full px-8 "
           >
-            Yes
+            Ja
           </button>
         </div>
       </div>

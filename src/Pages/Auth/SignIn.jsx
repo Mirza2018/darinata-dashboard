@@ -16,7 +16,7 @@ const SignIn = () => {
   const cookies = new Cookies();
 
   const onFinish = async (values) => {
-    const toastId = toast.loading(" Logging in...");
+    const toastId = toast.loading("Logger ind...");
     console.log("car_trading_dealer:", values);
 
     try {
@@ -35,15 +35,10 @@ const SignIn = () => {
     } catch (error) {
       console.error("Login Error:", error); // Log the error for debugging
 
-      toast.error(
-        error?.data?.message ||
-          error?.error ||
-          "An error occurred during Login",
-        {
-          id: toastId,
-          duration: 2000,
-        }
-      );
+      toast.error("Der opstod en fejl under login.", {
+        id: toastId,
+        duration: 2000,
+      });
     }
 
     return;
@@ -92,12 +87,12 @@ const SignIn = () => {
               rules={[
                 {
                   required: true,
-                  message: "Email is Required",
+                  message: "E-mail er påkrævet.",
                 },
               ]}
             >
               <Input
-                placeholder="Enter your email"
+                placeholder="Indtast din e-mail"
                 className="py-2 px-3 text-xl bg-site-color border !border-[#1E1E1E] r hover:bg-transparent hover:border-secoundary-color focus:bg-transparent focus:border-secoundary-color !bg-white"
               />
             </Form.Item>
@@ -108,14 +103,14 @@ const SignIn = () => {
               rules={[
                 {
                   required: true,
-                  message: "Password is Required",
+                  message: "Adgangskode er påkrævet.",
                 },
               ]}
               name="password"
               className="text-base-color"
             >
               <Input.Password
-                placeholder="Enter your password"
+                placeholder="Indtast din adgangskode"
                 className="py-2 px-3 text-xl bg-site-color border !border-[#1E1E1E] hover:bg-transparent hover:border-secoundary-color focus:bg-transparent focus:border-secoundary-color !bg-white"
               />
             </Form.Item>

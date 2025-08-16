@@ -65,7 +65,7 @@ const SingleUserManagement = () => {
                   <p className="text-4xl font-bold mb-1">
                     {dealerData?.data?.meta?.total}
                   </p>
-                  <p className="text-base font-normal ">Total Car List</p>
+                  <p className="text-base font-normal ">Samlet billiste</p>
                 </div>
               </div>
             </div>

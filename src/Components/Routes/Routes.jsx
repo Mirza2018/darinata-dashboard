@@ -77,6 +77,10 @@ const router = createBrowserRouter([
         element: <AdminDashboard />,
       },
       {
+        path: "total-Car-Sell",
+        element: <CarSellTable />,
+      },
+      {
         path: "every-contract",
         element: <EveryContractPage />,
       },
@@ -84,10 +88,7 @@ const router = createBrowserRouter([
         path: "all-cars",
         element: <AllCarsMainPage />,
       },
-      {
-        path: "total-Car-Sell",
-        element: <CarSellTable />,
-      },
+
       {
         path: "every-contract/contract/:id",
         element: <ContractData />,
@@ -101,17 +102,17 @@ const router = createBrowserRouter([
         path: "user-management",
         element: <UserManagement />,
       },
+      // {
+      //   path: "user-management/car-info",
+      //   element: <UserCarInfo />,
+      // },
       {
-        path: "user-management/car-info",
-        element: <UserCarInfo />,
+        path: "user-management/:id",
+        element: <SingleUserManagement />,
       },
       {
         path: "dealer-management",
         element: <DelarManagementMainPage />,
-      },
-      {
-        path: "user-management/:id",
-        element: <SingleUserManagement />,
       },
 
       {

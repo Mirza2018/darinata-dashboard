@@ -38,13 +38,13 @@ const AllCarTable = ({
     try {
       const res = await deleteCar(record?._id).unwrap();
       console.log(res);
-      toast.success(res?.message || "Car is delete successfully...", {
+      toast.success("Bilen er slettet.", {
         id: toastId,
         duration: 2000,
       });
       setIsDeleteModalOpen(false);
     } catch (error) {
-      toast.error("There is an problem to delete car", {
+      toast.error("Der er et problem med at slette bilen.", {
         id: toastId,
         duration: 2000,
       });
@@ -53,7 +53,7 @@ const AllCarTable = ({
 
   const columns = [
     {
-      title: "Listing name",
+      title: "Noteringsnavn",
       dataIndex: "company",
       key: "company",
       render: (text) => (
@@ -73,7 +73,7 @@ const AllCarTable = ({
     //   ),
     // },
     {
-      title: "Brand Name & Modle",
+      title: "Mærkenavn og model",
       dataIndex: "carModel",
       key: "carModel",
       render: (text) => (
@@ -99,7 +99,7 @@ const AllCarTable = ({
     //   ),
     // },
     {
-      title: "Location",
+      title: "Lokation",
       dataIndex: "company",
       key: "company",
       render: (text) => (
@@ -109,14 +109,14 @@ const AllCarTable = ({
       ),
     },
     {
-      title: "Color",
+      title: "Farve",
       dataIndex: "carModel",
       key: "carModel",
       render: (text) => <div className="whitespace-nowrap">{text?.color}</div>,
     },
 
     {
-      title: "Price",
+      title: "Pris",
       dataIndex: "expectedPrice",
       key: "expectedPrice",
       render: (text) => (
@@ -125,12 +125,12 @@ const AllCarTable = ({
     },
 
     {
-      title: "Action",
+      title: "Handling",
       key: "action",
       render: (_, record) => (
         <div className="flex justify-center items-center gap-3">
           <Space size="middle">
-            <Tooltip placement="right" title="Delete">
+            <Tooltip placement="right" title="Slet">
               <RiDeleteBinLine
                 className="cursor-pointer text-red-600"
                 onClick={() => handleDeleteModel(record)}
@@ -139,7 +139,7 @@ const AllCarTable = ({
             </Tooltip>
           </Space>
           <Space size="middle">
-            <Tooltip placement="right" title="Delete">
+            <Tooltip placement="right" title="Rediger">
               <CiEdit
                 className="cursor-pointer text-blue-500"
                 onClick={() => handleUpdateModel(record)}
@@ -164,7 +164,7 @@ const AllCarTable = ({
       >
         <div>
           <h1 className="text-center font-medium text-xl">
-            Do you want to delete this Car ?
+            Vil du slette denne bil?
           </h1>
 
           <div className="flex justify-center gap-5 mt-5">
@@ -172,13 +172,13 @@ const AllCarTable = ({
               onClick={handleDelete}
               className="bg-red-500 text-white text-xl px-8 py-2 rounded-lg"
             >
-              Yes
+              Ja
             </button>
             <button
               onClick={() => setIsDeleteModalOpen(false)}
               className="bg-green-500 text-white text-xl px-8 py-2 rounded-lg"
             >
-              No
+              Nej
             </button>
           </div>
         </div>

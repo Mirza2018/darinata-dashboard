@@ -35,14 +35,14 @@ const SettingsForgotPassword = () => {
             rules={[
               {
                 required: true,
-                message: "Email is Required",
+                message: "E-mail er påkrævet.",
               },
             ]}
             name="email"
             className="text-base-color "
           >
             <Input
-              placeholder="Enter your mail"
+              placeholder="Indtast venligst din e-mail."
               className="py-2 px-3 text-xl bg-site-color border  hover:bg-transparent hover:border-secoundary-color focus:bg-transparent focus:border-secoundary-color"
             />
           </Form.Item>

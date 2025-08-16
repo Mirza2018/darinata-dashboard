@@ -32,13 +32,16 @@ const SettingsUpdatePassword = () => {
           </Typography.Title>
           <Form.Item
             rules={[
-              { required: true, message: "Please enter your new password!" },
+              {
+                required: true,
+                message: "Indtast venligst din nye adgangskode.",
+              },
             ]}
             name="newPassword"
             className="text-white"
           >
             <Input.Password
-              placeholder="Enter your password"
+              placeholder="Indtast din adgangskode."
               className="py-2 px-3 text-xl bg-site-color border   hover:bg-transparent hover:border-secoundary-color focus:bg-transparent focus:border-secoundary-color"
             />
           </Form.Item>
@@ -49,7 +52,7 @@ const SettingsUpdatePassword = () => {
             name="reEnterPassword"
             className="text-white"
             rules={[
-              { required: true, message: "Please confirm your password!" },
+              { required: true, message: "Bekræft venligst din adgangskode." },
               ({ getFieldValue }) => ({
                 validator(_, value) {
                   if (!value || getFieldValue("newPassword") === value) {
@@ -65,7 +68,7 @@ const SettingsUpdatePassword = () => {
             ]}
           >
             <Input.Password
-              placeholder="Enter your password"
+              placeholder="Indtast venligst dit kodeord."
               className="py-2 px-3 text-xl bg-site-color border !border-input-color  hover:bg-transparent hover:border-secoundary-color focus:bg-transparent focus:border-secoundary-color"
             />
           </Form.Item>

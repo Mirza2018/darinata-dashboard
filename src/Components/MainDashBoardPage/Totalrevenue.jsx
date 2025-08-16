@@ -10,20 +10,7 @@ import {
   ResponsiveContainer,
 } from "recharts";
 
-const data = [
-  { name: "January", Cars: 475 },
-  { name: "February", Cars: 580 },
-  { name: "March", Cars: 300 },
-  { name: "April", Cars: 525 },
-  { name: "May", Cars: 375 },
-  { name: "June", Cars: 450 },
-  { name: "July", Cars: 575 },
-  { name: "August", Cars: 600 },
-  { name: "September", Cars: 420 },
-  { name: "October", Cars: 510 },
-  { name: "November", Cars: 480 },
-  { name: "December", Cars: 550 },
-];
+
 
 
 const TotalRevenue = ({ totalSalesChart }) => {
@@ -37,7 +24,7 @@ const TotalRevenue = ({ totalSalesChart }) => {
     <div className=" bg-base-color border border-secondary-color mt-10 rounded-md px-5 ">
       <div className="flex justify-between  mt-4">
         <h1 className="text-2xl font-bold whitespace-nowrap pt-5 ms-8">
-          Total Car Sell
+          Total salg af biler
         </h1>
         <div>
           <ConfigProvider

@@ -36,7 +36,7 @@ const ViewEarningTable = ({
           onFinish={onFinish}
         >
           <Input
-            placeholder="Enter Service Charge"
+            placeholder="Indtast servicegebyr"
             type="number"
             className="py-2 px-3 text-xl bg-site-color border !border-input-color  hover:bg-transparent hover:border-secoundary-color focus:bg-transparent focus:border-secoundary-color"
           />

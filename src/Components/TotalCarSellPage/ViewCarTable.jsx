@@ -36,31 +36,31 @@ const ViewCarTable = ({
         <div>
           <div className="flex flex-col gap-2 bg-base-color p-5 rounded-lg border border-[#ADD8E6]">
             <div className="flex justify-between">
-              <h2 className="text-sm font-bold">Car Owner Name</h2>
+              <h2 className="text-sm font-bold">Bilens ejers navn</h2>
               <p className="text-sm font-semibold">
                 {data?.company?.first_name} {data?.company?.last_name}
               </p>
             </div>
             <div className="flex justify-between">
-              <h2 className="text-sm font-bold">Dealer Name</h2>
+              <h2 className="text-sm font-bold">Forhandlerens navn</h2>
               <p className="text-sm font-semibold">
                 {`${data?.profile?.first_name} ${data?.profile?.last_name}`}
               </p>
             </div>
             <div className="flex justify-between">
-              <h2 className="text-sm font-bold">Brand Name</h2>
+              <h2 className="text-sm font-bold">Mærkenavn</h2>
               <p className="text-sm font-semibold">{data?.carModel?.brand}</p>
             </div>
             <div className="flex justify-between">
-              <h2 className="text-sm font-bold">Car Model</h2>
+              <h2 className="text-sm font-bold">Bilmodel</h2>
               <p className="text-sm font-semibold">{data?.carModel?.model}</p>
             </div>
             <div className="flex justify-between">
-              <h2 className="text-sm font-bold">Location</h2>
+              <h2 className="text-sm font-bold">Lokation</h2>
               <p className="text-sm font-semibold"> {data?.company?.city}</p>
             </div>
             <div className="flex justify-between">
-              <h2 className="text-sm font-bold">Color</h2>
+              <h2 className="text-sm font-bold">Farve</h2>
               <p className="text-sm font-semibold">{data?.carModel?.color}</p>
             </div>
             {/* <div className="flex justify-between">
@@ -74,19 +74,19 @@ const ViewCarTable = ({
           <div className="flex flex-col gap-2 bg-base-color p-5 rounded-lg border border-[#ADD8E6] mt-6">
             {/* <h1 className="text-sm font-bold flex">Car Price</h1> */}
             <div className="flex justify-between">
-              <h2 className="text-xs font-medium">Car Price</h2>
+              <h2 className="text-xs font-medium">Bilens pris</h2>
               <p className="text-xs font-medium">
                 {data?.car?.expectedPrice} DKK
               </p>
             </div>
             <div className="flex justify-between">
-              <h2 className="text-xs font-medium">Application service fee</h2>
+              <h2 className="text-xs font-medium">Ansøgningsservicegebyr</h2>
               <p className="text-xs font-medium">10%</p>
             </div>
             <Divider style={{ borderColor: "#004AAD" }}></Divider>
 
             <div className="flex justify-between">
-              <h2 className="text-sm font-bold">Total</h2>
+              <h2 className="text-sm font-bold">Samlet</h2>
               <p className="text-sm font-bold">
                 {data?.car?.expectedPrice + data?.car?.expectedPrice * 0.1} DKK
               </p>
@@ -101,7 +101,7 @@ const ViewCarTable = ({
             onClick={handleCancel}
             className="bg-[#FF991C] text-white py-3 text-xl font-semibold rounded-lg mt-8 w-full"
           >
-            Done
+            Færdig
           </button>
         </div>
         {/* <pre className="text-start">{JSON.stringify(data, null, 2)}</pre> */}

@@ -18,7 +18,7 @@ const CarUpdateModel = ({
 
   // console.log(record);
   const onFinish = async (values) => {
-    const toastId = toast.loading("Car data is Updateing...");
+    const toastId = toast.loading("Biloplysningerne opdateres...");
 
     console.log(values);
 
@@ -29,13 +29,13 @@ const CarUpdateModel = ({
       const res = await updateCar({ id: record?._id, data: formData }).unwrap();
       console.log(res);
 
-      toast.success(res?.message || "Car data is updated successfully...", {
+      toast.success("Biloplysningerne er opdateret.", {
         id: toastId,
         duration: 2000,
       });
       setIsUpdateModalOpen(false);
     } catch (error) {
-      toast.error("There is an problem to update car data", {
+      toast.error("Der er et problem med at opdatere biloplysningerne.", {
         id: toastId,
         duration: 2000,
       });
@@ -52,7 +52,7 @@ const CarUpdateModel = ({
     >
       <div>
         <h1 className="text-2xl font-medium text-center">
-          Update The Car Information
+          Opdater bilinformationen
         </h1>
         <Form
           className="p-2"
@@ -67,19 +67,19 @@ const CarUpdateModel = ({
                 style={{ fontSize: "clamp(14px, 1vw + 1rem ,20px)" }}
                 className=" font-medium pb-2 "
               >
-                Number of kilometers driven*
+                Antal kørte kilometer*
               </p>
               <Form.Item
                 name={`noOfKmDriven`}
                 rules={[
                   {
                     required: true,
-                    message: "Please Input Number of kilometers driven",
+                    message: "Indtast venligst antallet af kørte kilometer.",
                   },
                 ]}
               >
                 <InputNumber
-                  placeholder="Enter Number of kilometers driven"
+                  placeholder="Indtast venligst antal kørte kilometer."
                   className="py-2 w-full"
                 />
               </Form.Item>
@@ -89,25 +89,25 @@ const CarUpdateModel = ({
                 style={{ fontSize: "clamp(14px, 1vw + 1rem ,20px)" }}
                 className=" font-medium pb-2 "
               >
-                Number of varnish fields*
+                Antal lakerede felter*
               </p>
               <Form.Item
                 rules={[
                   {
                     required: true,
-                    message: "Please input the number of varnish fields!",
+                    message: "Indtast venligst antallet af lakfelter.",
                   },
                   {
                     type: "number",
                     min: 0,
-                    message: "Number of varnish fields must be at Number!",
+                    message: "Antallet af lakfelter skal være et tal.",
                   },
                 ]}
                 name={`noOfVarnishField`}
                 className=""
               >
                 <InputNumber
-                  placeholder="Enter  Number of varnish fields"
+                  placeholder="Indtast antallet af lakfelter."
                   className="py-2 w-full"
                 />
               </Form.Item>
@@ -118,16 +118,16 @@ const CarUpdateModel = ({
                   style={{ fontSize: "clamp(14px, 3vw + 1rem ,20px)" }}
                   className=" font-medium pb-2"
                 >
-                  Additional equipment*
+                  Ekstra udstyr*
                 </p>
 
                 <Form.Item name="additionalEquipment">
                   <Checkbox.Group className=" flex flex-col gap-2">
                     <Checkbox value="Automatic transmission">
-                      Automatic transmission
+                      Automatgear
                     </Checkbox>
-                    <Checkbox value="Trailer hitch">Trailer hitch</Checkbox>
-                    <Checkbox value="Extra wheel set">Extra wheel set</Checkbox>
+                    <Checkbox value="Trailer hitch">Anhængertræk</Checkbox>
+                    <Checkbox value="Extra wheel set">Ekstra hjulsæt</Checkbox>
                   </Checkbox.Group>
                 </Form.Item>
               </div>
@@ -136,13 +136,13 @@ const CarUpdateModel = ({
                   style={{ fontSize: "clamp(14px, 3vw + 1rem ,20px)" }}
                   className=" font-medium pb-2"
                 >
-                  The condition of the car*
+                  Bilens tilstand*
                 </p>
                 <Form.Item
                   rules={[
                     {
                       required: true,
-                      message: "Please Select one condition!",
+                      message: "Vælg venligst en betingelse.",
                     },
                   ]}
                   name={`condition`}
@@ -151,9 +151,9 @@ const CarUpdateModel = ({
                     name="condition"
                     className=" flex flex-col gap-2"
                   >
-                    <Radio value="Good">Good</Radio>
-                    <Radio value="Used">Used</Radio>
-                    <Radio value="very Used">Very used</Radio>
+                    <Radio value="Good">Godt</Radio>
+                    <Radio value="Used">Brugt</Radio>
+                    <Radio value="very Used">Meget brugt</Radio>
                   </Radio.Group>
                 </Form.Item>
               </div>
@@ -163,11 +163,11 @@ const CarUpdateModel = ({
                 style={{ fontSize: "clamp(14px, 3vw + 1rem ,20px)" }}
                 className=" font-medium pb-2"
               >
-                Defects or other comments*
+                Fejl eller andre kommentarer*
               </p>
               <Form.Item name={`comment`}>
                 <TextArea
-                  placeholder="Defects or other comments"
+                  placeholder="Defekter eller andre kommentarer"
                   rows={2}
                   className="py-2"
                 />
@@ -178,19 +178,19 @@ const CarUpdateModel = ({
                 style={{ fontSize: "clamp(14px, 3vw + 1rem ,20)" }}
                 className=" font-medium pb-2"
               >
-                Expected price (.kr)*
+                Forventet pris (kr.)*
               </p>
               <Form.Item
                 rules={[
                   {
                     required: true,
-                    message: "Please input your expected price!",
+                    message: "Indtast venligst din forventede pris.",
                   },
                 ]}
                 name={`expectedPrice`}
               >
                 <InputNumber
-                  placeholder="Expected price (DKK)"
+                  placeholder="Forventet pris (DKK)."
                   className="py-2 w-full"
                 />
               </Form.Item>
@@ -202,7 +202,7 @@ const CarUpdateModel = ({
               className="bg-highlight-color text-white  font-medium  py-2 px-5 md:px-10 rounded-lg "
               htmlType="submit"
             >
-              Update Details
+              Opdater detaljer
             </button>
           </div>
         </Form>

@@ -45,7 +45,7 @@ const UserCarInfo = () => {
       <h1 className="text-2xl font-bold mb-5">Number plate*</h1>
       <Input
         ref={inputRef}
-        placeholder="input search text"
+        placeholder="Indtast søgetekst"
         className=" max-w-[500px] "
         suffix={
           <div
@@ -116,7 +116,7 @@ const UserCarInfo = () => {
           <p className="text-2xl font-medium pb-2">Defects or other comments</p>
           <Form.Item name={`comments`}>
             <TextArea
-              placeholder="Defects or other comments"
+              placeholder="Fejl eller andre kommentarer"
               rows={4}
               className="py-3"
             />
@@ -126,7 +126,7 @@ const UserCarInfo = () => {
           <div className="flex-1">
             <p className="text-2xl font-medium pb-2">Expected price (DKK)*</p>
             <Form.Item name={`expectedPrice`}>
-              <Input placeholder="Expected price (DKK)" className="py-3" />
+              <Input placeholder="Forventet pris (DKK)" className="py-3" />
             </Form.Item>
           </div>
           <div className="flex-1">
@@ -176,13 +176,13 @@ const UserCarInfo = () => {
           <div className="flex-1">
             <p className="text-2xl font-medium pb-2">Company Name</p>
             <Form.Item name={`company`}>
-              <Input placeholder="Company Name" className="py-3" />
+              <Input placeholder="Firmanavn" className="py-3" />
             </Form.Item>
           </div>
           <div className="flex-1">
             <p className="text-2xl font-medium pb-2">CVR Number</p>
             <Form.Item name={`cvr`}>
-              <Input placeholder="CVR Number" className="py-3" />
+              <Input placeholder="CVR-nummer" className="py-3" />
             </Form.Item>
           </div>
         </div>
@@ -190,13 +190,13 @@ const UserCarInfo = () => {
           <div className="flex-1">
             <p className="text-2xl font-medium pb-2">First Name*</p>
             <Form.Item name={`firstName`}>
-              <Input placeholder="First Name" className="py-3" />
+              <Input placeholder="Fornavn" className="py-3" />
             </Form.Item>
           </div>
           <div className="flex-1">
             <p className="text-2xl font-medium pb-2">Last Name*</p>
             <Form.Item name={`lastName`}>
-              <Input placeholder="Last Name" className="py-3" />
+              <Input placeholder="Efternavn" className="py-3" />
             </Form.Item>
           </div>
         </div>
@@ -204,13 +204,13 @@ const UserCarInfo = () => {
           <div className="flex-1">
             <p className="text-2xl font-medium pb-2">Postal Code*</p>
             <Form.Item name={`PostalCode`}>
-              <Input placeholder="Postal Code" className="py-3" />
+              <Input placeholder="Postnummer" className="py-3" />
             </Form.Item>
           </div>
           <div className="flex-1">
             <p className="text-2xl font-medium pb-2">City*</p>
             <Form.Item name={`city`}>
-              <Input placeholder="City" className="py-3" />
+              <Input placeholder="By" className="py-3" />
             </Form.Item>
           </div>
         </div>
@@ -218,13 +218,13 @@ const UserCarInfo = () => {
           <div className="flex-1">
             <p className="text-2xl font-medium pb-2">Phone Number*</p>
             <Form.Item name={`PhoneNumber`}>
-              <Input placeholder="Phone Number" className="py-3" />
+              <Input placeholder="Telefonnummer" className="py-3" />
             </Form.Item>
           </div>
           <div className="flex-1">
             <p className="text-2xl font-medium pb-2">Account Number*</p>
             <Form.Item name={`accNumber`}>
-              <Input placeholder="Enter account number" className="py-3" />
+              <Input placeholder="Indtast kontonummer" className="py-3" />
             </Form.Item>
           </div>
         </div>

@@ -14,7 +14,7 @@ const ChangePassword = () => {
 
   const onFinish = async (values) => {
     console.log("Success:", values);
-    const toastId = toast.loading("Password is Reseting...");
+    const toastId = toast.loading("Adgangskoden nulstilles...");
 
     try {
       const res = await resetPassword(values).unwrap();
@@ -37,9 +37,7 @@ const ChangePassword = () => {
       console.error("Login Error:", error); // Log the error for debugging
 
       toast.error(
-        error?.data?.message ||
-          error?.error ||
-          "An error occurred during reset password please try later",
+        "Der opstod en fejl under nulstilling af adgangskoden. Prøv venligst igen senere.",
         {
           id: toastId,
           duration: 2000,
@@ -93,14 +91,14 @@ const ChangePassword = () => {
             rules={[
               {
                 required: true,
-                message: "New Password is Required",
+                message: "Ny adgangskode er påkrævet.",
               },
             ]}
             name="password"
             className="text-base-color"
           >
             <Input.Password
-              placeholder="Enter new password"
+              placeholder="Indtast ny adgangskode"
               className="py-2 px-3 text-xl bg-site-color border  hover:bg-transparent hover:border-secoundary-color focus:bg-transparent focus:border-secoundary-color !border-[#1E1E1E] !bg-white"
             />
           </Form.Item>
@@ -112,7 +110,7 @@ const ChangePassword = () => {
             rules={[
               {
                 required: true,
-                message: "Please confirm your new password!",
+                message: "Bekræft venligst din nye adgangskode",
               },
               ({ getFieldValue }) => ({
                 validator(_, value) {
@@ -130,7 +128,7 @@ const ChangePassword = () => {
             className="text-base-color"
           >
             <Input.Password
-              placeholder="Enter your password"
+              placeholder="Indtast din adgangskode"
               className="py-2 px-3 text-xl bg-site-color border !border-[#1E1E1E] !bg-white  hover:bg-transparent hover:border-secoundary-color focus:bg-transparent focus:border-secoundary-color"
             />
           </Form.Item>
@@ -141,7 +139,7 @@ const ChangePassword = () => {
               className="w-full py-6 border border-[#FF991C] hover:border-input-colortext-xl text-white bg-[#FF991C] hover:!bg-[#FF991C] font-semibold rounded-2xl mt-8"
               htmlType="submit"
             >
-              Change password
+              Skift adgangskode
             </Button>
           </Form.Item>
         </Form>

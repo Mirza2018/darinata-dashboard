@@ -10,6 +10,7 @@ import {
 import { useDispatch, useSelector } from "react-redux";
 import { toast } from "sonner";
 import {
+  clearAuth,
   clearForgotPasswordToken,
   clearResendSignUpToken,
   setForgotPasswordToken,
@@ -31,7 +32,7 @@ const OtpPage = () => {
     const data = {
       purpose: "forget-password",
     };
-    const toastId = toast.loading("OTP is Resending...");
+    const toastId = toast.loading("OTP genfremsendes...");
     try {
       const res = await resendOtp(data).unwrap();
       dispatch(setForgotPasswordToken(resendToken));
@@ -44,9 +45,7 @@ const OtpPage = () => {
       console.error("RedendOTP Error:", error); // Log the error for debugging
 
       toast.error(
-        error?.data?.message ||
-          error?.error ||
-          "An error occurred during Resend OTP please try later",
+        "Der opstod en fejl under genfremsendelsen af OTP'en. Prøv venligst igen senere.",
         {
           id: toastId,
           duration: 2000,
@@ -57,7 +56,7 @@ const OtpPage = () => {
 
   const handleOTPSubmit = async () => {
     dispatch(clearResendSignUpToken());
-    const toastId = toast.loading("OTP is submiting...");
+    const toastId = toast.loading("OTP indsendes...");
     console.log("OTP:", otp);
     const data = { otp: Number(otp) };
 
@@ -83,9 +82,7 @@ const OtpPage = () => {
       console.error("Login Error:", error); // Log the error for debugging
 
       toast.error(
-        error?.data?.message ||
-          error?.error ||
-          "An error occurred during registration please try later",
+        "Der opstod en fejl under registreringen. Prøv venligst igen senere.",
         {
           id: toastId,
           duration: 2000,

@@ -13,7 +13,7 @@ const CarTable = ({
   const testData = data;
   const columns = [
     {
-      title: "Private User",
+      title: "Privat bruger",
       dataIndex: "privateUserProfile",
       key: "privateUserProfile",
       render: (text) => (
@@ -23,7 +23,7 @@ const CarTable = ({
       ),
     },
     {
-      title: "Dealer Name",
+      title: "Forhandlerens navn",
       dataIndex: "profile",
       key: "profile",
       render: (text) => (
@@ -33,7 +33,7 @@ const CarTable = ({
       ),
     },
     {
-      title: "Brand Name & Modle",
+      title: "Mærkenavn & Model",
       dataIndex: "carModel",
       key: "carModel",
       render: (text) => (
@@ -49,7 +49,7 @@ const CarTable = ({
     //   render: (text) => <div className="whitespace-nowrap"></div>,
     // },
     {
-      title: "CRV Number",
+      title: "CRV-nummer",
       dataIndex: "profile",
       key: "profile",
       render: (text) => (
@@ -59,7 +59,7 @@ const CarTable = ({
       ),
     },
     {
-      title: "Location",
+      title: "Placering",
       dataIndex: "company",
       key: "company",
       render: (text) => (
@@ -69,14 +69,14 @@ const CarTable = ({
       ),
     },
     {
-      title: "Color",
+      title: "Farve",
       dataIndex: "carModel",
       key: "carModel",
       render: (text) => <div className="whitespace-nowrap">{text?.color}</div>,
     },
 
     {
-      title: "Price",
+      title: "Pris",
       dataIndex: "car",
       key: "car",
       render: (text) => (
@@ -97,7 +97,7 @@ const CarTable = ({
       render: (_, record) => (
         <>
           <Space size="middle">
-            <Tooltip placement="right" title="View Details">
+            <Tooltip placement="right" title="Vis detaljer">
               <GoEye
                 className="cursor-pointer"
                 onClick={() => showViewModal(record)}

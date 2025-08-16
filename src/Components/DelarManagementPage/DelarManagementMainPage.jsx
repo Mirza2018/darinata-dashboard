@@ -5,7 +5,7 @@ import axios from "axios";
 import { FaCloudUploadAlt } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
 import { toast } from "sonner";
-import {
+import { 
   useCreateUserMutation,
   useDealerListQuery,
 } from "../../redux/api/adminApi";
@@ -127,7 +127,7 @@ export default function DelarManagementMainPage() {
 
     // router("car-info");
 
-    const toastId = toast.loading("Dealer is creating...");
+    const toastId = toast.loading("Forhandleren er ved at blive oprettet...");
     const data = { ...values, role: "dealer" };
     console.log(data);
 
@@ -145,7 +145,7 @@ export default function DelarManagementMainPage() {
     try {
       const res = await createData(formData).unwrap();
       console.log(res);
-      toast.success(res?.message || "Dealer is create Successfully", {
+      toast.success("Forhandleren er oprettet.", {
         id: toastId,
         duration: 2000,
       });
@@ -153,13 +153,10 @@ export default function DelarManagementMainPage() {
       handleCancelAddDealer();
     } catch (error) {
       console.log(error);
-      toast.error(
-        error?.data?.message || "There is an problem to create Dealer",
-        {
-          id: toastId,
-          duration: 2000,
-        }
-      );
+      toast.error("Der er et problem med at oprette forhandleren", {
+        id: toastId,
+        duration: 2000,
+      });
     }
   };
 
@@ -173,7 +170,7 @@ export default function DelarManagementMainPage() {
           <div className="flex justify-between gap-4 items-center  w-full">
             <div className="flex gap-4 items-center">
               <Input
-                placeholder="Search first name..."
+                placeholder="Søg fornavn..."
                 // value={searchText}
                 onChange={(e) => handleSearch(e.target.value)}
                 className="w-fit text-base font-semibold !border-input-color py-2"
@@ -192,7 +189,7 @@ export default function DelarManagementMainPage() {
               onClick={showModalAddDealer}
               className="flex whitespace-nowrap gap-2 text-xl font-bold bg-highlight-color rounded-md py-3 px-10 text-white"
             >
-              Crate Dealer
+              Opret forhandler
             </button>
           </div>
         </div>
@@ -226,7 +223,7 @@ export default function DelarManagementMainPage() {
                     <FaCloudUploadAlt className="text-8xl " />
                   </div>
                   <p className="text-center">
-                    Drag and drop your files here or click to upload
+                    Træk og slip dine filer her, eller klik for at uploade
                   </p>
                 </Upload>
               </Form.Item>
@@ -238,25 +235,25 @@ export default function DelarManagementMainPage() {
                   rules={[
                     {
                       required: true,
-                      message: "Please Enter First Name",
+                      message: "Indtast venligst fornavn.",
                     },
                   ]}
-                  label="First Name"
+                  label="Fornavn"
                   name="first_name"
                 >
-                  <Input required placeholder="Enter your First Name" />
+                  <Input required placeholder="Indtast dit fornavn" />
                 </Form.Item>
                 <Form.Item
                   rules={[
                     {
                       required: true,
-                      message: "Please Enter Last Name",
+                      message: "Indtast venligst efternavn.",
                     },
                   ]}
-                  label="Last Name"
+                  label="Efternavn"
                   name="last_name"
                 >
-                  <Input required placeholder="Enter your Last Name" />
+                  <Input required placeholder="Indtast dit efternavn" />
                 </Form.Item>
               </div>
               <div className="grid md:grid-cols-2 gap-5">
@@ -264,25 +261,25 @@ export default function DelarManagementMainPage() {
                   rules={[
                     {
                       required: true,
-                      message: "Please Enter Phone Number",
+                      message: "Indtast venligst et telefonnummer.",
                     },
                   ]}
-                  label="Phone Number"
+                  label="Telefonnummer"
                   name="phoneNumber"
                 >
-                  <Input required placeholder="Enter your Phone Number" />
+                  <Input required placeholder="Indtast dit telefonnummer" />
                 </Form.Item>
                 <Form.Item
                   rules={[
                     {
                       required: true,
-                      message: "Please Enter Email",
+                      message: "Indtast venligst e-mail.",
                     },
                   ]}
-                  label="Email"
+                  label="E-mail"
                   name="email"
                 >
-                  <Input required placeholder="Enter your Email" />
+                  <Input required placeholder="Indtast din e-mail" />
                 </Form.Item>
               </div>
               <div className="grid md:grid-cols-2 gap-5">
@@ -290,44 +287,42 @@ export default function DelarManagementMainPage() {
                   rules={[
                     {
                       required: true,
-                      message: "Please Enter Zip",
+                      message: "Indtast venligst postnummer.",
                     },
                   ]}
-                  label="Zip"
+                  label="Postnummer"
                   name="zip"
                 >
-                  <Input required placeholder="Ente zip" />
+                  <Input required placeholder="Indtast postnummer" />
                 </Form.Item>
                 <Form.Item
                   rules={[
                     {
                       required: true,
-                      message: "Please Enter City",
+                      message: "Indtast venligst by.",
                     },
                   ]}
-                  label="City"
+                  label="By"
                   name="city"
                 >
-                  <Input required placeholder="Enter city name" />
+                  <Input required placeholder="Indtast bynavn" />
                 </Form.Item>
               </div>
               <div className="grid md:grid-cols-2 gap-5">
-  
-
                 <Form.Item
                   rules={[
                     {
                       required: true,
-                      message: "Please Enter Street",
+                      message: "Indtast venligst gade.",
                     },
                   ]}
-                  label="Street"
+                  label="Gade"
                   name="street"
                 >
-                  <Input required placeholder="Enter your Street Link" />
+                  <Input required placeholder="Indtast dit gadelink" />
                 </Form.Item>
                 <Form.Item label="Website Link" name="websiteLink">
-                  <Input placeholder="Enter your Website Link" />
+                  <Input placeholder="Indtast dit hjemmesidelink" />
                 </Form.Item>
               </div>
               <div className="grid md:grid-cols-2 gap-5">
@@ -335,34 +330,34 @@ export default function DelarManagementMainPage() {
                   rules={[
                     {
                       required: true,
-                      message: "Please Enter CVR Number",
+                      message: "Indtast venligst CVR-nummer.",
                     },
                   ]}
-                  label="CVR Number"
+                  label="CVR-nummer"
                   name="cvrNumber"
                 >
-                  <Input required placeholder="Enter your CVR Number" />
+                  <Input required placeholder="Indtast dit CVR-nummer" />
                 </Form.Item>
                 <Form.Item
                   rules={[
                     {
                       required: true,
-                      message: "Please Enter Company Name",
+                      message: "Indtast venligst firmanavn.",
                     },
                   ]}
-                  label="Company Name"
+                  label="Firmanavn"
                   name="companyName"
                 >
-                  <Input required placeholder="Enter your company name" />
+                  <Input required placeholder="Indtast dit firmanavn" />
                 </Form.Item>{" "}
               </div>
 
               <div className="grid md:grid-cols-2 gap-5">
-                <Form.Item label="Rge Nr." name="regNo">
-                  <Input  placeholder="Enter your Rge Nr." />
+                <Form.Item label="Reg. nr." name="regNo">
+                  <Input placeholder="Indtast dit registreringsnummer." />
                 </Form.Item>
-                <Form.Item label="Konto Nr." name="kontoNr">
-                  <Input  placeholder="Enter your Konto Nr." />
+                <Form.Item label="Kontonummer" name="kontoNr">
+                  <Input placeholder="Indtast dit kontonummer" />
                 </Form.Item>{" "}
               </div>
               <div className="">
@@ -370,15 +365,15 @@ export default function DelarManagementMainPage() {
                   rules={[
                     {
                       required: true,
-                      message: "Please Enter Password",
+                      message: "Indtast venligst adgangskode.",
                     },
                   ]}
-                  label="Password"
+                  label="Adgangskode"
                   name="password"
                 >
                   <Input.Password
                     required
-                    placeholder="Enter your Password "
+                    placeholder="Indtast din adgangskode "
                   />
                 </Form.Item>
               </div>
@@ -390,7 +385,7 @@ export default function DelarManagementMainPage() {
                 type="primary"
                 htmlType="submit"
               >
-                Create
+                Opret
               </button>
             </Form.Item>
           </Form>

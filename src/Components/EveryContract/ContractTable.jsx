@@ -19,7 +19,7 @@ const ContractTable = ({ data, loading, meta, onPageChange }) => {
       render: (text, record, index) => <span>{index + 1}</span>,
     },
     {
-      title: "Dealer Name",
+      title: "Forhandlerens navn",
       dataIndex: "profile",
       key: "dealer",
       render: (text) => (
@@ -29,13 +29,13 @@ const ContractTable = ({ data, loading, meta, onPageChange }) => {
       ),
     },
     {
-      title: "Car Name",
+      title: "Bilnavn",
       dataIndex: "carModel",
       key: "carModel",
       render: (text) => <div className="whitespace-nowrap">{text?.brand}</div>,
     },
     {
-      title: "User Name",
+      title: "Brugernavn",
       dataIndex: "privateUserProfile",
       key: "privateUserProfile",
       render: (text) => (
@@ -45,7 +45,7 @@ const ContractTable = ({ data, loading, meta, onPageChange }) => {
       ),
     },
     {
-      title: "Car Price",
+      title: "Bilpris",
       dataIndex: "car",
       key: "car",
       render: (text) => (
@@ -55,18 +55,18 @@ const ContractTable = ({ data, loading, meta, onPageChange }) => {
       ),
     },
     {
-      title: "Color",
+      title: "Farve",
       dataIndex: "carModel",
       key: "carModel",
       render: (text) => <div className="whitespace-nowrap">{text?.color}</div>,
     },
     {
-      title: "Contract",
+      title: "Kontrakt",
       dataIndex: "action",
       key: "action",
       render: (_, record) => (
         <>
-          <Tooltip placement="right" title="View Contract Details">
+          <Tooltip placement="right" title="Vis kontraktoplysninger">
             {/* {!record?.signatureAsDealer && !record?.signatureAsOwner && (
               <Button className={`  !text-white  !bg-highlight-color`}>
                 <p>Pending contract</p>
@@ -82,12 +82,12 @@ const ContractTable = ({ data, loading, meta, onPageChange }) => {
               <Link to={`contract/${record?.car?._id}`}>
                 <Button className={`  !text-white !bg-green-500 `}>
                   {" "}
-                  <p>See Contract Paper</p>{" "}
+                  <p>Se kontraktpapir</p>{" "}
                 </Button>
               </Link>
             ) : (
               <Button className={`  !text-white  !bg-highlight-color px-2`}>
-                <p>Pending Contract Paper</p>
+                <p>Afventer kontraktpapir</p>
               </Button>
             )}
           </Tooltip>
@@ -125,11 +125,11 @@ const ContractTable = ({ data, loading, meta, onPageChange }) => {
         >
           {record?.signatureAsDealer && record?.signatureAsOwner ? (
             <Tooltip title="status" placement="topRight">
-              <span className="text-white px-2">Sold</span>
+              <span className="text-white px-2">Solgt</span>
             </Tooltip>
           ) : (
             <Tooltip title="status" placement="topRight">
-              <span className="text-white">Not Sold</span>
+              <span className="text-white">Ikke solgt</span>
             </Tooltip>
           )}
         </button>

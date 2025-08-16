@@ -18,7 +18,7 @@ const TermsOfService = () => {
   }, [displayedData]);
 
   const handleOnSave = async () => {
-    const toastId = toast.loading("Terms Of Service is Posting...");
+    const toastId = toast.loading("Servicevilkår er ved at blive offentliggjort...");
 
     const data = {
       type: "terms-and-conditions",
@@ -28,14 +28,14 @@ const TermsOfService = () => {
     try {
       const res = await staticData(data).unwrap();
       console.log(res);
-      toast.success("Terms Of Service post Successfully", {
+      toast.success("Servicevilkår er offentliggjort.", {
         id: toastId,
         duration: 2000,
       });
       setValue("");
     } catch (error) {
       console.log(error);
-      toast.error(error?.data?.message || "There is an problem", {
+      toast.error("Der er et problem", {
         id: toastId,
         duration: 2000,
       });
@@ -48,9 +48,7 @@ const TermsOfService = () => {
       style={{ boxShadow: "0px 0px 5px 2px #00000040" }}
     >
       <div className="p-2 rounded">
-        <h1 className="text-4xl font-bold py-4  !text-black ">
-          Terms Of Service
-        </h1>
+        <h1 className="text-4xl font-bold py-4  !text-black ">Servicevilkår</h1>
         <div className="">
           {/* <JoditEditor
             ref={editor}
@@ -103,7 +101,7 @@ const TermsOfService = () => {
           onClick={handleOnSave}
           className="w-full py-6 border  text-xl  font-semibold rounded-2xl  bg-[#ff991c] !hover:bg-[#ff991c] text-white mt-20"
         >
-          Save
+          Gem
         </Button>
       </div>
     </div>

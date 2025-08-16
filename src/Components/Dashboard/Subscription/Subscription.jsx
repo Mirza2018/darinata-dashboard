@@ -142,7 +142,7 @@ export default function Subscription() {
               label="Plan Name"
               name="planName"
               rules={[
-                { required: true, message: "Please input the plan name!" },
+                { required: true, message: "Indtast venligst plannavnet" },
               ]}
               style={{ fontWeight: "500" }}
             >
@@ -156,7 +156,7 @@ export default function Subscription() {
               label="Plan Price"
               name="planPrice"
               rules={[
-                { required: true, message: "Please input the plan price!" },
+                { required: true, message: "Indtast venligst planprisen" },
               ]}
               style={{ fontWeight: "500" }}
             >
@@ -245,7 +245,9 @@ export default function Subscription() {
               label="Timeline"
               name="timeline"
               style={{ fontWeight: "500" }}
-              rules={[{ required: true, message: "Please select a timeline!" }]}
+              rules={[
+                { required: true, message: "Vælg venligst en tidslinje" },
+              ]}
             >
               <Checkbox.Group className="font-normal w-full flex flex-col">
                 <div className="flex justify-between items-center">
@@ -267,7 +269,7 @@ export default function Subscription() {
               label="Button Status"
               name="buttonStatus"
               rules={[
-                { required: true, message: "Please input the Button Status!" },
+                { required: true, message: "Indtast venligst knapstatus." },
               ]}
               style={{ fontWeight: "500" }}
             >

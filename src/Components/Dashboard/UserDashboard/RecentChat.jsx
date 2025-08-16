@@ -88,11 +88,11 @@ const RecentChat = () => {
           <FaSmile className="h-6 w-6 text-zinc-500" />
           <input
             type="text"
-            placeholder="Send your message..."
+            placeholder="Send din besked..."
             className="flex-1 bg-transparent outline-none text-zinc-600 placeholder:text-zinc-500"
           />
           <div className="flex items-center gap-2">
-          <FaRegImage className="h-6 w-6 text-zinc-500" />
+            <FaRegImage className="h-6 w-6 text-zinc-500" />
             <FiPaperclip className="h-6 w-6 text-zinc-500" />
           </div>
         </div>

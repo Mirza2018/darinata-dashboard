@@ -10,26 +10,23 @@ const SettingsChangePassword = () => {
   const onFinish = async (values) => {
     console.log("Success:", values);
 
-    const toastId = toast.loading("Password is changing...");
+    const toastId = toast.loading("Adgangskoden ændres...");
 
     try {
       const res = await changePass(values).unwrap();
       console.log(res);
-      toast.success(res?.message || "Password is change successfully", {
+      toast.success("Adgangskoden er ændret.", {
         id: toastId,
         duration: 2000,
       });
-      form.resetFields();
+      form.resetFields(); 
       navigate('/')
     } catch (error) {
       console.log(error);
-      toast.error(
-        error?.data?.message || "There is an problem changeing problem",
-        {
-          id: toastId,
-          duration: 2000,
-        }
-      );
+      toast.error("Der er et problem med at ændre problemet.", {
+        id: toastId,
+        duration: 2000,
+      });
     }
   };
   return (
@@ -46,46 +43,52 @@ const SettingsChangePassword = () => {
             className="bg-transparent w-full"
           >
             <Typography.Title level={4} style={{ color: "#222222" }}>
-              Current password
+              Nuværende adgangskode
             </Typography.Title>
             <Form.Item
               rules={[
                 {
                   required: true,
-                  message: "Please enter your current password!",
+                  message: "Indtast venligst din nuværende adgangskode.",
                 },
               ]}
               name="oldPassword"
               className="text-white "
             >
               <Input.Password
-                placeholder="Enter your password"
+                placeholder="Indtast venligst dit kodeord."
                 className="py-2 px-3 text-xl bg-site-color border  text-base-color hover:bg-transparent hover:border-secoundary-color focus:bg-transparent focus:border-secoundary-color"
               />
             </Form.Item>
             <Typography.Title level={4} style={{ color: "#222222" }}>
-              New password
+              Ny adgangskode
             </Typography.Title>
             <Form.Item
               rules={[
-                { required: true, message: "Please enter your new password!" },
+                {
+                  required: true,
+                  message: "Indtast venligst din nye adgangskode.",
+                },
               ]}
               name="newPassword"
               className="text-white"
             >
               <Input.Password
-                placeholder="Enter your password"
+                placeholder="Indtast din adgangskode."
                 className="py-2 px-3 text-xl bg-site-color border  text-base-color hover:bg-transparent hover:border-secoundary-color focus:bg-transparent focus:border-secoundary-color"
               />
             </Form.Item>
             <Typography.Title level={4} style={{ color: "#222222" }}>
-              Re-enter new Password
+              Indtast ny adgangskode igen
             </Typography.Title>
             <Form.Item
               name="confirmPassword"
               className="text-white"
               rules={[
-                { required: true, message: "Please confirm your password!" },
+                {
+                  required: true,
+                  message: "Bekræft venligst din adgangskode.",
+                },
                 ({ getFieldValue }) => ({
                   validator(_, value) {
                     if (!value || getFieldValue("newPassword") === value) {
@@ -101,7 +104,7 @@ const SettingsChangePassword = () => {
               ]}
             >
               <Input.Password
-                placeholder="Enter your password"
+                placeholder="Indtast venligst dit kodeord."
                 className="py-2 px-3 text-xl bg-site-color border  text-base-color hover:bg-transparent hover:border-secoundary-color focus:bg-transparent focus:border-secoundary-color"
               />
             </Form.Item>
@@ -110,7 +113,7 @@ const SettingsChangePassword = () => {
                 to={`/admin/settings/forgot-password`}
                 className=" text-lg !underline"
               >
-                Forgot Password?
+                Glemt adgangskode?
               </Link>
             </div>
             <Form.Item>
@@ -118,7 +121,7 @@ const SettingsChangePassword = () => {
                 className="w-full py-6 border  text-xl !text-white bg-[#FF991C] hover:!bg-[#FF991C] font-semibold rounded-2xl mt-8"
                 htmlType="submit"
               >
-                Confirm
+                Bekræft
               </Button>
             </Form.Item>
           </Form>

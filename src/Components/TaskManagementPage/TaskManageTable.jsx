@@ -12,13 +12,13 @@ const TaskManageTable = ({
 }) => {
   const columns = [
     {
-      title: "Task Id",
-      dataIndex: "taskId", 
+      title: "Opgave-ID",
+      dataIndex: "taskId",
       key: "taskId",
       responsive: ["md"],
     },
     {
-      title: "Dealer Name",
+      title: "Forhandlernavn",
       dataIndex: "dealerInfo",
       key: "dealerInfo",
       render: (text) => (
@@ -28,7 +28,7 @@ const TaskManageTable = ({
       ),
     },
     {
-      title: "Task Description",
+      title: "Opgavebeskrivelse",
       dataIndex: "taskDescription",
       key: "taskDescription",
     },
@@ -39,35 +39,35 @@ const TaskManageTable = ({
       render: (text) => <div>{dateConvert(text)}</div>,
     },
     {
-      title: "status",
+      title: "Status",
       dataIndex: "taskStatus",
       key: "taskStatus",
       render: (text) => (
         <div>
           {text == "pending" ? (
             <div className="bg-yellow-400 text-center py-2 px-2 rounded-md font-medium">
-              pending
+              afventer
             </div>
           ) : (
             <div className="bg-green-400 text-center text-white py-2 px-2 rounded-md font-medium">
-              {text}
+              Fuldført
             </div>
           )}
         </div>
       ),
     },
     {
-      title: "Action",
+      title: "Handling",
       key: "action",
       render: (_, record) => (
         <>
           <Space size="middle">
-            <Tooltip placement="right" title="View Details">
+            <Tooltip placement="right" title="Se detaljer">
               <p
                 onClick={() => showViewModal(record)}
                 className="text-xs font-semibold border border-[#ADD8E6] bg-[#F3F9FB] px-2 py-1 rounded cursor-pointer"
               >
-                See Details
+                Se detaljer
               </p>
             </Tooltip>
             {record?.taskStatus == "pending" && (
@@ -76,7 +76,7 @@ const TaskManageTable = ({
                   onClick={() => showViewModal2(record)}
                   className="text-xs font-semibold border border-[#ADD8E6]  px-2 py-1 rounded cursor-pointer"
                 >
-                  Mark Complete
+                  Marker som fuldført
                 </p>
               </Tooltip>
             )}
