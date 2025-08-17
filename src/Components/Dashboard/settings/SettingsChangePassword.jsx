@@ -96,7 +96,7 @@ const SettingsChangePassword = () => {
                     }
                     return Promise.reject(
                       new Error(
-                        "The two passwords that you entered do not match!"
+                        "De to kodeord, du indtastede, stemmer ikke overens."
                       )
                     );
                   },

@@ -60,7 +60,7 @@ const SettingsUpdatePassword = () => {
                   }
                   return Promise.reject(
                     new Error(
-                      "The two passwords that you entered do not match!"
+                      "De to adgangskoder, du indtastede, stemmer ikke overens."
                     )
                   );
                 },
