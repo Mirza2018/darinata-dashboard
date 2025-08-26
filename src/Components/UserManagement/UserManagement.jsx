@@ -25,7 +25,7 @@ export default function UserManagement() {
       page,
       limit,
     }));
-  }; 
+  };
   const handleSearch = (search) => {
     console.log(searchText);
     setFilters((prev) => ({
@@ -61,9 +61,9 @@ export default function UserManagement() {
       }
     }
   };
- 
+
   const showModalAddUser = () => {
-    setIsModalOpenAddUser(true); 
+    setIsModalOpenAddUser(true);
   };
   const handleOkAddUser = () => {
     setIsModalOpenAddUser(false);
@@ -115,7 +115,6 @@ export default function UserManagement() {
     setCurrentRecord(record);
     setIsDeleteModalVisible(true);
   };
-
 
   const onFinish = async (values) => {
     console.log(values);
@@ -257,26 +256,18 @@ export default function UserManagement() {
                   rules={[
                     {
                       required: true,
-                      message: "Indtast venligst dit telefonnummer.",
+                      message: "Indtast venligst gaden.",
                     },
                   ]}
-                  label="Telefonnummer"
-                  name="phoneNumber"
+                  label="Gade"
+                  name="street"
                 >
-                  <Input required placeholder="Indtast telefonnummer" />
+                  <Input required placeholder="Indtast gadenavn" />
                 </Form.Item>
-                <Form.Item
-                  rules={[
-                    {
-                      required: true,
-                      message: "Indtast venligst din e-mail.",
-                    },
-                  ]}
-                  label="E-mail"
-                  name="email"
-                >
-                  <Input required placeholder="Indtast e-mail" />
-                </Form.Item>
+
+                {/* <Form.Item label="Address" name="address">
+                  <Input required placeholder="Enter Address" />
+                </Form.Item> */}
               </div>
               <div className="grid md:grid-cols-2 gap-5">
                 <Form.Item
@@ -309,20 +300,25 @@ export default function UserManagement() {
                   rules={[
                     {
                       required: true,
-                      message: "Indtast venligst gaden.",
+                      message: "Indtast venligst dit telefonnummer.",
                     },
                   ]}
-                  label="Gade"
-                  name="street"
+                  label="Telefonnummer"
+                  name="phoneNumber"
                 >
-                  <Input required placeholder="Indtast gadenavn" />
+                  <Input required placeholder="Indtast telefonnummer" />
                 </Form.Item>
-
-                {/* <Form.Item label="Address" name="address">
-                  <Input required placeholder="Enter Address" />
-                </Form.Item> */}
-                <Form.Item label="Kontonummer" name="kontoNr">
-                  <Input placeholder="Indtast kontonr." />
+                <Form.Item
+                  rules={[
+                    {
+                      required: true,
+                      message: "Indtast venligst din e-mail.",
+                    },
+                  ]}
+                  label="E-mail"
+                  name="email"
+                >
+                  <Input required placeholder="Indtast e-mail" />
                 </Form.Item>
               </div>
 
@@ -333,6 +329,11 @@ export default function UserManagement() {
                 {/* <Form.Item label="Website Link" name="websiteLink">
                   <Input placeholder="Enter your Website Link" />
                 </Form.Item> */}
+                <Form.Item label="Kontonummer" name="kontoNr">
+                  <Input placeholder="Indtast kontonr." />
+                </Form.Item>
+              </div>
+              <div className="grid md:grid-cols-2 gap-5">
                 <Form.Item
                   rules={[
                     {

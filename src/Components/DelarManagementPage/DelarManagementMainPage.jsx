@@ -261,25 +261,16 @@ export default function DelarManagementMainPage() {
                   rules={[
                     {
                       required: true,
-                      message: "Indtast venligst et telefonnummer.",
+                      message: "Indtast venligst gade.",
                     },
                   ]}
-                  label="Telefonnummer"
-                  name="phoneNumber"
+                  label="Gade"
+                  name="street"
                 >
-                  <Input required placeholder="Indtast dit telefonnummer" />
+                  <Input required placeholder="Indtast dit gadelink" />
                 </Form.Item>
-                <Form.Item
-                  rules={[
-                    {
-                      required: true,
-                      message: "Indtast venligst e-mail.",
-                    },
-                  ]}
-                  label="E-mail"
-                  name="email"
-                >
-                  <Input required placeholder="Indtast din e-mail" />
+                <Form.Item label="Website Link" name="websiteLink">
+                  <Input placeholder="Indtast dit hjemmesidelink" />
                 </Form.Item>
               </div>
               <div className="grid md:grid-cols-2 gap-5">
@@ -313,18 +304,28 @@ export default function DelarManagementMainPage() {
                   rules={[
                     {
                       required: true,
-                      message: "Indtast venligst gade.",
+                      message: "Indtast venligst et telefonnummer.",
                     },
                   ]}
-                  label="Gade"
-                  name="street"
+                  label="Telefonnummer"
+                  name="phoneNumber"
                 >
-                  <Input required placeholder="Indtast dit gadelink" />
+                  <Input required placeholder="Indtast dit telefonnummer" />
                 </Form.Item>
-                <Form.Item label="Website Link" name="websiteLink">
-                  <Input placeholder="Indtast dit hjemmesidelink" />
+                <Form.Item
+                  rules={[
+                    {
+                      required: true,
+                      message: "Indtast venligst e-mail.",
+                    },
+                  ]}
+                  label="E-mail"
+                  name="email"
+                >
+                  <Input required placeholder="Indtast din e-mail" />
                 </Form.Item>
               </div>
+
               <div className="grid md:grid-cols-2 gap-5">
                 <Form.Item
                   rules={[
