@@ -142,7 +142,7 @@ const ContractTable2 = ({ data, loading, meta, onPageChange }) => {
           pageSize: meta?.limit,
           total: meta?.total,
           onChange: onPageChange,
-          showSizeChanger: true,
+          // showSizeChanger: true,
         }}
         rowKey="id"
         scroll={{ x: true }}

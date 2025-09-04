@@ -120,7 +120,7 @@ const CarTable = ({
           pageSize: meta?.limit,
           total: meta?.total,
           onChange: onPageChange,
-          showSizeChanger: true,
+          // showSizeChanger: true,
         }}
         rowKey="id"
         scroll={{ x: true }}

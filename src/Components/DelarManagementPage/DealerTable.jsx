@@ -202,7 +202,7 @@ const DealerTable = ({ data, loading, showViewModal, meta, onPageChange }) => {
           pageSize: meta?.limit,
           total: meta?.total,
           onChange: onPageChange,
-          showSizeChanger: true,
+          // showSizeChanger: true,
         }}
         rowKey="serialNumber"
         scroll={{ x: true }}
