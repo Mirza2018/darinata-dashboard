@@ -42,7 +42,7 @@ const SettingsOtpPage = () => {
               />
             </div>
           </Form.Item>
-          <div className="flex justify-between py-1">
+          {/* <div className="flex justify-between py-1">
             <p className=" ">Didn’t get OTP?</p>
             <Link
               to="/settings/otp-page"
@@ -50,7 +50,7 @@ const SettingsOtpPage = () => {
             >
               Resend
             </Link>
-          </div>
+          </div> */}
           <Form.Item>
             <Button
               className="w-full py-6 border !border-secondary-color hover:border-secondary-color text-xl !text-primary-color bg-secondary-color hover:!bg-secondary-color font-semibold rounded-2xl mt-8"
