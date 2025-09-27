@@ -23,7 +23,7 @@ const OtpPage = () => {
   const [otp, setOtp] = useState("");
   const navigate = useNavigate();
 
-  const dispatch = useDispatch();
+  const dispatch = useDispatch(); 
 
   const resendToken = useSelector((state) => state.auth.resendSignUpToken);
 
@@ -62,8 +62,6 @@ const OtpPage = () => {
 
     try {
       const res = await varifyOtp(data).unwrap();
-
-      // dispatch(setSignUpToken(res?.data?.signUpToken));
       console.log(res);
 
       toast.success(res.message, {
@@ -73,13 +71,9 @@ const OtpPage = () => {
       dispatch(clearAuth());
       dispatch(setResetPasswordToken(res?.data?.resetPasswordToken));
 
-      //   const decodeToken = jwtDecode(res?.data?.accessToken);
-      //   dispatch(setAccessToken(res?.data?.accessToken));
-      //   dispatch(setUserInfo(decodeToken));
-      //   cookies.set("car_trading_dealer_accessToken", res?.data?.accessToken);
       navigate("/update-password");
     } catch (error) {
-      console.error("Login Error:", error); // Log the error for debugging
+      console.error("Login Error:", error); 
 
       toast.error(
         "Der opstod en fejl under registreringen. Prøv venligst igen senere.",
@@ -91,10 +85,6 @@ const OtpPage = () => {
     }
   };
 
-  // const handleOTPSubmit = () => {
-  //   console.log("OTP:", otp);
-  //   navigate("/update-password");
-  // };
 
   return (
     <div className=" bg-[#E6F3F7]">

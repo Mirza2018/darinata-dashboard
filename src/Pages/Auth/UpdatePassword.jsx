@@ -27,11 +27,7 @@ const ChangePassword = () => {
       });
       dispatch(clearAuth());
 
-      // const decodeToken = jwtDecode(res?.data?.accessToken);
-      // dispatch(setAccessToken(res?.data?.accessToken));
-      // dispatch(setUserInfo(decodeToken));
-      // cookies.set("car_trading_dealer_accessToken", res?.data?.accessToken);
-
+   
       navigate("/signin");
     } catch (error) {
       console.error("Login Error:", error); // Log the error for debugging
@@ -46,10 +42,7 @@ const ChangePassword = () => {
     }
   };
 
-  // const onFinish = (values) => {
-  //   console.log("Success:", values);
-  //   navigate("/signin");
-  // };
+
 
   return (
     <div className="w-full flex flex-col lg:flex-row justify-around items-center min-h-screen bg-[#E6F3F7]  ">
