@@ -1,4 +1,5 @@
-import logo from "./logo.png";
+import logo from "./logo.svg";
+import logo2 from "./logo.png";
 
 // Auth Images
 import ForgotPassword from "./authImages/ForgotPassword.png";
@@ -46,6 +47,7 @@ import dk from "./icons/dk.svg";
 
 export const AllImages = {
   logo,
+  logo2,
   profile,
   userImage,
   PDFImage,

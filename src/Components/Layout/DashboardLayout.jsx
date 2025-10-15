@@ -341,8 +341,8 @@ const DashboardLayout = () => {
             <img
               src={AllImages.logo}
               alt="logo"
-              width={150}
-              height={150}
+              width={100}
+              height={100}
               className="my-7 mx-auto"
             />
           </Link>

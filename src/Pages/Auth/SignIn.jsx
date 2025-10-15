@@ -60,9 +60,9 @@ const SignIn = () => {
             <div className="text-center mt-5 mb-8">
               <div className="my-4">
                 <img
-                  src={AllImages.logo}
+                  src={AllImages.logo2}
                   alt="logo"
-                  className=" mx-auto w-52 aspect-square object-contain"
+                  className=" w-80 h-24 aspect-square object-contain"
                 />
               </div>
               <h1 className="text-4xl font-semibold mb-4 ">Log ind</h1>
