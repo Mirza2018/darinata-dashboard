@@ -1,4 +1,4 @@
-import logo from "./logo.svg";
+import logo from "./icon.jpg";
 import logo2 from "./logo.png";
 
 // Auth Images
