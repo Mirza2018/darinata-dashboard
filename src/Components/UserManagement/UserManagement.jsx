@@ -323,7 +323,7 @@ export default function UserManagement() {
               </div>
 
               <div className="grid md:grid-cols-2 gap-5">
-                <Form.Item label="Rge Nr." name="regNo">
+                <Form.Item label="Reg Nr." name="regNo">
                   <Input placeholder="Indtast reg.nr." />
                 </Form.Item>
                 {/* <Form.Item label="Website Link" name="websiteLink">
