@@ -215,12 +215,24 @@ export const adminApi = baseApi.injectEndpoints({
 
     createBrand: build.mutation({
       query: (brandData) => {
-        console.log(brandData);
+        // console.log(brandData);
 
         return {
           url: `/car/add_brand`,
           method: "POST",
           body: brandData,
+        };
+      },
+      invalidatesTags: [tagTypes.brand],
+    }),
+    editBrand: build.mutation({
+      query: (brandData) => {
+        // console.log(brandData);
+
+        return {
+          url: `car/update_brand/${brandData.id}`,
+          method: "PATCH",
+          body: brandData.data,
         };
       },
       invalidatesTags: [tagTypes.brand],
@@ -331,5 +343,6 @@ export const {
   useUserBlockMutation,
   useAllBrandQuery,
   useCreateBrandMutation,
-  useDeleteBrandMutation
+  useEditBrandMutation,
+  useDeleteBrandMutation,
 } = adminApi;
