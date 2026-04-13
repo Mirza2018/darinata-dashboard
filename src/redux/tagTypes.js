@@ -13,7 +13,8 @@ export const tagTypes = {
   terms: "Terms",
   notification: "Notification",
   notificationCount: "NotificationCount",
-  brand:"Brand"
+  brand: "Brand",
+  findCar: "FindCar",
 };
 
 export const tagTypesList = [
@@ -29,5 +30,6 @@ export const tagTypesList = [
   tagTypes.terms,
   tagTypes.notification,
   tagTypes.notificationCount,
-  tagTypes.brand
+  tagTypes.brand,
+  tagTypes.findCar,
 ];

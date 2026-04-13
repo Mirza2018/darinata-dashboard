@@ -64,6 +64,9 @@ const DashboardLayout = () => {
     if (currentPath.includes("/all-cars")) {
       return ["all-cars"];
     }
+    if (currentPath.includes("/find-cars")) {
+      return ["find-cars"];
+    }
     if (currentPath.includes("/total-Car-Sell")) {
       return ["total-Car-Sell"];
     }
@@ -168,6 +171,22 @@ const DashboardLayout = () => {
         />
       ),
       label: <NavLink to="all-cars">Alle biler (til salg + solgt)</NavLink>,
+    },
+    {
+      key: "find-cars",
+      icon: (
+        <img
+          src={totalCar}
+          alt="find-cars"
+          width={20}
+          style={{
+            filter: location.pathname.includes("find-cars")
+              ? "brightness(0) invert(1)"
+              : undefined,
+          }}
+        />
+      ),
+      label: <NavLink to="find-cars">søger bil</NavLink>,
     },
     {
       key: "user-management",

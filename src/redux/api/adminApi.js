@@ -174,7 +174,7 @@ export const adminApi = baseApi.injectEndpoints({
           method: "GET",
         };
       },
-      providesTags: tagTypes.profile,
+      providesTags: [tagTypes.profile],
     }),
 
     allCarList: build.query({
@@ -187,7 +187,28 @@ export const adminApi = baseApi.injectEndpoints({
       },
       providesTags: [tagTypes.allCar],
     }),
+    findCarList: build.query({
+      query: (params) => {
+        return {
+          url: `/submit_listing`,
+          method: "GET",
+          params,
+        };
+      },
+      providesTags: [tagTypes.findCar],
+    }),
 
+    deleteFindCar: build.mutation({
+      query: (id) => {
+        console.log(id);
+
+        return {
+          url: `/submit_listing/delete/${id}`,
+          method: "DELETE",
+        };
+      },
+      invalidatesTags: [tagTypes.findCar],
+    }),
     deleteCar: build.mutation({
       query: (id) => {
         console.log(id);
@@ -269,7 +290,7 @@ export const adminApi = baseApi.injectEndpoints({
           body: profileInfo.fromData,
         };
       },
-      invalidatesTags: tagTypes.profile,
+      invalidatesTags: [tagTypes.profile],
     }),
 
     changePassword: build.mutation({
@@ -336,7 +357,9 @@ export const {
   useUpdateProfileMutation,
   useChangePasswordMutation,
   useAllCarListQuery,
+  useFindCarListQuery,
   useDeleteCarMutation,
+  useDeleteFindCarMutation,
   useUpdateCarMutation,
   useUserDetailsQuery,
   useStaticContentQuery,

@@ -17,7 +17,7 @@ function ProtectedRoute({ children, role }) {
     if (token?.accessToken) {
       const decodeToken = jwtDecode(token?.accessToken);
       const currentTime = Date.now() / 1000;
-      console.log(decodeToken.exp);
+      // console.log(decodeToken.exp);
       
       if (decodeToken.exp < currentTime) {
         // Token is expired, log the user out

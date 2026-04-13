@@ -41,6 +41,7 @@ import AllCarsMainPage from "../AllCars/AllCarsMainPage";
 import CarSellTable from "../TotalCarSellPage/CarSellTable";
 import TaskManagement from "../TaskManagementPage/TaskManagement";
 import BrandAdd from "../BrandAdd/BrandAdd";
+import FindCarsMainPage from "../AllCars/FindCarsMainPage";
 
 function AuthRedirect() {
   const navigate = useNavigate();
@@ -88,6 +89,14 @@ const router = createBrowserRouter([
         path: "all-cars",
         element: <AllCarsMainPage />,
       },
+      {
+        path: "find-cars",
+        element: <FindCarsMainPage />,
+      },
+
+
+
+
 
       {
         path: "every-contract/contract/:id",

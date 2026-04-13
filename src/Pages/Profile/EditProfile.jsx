@@ -17,7 +17,7 @@ const EditProfile = () => {
     useProfileQuery();
   const [profileUpdate] = useUpdateProfileMutation();
   const displayedData = data ?? currentData;
-  console.log(displayedData);
+  // console.log(displayedData);
 
   const userInfo = useSelector((state) => state.auth.userInfo);
 
