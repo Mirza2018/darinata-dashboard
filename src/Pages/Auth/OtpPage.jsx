@@ -23,7 +23,7 @@ const OtpPage = () => {
   const [otp, setOtp] = useState("");
   const navigate = useNavigate();
 
-  const dispatch = useDispatch(); 
+  const dispatch = useDispatch();
 
   const resendToken = useSelector((state) => state.auth.resendSignUpToken);
 
@@ -49,7 +49,7 @@ const OtpPage = () => {
         {
           id: toastId,
           duration: 2000,
-        }
+        },
       );
     }
   };
@@ -64,7 +64,7 @@ const OtpPage = () => {
       const res = await varifyOtp(data).unwrap();
       console.log(res);
 
-      toast.success(res.message, {
+      toast.success("“Engangskoden stemmer overens", {
         id: toastId,
         duration: 2000,
       });
@@ -73,18 +73,17 @@ const OtpPage = () => {
 
       navigate("/update-password");
     } catch (error) {
-      console.error("Login Error:", error); 
+      console.error("Login Error:", error);
 
       toast.error(
         "Der opstod en fejl under registreringen. Prøv venligst igen senere.",
         {
           id: toastId,
           duration: 2000,
-        }
+        },
       );
     }
   };
-
 
   return (
     <div className=" bg-[#E6F3F7]">
@@ -107,9 +106,9 @@ const OtpPage = () => {
                   className="w-full object-cover rounded-xl aspect-square"
                 />
               </div>
-              <h1 className="text-4xl font-semibold mb-4">Enter your code</h1>
+              <h1 className="text-4xl font-semibold mb-4">Indtast din kode</h1>
               <p className="text-base font-normal  mb-2 text-[#1E1E1E] ">
-                We sent a code your email address.
+                Vi har sendt en kode til din e-mailadresse.
               </p>
             </div>
 
@@ -132,7 +131,7 @@ const OtpPage = () => {
                   onClick={handleResendOtp}
                   className="!text-[#F5382C] cursor-pointer !underline font-semibold"
                 >
-                  Resend
+                  Send igen
                 </p>
               </div>
 
@@ -142,7 +141,7 @@ const OtpPage = () => {
                   className="w-full py-6 border border-[#FF991C] hover:border-input-colortext-xl text-white bg-[#FF991C] hover:!bg-[#FF991C] font-semibold rounded-2xl mt-8"
                   onClick={handleOTPSubmit}
                 >
-                  Get OTP
+                  Få engangskode
                 </Button>
               </Form.Item>
             </Form>

@@ -23,7 +23,7 @@ const ForgotPassword = () => {
       dispatch(setForgotPasswordToken(res?.data?.forgotPasswordToken));
       dispatch(setResendSignUpToken(res?.data?.forgotPasswordToken));
 
-      toast.success(res.message, {
+      toast.success("Tjek venligst din e-mail", {
         id: toastId,
         duration: 2000,
       });
@@ -75,10 +75,10 @@ const ForgotPassword = () => {
                   />
                 </div>
                 <h1 className="text-4xl font-semibold mb-4">
-                  Forgot password?
+                  Glemt adgangskode?{" "}
                 </h1>
                 <p className="text-base font-normal  mb-2 text-[#1E1E1E] ">
-                  No worries, we’ll send you reset instructions.
+                  Bare rolig, vi sender dig instruktioner til nulstilling.
                 </p>
               </div>
             </div>
@@ -111,7 +111,7 @@ const ForgotPassword = () => {
                   className="w-full py-6 border border-[#FF991C] hover:border-input-colortext-xl text-white bg-[#FF991C] hover:!bg-[#FF991C] font-semibold rounded-2xl mt-8"
                   htmlType="submit"
                 >
-                  Get OTP
+                  Få engangskode
                 </Button>
               </Form.Item>
             </Form>

@@ -27,7 +27,7 @@ const SignIn = () => {
       dispatch(setUserInfo(decodeToken));
       console.log("res: ", res, decodeToken);
       cookies.set("car_trading_dealer_accessToken", res?.data?.accessToken);
-      toast.success(res.message, {
+      toast.success("Logget ind med succes", {
         id: toastId,
         duration: 2000,
       });
@@ -67,7 +67,7 @@ const SignIn = () => {
               </div>
               <h1 className="text-4xl font-semibold mb-4 ">Log ind</h1>
               <p className="text-base font-normal  mb-2 text-[#1E1E1E] ">
-               Velkommen til adminstrator adgang
+                Velkommen til adminstrator adgang
               </p>
             </div>
           </div>
@@ -79,7 +79,7 @@ const SignIn = () => {
             onFinish={onFinish}
           >
             <Typography.Title level={4} style={{ color: "#222222" }}>
-              Email
+              E-mail
             </Typography.Title>
             <Form.Item
               name="email"
@@ -97,7 +97,7 @@ const SignIn = () => {
               />
             </Form.Item>
             <Typography.Title level={4} style={{ color: "#222222" }}>
-             Adgangskode
+              Adgangskode
             </Typography.Title>
             <Form.Item
               rules={[
@@ -114,7 +114,6 @@ const SignIn = () => {
                 className="py-2 px-3 text-xl bg-site-color border !border-[#1E1E1E] hover:bg-transparent hover:border-secoundary-color focus:bg-transparent focus:border-secoundary-color !bg-white"
               />
             </Form.Item>
-
 
             <div className="flex justify-between items-center mt-10">
               <Checkbox className="">Husk mig</Checkbox>

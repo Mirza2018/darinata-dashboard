@@ -21,13 +21,12 @@ const ChangePassword = () => {
 
       console.log(res);
 
-      toast.success(res.message, {
+      toast.success("Adgangskoden er opdateret med succes", {
         id: toastId,
         duration: 2000,
       });
       dispatch(clearAuth());
 
-   
       navigate("/signin");
     } catch (error) {
       console.error("Login Error:", error); // Log the error for debugging
@@ -37,12 +36,10 @@ const ChangePassword = () => {
         {
           id: toastId,
           duration: 2000,
-        }
+        },
       );
     }
   };
-
-
 
   return (
     <div className="w-full flex flex-col lg:flex-row justify-around items-center min-h-screen bg-[#E6F3F7]  ">
@@ -65,9 +62,12 @@ const ChangePassword = () => {
                 className="h-[60px] w-[245px] mx-auto"
               />
             </div>
-            <h1 className="text-4xl font-semibold mb-4">Set new password</h1>
+            <h1 className="text-4xl font-semibold mb-4">
+              Opret ny adgangskode
+            </h1>
             <p className="text-base font-normal  mb-2 text-[#1E1E1E] ">
-              Your new password must be different to previously used passwords.
+              Din nye adgangskode skal være forskellig fra tidligere anvendte
+              adgangskoder.
             </p>
           </div>
         </div>
@@ -78,7 +78,7 @@ const ChangePassword = () => {
           onFinish={onFinish}
         >
           <Typography.Title level={4} style={{ color: "#222222" }}>
-            Password
+            Adgangskode
           </Typography.Title>
           <Form.Item
             rules={[
@@ -96,7 +96,7 @@ const ChangePassword = () => {
             />
           </Form.Item>
           <Typography.Title level={4} style={{ color: "#222222" }}>
-            Confirm Password
+            Bekræft adgangskode
           </Typography.Title>
           <Form.Item
             name="confirmPassword"
@@ -112,8 +112,8 @@ const ChangePassword = () => {
                   }
                   return Promise.reject(
                     new Error(
-                      "The two passwords that you entered do not match!"
-                    )
+                      "The two passwords that you entered do not match!",
+                    ),
                   );
                 },
               }),
